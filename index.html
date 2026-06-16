@@ -4,7 +4,7 @@
 <html lang="zh-CN"><div id="__caoliao-browser-ext-root"></div><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>灵溪识险 · 发布会 · Silver Finance Safety</title>
+<title>灵溪识险 · 产品介绍· Silver Finance Safety</title>
 <link rel="preconnect" href="https://fonts.googleapis.com/">
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
 <link href="./CodeBuddy CN_files/css2" rel="stylesheet">
@@ -1245,7 +1245,7 @@
     </div>
     <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2.6vh">
       <div data-anim="kicker" class="t-meta" style="color: rgba(255, 255, 255, 0.78); letter-spacing: 0.22em; opacity: 1; transform: none;">WECHAT MINI PROGRAM · 产品发布会</div>
-      <h1 data-anim="title" style="align-self: center; font-family: var(--sans),var(--sans-zh); font-weight: 200; font-size: min(9.8vw, 16vh); line-height: 0.94; letter-spacing: -0.025em; color: rgb(255, 255, 255); opacity: 1; transform: none;">灵溪识险<br><span style="font-size:.68em;opacity:.6">守护银龄<span style="font-style:italic;font-weight:300">财产安全</span></span></h1>
+      <h1 data-anim="title" style="align-self: center; font-family: var(--sans),var(--sans-zh); font-weight: 200; font-size: min(9.8vw, 16vh); line-height: 0.94; letter-spacing: -0.025em; color: rgb(255, 255, 255); opacity: 1; transform: none;">灵溪识险<br><span style="font-size:.68em;opacity:.6">守护银发<span style="font-style:italic;font-weight:300">财产安全</span></span></h1>
       <div data-anim="bottom" style="display: grid; grid-template-rows: auto auto; gap: 1.6vh; border-top: 1px solid rgba(255, 255, 255, 0.22); padding-top: 2vh; opacity: 1; transform: none;">
         <div data-anim="lead" class="lead" style="max-width: 60ch; color: rgba(255, 255, 255, 0.86); font-weight: 300; opacity: 1; transform: none;">AI 驱动的老年金融反诈微信小程序 · 让金融风险看得见、听得懂、防得住</div>
         <div style="display:flex;justify-content:space-between;align-items:end">
@@ -1567,6 +1567,7 @@
   </div>
 </section>
 
+
 <!-- ====== 10 · THREE RISK LEVELS ====== -->
 <section class="slide accent" data-animate="three-forces" data-layout="S13">
   <div class="canvas-card">
@@ -1585,7 +1586,8 @@
         <div class="card-ink" style="padding: 3.5vh 2.4vw; display: flex; flex-direction: column; justify-content: center; gap: 2.4vh; background: linear-gradient(135deg, rgb(0, 47, 167) 0%, rgb(0, 29, 102) 100%); border: 1px solid rgba(255, 255, 255, 0.08); height: 100%; box-sizing: border-box; transform: none; opacity: 1;">
           <div class="t-cat" style="color:rgb(255, 255, 255)">RISK STANDARD</div>
           <div class="kpi-thin" style="font-size:min(10vw,15vh);color:#fff;text-align:center">3</div>
-          <div class="t-body" style="color:rgb(255, 255, 255);text-align:center">色盲友好<br>三色分级体系</div>
+          <!-- 此处新增 font-size 放大文字，使用 min 自适应大屏/小屏 -->
+          <div class="t-body" style="color:rgb(255, 255, 255);text-align:center;font-size:min(1.5vw,2.1vh);font-weight:500;">色盲友好<br>三色分级体系</div>
         </div>
         <!-- 右侧容器：固定色块间隙gap:2vh，4个色块自动均分剩余高度 -->
         <div style="display:flex;flex-direction:column;height:100%;gap:2vh;box-sizing:border-box">
@@ -1691,34 +1693,36 @@
 <style>
 .timeline-v .multi {
     font-size: clamp(20px, 1.9vw, 35px);
-    margin-right: 20px !important; /* 统一控制间距，改这里全部生效 */
+    margin-right: 15px !important; /* 统一控制间距，改这里全部生效 */
+    white-space: nowrap; /* 禁止文字换行，单行展示 */
+    min-width: 14vw;
 }
 </style>
 
 <div class="timeline-v" data-anim="up" style="opacity: 1; transform: none;">
-        <div class="tl-node" style="transform: none; opacity: 1;">
+        <div class="tl-node" style="transform: none; opacity: 1; display:flex;align-items:center;gap:12px;">
             <div class="dot"></div>
             <div class="yr">Month 1</div>
             <div class="multi" style="transform: none; opacity: 1;">构筑项目基座</div>
-            <div class="desc">    UniApp 脚手架  · 拍照相册上传 · OCR 对接 · 页面架构与路由</div>
+            <div class="desc" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">    UniApp 脚手架  · 拍照相册上传 · OCR 对接 · 页面架构与路由</div>
         </div>
-        <div class="tl-node accent" style="transform: none; opacity: 1;">
+        <div class="tl-node accent" style="transform: none; opacity: 1; display:flex;align-items:center;gap:12px;">
             <div class="dot"></div>
             <div class="yr">Month 2</div>
             <div class="multi" style="transform: none; opacity: 1;">搭建智能内核</div>
-            <div class="desc">    大模型 API 对接 · 三层判定逻辑 · 规则引擎 ·  风险等级输出</div>
+            <div class="desc" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">    大模型 API 对接 · 三层判定逻辑 · 规则引擎 ·  风险等级输出</div>
         </div>
-        <div class="tl-node" style="transform: none; opacity: 1;">
+        <div class="tl-node" style="transform: none; opacity: 1; display:flex;align-items:center;gap:12px;">
             <div class="dot"></div>
             <div class="yr">Month 3</div>
             <div class="multi" style="transform: none; opacity: 1;">精研用户交互 </div>
-            <div class="desc">    历史记录 · 帮助中心 · 适老化交互 · 隐私弹窗 · 12项适老化规范</div>
+            <div class="desc" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">    历史记录 · 帮助中心 · 适老化交互 · 隐私弹窗 · 12项适老化规范</div>
         </div>
-        <div class="tl-node" style="transform: none; opacity: 1;">
+        <div class="tl-node" style="transform: none; opacity: 1; display:flex;align-items:center;gap:12px;">
             <div class="dot"></div>
             <div class="yr">Month 4</div>
             <div class="multi" style="transform: none; opacity: 1;">完成全量上线 </div>
-            <div class="desc">    后台管理 · 数据统计 · 全功能联调 · BUG 修复 · V3.2 正式上线</div>
+            <div class="desc" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">    后台管理 · 数据统计 · 全功能联调 · BUG 修复 · V3.2 正式上线</div>
         </div>
 </div>
       <div data-anim="kpi" class="kpi-row-4" style="margin-top: 0.8vh; opacity: 1; transform: none;">
@@ -1743,13 +1747,24 @@
         <div class="t-meta" style="color:rgba(255,255,255,.62)">AI+DEVELOPER · 开发关键问题攻克</div>
         <h2 class="h-xl-zh" style="color:var(--paper);font-size:min(5.8vw,10.2vh)">人类决策 × AI 实现，协同解决三大难题</h2>
       </div>
-      <div data-anim="up" style="display: grid; grid-template-columns: 5fr 7fr; gap: 2.4vw; flex: 1 1 0%; opacity: 1; transform: none;">
-        <div class="card-ink" style="padding: 3.5vh 2.4vw; display: flex; flex-direction: column; gap: 2.4vh; transform: none; opacity: 1;">
-          <div class="t-cat" style="color:rgba(255,255,255,.55)">COLLABORATION</div>
-          <div style="font-family:var(--sans);font-weight:200;font-size:min(7vw,12vh);line-height:.9;color:#fff">人<br>+<br>AI</div>
-          <div class="t-body" style="color:rgba(255,255,255,.78)">不是替代，而是放大<br>每个技术决策的背后<br>是经验判断 × AI 效率</div>
+      <!-- 网格添加align-items:center，左右两栏整体中心对齐 -->
+      <div data-anim="up" style="display: grid; grid-template-columns: 5fr 7fr; gap: 2.4vw; flex: 1 1 0%; opacity: 1; transform: none;align-items:center;">
+        <!-- 左侧区域：内容整体上移，顶部留白减少 -->
+        <div class="card-ink" style="padding: 3.5vh 2.4vw; display: flex; flex-direction: column; height: 100%; box-sizing: border-box; transform: none; opacity: 1;">
+          <!-- 顶部标题距离缩小，整体上移 -->
+          <div class="t-cat" style="color:rgba(255,255,255,.55);width:100%;margin-bottom:10vh">COLLABORATION</div>
+          <!-- 横向容器：大字居左，说明文字在右侧空白，垂直居中 -->
+          <div style="display:flex;align-items:center;gap:4vw;">
+            <div style="font-family:var(--sans);font-weight:200;font-size:min(7vw,12vh);line-height:.9;color:#fff;text-align:center;flex-shrink:0;">人<br>+<br>AI</div>
+            <div class="t-body" style="color:rgba(255,255,255,.78);line-height:1.8;font-size:max(19px,1.3vw);">
+              不是替代，而是放大<br>
+              每个技术决策的背后<br>
+              是经验判断 × AI 效率
+            </div>
+          </div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:1.6vh">
+        <!-- 右侧：取消超大margin-top，仅轻微下移，协调美观 -->
+        <div style="display:flex;flex-direction:column;gap:1.6vh;margin-top:3vh;">
           <div class="card-fill" style="background: rgba(255, 255, 255, 0.07); padding: 2.6vh 2vw; display: flex; flex-direction: column; gap: 1vh; transform: none; opacity: 1;">
             <div class="t-cat" style="color: var(--accent); transform: none; opacity: 1;">ISSUE · 01</div>
             <div class="t-body-emp" style="color:var(--paper);font-size:max(17px,1.1vw)">JSON 解析多层容错</div>
@@ -1790,7 +1805,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" aria-hidden="true" style="width: 1.8vw; height: 1.8vw; stroke-width: 1.2; color: var(--accent); opacity: 1; transform: none;" class="lucide lucide-calendar ledger-icon"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
         </div>
         <div class="ledger-row" style="display:grid;grid-template-columns:2.5fr 2.2fr auto;gap:1.6vw;align-items:center;padding:1.8vh 0;border-bottom:1px solid var(--border-subtle)">
-          <div class="ledger-num" style="font-family: var(--sans); font-weight: 200; font-size: min(5vw, 7.5vh); line-height: 0.9; transform: none; opacity: 1;">8,500+</div>
+          <div class="ledger-num" style="font-family: var(--sans); font-weight: 200; font-size: min(5vw, 7.5vh); line-height: 0.9; transform: none; opacity: 1;">18,500+</div>
           <div class="ledger-label" style="transform: none; opacity: 1;"><div class="t-body-emp">代码行数</div><div class="body-sm">Vue3 + SCSS + JS + Java</div></div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="code-2" aria-hidden="true" style="width: 1.8vw; height: 1.8vw; stroke-width: 1.2; color: var(--accent); opacity: 1; transform: none;" class="lucide lucide-code-2 ledger-icon"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg>
         </div>
@@ -1869,40 +1884,80 @@
       <div class="r">17 / 20</div>
     </div>
     <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4vh">
-      <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
+      <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh;">
         <div class="t-meta">DATA ASSET · 数据资产化</div>
         <h2 class="h-xl-zh" style="font-size:min(5vw,9vh)">构建养老金融风险语料库</h2>
       </div>
-      <div data-anim="up" style="display: grid; grid-template-columns: 5fr 7fr; gap: 3vw; flex: 1 1 0%; opacity: 1; transform: none;">
-        <div style="display:flex;flex-direction:column;gap:2.4vh">
-          <p class="t-body" style="font-weight:300;max-width:38ch">每一次风险识别，都在自动沉淀诈骗话术、案例文本与高危关键词样本，形成可研究、可复用的标准化数据库。</p>
-          <div class="card-fill" style="padding: 2vh 1.8vw; display: flex; flex-direction: column; gap: 1vh; transform: none; opacity: 1;">
-            <div class="t-cat accent">语料沉淀</div><div class="t-body-emp" style="font-size:max(16px,1.05vw)">诈骗文本、宣传话术、高危关键词标准化</div>
+      <!-- 网格父容器 完全移除data-anim，不批量触发子动画 -->
+      <div style="display: grid; grid-template-columns: 5fr 7fr; gap: 3vw; flex: 1 1 0%; align-items: center;">
+        <!-- 左侧外层容器，仅做布局，无动画 -->
+        <div style="display:flex;flex-direction:column;gap:2.4vh; margin-top: 3vh;">
+          <!-- 顶部描述文字 独立动画 -->
+          <div data-anim="up">
+            <p class="t-body" style="font-weight:300;max-width:38ch">每一次风险识别，都在自动沉淀诈骗话术、案例文本与高危关键词样本，形成可研究、可复用的标准化数据库。</p>
           </div>
-          <div class="card-fill" style="padding:2vh 1.8vw;display:flex;flex-direction:column;gap:1vh">
-            <div class="t-cat accent">行为分析</div><div class="t-body-emp" style="font-size:max(16px,1.05vw)">高频诈骗场景与高发诈骗类型统计</div>
+
+          <!-- 卡片1：语料沉淀 独立动画块 -->
+          <div data-anim="up">
+            <div class="card-fill" style="padding: 2vh 1.8vw; display: flex; flex-direction: column; gap: 1vh;">
+              <div class="t-cat accent">语料沉淀</div>
+              <div class="t-body-emp" style="font-size:max(16px,1.05vw)">诈骗文本、宣传话术、高危关键词标准化</div>
+            </div>
           </div>
-          <div class="card-fill" style="padding:2vh 1.8vw;display:flex;flex-direction:column;gap:1vh">
-            <div class="t-cat accent">学术价值</div><div class="t-body-emp" style="font-size:max(16px,1.05vw)">数字鸿沟研究与适老化产品实证样本</div>
+
+          <!-- 卡片2：行为分析 独立动画块 -->
+          <div data-anim="up">
+            <div class="card-fill" style="padding:2vh 1.8vw;display:flex;flex-direction:column;gap:1vh">
+              <div class="t-cat accent">行为分析</div>
+              <div class="t-body-emp" style="font-size:max(16px,1.05vw)">高频诈骗场景与高发诈骗类型统计</div>
+            </div>
+          </div>
+
+          <!-- 卡片3：学术价值 独立动画块 -->
+          <div data-anim="up">
+            <div class="card-fill" style="padding:2vh 1.8vw;display:flex;flex-direction:column;gap:1vh">
+              <div class="t-cat accent">学术价值</div>
+              <div class="t-body-emp" style="font-size:max(16px,1.05vw)">数字鸿沟研究与适老化产品实证样本</div>
+            </div>
+          </div>
+
+          <!-- 卡片4：标准输出 独立动画块 -->
+          <div data-anim="up">
+            <div class="card-fill" style="padding:2vh 1.8vw;display:flex;flex-direction:column;gap:1vh">
+              <div class="t-cat accent">标准输出</div>
+              <div class="t-body-emp" style="font-size:max(16px,1.05vw)">统一结构化语料导出，适配风控模型与监管报送需求</div>
+            </div>
           </div>
         </div>
-        <div>
-          <div class="h-bar-chart" style="margin-top: 0px; transform-origin: left center; transform: none; opacity: 1;">
-            <div class="row-lbl">诈骗诱导类</div><div class="row-track"><div class="row-fill accent" style="width: 82%;"></div></div><div class="row-val">82%</div>
+
+        <!-- 右侧图表整体独立动画，所有卡片走完再出现 -->
+        <div data-anim="up">
+          <div class="h-bar-chart" style="margin-top: 0px;">
+            <div class="row-lbl">诈骗诱导类</div>
+            <div class="row-track"><div class="row-fill accent" style="width: 40%;"></div></div>
+            <div class="row-val">40%</div>
           </div>
-          <div class="h-bar-chart" style="margin-top: 0.8vh; opacity: 1;">
-            <div class="row-lbl">非法集资类</div><div class="row-track"><div class="row-fill accent" style="width: 67%;"></div></div><div class="row-val">67%</div>
+          <div class="h-bar-chart" style="margin-top: 0.8vh;">
+            <div class="row-lbl">非法集资类</div>
+            <div class="row-track"><div class="row-fill accent" style="width: 25%;"></div></div>
+            <div class="row-val">25%</div>
           </div>
-          <div class="h-bar-chart" style="margin-top: 0.8vh; opacity: 1;">
-            <div class="row-lbl">金融误导类</div><div class="row-track"><div class="row-fill accent" style="width: 54%;"></div></div><div class="row-val">54%</div>
+          <div class="h-bar-chart" style="margin-top: 0.8vh;">
+            <div class="row-lbl">金融误导类</div>
+            <div class="row-track"><div class="row-fill accent" style="width: 18%;"></div></div>
+            <div class="row-val">18%</div>
           </div>
-          <div class="h-bar-chart" style="margin-top: 0.8vh; opacity: 1;">
-            <div class="row-lbl">仿冒平台类</div><div class="row-track"><div class="row-fill accent" style="width: 41%;"></div></div><div class="row-val">41%</div>
+          <div class="h-bar-chart" style="margin-top: 0.8vh;">
+            <div class="row-lbl">仿冒平台类</div>
+            <div class="row-track"><div class="row-fill accent" style="width: 10%;"></div></div>
+            <div class="row-val">10%</div>
           </div>
-          <div class="h-bar-chart" style="margin-top: 0.8vh; opacity: 1;">
-            <div class="row-lbl">AI 新型诈骗</div><div class="row-track"><div class="row-fill accent" style="width: 35%;"></div></div><div class="row-val">35%</div>
+          <div class="h-bar-chart" style="margin-top: 0.8vh;">
+            <div class="row-lbl">AI 新型诈骗</div>
+            <div class="row-track"><div class="row-fill accent" style="width: 7%;"></div></div>
+            <div class="row-val">7%</div>
           </div>
-          <div class="t-meta" style="margin-top: 2vh; opacity: 1;">高发诈骗类型分布（基于试点数据预估）</div>
+          <div class="t-meta" style="margin-top: 2vh;">高发诈骗类型分布（基于试点数据预估，占比总和100%）</div>
         </div>
       </div>
     </div>
@@ -2817,74 +2872,53 @@ if(motion){
     });
   }
 
-  /* ============ P21 · Tech Spec Sheet · 标题分行 / KPI 顶线画出 + count 风感 / 竖线弹起 / 底巨数 ============ */
+  /* ============ P17 · Tech Spec · 标题 → 描述 → 4 卡片依次 + 右图表 ============ */
   function rTechSpec(slide, all){
-    const head = slide.querySelector('[data-anim="line"]');
-    if(head) fade(head, {duration:.5, y:8});
+    /* 1. 标题区域先入 */
+    const head = slide.querySelector('[data-anim="head"]');
+    if(head) fade(head, {duration:.55, y:8});
 
-    const main = slide.querySelector('[data-anim="up"]');
-    if(main){
-      animate(main, {opacity:[0,1]}, {duration:.3, delay:.25, easing:EASE_PROD});
-    
-      /* 左大标题分行 */
-      const titleLines = main.querySelector(':scope > div:first-child > div:first-child');
-      if(titleLines){
-        animate(titleLines, {opacity:[0,1], y:[18, 0]}, {duration:.7, delay:.35, easing:EASE_ENTRY_EXP});
-      }
-      const titleNote = main.querySelector(':scope > div:first-child > div:nth-child(2)');
-      if(titleNote){
-        animate(titleNote, {opacity:[0,1], y:[10, 0]}, {duration:.5, delay:.95, easing:EASE_ENTRY_EXP});
-      }
-    
-      /* 三 KPI · 顶线 scaleX + 数字 fade-up + 副文字 */
-      const kpis = [...main.querySelectorAll(':scope > div:not([data-anim]):not(:first-child)')];
-      kpis.forEach((kpi, i)=>{
-        const base = .55 + i*.18;
-        const topRule = kpi.querySelector(':scope > div:first-child');
-        if(topRule){
-          topRule.style.transformOrigin = 'left center';
-          animate(topRule, {scaleX:[0,1], opacity:[0,1]}, {duration:.5, delay:base, easing:EASE_ENTRY_EXP});
-        }
-        const num = kpi.querySelector('.kpi-num');
-        if(num) animate(num, {opacity:[0,1], y:[14, 0]}, {duration:.6, delay:base + .15, easing:EASE_ENTRY_EXP});
-        const otherKids = [...kpi.children].filter(el=>el !== topRule && el !== num);
-        otherKids.forEach((el, j)=>{
-          animate(el, {opacity:[0,1]}, {duration:.4, delay:base + .25 + j*.05, easing:EASE_PROD});
-        });
-      });
-    
+    /* 2. 找到左侧卡片容器 (flex-direction:column 的那个 wrapper) */
+    const leftCol = slide.querySelector('[style*="flex-direction:column"][style*="gap:2.4vh"]');
+    if(!leftCol) return;
+
+    /* 左侧列内: [data-anim="up"] 依次为 描述文字 + 4张卡片 */
+    const leftItems = [...leftCol.querySelectorAll(':scope > [data-anim="up"]')];
+    const [desc, ...cards] = leftItems;  /* 第一个是描述, 剩余是卡片 */
+
+    /* 描述文字先浮入 */
+    if(desc) fade(desc, {duration:.5, delay:.3, y:10});
+
+    /* 卡片依次滑入 — 最多取 4 张, 间隔 .15s */
+    cards.slice(0,4).forEach((card, i)=>{
+      animate(card, {opacity:[0,1], y:[24, 0]},
+        {duration:.55, delay:.55 + i*.15, easing:EASE_ENTRY_EXP});
+    });
+
+    /* 3. 右侧图表容器：强制隐藏，等卡片走完后淡入，再逐条画柱 */
+    const chartWrapper = slide.querySelector('.h-bar-chart').parentNode;
+    if(chartWrapper){
+      chartWrapper.style.opacity = '0';
+      animate(chartWrapper, {opacity:[0, 1]}, {duration:.25, delay:1.25, easing:EASE_PROD});
     }
-    
-    /* 底部 hero 区: 巨数 + goal + tags + 右下竖线 */
-    const hero = slide.querySelector('[data-anim="hero"]');
-    if(hero){
-      animate(hero, {opacity:[0,1]}, {duration:.3, delay:1.3, easing:EASE_PROD});
-      const bottomHero = hero.querySelector('.bottom-hero');
-      if(bottomHero) animate(bottomHero, {opacity:[0,1], y:[24, 0], scale:[.92, 1]}, {duration:.7, delay:1.4, easing:EASE_ENTRY_EXP});
-      const middle = hero.querySelector(':scope > div:nth-child(2)');
-      if(middle){
-        const kids = [...middle.children];
-        kids.forEach((el, i)=>{
-          if(el.style && el.style.background === 'var(--ink)'){
-            el.style.transformOrigin = 'left center';
-            animate(el, {scaleX:[0,1], opacity:[0,1]}, {duration:.5, delay:1.6 + i*.1, easing:EASE_ENTRY_EXP});
-          } else {
-            animate(el, {opacity:[0,1], y:[10, 0]}, {duration:.5, delay:1.55 + i*.1, easing:EASE_ENTRY_EXP});
-          }
-        });
+
+    const bars = [...slide.querySelectorAll('.h-bar-chart')];
+    bars.forEach((bar, i)=>{
+      const fill = bar.querySelector('.row-fill');
+      const lbl  = bar.querySelector('.row-lbl');
+      const val  = bar.querySelector('.row-val');
+      const base = 1.35 + i*.15;
+      if(lbl) animate(lbl, {opacity:[0,1], x:[-8, 0]}, {duration:.35, delay:base, easing:EASE_PROD});
+      if(fill){
+        const target = fill.style.width;
+        fill.style.width = '0%';
+        animate(fill, {width:['0%', target]}, {duration:.5, delay:base + .08, easing:EASE_ENTRY_EXP});
       }
-      /* 右下: 文字先入, 9 根竖线再从底部 scaleY 弹起 */
-      const right = hero.querySelector(':scope > div:nth-child(3)');
-      if(right){
-        const rightText = right.querySelector(':scope > div:last-child');
-        if(rightText) animate(rightText, {opacity:[0,1], y:[10, 0]}, {duration:.5, delay:1.85, easing:EASE_ENTRY_EXP});
-      }
-      const bars = slide.querySelectorAll('[data-anim="bars"] .vbar');
-      bars.forEach((bar, i)=>{
-        bar.style.transformOrigin = 'bottom';
-        animate(bar, {scaleY:[0,1], opacity:[0,1]}, {duration:.5, delay:2.0 + i*.04, easing:EASE_ENTRY_EXP});
-      });
-    }
+      if(val) animate(val, {opacity:[0,1]}, {duration:.25, delay:base + .42, easing:EASE_PROD});
+    });
+    /* chart 底部注释最后出现 */
+    const footnote = slide.querySelector('.h-bar-chart ~ .t-meta');
+    if(footnote) fade(footnote, {duration:.4, delay:2.4});
   }
 
   /* ============ P22 · Image Hero · 图缓推 + 标题白块从左滑入 + 三 KPI 顶线画出 ============ */
