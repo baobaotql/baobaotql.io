@@ -88,7 +88,7 @@
   body.low-power canvas.ascii-bg{display:none!important}
 
   /* ============ Deck Stage (缩放外壳, 固定 1920×1080 参考分辨率) ============ */
-  #deck-stage{position:fixed;width:1920px;height:1080px;top:50%;left:50%;overflow:hidden;z-index:5;container-type:size;transform-origin:center center}
+  #deck-stage{position:fixed;width:1920px;height:1080px;top:0;left:0;overflow:hidden;z-index:5;container-type:size;transform-origin:0 0}
   /* ============ Deck 容器 + 翻页 ============ */
   #deck{position:relative;width:auto;height:1080px;display:flex;flex-wrap:nowrap;transition:transform .9s cubic-bezier(.77,0,.175,1);will-change:transform}
   .slide{
@@ -2156,7 +2156,9 @@ deck.style.width=(total*1920)+'px';
 const REF_W=1920, REF_H=1080;
 function rescale(){
   const s=Math.min(innerWidth/REF_W, innerHeight/REF_H);
-  deckStage.style.transform = `translate(-50%,-50%) scale(${s})`;
+  const ox=(innerWidth-REF_W*s)/2;
+  const oy=(innerHeight-REF_H*s)/2;
+  deckStage.style.transform=`translate(${ox}px,${oy}px) scale(${s})`;
   if(overviewOn) buildOverview();
 }
 addEventListener('resize', rescale);
