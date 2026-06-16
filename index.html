@@ -1,12 +1,13 @@
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0041)https://baobaotql.github.io/baobaotql.io/ -->
+<html lang="zh-CN"><div id="__caoliao-browser-ext-root"></div><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>灵溪识险 · 产品介绍 · Silver Finance Safety</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+SC:wght@200;300;400;500;700;900&display=swap" rel="stylesheet">
+<title>灵溪识险 · 发布会 · Silver Finance Safety</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./CodeBuddy CN_files/css2" rel="stylesheet">
 <style>
   :root{
     /* ============ 主题色(默认: 🔵 克莱因蓝 IKB) ============
@@ -34,12 +35,12 @@
     --text-on-color:#ffffff;       /* accent/dark 反色 */
     --border-subtle:#e0e0e0;       /* gray 20, 极细分隔 */
     --border-strong:#a3a3a3;       /* gray 40, 强分隔 */
-
+    
     /* ============ 字体(跨主题固定) ============ */
     --sans:"Inter","Helvetica Neue","Helvetica","Arial","Segoe UI Variable","Segoe UI",system-ui,-apple-system,sans-serif;
     --sans-zh:"PingFang SC","Hiragino Sans GB","Source Han Sans SC","Noto Sans SC","Microsoft YaHei UI","Microsoft YaHei","微软雅黑",sans-serif;
     --mono:"JetBrains Mono","IBM Plex Mono","SF Mono","Cascadia Code","Consolas","Courier New",ui-monospace,monospace;
-
+    
     /* ============ Carbon 2x Grid 间距模数 (基础 8px) ============
        参考: https://carbondesignsystem.com/elements/2x-grid/overview/
        任何 padding/gap/margin 优先用这套 token,确保 8px 基线对齐 */
@@ -54,7 +55,7 @@
     --sp-11:80px;   /* 10 */
     --sp-12:96px;   /* 11 */
     --sp-13:160px;  /* 12 */
-
+    
     /* ============ Carbon Motion tokens ============
        https://carbondesignsystem.com/guidelines/motion/overview/
        两套体系:productive (功能) 短 + 锐 / expressive (叙事) 长 + 软 */
@@ -68,9 +69,9 @@
     --dur-mod-2:.24s;    /* 240ms */
     --dur-slow-1:.4s;    /* 400ms */
     --dur-slow-2:.7s;    /* 700ms */
-
+    
     /* 底部分页组件安全区: 主内容最低处不要进入这条区域 */
-    --nav-safe-bottom:8cqh;
+    --nav-safe-bottom:8vh;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{
@@ -87,14 +88,12 @@
   body.low-power canvas.bg,
   body.low-power canvas.ascii-bg{display:none!important}
 
-  /* ============ Deck Stage (缩放外壳, 固定 1920×1080 参考分辨率) ============ */
-  #deck-stage{position:fixed;width:1920px;height:1080px;top:0;left:0;overflow:hidden;z-index:5;container-type:size;transform-origin:0 0}
   /* ============ Deck 容器 + 翻页 ============ */
-  #deck{position:relative;width:auto;height:1080px;display:flex;flex-wrap:nowrap;transition:transform .9s cubic-bezier(.77,0,.175,1);will-change:transform}
+  #deck{position:fixed;inset:0;width:10000vw;height:100vh;display:flex;flex-wrap:nowrap;transition:transform .9s cubic-bezier(.77,0,.175,1);z-index:10;will-change:transform}
   .slide{
-    width:1920px;height:1080px;flex:0 0 1920px;
+    width:100vw;height:100vh;flex:0 0 100vw;
     position:relative;
-    padding:59px 96px 76px 96px;
+    padding:5.5vh 5vw 7vh 5vw;
     display:flex;flex-direction:column;
     overflow:hidden;
     background:var(--paper);color:var(--ink);
@@ -150,7 +149,7 @@
     font-family:var(--mono);
     font-size:14px;letter-spacing:.14em;text-transform:uppercase;
     opacity:.55;
-    padding-top:2cqh;
+    padding-top:2vh;
     border-top:1px solid currentColor;
     border-color:rgba(127,127,127,.25)
   }
@@ -160,7 +159,7 @@
   .kicker{
     font-family:var(--mono);
     font-size:14px;letter-spacing:.24em;text-transform:uppercase;
-    opacity:.65;margin-bottom:2.4cqh;
+    opacity:.65;margin-bottom:2.4vh;
     display:inline-flex;align-items:center;gap:.8em
   }
   .kicker::before{
@@ -182,28 +181,28 @@
   .h-hero{
     font-family:var(--sans),var(--sans-zh);
     font-weight:200;
-    font-size:11cqw;
+    font-size:11vw;
     line-height:.92;
     letter-spacing:-.04em;
   }
   .h-hero-zh{
     font-family:var(--sans),var(--sans-zh);
     font-weight:200;
-    font-size:8.4cqw;
+    font-size:8.4vw;
     line-height:.96;
     letter-spacing:-.025em;
   }
   .h-xl{
     font-family:var(--sans),var(--sans-zh);
     font-weight:200;
-    font-size:6cqw;
+    font-size:6vw;
     line-height:1;
     letter-spacing:-.03em;
   }
   .h-xl-zh{
     font-family:var(--sans),var(--sans-zh);
     font-weight:200;
-    font-size:5cqw;
+    font-size:5vw;
     line-height:1.05;
     letter-spacing:-.025em;
     text-align:left;
@@ -211,14 +210,14 @@
   .h-md{
     font-family:var(--sans),var(--sans-zh);
     font-weight:300;
-    font-size:2.6cqw;
+    font-size:2.6vw;
     line-height:1.18;
     letter-spacing:-.015em;
   }
   .h-sub{
     font-family:var(--sans),var(--sans-zh);
     font-weight:400;
-    font-size:2.2cqw;
+    font-size:2.2vw;
     line-height:1.3;
     letter-spacing:-.01em;
     opacity:.7;
@@ -228,7 +227,7 @@
   .lead{
     font-family:var(--sans),var(--sans-zh);
     font-weight:400;
-    font-size:1.55cqw;
+    font-size:1.55vw;
     line-height:1.4;
     letter-spacing:-.005em;
     opacity:.86;
@@ -236,7 +235,7 @@
   .body{
     font-family:var(--sans),var(--sans-zh);
     font-weight:400;
-    font-size:max(18px,1.08cqw);
+    font-size:max(18px,1.08vw);
     line-height:1.6;
     letter-spacing:0;
     opacity:.78;
@@ -244,20 +243,20 @@
   .body-sm{
     font-family:var(--sans),var(--sans-zh);
     font-weight:400;
-    font-size:max(16px,.92cqw);
+    font-size:max(16px,.92vw);
     line-height:1.55;
     opacity:.7;
   }
   .meta{
     font-family:var(--mono);
-    font-size:max(14px,.82cqw);
+    font-size:max(14px,.82vw);
     letter-spacing:.18em;text-transform:uppercase;
     opacity:.6;
   }
   .meta-row{
     display:flex;gap:1.4em;align-items:baseline;flex-wrap:wrap;
     font-family:var(--mono);
-    font-size:max(14px,.88cqw);letter-spacing:.16em;text-transform:uppercase;
+    font-size:max(14px,.88vw);letter-spacing:.16em;text-transform:uppercase;
     opacity:.65;
   }
   .meta-row span:not(.dot){display:inline-block}
@@ -270,7 +269,7 @@
   .kpi-hero{
     font-family:var(--sans);
     font-weight:800;
-    font-size:22cqw;
+    font-size:22vw;
     line-height:.82;
     letter-spacing:-.05em;
     font-feature-settings:"tnum","ss01";
@@ -288,7 +287,7 @@
   .kpi-big{
     font-family:var(--sans);
     font-weight:800;
-    font-size:11cqw;
+    font-size:11vw;
     line-height:.85;
     letter-spacing:-.04em;
     font-feature-settings:"tnum"
@@ -296,7 +295,7 @@
   .kpi-mid{
     font-family:var(--sans);
     font-weight:700;
-    font-size:6cqw;
+    font-size:6vw;
     line-height:.88;
     letter-spacing:-.03em;
     font-feature-settings:"tnum"
@@ -305,26 +304,26 @@
   /* ============ Stat Card (数据卡片 · 极简) ============ */
   .stat-card{
     display:flex;flex-direction:column;
-    gap:.6cqh;align-items:flex-start;
-    padding-top:1.6cqh;
+    gap:.6vh;align-items:flex-start;
+    padding-top:1.6vh;
     border-top:2px solid currentColor;
   }
   .stat-card.thin{border-top-width:1px;border-color:rgba(127,127,127,.4)}
   .stat-card.accent-top{border-top-color:var(--accent);border-top-width:3px}
   .stat-card .stat-label{
     font-family:var(--mono);
-    font-size:max(14px,.82cqw);
+    font-size:max(14px,.82vw);
     letter-spacing:.24em;text-transform:uppercase;
     opacity:.6;
   }
   .stat-card .stat-nb{
     font-family:var(--sans);
     font-weight:800;
-    font-size:5.6cqw;
+    font-size:5.6vw;
     line-height:.88;
     letter-spacing:-.035em;
     font-feature-settings:"tnum";
-    margin-top:.4cqh;
+    margin-top:.4vh;
   }
   .stat-card .stat-nb .stat-unit{
     font-family:var(--sans),var(--sans-zh);
@@ -338,30 +337,30 @@
   .stat-card .stat-note{
     font-family:var(--sans),var(--sans-zh);
     font-weight:400;
-    font-size:max(16px,.98cqw);
+    font-size:max(16px,.98vw);
     line-height:1.5;
     opacity:.7;
-    margin-top:.6cqh;
+    margin-top:.6vh;
   }
-  .grid-4 .stat-card .stat-nb{font-size:4.6cqw}
-  .grid-3 .stat-card .stat-nb{font-size:6.4cqw}
-  .grid-6 .stat-card .stat-nb{font-size:4cqw}
+  .grid-4 .stat-card .stat-nb{font-size:4.6vw}
+  .grid-3 .stat-card .stat-nb{font-size:6.4vw}
+  .grid-6 .stat-card .stat-nb{font-size:4vw}
 
   /* ============ Accent Block (高亮色块包裹内容) ============ */
   .accent-block{
     background:var(--accent);color:var(--accent-on);
-    padding:2.4cqh 2cqw;
+    padding:2.4vh 2vw;
   }
-  .accent-block.tight{padding:1.4cqh 1.4cqw}
+  .accent-block.tight{padding:1.4vh 1.4vw}
   .accent-block .h-md,.accent-block .h-xl,.accent-block .kpi-mid{color:var(--accent-on)}
 
   .ink-block{
     background:var(--ink);color:var(--paper);
-    padding:2.4cqh 2cqw
+    padding:2.4vh 2vw
   }
   .grey-block{
     background:var(--grey-1);
-    padding:2.4cqh 2cqw
+    padding:2.4vh 2vw
   }
 
   /* 高亮文字 (mark 风格) */
@@ -378,45 +377,45 @@
   }
 
   /* ============ Pipeline / Step ============ */
-  .pipeline-section{margin-top:3.2cqh;padding-top:2.2cqh;border-top:1px solid rgba(127,127,127,.3)}
-  .pipeline-section:first-of-type{border-top:0;padding-top:0;margin-top:2.4cqh}
+  .pipeline-section{margin-top:3.2vh;padding-top:2.2vh;border-top:1px solid rgba(127,127,127,.3)}
+  .pipeline-section:first-of-type{border-top:0;padding-top:0;margin-top:2.4vh}
   .pipeline-label{
     font-family:var(--mono);
-    font-size:max(14px,.84cqw);
+    font-size:max(14px,.84vw);
     letter-spacing:.24em;text-transform:uppercase;
-    opacity:.6;margin-bottom:1.8cqh;
+    opacity:.6;margin-bottom:1.8vh;
   }
   .pipeline{
     display:grid;
     grid-template-columns:repeat(5,1fr);
-    gap:1cqw;
+    gap:1vw;
   }
   .pipeline[data-cols="3"]{grid-template-columns:repeat(3,1fr)}
   .pipeline[data-cols="4"]{grid-template-columns:repeat(4,1fr)}
   .pipeline[data-cols="6"]{grid-template-columns:repeat(6,1fr)}
   .step{
-    display:flex;flex-direction:column;gap:.6cqh;
-    padding-top:1.2cqh;
+    display:flex;flex-direction:column;gap:.6vh;
+    padding-top:1.2vh;
     border-top:2px solid currentColor;
   }
   .step.accent-top{border-top-color:var(--accent);border-top-width:3px}
   .step-nb{
     font-family:var(--mono);
     font-weight:500;
-    font-size:max(14px,1cqw);
+    font-size:max(14px,1vw);
     opacity:.5;letter-spacing:.04em
   }
   .step-title{
     font-family:var(--sans),var(--sans-zh);
     font-weight:700;
-    font-size:1.4cqw;
+    font-size:1.4vw;
     letter-spacing:-.01em;
     line-height:1.2;
   }
   .step-desc{
     font-family:var(--sans),var(--sans-zh);
     font-weight:400;
-    font-size:max(16px,.94cqw);
+    font-size:max(16px,.94vw);
     line-height:1.45;
     opacity:.7;
   }
@@ -437,7 +436,7 @@
   .grid-12{
     display:grid;
     grid-template-columns:repeat(12,1fr);
-    gap:2cqh 1.2cqw;
+    gap:2vh 1.2vw;
     align-items:start;
   }
   .span-2{grid-column:span 2}
@@ -451,18 +450,18 @@
   .span-12{grid-column:span 12}
 
   /* 经典分栏 */
-  .grid-2-7-5{display:grid;grid-template-columns:7fr 5fr;gap:3cqw 4cqh;align-items:start}
-  .grid-2-6-6{display:grid;grid-template-columns:1fr 1fr;gap:3cqw 4cqh;align-items:start}
-  .grid-2-8-4{display:grid;grid-template-columns:8fr 4fr;gap:3cqw 4cqh;align-items:start}
-  .grid-2-4-8{display:grid;grid-template-columns:4fr 8fr;gap:3cqw 4cqh;align-items:start}
-  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:3cqw 4cqh;align-items:start}
-  .grid-3-3{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(0,1fr);gap:2.4cqh 2cqw}
-  .grid-4{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,1fr);gap:3cqh 3cqw;flex:1;align-content:center}
-  .grid-6{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:3cqh 2.4cqw;flex:1;align-content:center}
+  .grid-2-7-5{display:grid;grid-template-columns:7fr 5fr;gap:3vw 4vh;align-items:start}
+  .grid-2-6-6{display:grid;grid-template-columns:1fr 1fr;gap:3vw 4vh;align-items:start}
+  .grid-2-8-4{display:grid;grid-template-columns:8fr 4fr;gap:3vw 4vh;align-items:start}
+  .grid-2-4-8{display:grid;grid-template-columns:4fr 8fr;gap:3vw 4vh;align-items:start}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:3vw 4vh;align-items:start}
+  .grid-3-3{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(0,1fr);gap:2.4vh 2vw}
+  .grid-4{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,1fr);gap:3vh 3vw;flex:1;align-content:center}
+  .grid-6{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:3vh 2.4vw;flex:1;align-content:center}
 
   /* 工具类 */
-  .col{display:flex;flex-direction:column;gap:2cqh}
-  .row{display:flex;align-items:center;gap:2cqw}
+  .col{display:flex;flex-direction:column;gap:2vh}
+  .row{display:flex;align-items:center;gap:2vw}
   .fill{flex:1}
   .center{align-items:center;justify-content:center;text-align:center}
   .right{text-align:right;justify-self:end}
@@ -473,23 +472,23 @@
 
   /* 非对称定位 */
   .pos-absolute{position:absolute}
-  .bottom-left{position:absolute;left:5cqw;bottom:8cqh;max-width:50cqw}
-  .bottom-right{position:absolute;right:5cqw;bottom:8cqh;max-width:50cqw;text-align:right}
-  .top-right{position:absolute;right:5cqw;top:5.5cqh;text-align:right}
-  .top-left{position:absolute;left:5cqw;top:5.5cqh}
+  .bottom-left{position:absolute;left:5vw;bottom:8vh;max-width:50vw}
+  .bottom-right{position:absolute;right:5vw;bottom:8vh;max-width:50vw;text-align:right}
+  .top-right{position:absolute;right:5vw;top:5.5vh;text-align:right}
+  .top-left{position:absolute;left:5vw;top:5.5vh}
 
   /* ============ Callout (引用框 · 极简) ============ */
   .callout{
-    padding:2cqh 2cqw;
+    padding:2vh 2vw;
     border-left:3px solid var(--accent);
     font-family:var(--sans),var(--sans-zh);
-    font-size:max(14px,1cqw);
+    font-size:max(14px,1vw);
     line-height:1.55;
     opacity:.9;
   }
   .callout.ink{border-left-color:currentColor}
   .callout .cite,.callout .callout-src{
-    display:block;margin-top:1.2cqh;
+    display:block;margin-top:1.2vh;
     font-family:var(--mono);
     font-size:14px;letter-spacing:.16em;text-transform:uppercase;
     opacity:.6;
@@ -498,15 +497,15 @@
   /* ============ Icons (Lucide via CDN) ============ */
   .ico{width:1em;height:1em;display:inline-block;vertical-align:-.12em;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
   .ico-lg,.ico-md,.ico-sm{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
-  .ico-lg{width:2.4cqw;height:2.4cqw;stroke-width:1.4;display:inline-block}
-  .ico-md{width:1.6cqw;height:1.6cqw;stroke-width:1.6;display:inline-block;vertical-align:-.4em}
-  .ico-sm{width:1cqw;height:1cqw;stroke-width:1.8;display:inline-block;vertical-align:-.15em;opacity:.7}
+  .ico-lg{width:2.4vw;height:2.4vw;stroke-width:1.4;display:inline-block}
+  .ico-md{width:1.6vw;height:1.6vw;stroke-width:1.6;display:inline-block;vertical-align:-.4em}
+  .ico-sm{width:1vw;height:1vw;stroke-width:1.8;display:inline-block;vertical-align:-.15em;opacity:.7}
 
   /* ============ 几何小图标 (装饰) ============ */
-  .geo-dot{width:.7cqw;height:.7cqw;border-radius:50%;background:var(--accent);display:inline-block;vertical-align:middle}
-  .geo-square{width:.7cqw;height:.7cqw;background:var(--accent);display:inline-block;vertical-align:middle}
-  .geo-line{width:2cqw;height:2px;background:var(--accent);display:inline-block;vertical-align:middle}
-  .geo-circle-o{width:.9cqw;height:.9cqw;border:2px solid currentColor;border-radius:50%;display:inline-block;vertical-align:middle}
+  .geo-dot{width:.7vw;height:.7vw;border-radius:50%;background:var(--accent);display:inline-block;vertical-align:middle}
+  .geo-square{width:.7vw;height:.7vw;background:var(--accent);display:inline-block;vertical-align:middle}
+  .geo-line{width:2vw;height:2px;background:var(--accent);display:inline-block;vertical-align:middle}
+  .geo-circle-o{width:.9vw;height:.9vw;border:2px solid currentColor;border-radius:50%;display:inline-block;vertical-align:middle}
 
   /* ============ 图片 frame-img ============ */
   .frame-img{overflow:hidden;position:relative;background:var(--paper);box-sizing:border-box;width:100%}
@@ -515,34 +514,34 @@
   .frame-img.fit-contain > img{object-fit:contain;object-position:center center}
   .frame-img.pos-top > img{object-position:top center}
   .frame-img.pos-face > img{object-position:center 35%}
-  .frame-img.r-16x9{aspect-ratio:16/9;max-height:64cqh}
-  .frame-img.r-21x9{aspect-ratio:21/9;max-height:54cqh}
-  .frame-img.r-16x10{aspect-ratio:16/10;max-height:56cqh}
-  .frame-img.r-4x3{aspect-ratio:4/3;max-height:56cqh}
-  .frame-img.r-3x2{aspect-ratio:3/2;max-height:46cqh}
-  .frame-img.r-3x4{aspect-ratio:3/4;max-height:60cqh}
-  .frame-img.r-1x1{aspect-ratio:1/1;max-height:50cqh}
-  .frame-img.h-16{height:16cqh}
-  .frame-img.h-18{height:18cqh}
-  .frame-img.h-22{height:22cqh}
-  .frame-img.h-26{height:26cqh}
-  .frame-img.h-28{height:28cqh}
-  .frame-img.h-32{height:32cqh}
+  .frame-img.r-16x9{aspect-ratio:16/9;max-height:64vh}
+  .frame-img.r-21x9{aspect-ratio:21/9;max-height:54vh}
+  .frame-img.r-16x10{aspect-ratio:16/10;max-height:56vh}
+  .frame-img.r-4x3{aspect-ratio:4/3;max-height:56vh}
+  .frame-img.r-3x2{aspect-ratio:3/2;max-height:46vh}
+  .frame-img.r-3x4{aspect-ratio:3/4;max-height:60vh}
+  .frame-img.r-1x1{aspect-ratio:1/1;max-height:50vh}
+  .frame-img.h-16{height:16vh}
+  .frame-img.h-18{height:18vh}
+  .frame-img.h-22{height:22vh}
+  .frame-img.h-26{height:26vh}
+  .frame-img.h-28{height:28vh}
+  .frame-img.h-32{height:32vh}
   .frame-img.swiss-lined{border-top:2px solid var(--accent)}
   .frame-img.swiss-keyline{border:0}
 
   /* P22 Image Hero: 下半屏内容区必须和图片拉开距离,不要贴在图下沿 */
   .image-hero-body{
-    display:grid;grid-template-columns:6fr 6fr;gap:3cqw;
-    padding:6.6cqh 5cqw 4.4cqh;flex:1;align-content:start
+    display:grid;grid-template-columns:6fr 6fr;gap:3vw;
+    padding:6.6vh 5vw 4.4vh;flex:1;align-content:start
   }
   .image-hero-stats{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw;align-items:start
+    display:grid;grid-template-columns:repeat(3,1fr);gap:2vw;align-items:start
   }
   .img-cap{
-    display:block;margin-top:.8cqh;
+    display:block;margin-top:.8vh;
     font-family:var(--mono);
-    font-size:max(14px,.82cqw);
+    font-size:max(14px,.82vw);
     letter-spacing:.2em;text-transform:uppercase;
     opacity:.6;
   }
@@ -550,7 +549,7 @@
   figure.tile > .frame-img{flex:0 0 auto}
 
   /* 瑞士风图文混排: 只用直角、发丝线、单一 accent；图像容器不加圆角/阴影 */
-  .swiss-img-split{display:grid;grid-template-columns:5fr 7fr;gap:3cqw;align-items:start;flex:1;min-height:0}
+  .swiss-img-split{display:grid;grid-template-columns:5fr 7fr;gap:3vw;align-items:start;flex:1;min-height:0}
   .swiss-img-split.reverse{grid-template-columns:7fr 5fr}
   .swiss-img-split.align-bottom{align-items:end}
   .swiss-img-split.align-bottom .swiss-img-copy{align-self:end}
@@ -570,23 +569,23 @@
   .swiss-img-caption{
     display:flex;justify-content:space-between;gap:var(--sp-5);
     margin-top:var(--sp-4);
-    font-family:var(--mono);font-size:max(14px,.74cqw);
+    font-family:var(--mono);font-size:max(14px,.74vw);
     letter-spacing:.16em;text-transform:uppercase;color:var(--text-helper);
     border-top:1px solid var(--border-subtle);padding-top:var(--sp-4)
   }
   .swiss-img-caption strong{
-    font-family:var(--sans),var(--sans-zh);font-size:max(16px,.9cqw);
+    font-family:var(--sans),var(--sans-zh);font-size:max(16px,.9vw);
     font-weight:600;letter-spacing:0;text-transform:none;color:var(--text-primary)
   }
 
   /* ============ Bar Chart (扁平几何图表) ============ */
-  .bar-chart{display:flex;flex-direction:column;gap:1.4cqh}
-  .bar-row{display:grid;grid-template-columns:8em 1fr 4em;gap:1.4cqw;align-items:center}
-  .bar-row .bar-label{font-family:var(--mono);font-size:max(14px,.84cqw);letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+  .bar-chart{display:flex;flex-direction:column;gap:1.4vh}
+  .bar-row{display:grid;grid-template-columns:8em 1fr 4em;gap:1.4vw;align-items:center}
+  .bar-row .bar-label{font-family:var(--mono);font-size:max(14px,.84vw);letter-spacing:.14em;text-transform:uppercase;opacity:.7}
   .bar-row .bar-track{height:14px;background:rgba(127,127,127,.18);position:relative}
   .bar-row .bar-fill{height:100%;background:var(--accent);position:absolute;left:0;top:0}
   .bar-row .bar-fill.ink{background:currentColor}
-  .bar-row .bar-value{font-family:var(--sans);font-weight:700;font-size:max(16px,1.05cqw);text-align:right;font-feature-settings:"tnum"}
+  .bar-row .bar-value{font-family:var(--sans);font-weight:700;font-size:max(16px,1.05vw);text-align:right;font-feature-settings:"tnum"}
 
   /* ============ 导航 ============ */
   /* 底部分页导航: 仅保留方块本身,无背景无描边 */
@@ -648,10 +647,10 @@
   body.canvas-mode .slide.hero{background:var(--paper)}
 
   .canvas-card{
-    width:1920px;
-    height:1080px;
+    width:100vw;
+    height:100vh;
     background:var(--paper);color:var(--ink);
-    padding:60px 96px 48px 96px;
+    padding:5.6vh 5vw 4.4vh;
     display:flex;flex-direction:column;
     position:relative;overflow:hidden;
     box-shadow:none;
@@ -660,13 +659,13 @@
   .slide.dark .canvas-card{background:var(--ink);color:var(--paper)}
   .slide.dark .t-cat,.slide.dark .nb-corner{color:var(--accent-bright)!important}
   .slide.dark .lucide{color:var(--accent-bright)!important}
-  .slide.dark .body-sm{color:rgba(255,255,255,.85)!important;font-size:max(15px,.95cqw)}
+  .slide.dark .body-sm{color:rgba(255,255,255,.85)!important;font-size:max(15px,.95vw)}
   .slide.dark .desc{color:rgba(255,255,255,.85)!important}
-  .slide.dark .t-body-emp{font-size:max(18px,1.2cqw)!important}
+  .slide.dark .t-body-emp{font-size:max(18px,1.2vw)!important}
   .slide.dark .t-meta{color:rgba(255,255,255,.72)!important}
-  .slide.dark .sub-card .ttl{font-size:max(19px,1.65cqw)!important;color:var(--paper)!important}
-  .slide.dark .sub-card .desc{font-size:max(17px,1.05cqw)!important}
-  .slide.dark .ledger-num{font-size:min(4.5cqw,8cqh)!important}
+  .slide.dark .sub-card .ttl{font-size:max(19px,1.65vw)!important;color:var(--paper)!important}
+  .slide.dark .sub-card .desc{font-size:max(17px,1.05vw)!important}
+  .slide.dark .ledger-num{font-size:min(4.5vw,8vh)!important}
   .slide.accent .canvas-card{background:var(--accent);color:var(--accent-on)}
   .slide.grey .canvas-card{background:var(--grey-1);color:var(--ink)}
   .slide.split .canvas-card{padding:0;flex-direction:row}
@@ -688,27 +687,27 @@
   /* 编号目录页 · 超大数字 + 国家名风格 — 越大越细 */
   .num-mega{
     font-family:var(--sans);font-weight:200;
-    font-size:9cqw;line-height:1;letter-spacing:-.04em;
+    font-size:9vw;line-height:1;letter-spacing:-.04em;
     font-feature-settings:"tnum"
   }
   .num-mega.thin{font-weight:200}
   .name-mega{
     font-family:var(--sans);font-weight:200;
-    font-size:9cqw;line-height:1;letter-spacing:-.035em;
+    font-size:9vw;line-height:1;letter-spacing:-.035em;
   }
   .name-mega.muted{color:var(--grey-3)}
 
   /* 细体超大 KPI — 字号越大权重越低 */
   .kpi-thin{
     font-family:var(--sans);font-weight:200;
-    font-size:14cqw;line-height:.92;letter-spacing:-.045em;
+    font-size:14vw;line-height:.92;letter-spacing:-.045em;
     font-feature-settings:"tnum"
   }
   .kpi-thin .unit{font-size:.3em;font-weight:300;opacity:.55;margin-left:.15em;vertical-align:.6em}
   .kpi-thin.accent{color:var(--accent)}
   .kpi-thin-sm{
     font-family:var(--sans);font-weight:250;
-    font-size:5.6cqw;line-height:1.04;letter-spacing:-.03em;
+    font-size:5.6vw;line-height:1.04;letter-spacing:-.03em;
     font-feature-settings:"tnum"
   }
   .kpi-thin-sm .unit{font-size:.3em;font-weight:300;opacity:.55;margin-left:.12em;vertical-align:.45em}
@@ -717,18 +716,18 @@
   /* 4 列 KPI: 用纵向分割线建立网格感 (Carbon 2x grid 模数) */
   .kpi-row-4{
     display:grid;grid-template-columns:repeat(4,1fr);
-    gap:0;padding-top:2.4cqh;
+    gap:0;padding-top:2.4vh;
     border-top:1px solid var(--grey-2)
   }
   .kpi-row-4 > .kpi-cell{
-    padding:1.6cqh 1.6cqw 0;
+    padding:1.6vh 1.6vw 0;
     border-left:1px solid var(--grey-2)
   }
   .kpi-row-4 > .kpi-cell:first-child{padding-left:0;border-left:none}
-  .kpi-cell .lbl{font-family:var(--mono);font-size:max(14px,.78cqw);letter-spacing:.18em;text-transform:uppercase;opacity:.55;margin-bottom:1.2cqh}
-  .kpi-cell .nb{font-family:var(--sans);font-weight:250;font-size:3.2cqw;line-height:1;letter-spacing:-.025em;font-feature-settings:"tnum"}
+  .kpi-cell .lbl{font-family:var(--mono);font-size:max(14px,.78vw);letter-spacing:.18em;text-transform:uppercase;opacity:.55;margin-bottom:1.2vh}
+  .kpi-cell .nb{font-family:var(--sans);font-weight:250;font-size:3.2vw;line-height:1;letter-spacing:-.025em;font-feature-settings:"tnum"}
   .kpi-cell .nb .unit{font-size:.32em;font-weight:300;opacity:.6;margin-left:.1em;vertical-align:.4em}
-  .kpi-cell .note{font-family:var(--sans),var(--sans-zh);font-size:max(16px,.92cqw);line-height:1.5;opacity:.7;margin-top:1.2cqh}
+  .kpi-cell .note{font-family:var(--sans),var(--sans-zh);font-size:max(16px,.92vw);line-height:1.5;opacity:.7;margin-top:1.2vh}
 
   /* 时间线轴 — 通用 axis token, 横纵共享
      axis 列 = 24px 固定宽,dot 直径 8px,绝对居中在 axis 列中线 (12px)
@@ -766,11 +765,11 @@
   .tl-node.accent .dot{background:var(--accent)}
   .tl-node .yr{
     font-family:var(--mono);font-weight:500;
-    font-size:max(14px,1cqw);letter-spacing:.04em
+    font-size:max(14px,1vw);letter-spacing:.04em
   }
   .tl-node .multi{
     font-family:var(--sans);font-weight:200;
-    font-size:clamp(28px,2.8cqw,56px);
+    font-size:clamp(28px,2.8vw,56px);
     line-height:.95;letter-spacing:-.025em;
     overflow:hidden;
     min-width:0
@@ -784,7 +783,7 @@
   .tl-node.accent .multi{color:var(--accent)}
   .tl-node .desc{
     font-family:var(--sans),var(--sans-zh);
-    font-size:max(16px,.94cqw);line-height:1.55;opacity:.78;
+    font-size:max(16px,.94vw);line-height:1.55;opacity:.78;
     min-width:0
   }
 
@@ -821,28 +820,28 @@
   .timeline-h .th-node.accent .dot{background:var(--accent)}
   .timeline-h .th-node .label{
     position:absolute;left:50%;transform:translateX(-50%);
-    width:13cqw;text-align:center;
-    display:flex;flex-direction:column;gap:.4cqh
+    width:13vw;text-align:center;
+    display:flex;flex-direction:column;gap:.4vh
   }
   .timeline-h .th-node.up .label{bottom:calc(50% + 22px)}
   .timeline-h .th-node.down .label{top:calc(50% + 22px)}
   .timeline-h .th-node .yr{
-    font-family:var(--mono);font-size:max(14px,.78cqw);letter-spacing:.05em;
+    font-family:var(--mono);font-size:max(14px,.78vw);letter-spacing:.05em;
     color:var(--text-helper);font-weight:500
   }
   .timeline-h .th-node.accent .yr{color:var(--accent)}
   .timeline-h .th-node .name{
-    font-family:var(--sans);font-size:max(16px,1.05cqw);font-weight:400;
+    font-family:var(--sans);font-size:max(16px,1.05vw);font-weight:400;
     color:var(--text-primary);line-height:1.2;letter-spacing:-.005em
   }
   .timeline-h .th-node.accent .name{color:var(--accent)}
   .timeline-h .th-node .desc{
-    font-family:var(--sans),var(--sans-zh);font-size:max(14px,.84cqw);
+    font-family:var(--sans),var(--sans-zh);font-size:max(14px,.84vw);
     color:var(--text-secondary);font-weight:400;line-height:1.4
   }
 
   /* 几何图示 (参考图 5) — SVG-friendly 容器 */
-  .geo-icon{width:5cqw;height:5cqw;display:block;margin-bottom:2.2cqh;color:var(--ink);flex-shrink:0}
+  .geo-icon{width:5vw;height:5vw;display:block;margin-bottom:2.2vh;color:var(--ink);flex-shrink:0}
   .slide.dark .geo-icon{color:var(--paper)}
   .geo-icon svg{width:100%;height:100%;overflow:visible}
   .geo-icon .stroke{fill:none;stroke:currentColor;stroke-width:1.4}
@@ -850,10 +849,10 @@
   .geo-icon .fill-accent{fill:var(--accent)}
 
   /* 卡片网格 (参考图 1 卡片漂浮) — 在 canvas-card 内部再分卡 */
-  .sub-grid-3-2{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:1.4cqh 1.4cqw;flex:1;align-content:stretch;margin-top:3cqh}
+  .sub-grid-3-2{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:1.4vh 1.4vw;flex:1;align-content:stretch;margin-top:3vh}
   .sub-card{
     background:var(--grey-1);
-    padding:2.4cqh 1.6cqw 2cqh;
+    padding:2.4vh 1.6vw 2vh;
     display:flex;flex-direction:column;
     position:relative;border-radius:3px;
     min-height:0
@@ -862,39 +861,39 @@
   .sub-card.accent{background:var(--accent);color:var(--accent-on)}
   .sub-card.ink{background:var(--ink);color:var(--paper)}
   .sub-card .nb-corner{
-    position:absolute;top:1.6cqh;right:1.4cqw;
-    font-family:var(--mono);font-size:max(14px,.8cqw);
+    position:absolute;top:1.6vh;right:1.4vw;
+    font-family:var(--mono);font-size:max(14px,.8vw);
     letter-spacing:.16em;opacity:.55
   }
-  .sub-card .ttl{font-family:var(--sans),var(--sans-zh);font-weight:500;font-size:max(17px,1.5cqw);line-height:1.2;letter-spacing:-.015em;margin-bottom:1cqh}
-  .sub-card .desc{font-family:var(--sans),var(--sans-zh);font-size:max(16px,.94cqw);line-height:1.55;opacity:.78;margin-top:auto}
-  .sub-card .lucide{width:2.4cqw;height:2.4cqw;stroke-width:1.4;color:currentColor;margin-bottom:1.6cqh;flex-shrink:0}
+  .sub-card .ttl{font-family:var(--sans),var(--sans-zh);font-weight:500;font-size:max(17px,1.5vw);line-height:1.2;letter-spacing:-.015em;margin-bottom:1vh}
+  .sub-card .desc{font-family:var(--sans),var(--sans-zh);font-size:max(16px,.94vw);line-height:1.55;opacity:.78;margin-top:auto}
+  .sub-card .lucide{width:2.4vw;height:2.4vw;stroke-width:1.4;color:currentColor;margin-bottom:1.6vh;flex-shrink:0}
   .sub-card.accent .lucide{color:var(--accent-on)}
 
   /* 三层架构纯色块拼图 (参考图 4 + 6) — 横排等高色块 */
-  .stack-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6cqw;flex:1;margin-top:6cqh;align-items:stretch}
+  .stack-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6vw;flex:1;margin-top:6vh;align-items:stretch}
   .stack-block{
     display:flex;flex-direction:column;
-    padding:3.2cqh 1.8cqw 2.4cqh;
+    padding:3.2vh 1.8vw 2.4vh;
     position:relative;
     min-height:0
   }
   .stack-block.b-accent{background:var(--accent);color:var(--accent-on)}
   .stack-block.b-grey{background:var(--grey-1);color:var(--ink)}
   .stack-block.b-ink{background:var(--ink);color:var(--paper)}
-  .stack-block .layer-nb{font-family:var(--mono);font-size:max(14px,.84cqw);letter-spacing:.18em;opacity:.65;margin-bottom:auto}
-  .stack-block .layer-icon{margin-bottom:1.6cqh}
-  .stack-block .layer-icon svg{width:3cqw;height:3cqw}
+  .stack-block .layer-nb{font-family:var(--mono);font-size:max(14px,.84vw);letter-spacing:.18em;opacity:.65;margin-bottom:auto}
+  .stack-block .layer-icon{margin-bottom:1.6vh}
+  .stack-block .layer-icon svg{width:3vw;height:3vw}
   .stack-block .layer-icon .stroke{fill:none;stroke:currentColor;stroke-width:1.6}
-  .stack-block .layer-ttl{font-family:var(--sans),var(--sans-zh);font-weight:400;font-size:max(17px,2cqw);line-height:1.1;margin-top:1cqh;letter-spacing:-.02em}
-  .stack-block .layer-desc{font-family:var(--sans),var(--sans-zh);font-weight:400;font-size:max(16px,.94cqw);line-height:1.55;opacity:.88;margin-top:1.4cqh}
-  .stack-block .lucide{width:2.6cqw;height:2.6cqw;stroke-width:1.4;margin-bottom:1.6cqh;flex-shrink:0}
-  .stack-block .layer-tag{font-family:var(--mono);font-size:max(14px,.74cqw);letter-spacing:.16em;text-transform:uppercase;opacity:.7;margin-top:1.6cqh;border-top:1px solid currentColor;padding-top:1cqh}
+  .stack-block .layer-ttl{font-family:var(--sans),var(--sans-zh);font-weight:400;font-size:max(17px,2vw);line-height:1.1;margin-top:1vh;letter-spacing:-.02em}
+  .stack-block .layer-desc{font-family:var(--sans),var(--sans-zh);font-weight:400;font-size:max(16px,.94vw);line-height:1.55;opacity:.88;margin-top:1.4vh}
+  .stack-block .lucide{width:2.6vw;height:2.6vw;stroke-width:1.4;margin-bottom:1.6vh;flex-shrink:0}
+  .stack-block .layer-tag{font-family:var(--mono);font-size:max(14px,.74vw);letter-spacing:.16em;text-transform:uppercase;opacity:.7;margin-top:1.6vh;border-top:1px solid currentColor;padding-top:1vh}
 
   /* 不等高柱状 KPI 塔 (参考图 6) */
   .bar-towers{
     display:grid;grid-template-columns:repeat(4,1fr);
-    gap:1.2cqw;flex:1;align-items:end;margin-top:auto
+    gap:1.2vw;flex:1;align-items:end;margin-top:auto
   }
   .bar-tower{
     display:flex;flex-direction:column;justify-content:flex-end;
@@ -902,35 +901,35 @@
   }
   .bar-tower .cap{
     background:var(--grey-1);
-    height:5.6cqh;
+    height:5.6vh;
     display:flex;align-items:center;justify-content:center;
-    margin-bottom:.4cqh
+    margin-bottom:.4vh
   }
-  .bar-tower .cap svg{width:1.6cqw;height:1.6cqw;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .bar-tower .cap svg{width:1.6vw;height:1.6vw;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
   .bar-tower .body-block{
     flex:0 1 auto;
-    padding:2cqh 1.2cqw 2cqh;
+    padding:2vh 1.2vw 2vh;
     display:flex;flex-direction:column;justify-content:flex-end;
-    min-height:18cqh
+    min-height:18vh
   }
-  .bar-tower .body-block.h-1{min-height:22cqh}
-  .bar-tower .body-block.h-2{min-height:30cqh}
-  .bar-tower .body-block.h-3{min-height:38cqh}
-  .bar-tower .body-block.h-4{min-height:46cqh}
+  .bar-tower .body-block.h-1{min-height:22vh}
+  .bar-tower .body-block.h-2{min-height:30vh}
+  .bar-tower .body-block.h-3{min-height:38vh}
+  .bar-tower .body-block.h-4{min-height:46vh}
   /* 默认所有 KPI 塔统一为浅描边卡 — 不抢戏;只有 .b-accent 突出为 IKB */
   .bar-tower .body-block{background:var(--paper);color:var(--ink);border:1px solid var(--grey-2)}
   .bar-tower .body-block.b-accent{background:var(--accent);color:var(--accent-on);border-color:var(--accent)}
-  .bar-tower .lbl{font-family:var(--mono);font-size:max(14px,.82cqw);letter-spacing:.16em;text-transform:uppercase;opacity:.65;margin-bottom:1cqh}
-  .bar-tower .nb{font-family:var(--sans);font-weight:250;font-size:max(20px,2.8cqw);line-height:1;letter-spacing:-.03em;font-feature-settings:"tnum"}
+  .bar-tower .lbl{font-family:var(--mono);font-size:max(14px,.82vw);letter-spacing:.16em;text-transform:uppercase;opacity:.65;margin-bottom:1vh}
+  .bar-tower .nb{font-family:var(--sans);font-weight:250;font-size:max(20px,2.8vw);line-height:1;letter-spacing:-.03em;font-feature-settings:"tnum"}
   .bar-tower .body-block.b-accent .nb{font-weight:300}
   .bar-tower .nb .unit{font-size:.36em;font-weight:300;opacity:.7;margin-left:.08em;vertical-align:.4em}
-  .bar-tower .sub{font-family:var(--sans),var(--sans-zh);font-size:max(16px,.92cqw);opacity:.75;margin-top:1.2cqh;line-height:1.5}
+  .bar-tower .sub{font-family:var(--sans),var(--sans-zh);font-size:max(16px,.92vw);opacity:.75;margin-top:1.2vh;line-height:1.5}
   .bar-tower .cap{background:var(--grey-1);color:var(--ink)}
-  .bar-tower .lucide{width:1.6cqw;height:1.6cqw;stroke-width:1.4}
+  .bar-tower .lucide{width:1.6vw;height:1.6vw;stroke-width:1.4}
 
   /* ============ Carbon Productive Type Tokens ============
      用于 PPT 中的"productive 时刻": 列表、表格行、说明文、章节标签
-     固定 px 字号,密集紧凑;与 cqw-based 的 Expressive 巨字形成双极对比 */
+     固定 px 字号,密集紧凑;与 vw-based 的 Expressive 巨字形成双极对比 */
 
   /* category label / eyebrow / section tag — small, bold, uppercase */
   .t-cat{
@@ -1045,20 +1044,20 @@
   .h-bar-chart{
     display:grid;
     grid-template-columns:11em minmax(0,1fr) 8em;
-    gap:1.6cqh 1.6cqw;
+    gap:1.6vh 1.6vw;
     align-items:center;
-    margin-top:2.4cqh;
+    margin-top:2.4vh;
     font-feature-settings:"tnum"
   }
   .h-bar-chart .row-lbl{
     font-family:var(--sans),var(--sans-zh);
     font-weight:500;
-    font-size:max(14px,1cqw);
+    font-size:max(14px,1vw);
     letter-spacing:-.005em;
     text-align:left
   }
   .h-bar-chart .row-track{
-    height:3.2cqh;
+    height:3.2vh;
     background:var(--grey-1);
     position:relative;
     overflow:hidden
@@ -1072,7 +1071,7 @@
   .h-bar-chart .row-fill.grey{background:var(--grey-3)}
   .h-bar-chart .row-val{
     font-family:var(--sans);font-weight:250;
-    font-size:max(16px,1.5cqw);
+    font-size:max(16px,1.5vw);
     letter-spacing:-.02em;
     line-height:1
   }
@@ -1086,27 +1085,27 @@
     display:grid;
     grid-template-columns:repeat(var(--cols,4),1fr);
     align-items:end;
-    gap:1.4cqw;
-    height:50cqh;
-    margin-top:3cqh
+    gap:1.4vw;
+    height:50vh;
+    margin-top:3vh
   }
-  .v-bar-chart .col{display:flex;flex-direction:column;gap:1.4cqh;align-items:stretch;height:100%}
+  .v-bar-chart .col{display:flex;flex-direction:column;gap:1.4vh;align-items:stretch;height:100%}
   .v-bar-chart .col-bar{
     flex:1 1 auto;
     background:var(--grey-1);
     border-top:2px solid var(--ink);
     position:relative;
     display:flex;align-items:flex-start;justify-content:center;
-    padding-top:1cqh
+    padding-top:1vh
   }
   .v-bar-chart .col-bar.accent{background:var(--accent);border-top-color:var(--accent);color:var(--accent-on)}
   .v-bar-chart .col-bar.ink{background:var(--ink);color:var(--paper);border-top-color:var(--ink)}
   .v-bar-chart .col-bar .v{
     font-family:var(--sans);font-weight:250;
-    font-size:max(18px,1.6cqw);letter-spacing:-.02em
+    font-size:max(18px,1.6vw);letter-spacing:-.02em
   }
   .v-bar-chart .col-lbl{
-    font-family:var(--mono);font-size:max(14px,.78cqw);
+    font-family:var(--mono);font-size:max(14px,.78vw);
     letter-spacing:.14em;text-transform:uppercase;opacity:.6;
     text-align:center;flex:0 0 auto
   }
@@ -1114,16 +1113,16 @@
   /* 对仗对比双栏 (章节 P9) */
   .duo-compare{
     display:grid;grid-template-columns:1fr 1px 1fr;
-    gap:0 3.4cqw;
-    flex:1;align-items:stretch;margin-top:8cqh
+    gap:0 3.4vw;
+    flex:1;align-items:stretch;margin-top:8vh
   }
   .duo-compare .vrule{background:var(--grey-2);width:1px;align-self:stretch}
-  .duo-compare .col{display:flex;flex-direction:column;gap:1.6cqh;padding:0 .4cqw}
+  .duo-compare .col{display:flex;flex-direction:column;gap:1.6vh;padding:0 .4vw}
   .duo-compare .col-tag{
-    font-family:var(--mono);font-size:max(14px,.78cqw);
+    font-family:var(--mono);font-size:max(14px,.78vw);
     letter-spacing:.16em;text-transform:uppercase;
     color:var(--grey-3);
-    display:flex;align-items:center;gap:.6cqw
+    display:flex;align-items:center;gap:.6vw
   }
   .duo-compare .col-tag .num{
     font-weight:600;color:var(--ink);
@@ -1133,21 +1132,21 @@
   .duo-compare .col.accent .col-tag .num{color:var(--accent);border-color:var(--accent)}
   .duo-compare .col-ttl{
     font-family:var(--sans),var(--sans-zh);font-weight:200;
-    font-size:3.6cqw;line-height:1;letter-spacing:-.03em
+    font-size:3.6vw;line-height:1;letter-spacing:-.03em
   }
   .duo-compare .col.accent .col-ttl{color:var(--accent)}
   .duo-compare .col-desc{
     font-family:var(--sans),var(--sans-zh);
-    font-size:max(16px,1.04cqw);line-height:1.55;opacity:.78;
-    max-width:30cqw
+    font-size:max(16px,1.04vw);line-height:1.55;opacity:.78;
+    max-width:30vw
   }
   .duo-compare .col-list{
-    list-style:none;display:flex;flex-direction:column;gap:1cqh;
-    margin-top:auto;padding-top:2cqh;border-top:1px solid var(--grey-2)
+    list-style:none;display:flex;flex-direction:column;gap:1vh;
+    margin-top:auto;padding-top:2vh;border-top:1px solid var(--grey-2)
   }
   .duo-compare .col-list li{
     font-family:var(--sans),var(--sans-zh);
-    font-size:max(16px,.94cqw);line-height:1.5;
+    font-size:max(16px,.94vw);line-height:1.5;
     padding-left:1.4em;position:relative
   }
   .duo-compare .col-list li::before{
@@ -1158,7 +1157,7 @@
 
   /* 半屏 statement (参考图 7) */
   .split-half{display:grid;grid-template-columns:1fr 1fr;gap:0;flex:1;align-items:stretch}
-  .split-half > .half{padding:5cqh 3.4cqw;display:flex;flex-direction:column;min-width:0}
+  .split-half > .half{padding:5vh 3.4vw;display:flex;flex-direction:column;min-width:0}
   .split-half > .half.r-border{border-left:1px solid rgba(127,127,127,.22)}
   .split-half > .half.b-grey{background:var(--grey-1)}
   .split-half > .half.b-accent{background:var(--accent);color:var(--accent-on)}
@@ -1175,19 +1174,25 @@
   }
   .canvas-card .chrome-min.tight{margin-bottom:var(--sp-7)}   /* 32px */
   .canvas-card .chrome-min .l, .canvas-card .chrome-min .r{
-    max-width:48cqw;line-height:1.5
+    max-width:48vw;line-height:1.5
   }
   .slide.dark .canvas-card .chrome-min,.split-half .half.b-ink .canvas-card .chrome-min{color:rgba(255,255,255,.62)}
 
-  /* 响应式降级 (仅布局调整, 字体由容器等比缩放控制) */
+  /* 响应式降级 */
   @media (max-width:900px){
+    .h-hero{font-size:16vw}
+    .h-hero-zh{font-size:13vw}
+    .h-xl{font-size:9vw}
+    .h-xl-zh{font-size:8vw}
+    .kpi-hero{font-size:32vw}
+    .kpi-big{font-size:16vw}
     .pipeline{grid-template-columns:repeat(2,1fr)}
     .grid-2-7-5,.grid-2-6-6,.grid-2-8-4,.grid-2-4-8{grid-template-columns:1fr}
     .grid-12{grid-template-columns:repeat(6,1fr)}
   }
 </style>
 </head>
-<body class="canvas-mode">
+<body class="canvas-mode motion-ready dark-bg">
 <script>
   // Windows 平台标记 — 雅黑没有 ExtraLight,需要字重补偿
   if(/Win/i.test(navigator.platform || navigator.userAgentData?.platform || '')){
@@ -1218,11 +1223,10 @@
   })();
 </script>
 
-<canvas id="bg-grid" class="bg"></canvas>
+
 <div id="hint">← → 翻页 · B 静态 · ESC 索引</div>
 
-<div id="deck-stage">
-<div id="deck">
+<div id="deck" style="width: 2000vw; transform: translateX(-100vw);">
 
 <!-- ============================================================
      SLIDES 插入区 · 在此处填充所有 <section class="slide ..."> 页面
@@ -1234,16 +1238,16 @@
 <!-- ====== 01 · COVER · IKB + ASCII 呼吸场 ====== -->
 <section class="slide accent" data-animate="hero" data-layout="S01">
   <div class="canvas-card">
-    <canvas class="ascii-bg" aria-hidden="true"></canvas>
-    <div class="chrome-min">
+    <canvas class="ascii-bg" aria-hidden="true" width="1349" height="1294"></canvas>
+    <div class="chrome-min" style="opacity: 1;">
       <div class="l">灵溪识险 · Silver Finance Safety</div>
       <div class="r">LS · 2026.06 · 01 / 20</div>
     </div>
-    <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2.6cqh">
-      <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">WECHAT MINI PROGRAM · 产品发布会</div>
-      <h1 data-anim="title" style="align-self:center;font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(9.8cqw,16cqh);line-height:.94;letter-spacing:-.025em;color:#fff">灵溪识险<br/><span style="font-size:.68em;opacity:.6">守护银发<span style="font-style:italic;font-weight:300">财产安全</span></span></h1>
-      <div data-anim="bottom" style="display:grid;grid-template-rows:auto auto;gap:1.6cqh;border-top:1px solid rgba(255,255,255,.22);padding-top:2cqh">
-        <div data-anim="lead" class="lead" style="max-width:52ch;color:rgba(255,255,255,.86);font-weight:300">AI 驱动的老年金融反诈微信小程序 · 让金融风险看得见、听得懂、防得住</div>
+    <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2.6vh">
+      <div data-anim="kicker" class="t-meta" style="color: rgba(255, 255, 255, 0.78); letter-spacing: 0.22em; opacity: 1; transform: none;">WECHAT MINI PROGRAM · 产品发布会</div>
+      <h1 data-anim="title" style="align-self: center; font-family: var(--sans),var(--sans-zh); font-weight: 200; font-size: min(9.8vw, 16vh); line-height: 0.94; letter-spacing: -0.025em; color: rgb(255, 255, 255); opacity: 1; transform: none;">灵溪识险<br><span style="font-size:.68em;opacity:.6">守护银龄<span style="font-style:italic;font-weight:300">财产安全</span></span></h1>
+      <div data-anim="bottom" style="display: grid; grid-template-rows: auto auto; gap: 1.6vh; border-top: 1px solid rgba(255, 255, 255, 0.22); padding-top: 2vh; opacity: 1; transform: none;">
+        <div data-anim="lead" class="lead" style="max-width: 60ch; color: rgba(255, 255, 255, 0.86); font-weight: 300; opacity: 1; transform: none;">AI 驱动的老年金融反诈微信小程序 · 让金融风险看得见、听得懂、防得住</div>
         <div style="display:flex;justify-content:space-between;align-items:end">
           <div class="t-meta" style="color:rgba(255,255,255,.6)">中国人民银行本溪市分行 鲍一鸣 · 2026年6月</div>
           <div class="t-meta" style="color:rgba(255,255,255,.6)">→ swipe / arrow keys</div>
@@ -1260,30 +1264,30 @@
       <div class="l">CRISIS · 危机现状</div>
       <div class="r">02 / 20</div>
     </div>
-    <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:5cqh">
-      <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4cqh">
+    <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:5vh">
+      <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
         <div class="t-meta" style="color:rgba(255,255,255,.62)">HARD NUMBERS · 不再只是新闻</div>
-        <h2 class="h-xl-zh" style="color:var(--paper);font-size:min(5.2cqw,9.2cqh)">人口老龄化加速，养老诈骗日益严峻</h2>
+        <h2 class="h-xl-zh" style="color:var(--paper);font-size:min(5.2vw,9.2vh)">人口老龄化加速，养老诈骗日益严峻</h2>
       </div>
-      <div class="bar-towers" data-anim="up">
-        <div class="bar-tower">
-          <div class="cap"><i data-lucide="users" class="lucide"></i></div>
-          <div class="body-block h-4 b-accent"><div class="nb">2.9<span class="unit">亿</span></div><div class="sub">60岁以上人口</div></div>
+      <div class="bar-towers" data-anim="up" style="opacity: 1; transform: none;">
+        <div class="bar-tower" style="">
+          <div class="cap" style="transform: none; opacity: 1;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" aria-hidden="true" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg></div>
+          <div class="body-block h-4 b-accent" style="transform-origin: center bottom; transform: none; opacity: 1;"><div class="nb">2.9<span class="unit">亿</span></div><div class="sub">60岁以上人口</div></div>
         </div>
-        <div class="bar-tower">
-          <div class="cap"><i data-lucide="alert-triangle" class="lucide"></i></div>
-          <div class="body-block h-2"><div class="nb">54<span class="unit">%</span></div><div class="sub">曾遭遇金融诈骗</div></div>
+        <div class="bar-tower" style="">
+          <div class="cap" style="transform: none; opacity: 1;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="alert-triangle" aria-hidden="true" class="lucide lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg></div>
+          <div class="body-block h-2" style="transform-origin: center bottom; transform: none; opacity: 1;"><div class="nb">54<span class="unit">%</span></div><div class="sub">曾遭遇金融诈骗</div></div>
         </div>
-        <div class="bar-tower">
-          <div class="cap"><i data-lucide="zap" class="lucide"></i></div>
-          <div class="body-block h-2"><div class="nb">12<span class="unit">+</span></div><div class="sub">种新型诈骗手段</div></div>
+        <div class="bar-tower" style="">
+          <div class="cap" style="transform: none; opacity: 1;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="zap" aria-hidden="true" class="lucide lucide-zap"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg></div>
+          <div class="body-block h-2" style="transform-origin: center bottom; transform: none; opacity: 1;"><div class="nb">12<span class="unit">+</span></div><div class="sub">种新型诈骗手段</div></div>
         </div>
-        <div class="bar-tower">
-          <div class="cap"><i data-lucide="eye-off" class="lucide"></i></div>
-          <div class="body-block h-2"><div class="nb">96<span class="unit">%</span></div><div class="sub">反诈内容不适老</div></div>
+        <div class="bar-tower" style="">
+          <div class="cap" style="transform: none; opacity: 1;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye-off" aria-hidden="true" class="lucide lucide-eye-off"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"></path><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"></path><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"></path><path d="m2 2 20 20"></path></svg></div>
+          <div class="body-block h-2" style="transform-origin: center bottom; transform: none; opacity: 1;"><div class="nb">96<span class="unit">%</span></div><div class="sub">反诈内容不适老</div></div>
         </div>
       </div>
-      <div data-anim="line" class="t-meta" style="color:rgba(255,255,255,.45)">数据来源：国家统计局 2024、中国养老金融调查报告</div>
+      <div data-anim="line" class="t-meta" style="color: rgba(255, 255, 255, 0.45); opacity: 1; transform: none;">数据来源：国家统计局 2024、中国养老金融调查报告</div>
     </div>
   </div>
 </section>
@@ -1295,15 +1299,15 @@
       <div class="l">GAP · 市场空白</div>
       <div class="r">03 / 20</div>
     </div>
-    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:5cqh">
-      <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4cqh">
-        <div class="t-meta">THE PROBLEM · 传统反诈为何失效？</div>
-        <h2 class="h-xl-zh" style="font-size:min(5.8cqw,10.2cqh)">市场尚无<span class="underline-accent">真正为老人设计</span>的反诈工具</h2>
+    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:5vh">
+      <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
+        <div class="t-meta" style="opacity: 1;">THE PROBLEM · 传统反诈为何失效？</div>
+        <h2 class="h-xl-zh" style="font-size:min(5.8vw,10.2vh)">市场尚无<span class="underline-accent">真正为老人设计</span>的反诈工具</h2>
       </div>
-      <div class="duo-compare" data-anim="up">
-        <div class="col" style="opacity:.78">
+      <div class="duo-compare" data-anim="up" style="opacity: 1; transform: none;">
+        <div class="col" style="opacity: 1; transform: none;">
           <div class="col-tag"><span class="num">旧</span>传统反诈产品</div>
-          <div class="col-ttl" style="font-size:min(3cqw,5cqh)">看不懂</div>
+          <div class="col-ttl" style="font-size:min(3vw,5vh)">看不懂</div>
           <div class="col-desc">专业术语堆砌、页面布局复杂、文字极小、需要多步操作，老年用户根本不会用</div>
           <ul class="col-list">
             <li>字体过小，视力差看不清</li>
@@ -1311,10 +1315,10 @@
             <li>操作步骤多，容易迷失</li>
           </ul>
         </div>
-        <div class="vrule"></div>
-        <div class="col accent">
+        <div class="vrule" style="transform-origin: center center; transform: none; opacity: 1;"></div>
+        <div class="col accent" style="transform: none; opacity: 1;">
           <div class="col-tag"><span class="num">新</span>灵溪识险</div>
-          <div class="col-ttl" style="font-size:min(3cqw,5cqh)">秒懂</div>
+          <div class="col-ttl" style="font-size:min(3vw,5vh)">秒懂</div>
           <div class="col-desc">拍照即分析、大字体一键操作、AI 通俗解读、结果一目了然，70 岁老人都能独立使用</div>
           <ul class="col-list">
             <li>拍照/上传一步搞定</li>
@@ -1334,18 +1338,18 @@
       <div class="l">USER PAIN · 用户痛点</div>
       <div class="r">04 / 20</div>
     </div>
-    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4.5cqh">
-      <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4cqh">
+    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4.5vh">
+      <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
         <div class="t-meta" style="color:rgba(255,255,255,.62)">60岁+ · 6大核心痛点</div>
-        <h2 class="h-xl-zh" style="color:var(--paper);font-size:min(5.8cqw,10.2cqh)">老年群体的金融安全困境</h2>
+        <h2 class="h-xl-zh" style="color:var(--paper);font-size:min(5.8vw,10.2vh)">老年群体的金融安全困境</h2>
       </div>
-      <div class="sub-grid-3-2" data-anim="up">
-        <div class="sub-card"><i data-lucide="message-circle-warning" class="lucide"></i><div class="ttl">陌生消息难辨</div><div class="desc">收到陌生信息无法判断是否诈骗</div></div>
-        <div class="sub-card"><i data-lucide="file-warning" class="lucide"></i><div class="ttl">理财广告不懂</div><div class="desc">宣传单上的专业术语完全看不懂</div></div>
-        <div class="sub-card"><i data-lucide="scale" class="lucide"></i><div class="ttl">合同条款有陷阱</div><div class="desc">无法识别隐藏条款与违约风险</div></div>
-        <div class="sub-card"><i data-lucide="smartphone" class="lucide"></i><div class="ttl">真假 APP 难分</div><div class="desc">难以区分正规与仿冒虚假平台</div></div>
-        <div class="sub-card"><i data-lucide="book-open" class="lucide"></i><div class="ttl">反诈内容太专业</div><div class="desc">现有内容语言生硬，缺乏通俗版</div></div>
-        <div class="sub-card"><i data-lucide="eye" class="lucide"></i><div class="ttl">视力不佳阅读难</div><div class="desc">字体小、对比度低，长时间阅读吃力</div></div>
+      <div class="sub-grid-3-2" data-anim="up" style="opacity: 1; transform: none;">
+        <div class="sub-card" style="transform: none; opacity: 1;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="message-circle-warning" aria-hidden="true" class="lucide lucide-message-circle-warning"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg><div class="ttl">陌生消息难辨</div><div class="desc">收到陌生信息无法判断是否诈骗</div></div>
+        <div class="sub-card" style="transform: none; opacity: 1;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-warning" aria-hidden="true" class="lucide lucide-file-warning"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg><div class="ttl">理财广告不懂</div><div class="desc">宣传单上的专业术语完全看不懂</div></div>
+        <div class="sub-card" style="transform: none; opacity: 1;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="scale" aria-hidden="true" class="lucide lucide-scale"><path d="M12 3v18"></path><path d="m19 8 3 8a5 5 0 0 1-6 0zV7"></path><path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1"></path><path d="m5 8 3 8a5 5 0 0 1-6 0zV7"></path><path d="M7 21h10"></path></svg><div class="ttl">合同条款有陷阱</div><div class="desc">无法识别隐藏条款与违约风险</div></div>
+        <div class="sub-card" style="transform: none; opacity: 1;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="smartphone" aria-hidden="true" class="lucide lucide-smartphone"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect><path d="M12 18h.01"></path></svg><div class="ttl">真假 APP 难分</div><div class="desc">难以区分正规与仿冒虚假平台</div></div>
+        <div class="sub-card" style="transform: none; opacity: 1;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="book-open" aria-hidden="true" class="lucide lucide-book-open"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg><div class="ttl">反诈内容太专业</div><div class="desc">现有内容语言生硬，缺乏通俗版</div></div>
+        <div class="sub-card" style="transform: none; opacity: 1;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg><div class="ttl">视力不佳阅读难</div><div class="desc">字体小、对比度低，长时间阅读吃力</div></div>
       </div>
     </div>
   </div>
@@ -1358,60 +1362,60 @@
       <div class="l">POSITIONING · 产品定位</div>
       <div class="r">05 / 20</div>
     </div>
-    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4cqh">
-      <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4cqh">
+    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4vh">
+      <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
         <div class="t-meta">WECHAT MINI PROGRAM · AI-POWERED</div>
-        <h2 class="h-xl-zh" style="font-size:min(5.4cqw,9.8cqh)">面向银发的<span class="underline-accent">轻量化适老化</span>AI 反诈识别工具</h2>
+        <h2 class="h-xl-zh" style="font-size:min(5.4vw,9.8vh)">面向银发的<span class="underline-accent">轻量化适老化</span>AI 反诈识别工具</h2>
       </div>
       <!-- 2行4列网格布局，8卡片均等尺寸，统一间隙 -->
-      <div data-anim="up" style="display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:1.6cqw;flex:1;align-items:stretch;margin-top:3cqh">
+      <div data-anim="up" style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 1fr); gap: 1.6vw; flex: 1 1 0%; align-items: stretch; margin-top: 3vh; opacity: 1; transform: none;">
         <!-- 原有模块1：拍照识图 -->
-        <div class="card-fill" style="padding:3cqh 2.2cqw;display:flex;flex-direction:column;gap:1.6cqh">
-          <i data-lucide="camera" style="width:2.2cqw;height:2.2cqw;stroke-width:1.4;color:var(--accent)"></i>
-          <div class="t-body-emp" style="font-size:max(18px,1.2cqw)">拍照识图</div>
-          <div class="body-sm">OCR 提取全文<br/>相机/相册双方式</div>
+        <div class="card-fill" style="padding:3vh 2.2vw;display:flex;flex-direction:column;gap:1.6vh">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="camera" aria-hidden="true" style="width:2.2vw;height:2.2vw;stroke-width:1.4;color:var(--accent)" class="lucide lucide-camera"><path d="M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z"></path><circle cx="12" cy="13" r="3"></circle></svg>
+          <div class="t-body-emp" style="font-size:max(18px,1.2vw)">拍照识图</div>
+          <div class="body-sm">OCR 提取全文<br>相机/相册双方式</div>
         </div>
         <!-- 原有模块2：智能辨险 -->
-        <div class="card-fill" style="padding:3cqh 2.2cqw;display:flex;flex-direction:column;gap:1.6cqh">
-          <i data-lucide="brain" style="width:2.2cqw;height:2.2cqw;stroke-width:1.4;color:var(--accent)"></i>
-          <div class="t-body-emp" style="font-size:max(18px,1.2cqw)">智能辨险</div>
-          <div class="body-sm">大模型语义分析<br/>+ 规则引擎判定</div>
+        <div class="card-fill" style="padding:3vh 2.2vw;display:flex;flex-direction:column;gap:1.6vh">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="brain" aria-hidden="true" style="width:2.2vw;height:2.2vw;stroke-width:1.4;color:var(--accent)" class="lucide lucide-brain"><path d="M12 18V5"></path><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"></path><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"></path><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"></path><path d="M18 18a4 4 0 0 0 2-7.464"></path><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"></path><path d="M6 18a4 4 0 0 1-2-7.464"></path><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"></path></svg>
+          <div class="t-body-emp" style="font-size:max(18px,1.2vw)">智能辨险</div>
+          <div class="body-sm">大模型语义分析<br>+ 规则引擎判定</div>
         </div>
         <!-- 原有模块3：通俗解读 -->
-        <div class="card-fill" style="padding:3cqh 2.2cqw;display:flex;flex-direction:column;gap:1.6cqh">
-          <i data-lucide="languages" style="width:2.2cqw;height:2.2cqw;stroke-width:1.4;color:var(--accent)"></i>
-          <div class="t-body-emp" style="font-size:max(18px,1.2cqw)">通俗解读</div>
-          <div class="body-sm">金融话术→老年口语<br/>专业术语彻底剔除</div>
+        <div class="card-fill" style="padding:3vh 2.2vw;display:flex;flex-direction:column;gap:1.6vh">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="languages" aria-hidden="true" style="width:2.2vw;height:2.2vw;stroke-width:1.4;color:var(--accent)" class="lucide lucide-languages"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+          <div class="t-body-emp" style="font-size:max(18px,1.2vw)">通俗解读</div>
+          <div class="body-sm">金融话术→老年口语<br>专业术语彻底剔除</div>
         </div>
         <!-- 原有模块4：历史记录 -->
-        <div class="card-fill" style="padding:3cqh 2.2cqw;display:flex;flex-direction:column;gap:1.6cqh">
-          <i data-lucide="history" style="width:2.2cqw;height:2.2cqw;stroke-width:1.4;color:var(--accent)"></i>
-          <div class="t-body-emp" style="font-size:max(18px,1.2cqw)">历史记录</div>
-          <div class="body-sm">历次分析结果留存<br/>随时回溯对比查看</div>
+        <div class="card-fill" style="padding:3vh 2.2vw;display:flex;flex-direction:column;gap:1.6vh">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="history" aria-hidden="true" style="width:2.2vw;height:2.2vw;stroke-width:1.4;color:var(--accent)" class="lucide lucide-history"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M12 7v5l4 2"></path></svg>
+          <div class="t-body-emp" style="font-size:max(18px,1.2vw)">历史记录</div>
+          <div class="body-sm">历次分析结果留存<br>随时回溯对比查看</div>
         </div>
         <!-- 新增模块5：全程隐私加密（替换兼容图标shield-check） -->
-        <div class="card-fill" style="padding:3cqh 2.2cqw;display:flex;flex-direction:column;gap:1.6cqh">
-          <i data-lucide="shield-check" style="width:2.2cqw;height:2.2cqw;stroke-width:1.4;color:var(--accent)"></i>
-          <div class="t-body-emp" style="font-size:max(18px,1.2cqw)">全程隐私加密</div>
-          <div class="body-sm">数据自动脱敏处理<br/>端到端传输加密</div>
+        <div class="card-fill" style="padding:3vh 2.2vw;display:flex;flex-direction:column;gap:1.6vh">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield-check" aria-hidden="true" style="width:2.2vw;height:2.2vw;stroke-width:1.4;color:var(--accent)" class="lucide lucide-shield-check"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+          <div class="t-body-emp" style="font-size:max(18px,1.2vw)">全程隐私加密</div>
+          <div class="body-sm">数据自动脱敏处理<br>端到端传输加密</div>
         </div>
         <!-- 新增模块6：极简低门槛交互 -->
-        <div class="card-fill" style="padding:3cqh 2.2cqw;display:flex;flex-direction:column;gap:1.6cqh">
-          <i data-lucide="layout-grid" style="width:2.2cqw;height:2.2cqw;stroke-width:1.4;color:var(--accent)"></i>
-          <div class="t-body-emp" style="font-size:max(18px,1.2cqw)">极简低门槛交互</div>
-          <div class="body-sm">无弹窗复杂跳转<br/>超大按钮防误触</div>
+        <div class="card-fill" style="padding:3vh 2.2vw;display:flex;flex-direction:column;gap:1.6vh">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="layout-grid" aria-hidden="true" style="width:2.2vw;height:2.2vw;stroke-width:1.4;color:var(--accent)" class="lucide lucide-layout-grid"><rect width="7" height="7" x="3" y="3" rx="1"></rect><rect width="7" height="7" x="14" y="3" rx="1"></rect><rect width="7" height="7" x="14" y="14" rx="1"></rect><rect width="7" height="7" x="3" y="14" rx="1"></rect></svg>
+          <div class="t-body-emp" style="font-size:max(18px,1.2vw)">极简低门槛交互</div>
+          <div class="body-sm">无弹窗复杂跳转<br>超大按钮防误触</div>
         </div>
         <!-- 新增模块7：防骗知识课堂 -->
-        <div class="card-fill" style="padding:3cqh 2.2cqw;display:flex;flex-direction:column;gap:1.6cqh">
-          <i data-lucide="book-open" style="width:2.2cqw;height:2.2cqw;stroke-width:1.4;color:var(--accent)"></i>
-          <div class="t-body-emp" style="font-size:max(18px,1.2cqw)">防骗知识课堂</div>
-          <div class="body-sm">养老诈骗案例科普<br/>日常防范技巧教学</div>
+        <div class="card-fill" style="padding:3vh 2.2vw;display:flex;flex-direction:column;gap:1.6vh">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="book-open" aria-hidden="true" style="width:2.2vw;height:2.2vw;stroke-width:1.4;color:var(--accent)" class="lucide lucide-book-open"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg>
+          <div class="t-body-emp" style="font-size:max(18px,1.2vw)">防骗知识课堂</div>
+          <div class="body-sm">养老诈骗案例科普<br>日常防范技巧教学</div>
         </div>
         <!-- 新增模块8：养老诈骗案例库 -->
-        <div class="card-fill" style="padding:3cqh 2.2cqw;display:flex;flex-direction:column;gap:1.6cqh">
-          <i data-lucide="folder-open" style="width:2.2cqw;height:2.2cqw;stroke-width:1.4;color:var(--accent)"></i>
-          <div class="t-body-emp" style="font-size:max(18px,1.2cqw)">养老诈骗案例库</div>
-          <div class="body-sm">海量诈骗样本支撑<br/>持续更新新型套路</div>
+        <div class="card-fill" style="padding:3vh 2.2vw;display:flex;flex-direction:column;gap:1.6vh">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="folder-open" aria-hidden="true" style="width:2.2vw;height:2.2vw;stroke-width:1.4;color:var(--accent)" class="lucide lucide-folder-open"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"></path></svg>
+          <div class="t-body-emp" style="font-size:max(18px,1.2vw)">养老诈骗案例库</div>
+          <div class="body-sm">海量诈骗样本支撑<br>持续更新新型套路</div>
         </div>
       </div>
     </div>
@@ -1425,35 +1429,35 @@
       <div class="l">CAPABILITIES · 核心能力</div>
       <div class="r">06 / 20</div>
     </div>
-    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4cqh">
-      <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4cqh">
+    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4vh">
+      <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
         <div class="t-meta">FOUR PILLARS · 构建反诈闭环</div>
-        <h2 class="h-xl-zh" style="font-size:min(5.8cqw,10.2cqh)">四大核心能力，覆盖全部业务场景</h2>
+        <h2 class="h-xl-zh" style="font-size:min(5.8vw,10.2vh)">四大核心能力，覆盖全部业务场景</h2>
       </div>
-      <div data-anim="up" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.6cqw;flex:1">
-        <div class="card-fill" style="padding:2.8cqh 2cqw;display:flex;flex-direction:column;gap:1.4cqh">
+      <div data-anim="up" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6vw; flex: 1 1 0%; opacity: 1; transform: none;">
+        <div class="card-fill" style="padding: 2.8vh 2vw; display: flex; flex-direction: column; gap: 1.4vh; transform: none; opacity: 1;">
           <div class="t-cat accent">01</div>
-          <i data-lucide="scan-line" style="width:2cqw;height:2cqw;stroke-width:1.2;color:var(--accent)"></i>
-          <h3 style="font-weight:400;font-size:max(18px,1.45cqw);line-height:1.2">图片一键识别</h3>
-          <p class="body-sm">通用 OCR 图文识别<br/>支持模糊倾斜文档<br/>多种场景手机截图</p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="scan-line" aria-hidden="true" style="width:2vw;height:2vw;stroke-width:1.2;color:var(--accent)" class="lucide lucide-scan-line"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><path d="M7 12h10"></path></svg>
+          <h3 style="font-weight:400;font-size:max(18px,1.45vw);line-height:1.2">图片一键识别</h3>
+          <p class="body-sm">通用 OCR 图文识别<br>支持模糊倾斜文档<br>多种场景手机截图</p>
         </div>
-        <div class="card-fill" style="padding:2.8cqh 2cqw;display:flex;flex-direction:column;gap:1.4cqh">
+        <div class="card-fill" style="padding: 2.8vh 2vw; display: flex; flex-direction: column; gap: 1.4vh; transform: none; opacity: 1;">
           <div class="t-cat accent">02</div>
-          <i data-lucide="brain-circuit" style="width:2cqw;height:2cqw;stroke-width:1.2;color:var(--accent)"></i>
-          <h3 style="font-weight:400;font-size:max(18px,1.45cqw);line-height:1.2">AI 风险研判</h3>
-          <p class="body-sm">大模型语义分析<br/>规则引擎关键词匹配<br/>综合打分精准判定</p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="brain-circuit" aria-hidden="true" style="width:2vw;height:2vw;stroke-width:1.2;color:var(--accent)" class="lucide lucide-brain-circuit"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"></path><path d="M9 13a4.5 4.5 0 0 0 3-4"></path><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"></path><path d="M3.477 10.896a4 4 0 0 1 .585-.396"></path><path d="M6 18a4 4 0 0 1-1.967-.516"></path><path d="M12 13h4"></path><path d="M12 18h6a2 2 0 0 1 2 2v1"></path><path d="M12 8h8"></path><path d="M16 8V5a2 2 0 0 1 2-2"></path><circle cx="16" cy="13" r=".5"></circle><circle cx="18" cy="3" r=".5"></circle><circle cx="20" cy="21" r=".5"></circle><circle cx="20" cy="8" r=".5"></circle></svg>
+          <h3 style="font-weight:400;font-size:max(18px,1.45vw);line-height:1.2">AI 风险研判</h3>
+          <p class="body-sm">大模型语义分析<br>规则引擎关键词匹配<br>综合打分精准判定</p>
         </div>
-        <div class="card-fill" style="padding:2.8cqh 2cqw;display:flex;flex-direction:column;gap:1.4cqh">
+        <div class="card-fill" style="padding: 2.8vh 2vw; display: flex; flex-direction: column; gap: 1.4vh; transform: none; opacity: 1;">
           <div class="t-cat accent">03</div>
-          <i data-lucide="languages" style="width:2cqw;height:2cqw;stroke-width:1.2;color:var(--accent)"></i>
-          <h3 style="font-weight:400;font-size:max(18px,1.45cqw);line-height:1.2">通俗化解读</h3>
-          <p class="body-sm">金融话术→老年口语<br/>彻底摒弃专业术语<br/>让风险解读听得懂</p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="languages" aria-hidden="true" style="width:2vw;height:2vw;stroke-width:1.2;color:var(--accent)" class="lucide lucide-languages"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+          <h3 style="font-weight:400;font-size:max(18px,1.45vw);line-height:1.2">通俗化解读</h3>
+          <p class="body-sm">金融话术→老年口语<br>彻底摒弃专业术语<br>让风险解读听得懂</p>
         </div>
-        <div class="card-fill" style="padding:2.8cqh 2cqw;display:flex;flex-direction:column;gap:1.4cqh">
+        <div class="card-fill" style="padding: 2.8vh 2vw; display: flex; flex-direction: column; gap: 1.4vh; transform: none; opacity: 1;">
           <div class="t-cat accent">04</div>
-          <i data-lucide="history" style="width:2cqw;height:2cqw;stroke-width:1.2;color:var(--accent)"></i>
-          <h3 style="font-weight:400;font-size:max(18px,1.45cqw);line-height:1.2">历史记录追踪</h3>
-          <p class="body-sm">历次分析结果本地留存<br/>按时间线回溯查看<br/>风险变化一目了然</p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="history" aria-hidden="true" style="width:2vw;height:2vw;stroke-width:1.2;color:var(--accent)" class="lucide lucide-history"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M12 7v5l4 2"></path></svg>
+          <h3 style="font-weight:400;font-size:max(18px,1.45vw);line-height:1.2">历史记录追踪</h3>
+          <p class="body-sm">历次分析结果本地留存<br>按时间线回溯查看<br>风险变化一目了然</p>
         </div>
       </div>
     </div>
@@ -1467,18 +1471,18 @@
       <div class="l">FLOW · 使用流程</div>
       <div class="r">07 / 20</div>
     </div>
-    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:6cqh">
-      <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4cqh">
-        <div class="t-meta" style="color:rgba(255,255,255,.62)">SIX STEPS · 一次完整的风险识别</div>
-        <h2 class="h-xl-zh" style="color:var(--paper);font-size:min(5.8cqw,10.2cqh)">用户操作仅需 15 秒，AI 全程加速</h2>
+    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:6vh">
+      <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
+        <div class="t-meta" style="color: rgba(255, 255, 255, 0.62); opacity: 1;">SIX STEPS · 一次完整的风险识别</div>
+        <h2 class="h-xl-zh" style="color:var(--paper);font-size:min(5.8vw,10.2vh)">用户操作仅需 15 秒，AI 全程加速</h2>
       </div>
-      <div class="timeline-h" data-anim="up" style="margin-top:3cqh">
+      <div class="timeline-h" data-anim="up" style="margin-top: 3vh; opacity: 1; transform: none;">
         <div class="tl-row" style="grid-template-columns:repeat(5,1fr)">
-          <div class="th-node up"><div class="dot" style="width:10px;height:10px"></div><div class="label"><div class="yr">Step 1</div><div class="name">打开小程序</div><div class="desc">微信入口即用</div></div></div>
-          <div class="th-node down"><div class="dot" style="width:10px;height:10px"></div><div class="label"><div class="yr">Step 2</div><div class="name">拍照或上传</div><div class="desc">相机/相册双方式</div></div></div>
-          <div class="th-node up accent"><div class="dot" style="width:10px;height:10px"></div><div class="label"><div class="yr">Step 3</div><div class="name">AI 分析识别</div><div class="desc">OCR + 大模型</div></div></div>
-          <div class="th-node down"><div class="dot" style="width:10px;height:10px"></div><div class="label"><div class="yr">Step 4</div><div class="name">查看结果</div><div class="desc">三色风险+解读</div></div></div>
-          <div class="th-node up"><div class="dot" style="width:10px;height:10px"></div><div class="label"><div class="yr">Step 5</div><div class="name">历史回顾</div><div class="desc">随时查看历史分析</div></div></div>
+          <div class="th-node up"><div class="dot" style="width: 10px; height: 10px; transform-origin: center center; transform: none; opacity: 1;"></div><div class="label" style="opacity: 1; transform: translate(-50%, 0px);"><div class="yr">Step 1</div><div class="name">打开小程序</div><div class="desc">微信入口即用</div></div></div>
+          <div class="th-node down"><div class="dot" style="width: 10px; height: 10px; transform-origin: center center; transform: none; opacity: 1;"></div><div class="label" style="opacity: 1; transform: translate(-50%, 0px);"><div class="yr">Step 2</div><div class="name">拍照或上传</div><div class="desc">相机/相册双方式</div></div></div>
+          <div class="th-node up accent"><div class="dot" style="width: 10px; height: 10px; transform-origin: center center; transform: none; opacity: 1;"></div><div class="label" style="opacity: 1; transform: translate(-50%, 0px);"><div class="yr">Step 3</div><div class="name">AI 分析识别</div><div class="desc">OCR + 大模型</div></div></div>
+          <div class="th-node down"><div class="dot" style="width: 10px; height: 10px; transform-origin: center center; transform: none; opacity: 1;"></div><div class="label" style="opacity: 1; transform: translate(-50%, 0px);"><div class="yr">Step 4</div><div class="name">查看结果</div><div class="desc">三色风险+解读</div></div></div>
+          <div class="th-node up"><div class="dot" style="width: 10px; height: 10px; transform-origin: center center; transform: none; opacity: 1;"></div><div class="label" style="opacity: 1; transform: translate(-50%, 0px);"><div class="yr">Step 5</div><div class="name">历史回顾</div><div class="desc">随时查看历史分析</div></div></div>
         </div>
       </div>
     </div>
@@ -1492,31 +1496,31 @@
       <div class="l">ARCHITECTURE · 技术架构</div>
       <div class="r">08 / 20</div>
     </div>
-    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4cqh">
-      <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4cqh">
-        <div class="t-meta">UniApp + SpringBoot + DeepSeek</div>
-        <h2 class="h-xl-zh" style="font-size:min(5.8cqw,10.2cqh)">三层技术架构，模块化微服务设计</h2>
+    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4vh">
+      <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
+        <div class="t-meta" style="opacity: 1;">UniApp + SpringBoot + DeepSeek</div>
+        <h2 class="h-xl-zh" style="font-size:min(5.8vw,10.2vh)">三层技术架构，模块化微服务设计</h2>
       </div>
-      <div class="stack-row" data-anim="up" style="margin-top:3cqh">
-        <div class="stack-block b-grey">
+      <div class="stack-row" data-anim="up" style="margin-top: 3vh; opacity: 1; transform: none;">
+        <div class="stack-block b-grey" style="transform: none; opacity: 1;">
           <div class="layer-nb">PRESENTATION</div>
-          <i data-lucide="smartphone" class="lucide"></i>
-          <div class="layer-ttl" style="font-size:max(17px,1.6cqw)">微信小程序</div>
-          <div class="layer-desc">UniApp + Vue3 跨端框架<br/>适老化 UI 设计系统<br/>6 个核心页面模块</div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="smartphone" aria-hidden="true" class="lucide lucide-smartphone"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect><path d="M12 18h.01"></path></svg>
+          <div class="layer-ttl" style="font-size:max(17px,1.6vw)">微信小程序</div>
+          <div class="layer-desc">UniApp + Vue3 跨端框架<br>适老化 UI 设计系统<br>6 个核心页面模块</div>
           <div class="layer-tag">UNIAPP · SCSS</div>
         </div>
-        <div class="stack-block b-accent">
+        <div class="stack-block b-accent" style="transform: none; opacity: 1;">
           <div class="layer-nb">BUSINESS</div>
-          <i data-lucide="server" class="lucide"></i>
-          <div class="layer-ttl" style="font-size:max(17px,1.6cqw)">后端服务</div>
-          <div class="layer-desc">SpringBoot 微服务架构<br/>统一接口层编排<br/>数据脱敏与加密传输</div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="server" aria-hidden="true" class="lucide lucide-server"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect><rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect><line x1="6" x2="6.01" y1="6" y2="6"></line><line x1="6" x2="6.01" y1="18" y2="18"></line></svg>
+          <div class="layer-ttl" style="font-size:max(17px,1.6vw)">后端服务</div>
+          <div class="layer-desc">SpringBoot 微服务架构<br>统一接口层编排<br>数据脱敏与加密传输</div>
           <div class="layer-tag">SPRING · HTTPS</div>
         </div>
-        <div class="stack-block b-ink">
+        <div class="stack-block b-ink" style="transform: none; opacity: 1;">
           <div class="layer-nb">AI ENGINE</div>
-          <i data-lucide="cpu" class="lucide"></i>
-          <div class="layer-ttl" style="font-size:max(17px,1.6cqw)">AI 服务层</div>
-          <div class="layer-desc">GLM-4.6V 多模态模型<br/>腾讯云 OCR 图文识别<br/>MySQL 数据持久化</div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="cpu" aria-hidden="true" class="lucide lucide-cpu"><path d="M12 20v2"></path><path d="M12 2v2"></path><path d="M17 20v2"></path><path d="M17 2v2"></path><path d="M2 12h2"></path><path d="M2 17h2"></path><path d="M2 7h2"></path><path d="M20 12h2"></path><path d="M20 17h2"></path><path d="M20 7h2"></path><path d="M7 20v2"></path><path d="M7 2v2"></path><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="8" y="8" width="8" height="8" rx="1"></rect></svg>
+          <div class="layer-ttl" style="font-size:max(17px,1.6vw)">AI 服务层</div>
+          <div class="layer-desc">GLM-4.6V 多模态模型<br>腾讯云 OCR 图文识别<br>MySQL 数据持久化</div>
           <div class="layer-tag">GLM · OCR · MYSQL</div>
         </div>
       </div>
@@ -1531,31 +1535,31 @@
       <div class="l">ENGINE · 判定引擎</div>
       <div class="r">09 / 20</div>
     </div>
-    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4cqh">
-      <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4cqh">
-        <div class="t-meta" style="color:rgba(255,255,255,.62)">THREE-TIER · 三层递进判定</div>
-        <h2 class="h-xl-zh" style="color:var(--paper);font-size:min(5.8cqw,10.2cqh)">规则引擎优先 + AI 语义分析 + 综合打分</h2>
+    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4vh">
+      <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
+        <div class="t-meta" style="color: rgba(255, 255, 255, 0.62); opacity: 1;">THREE-TIER · 三层递进判定</div>
+        <h2 class="h-xl-zh" style="color:var(--paper);font-size:min(5.8vw,10.2vh)">规则引擎优先 + AI 语义分析 + 综合打分</h2>
       </div>
-      <div class="stack-row" data-anim="up" style="margin-top:3cqh">
-        <div class="stack-block b-grey" style="background:rgba(255,255,255,.08);color:var(--paper)">
+      <div class="stack-row" data-anim="up" style="margin-top: 3vh; opacity: 1; transform: none;">
+        <div class="stack-block b-grey" style="background: rgba(255, 255, 255, 0.08); color: var(--paper); transform: none; opacity: 1;">
           <div class="layer-nb" style="color:rgba(255,255,255,.55)">LAYER 01</div>
-          <i data-lucide="filter" class="lucide"></i>
-          <div class="layer-ttl" style="font-size:max(17px,1.6cqw)">关键词规则匹配</div>
-          <div class="layer-desc" style="color:rgba(255,255,255,.78)">扫描 145+ 高危关键词<br/>验证码、转账、链接<br/>公检法等初步标记</div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="filter" aria-hidden="true" class="lucide lucide-filter"><path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"></path></svg>
+          <div class="layer-ttl" style="font-size:max(17px,1.6vw)">关键词规则匹配</div>
+          <div class="layer-desc" style="color:rgba(255,255,255,.78)">扫描 145+ 高危关键词<br>验证码、转账、链接<br>公检法等初步标记</div>
           <div class="layer-tag" style="color:rgba(255,255,255,.6)">PATTERN</div>
         </div>
-        <div class="stack-block b-accent">
+        <div class="stack-block b-accent" style="transform: none; opacity: 1;">
           <div class="layer-nb" style="color:rgba(255,255,255,.65)">LAYER 02</div>
-          <i data-lucide="brain" class="lucide"></i>
-          <div class="layer-ttl" style="font-size:max(17px,1.6cqw)">AI 语义深度分析</div>
-          <div class="layer-desc">结合上下文语义<br/>判断诱导、虚假宣传<br/>识别新型变种诈骗</div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="brain" aria-hidden="true" class="lucide lucide-brain"><path d="M12 18V5"></path><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"></path><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"></path><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"></path><path d="M18 18a4 4 0 0 0 2-7.464"></path><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"></path><path d="M6 18a4 4 0 0 1-2-7.464"></path><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"></path></svg>
+          <div class="layer-ttl" style="font-size:max(17px,1.6vw)">AI 语义深度分析</div>
+          <div class="layer-desc">结合上下文语义<br>判断诱导、虚假宣传<br>识别新型变种诈骗</div>
           <div class="layer-tag">SEMANTIC</div>
         </div>
-        <div class="stack-block b-ink">
+        <div class="stack-block b-ink" style="transform: none; opacity: 1;">
           <div class="layer-nb" style="color:rgba(255,255,255,.55)">LAYER 03</div>
-          <i data-lucide="bar-chart-3" class="lucide"></i>
-          <div class="layer-ttl" style="font-size:max(17px,1.6cqw)">综合打分输出</div>
-          <div class="layer-desc" style="color:rgba(255,255,255,.78)">关键词权重 + AI 结论<br/>按评分区间自动输出<br/>低风险 / 需谨慎 / 高风险</div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bar-chart-3" aria-hidden="true" class="lucide lucide-bar-chart-3"><path d="M3 3v16a2 2 0 0 0 2 2h16"></path><path d="M18 17V9"></path><path d="M13 17V5"></path><path d="M8 17v-3"></path></svg>
+          <div class="layer-ttl" style="font-size:max(17px,1.6vw)">综合打分输出</div>
+          <div class="layer-desc" style="color:rgba(255,255,255,.78)">关键词权重 + AI 结论<br>按评分区间自动输出<br>低风险 / 需谨慎 / 高风险</div>
           <div class="layer-tag" style="color:rgba(255,255,255,.6)">SCORING</div>
         </div>
       </div>
@@ -1570,42 +1574,42 @@
       <div class="l">LEVELS · 风险分级</div>
       <div class="r">10 / 20</div>
     </div>
-    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4.5cqh">
-      <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4cqh">
+    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4.5vh">
+      <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
         <div class="t-meta" style="color:rgb(255, 255, 255)">THREE-COLOR SYSTEM · 色盲友好</div>
-        <h2 class="h-xl-zh" style="color:#fff;font-size:min(5.8cqw,10.2cqh)">直观三色分级，看清风险只需一眼</h2>
+        <h2 class="h-xl-zh" style="color:#fff;font-size:min(5.8vw,10.2vh)">直观三色分级，看清风险只需一眼</h2>
       </div>
       <!-- 网格强制纵向100%高度，左右栏等高 -->
-      <div data-anim="up" style="display:grid;grid-template-columns:5fr 7fr;grid-template-rows:100%;gap:2.4cqw;flex:1;align-items:stretch">
+      <div data-anim="up" style="display: grid; grid-template-columns: 5fr 7fr; grid-template-rows: 100%; gap: 2.4vw; flex: 1 1 0%; align-items: stretch; opacity: 1; transform: none;">
         <!-- 左侧深蓝色标识块，高度100%，内部文字垂直居中 -->
-        <div class="card-ink" style="padding:3.5cqh 2.4cqw;display:flex;flex-direction:column;justify-content:center;gap:2.4cqh;background:linear-gradient(135deg,#002FA7 0%,#001d66 100%);border:1px solid rgba(255,255,255,.08);height:100%;box-sizing:border-box">
+        <div class="card-ink" style="padding: 3.5vh 2.4vw; display: flex; flex-direction: column; justify-content: center; gap: 2.4vh; background: linear-gradient(135deg, rgb(0, 47, 167) 0%, rgb(0, 29, 102) 100%); border: 1px solid rgba(255, 255, 255, 0.08); height: 100%; box-sizing: border-box; transform: none; opacity: 1;">
           <div class="t-cat" style="color:rgb(255, 255, 255)">RISK STANDARD</div>
-          <div class="kpi-thin" style="font-size:min(10,15cqh);color:#fff;text-align:center">3</div>
-          <div class="t-body" style="color:rgb(255, 255, 255);text-align:center">色盲友好<br/>三色分级体系</div>
+          <div class="kpi-thin" style="font-size:min(10vw,15vh);color:#fff;text-align:center">3</div>
+          <div class="t-body" style="color:rgb(255, 255, 255);text-align:center">色盲友好<br>三色分级体系</div>
         </div>
         <!-- 右侧容器：固定色块间隙gap:2vh，4个色块自动均分剩余高度 -->
-        <div style="display:flex;flex-direction:column;height:100%;gap:2cqh;box-sizing:border-box">
+        <div style="display:flex;flex-direction:column;height:100%;gap:2vh;box-sizing:border-box">
           <!-- 1.绿色低风险，原文案无改动 -->
-          <div class="card-fill" style="padding:2.6cqh 2cqw;display:flex;align-items:center;gap:1.6cqw;flex:1">
-            <div style="width:3.2cqw;height:3.2cqw;background:#38a169;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="color:#fff;font-size:1.4cqw;font-weight:700">&#10003;</span></div>
+          <div class="card-fill" style="padding: 2.6vh 2vw; display: flex; align-items: center; gap: 1.6vw; flex: 1 1 0%; transform: none; opacity: 1;">
+            <div style="width: 3.2vw; height: 3.2vw; background: rgb(56, 161, 105); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transform: none; opacity: 1;"><span style="color:#fff;font-size:1.4vw;font-weight:700">✓</span></div>
             <div style="flex:1"><div class="t-body-emp">绿色 · 低风险</div><div class="body-sm">内容正规，无明显金融风险</div></div>
             <div class="t-meta" style="color:#38a169">SAFE</div>
           </div>
           <!-- 2.黄色需谨慎，原文案无改动 -->
-          <div class="card-fill" style="padding:2.6cqh 2cqw;display:flex;align-items:center;gap:1.6cqw;flex:1">
-            <div style="width:3.2cqw;height:3.2cqw;background:#d69e2e;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="color:#fff;font-size:1.4cqw;font-weight:700">&#9888;</span></div>
+          <div class="card-fill" style="padding: 2.6vh 2vw; display: flex; align-items: center; gap: 1.6vw; flex: 1 1 0%; transform: none; opacity: 1;">
+            <div style="width: 3.2vw; height: 3.2vw; background: rgb(214, 158, 46); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transform: none; opacity: 1;"><span style="color:#fff;font-size:1.4vw;font-weight:700">⚠</span></div>
             <div style="flex:1"><div class="t-body-emp">黄色 · 需谨慎</div><div class="body-sm">存在模糊表述，务必提高警惕</div></div>
             <div class="t-meta" style="color:#d69e2e">CAUTION</div>
           </div>
           <!-- 3.红色高风险，原文案无改动 -->
-          <div class="card-fill" style="padding:2.6cqh 2cqw;display:flex;align-items:center;gap:1.6cqw;flex:1">
-            <div style="width:3.2cqw;height:3.2cqw;background:#e53e3e;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="color:#fff;font-size:1.4cqw;font-weight:700">&#10007;</span></div>
+          <div class="card-fill" style="padding: 2.6vh 2vw; display: flex; align-items: center; gap: 1.6vw; flex: 1 1 0%; transform: none; opacity: 1;">
+            <div style="width: 3.2vw; height: 3.2vw; background: rgb(229, 62, 62); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transform: none; opacity: 1;"><span style="color:#fff;font-size:1.4vw;font-weight:700">✗</span></div>
             <div style="flex:1"><div class="t-body-emp">红色 · 高风险</div><div class="body-sm">明确存在诈骗，严禁相信操作</div></div>
             <div class="t-meta" style="color:#e53e3e">DANGER</div>
           </div>
           <!-- 4.新增设计说明色块，论证页面设计合理性 -->
-          <div class="card-fill" style="padding:2.6cqh 2cqw;display:flex;align-items:center;gap:1.6cqw;background:#f0f4fb;flex:1">
-            <div style="width:3.2cqw;height:3.2cqw;background:#0047AB;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="color:#fff;font-size:1.4cqw;font-weight:700">✎</span></div>
+          <div class="card-fill" style="padding: 2.6vh 2vw; display: flex; align-items: center; gap: 1.6vw; background: rgb(240, 244, 251); flex: 1 1 0%; transform: none; opacity: 1;">
+            <div style="width: 3.2vw; height: 3.2vw; background: rgb(0, 71, 171); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transform: none; opacity: 1;"><span style="color:#fff;font-size:1.4vw;font-weight:700">✎</span></div>
             <div style="flex:1">
               <div class="t-body-emp">设计适配依据</div>
               <div class="body-sm">遵循WCAG无障碍标准，采用色彩+图标双重识别逻辑，规避老年色弱识别障碍；分级体系贴合养老反诈业务场景，适配人行适老化金融产品建设规范。</div>
@@ -1625,24 +1629,24 @@
       <div class="l">DESIGN · 适老化规范</div>
       <div class="r">11 / 20</div>
     </div>
-    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:5cqh">
-      <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4cqh">
+    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:5vh">
+      <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
         <div class="t-meta" style="color:rgba(255,255,255,.62)">AGE-FRIENDLY · 强制执行规范</div>
-        <h2 class="h-xl-zh" style="color:var(--paper);font-size:min(5.8cqw,10.2cqh)">从字体到交互，全套适老化设计标准</h2>
+        <h2 class="h-xl-zh" style="color:var(--paper);font-size:min(5.8vw,10.2vh)">从字体到交互，全套适老化设计标准</h2>
       </div>
-      <div data-anim="up" class="matrix-fill" style="display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:1.5cqh 1.2cqw;flex:1">
-        <div class="matrix-cell" style="background:#002FA7;padding:1.6cqh 1.4cqw"><span class="t-cat" style="color:rgba(255,255,255,.8)">字体</span><div class="t-body-emp" style="font-size:max(16px,.9cqw);margin-top:.6cqh;color:rgba(255,255,255,.95)">正文 ≥ 18px</div><div class="body-sm" style="color:rgba(255,255,255,.72)">标题按钮 ≥ 24px</div></div>
-        <div class="matrix-cell" style="background:#002FA7;padding:1.6cqh 1.4cqw"><span class="t-cat" style="color:rgba(255,255,255,.8)">字重</span><div class="t-body-emp" style="color:rgba(255,255,255,.95);font-size:max(16px,.9cqw);margin-top:.6cqh">无衬线字体</div><div class="body-sm" style="color:rgba(255,255,255,.72)">不加斜体花式样式</div></div>
-        <div class="matrix-cell" style="background:#002FA7;padding:1.6cqh 1.4cqw"><span class="t-cat" style="color:rgba(255,255,255,.8)">配色</span><div class="t-body-emp" style="color:rgba(255,255,255,.95);font-size:max(16px,.9cqw);margin-top:.6cqh">高对比度</div><div class="body-sm" style="color:rgba(255,255,255,.72)">色盲友好三色分级</div></div>
-        <div class="matrix-cell" style="background:#002FA7;padding:1.6cqh 1.4cqw"><span class="t-cat" style="color:rgba(255,255,255,.8)">间距</span><div class="t-body-emp" style="font-size:max(16px,.9cqw);margin-top:.6cqh;color:rgba(255,255,255,.95)">按钮加宽</div><div class="body-sm" style="color:rgba(255,255,255,.72)">间距加大防误触</div></div>
-        <div class="matrix-cell" style="background:#002FA7;padding:1.6cqh 1.4cqw"><span class="t-cat" style="color:rgba(255,255,255,.8)">交互</span><div class="t-body-emp" style="color:rgba(255,255,255,.95);font-size:max(16px,.9cqw);margin-top:.6cqh">单页面</div><div class="body-sm" style="color:rgba(255,255,255,.72)">无弹窗无复杂跳转</div></div>
-        <div class="matrix-cell" style="background:#002FA7;padding:1.6cqh 1.4cqw"><span class="t-cat" style="color:rgba(255,255,255,.8)">输入</span><div class="t-body-emp" style="color:rgba(255,255,255,.95);font-size:max(16px,.9cqw);margin-top:.6cqh">最少化</div><div class="body-sm" style="color:rgba(255,255,255,.72)">以拍照上传为主</div></div>
-        <div class="matrix-cell" style="background:#002FA7;padding:1.6cqh 1.4cqw"><span class="t-cat" style="color:rgba(255,255,255,.8)">文案</span><div class="t-body-emp" style="color:rgba(255,255,255,.95);font-size:max(16px,.9cqw);margin-top:.6cqh">口语化</div><div class="body-sm" style="color:rgba(255,255,255,.72)">严禁金融专业术语</div></div>
-        <div class="matrix-cell" style="background:#002FA7;padding:1.6cqh 1.4cqw"><span class="t-cat" style="color:rgba(255,255,255,.8)">历史</span><div class="t-body-emp" style="font-size:max(16px,.9cqw);margin-top:.6cqh;color:rgba(255,255,255,.95)">分析记录</div><div class="body-sm" style="color:rgba(255,255,255,.72)">历次结果追溯回顾</div></div>
-        <div class="matrix-cell" style="background:#002FA7;padding:1.6cqh 1.4cqw"><span class="t-cat" style="color:rgba(255,255,255,.8)">按钮</span><div class="t-body-emp" style="color:rgba(255,255,255,.95);font-size:max(16px,.9cqw);margin-top:.6cqh">≥ 112rpx高</div><div class="body-sm" style="color:rgba(255,255,255,.72)">圆角20-60rpx</div></div>
-        <div class="matrix-cell" style="background:#002FA7;padding:1.6cqh 1.4cqw"><span class="t-cat" style="color:rgba(255,255,255,.8)">背景</span><div class="t-body-emp" style="color:rgba(255,255,255,.95);font-size:max(16px,.9cqw);margin-top:.6cqh">浅底深字</div><div class="body-sm" style="color:rgba(255,255,255,.72)">禁止浅字配浅底</div></div>
-        <div class="matrix-cell" style="background:#002FA7;padding:1.6cqh 1.4cqw"><span class="t-cat" style="color:rgba(255,255,255,.8)">语气</span><div class="t-body-emp" style="color:rgba(255,255,255,.95);font-size:max(16px,.9cqw);margin-top:.6cqh">严肃温和</div><div class="body-sm" style="color:rgba(255,255,255,.72)">避免过度恐吓</div></div>
-        <div class="matrix-cell" style="background:#002FA7;padding:1.6cqh 1.4cqw"><span class="t-cat" style="color:rgba(255,255,255,.8)">原则</span><div class="t-body-emp" style="font-size:max(16px,.9cqw);margin-top:.6cqh;color:rgba(255,255,255,.95)">少即是多</div><div class="body-sm" style="color:rgba(255,255,255,.72)">极简压倒一切</div></div>
+      <div data-anim="up" class="matrix-fill" style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr); gap: 1.5vh 1.2vw; flex: 1 1 0%; opacity: 1; transform: none;">
+        <div class="matrix-cell" style="background: rgb(0, 47, 167); padding: 1.6vh 1.4vw; transform: none; opacity: 1;"><span class="t-cat" style="color:rgba(255,255,255,.8)">字体</span><div class="t-body-emp" style="font-size:max(16px,.9vw);margin-top:.6vh;color:rgba(255,255,255,.95)">正文 ≥ 18px</div><div class="body-sm" style="color:rgba(255,255,255,.72)">标题按钮 ≥ 24px</div></div>
+        <div class="matrix-cell" style="background: rgb(0, 47, 167); padding: 1.6vh 1.4vw; transform: none; opacity: 1;"><span class="t-cat" style="color:rgba(255,255,255,.8)">字重</span><div class="t-body-emp" style="color:rgba(255,255,255,.95);font-size:max(16px,.9vw);margin-top:.6vh">无衬线字体</div><div class="body-sm" style="color:rgba(255,255,255,.72)">不加斜体花式样式</div></div>
+        <div class="matrix-cell" style="background: rgb(0, 47, 167); padding: 1.6vh 1.4vw; transform: none; opacity: 1;"><span class="t-cat" style="color:rgba(255,255,255,.8)">配色</span><div class="t-body-emp" style="color:rgba(255,255,255,.95);font-size:max(16px,.9vw);margin-top:.6vh">高对比度</div><div class="body-sm" style="color:rgba(255,255,255,.72)">色盲友好三色分级</div></div>
+        <div class="matrix-cell" style="background: rgb(0, 47, 167); padding: 1.6vh 1.4vw; transform: none; opacity: 1;"><span class="t-cat" style="color:rgba(255,255,255,.8)">间距</span><div class="t-body-emp" style="font-size:max(16px,.9vw);margin-top:.6vh;color:rgba(255,255,255,.95)">按钮加宽</div><div class="body-sm" style="color:rgba(255,255,255,.72)">间距加大防误触</div></div>
+        <div class="matrix-cell" style="background: rgb(0, 47, 167); padding: 1.6vh 1.4vw; transform: none; opacity: 1;"><span class="t-cat" style="color:rgba(255,255,255,.8)">交互</span><div class="t-body-emp" style="color:rgba(255,255,255,.95);font-size:max(16px,.9vw);margin-top:.6vh">单页面</div><div class="body-sm" style="color:rgba(255,255,255,.72)">无弹窗无复杂跳转</div></div>
+        <div class="matrix-cell" style="background: rgb(0, 47, 167); padding: 1.6vh 1.4vw; transform: none; opacity: 1;"><span class="t-cat" style="color:rgba(255,255,255,.8)">输入</span><div class="t-body-emp" style="color:rgba(255,255,255,.95);font-size:max(16px,.9vw);margin-top:.6vh">最少化</div><div class="body-sm" style="color:rgba(255,255,255,.72)">以拍照上传为主</div></div>
+        <div class="matrix-cell" style="background: rgb(0, 47, 167); padding: 1.6vh 1.4vw; transform: none; opacity: 1;"><span class="t-cat" style="color:rgba(255,255,255,.8)">文案</span><div class="t-body-emp" style="color:rgba(255,255,255,.95);font-size:max(16px,.9vw);margin-top:.6vh">口语化</div><div class="body-sm" style="color:rgba(255,255,255,.72)">严禁金融专业术语</div></div>
+        <div class="matrix-cell" style="background: rgb(0, 47, 167); padding: 1.6vh 1.4vw; transform: none; opacity: 1;"><span class="t-cat" style="color:rgba(255,255,255,.8)">历史</span><div class="t-body-emp" style="font-size:max(16px,.9vw);margin-top:.6vh;color:rgba(255,255,255,.95)">分析记录</div><div class="body-sm" style="color:rgba(255,255,255,.72)">历次结果追溯回顾</div></div>
+        <div class="matrix-cell" style="background: rgb(0, 47, 167); padding: 1.6vh 1.4vw; transform: none; opacity: 1;"><span class="t-cat" style="color:rgba(255,255,255,.8)">按钮</span><div class="t-body-emp" style="color:rgba(255,255,255,.95);font-size:max(16px,.9vw);margin-top:.6vh">≥ 112rpx高</div><div class="body-sm" style="color:rgba(255,255,255,.72)">圆角20-60rpx</div></div>
+        <div class="matrix-cell" style="background: rgb(0, 47, 167); padding: 1.6vh 1.4vw; transform: none; opacity: 1;"><span class="t-cat" style="color:rgba(255,255,255,.8)">背景</span><div class="t-body-emp" style="color:rgba(255,255,255,.95);font-size:max(16px,.9vw);margin-top:.6vh">浅底深字</div><div class="body-sm" style="color:rgba(255,255,255,.72)">禁止浅字配浅底</div></div>
+        <div class="matrix-cell" style="background: rgb(0, 47, 167); padding: 1.6vh 1.4vw; transform: none; opacity: 1;"><span class="t-cat" style="color:rgba(255,255,255,.8)">语气</span><div class="t-body-emp" style="color:rgba(255,255,255,.95);font-size:max(16px,.9vw);margin-top:.6vh">严肃温和</div><div class="body-sm" style="color:rgba(255,255,255,.72)">避免过度恐吓</div></div>
+        <div class="matrix-cell" style="background: rgb(0, 47, 167); padding: 1.6vh 1.4vw; transform: none; opacity: 1;"><span class="t-cat" style="color:rgba(255,255,255,.8)">原则</span><div class="t-body-emp" style="font-size:max(16px,.9vw);margin-top:.6vh;color:rgba(255,255,255,.95)">少即是多</div><div class="body-sm" style="color:rgba(255,255,255,.72)">极简压倒一切</div></div>
       </div>
     </div>
   </div>
@@ -1655,18 +1659,18 @@
       <div class="l">SECURITY · 隐私安全</div>
       <div class="r">12 / 20</div>
     </div>
-    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4.5cqh">
-      <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4cqh">
+    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4.5vh">
+      <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
         <div class="t-meta">FIVE SAFEGUARDS · 五重防线</div>
-        <h2 class="h-xl-zh" style="font-size:min(5.8cqw,10.2cqh)">老年用户隐私数据，全程加密保护</h2>
+        <h2 class="h-xl-zh" style="font-size:min(5.8vw,10.2vh)">老年用户隐私数据，全程加密保护</h2>
       </div>
-      <div data-anim="up" class="brief-grid" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:1.6cqh 1.4cqw;flex:1">
-        <div class="card-fill brief-card" style="padding:2.4cqh 1.8cqw"><span class="nb-corner">01</span><div class="ttl">数据自动脱敏</div><div class="desc">身份证号、手机号<br/>银行卡号隐式脱敏</div></div>
-        <div class="card-fill brief-card" style="padding:2.4cqh 1.8cqw"><span class="nb-corner">02</span><div class="ttl">HTTPS 加密传输</div><div class="desc">前后端通信<br/>全程端到端加密</div></div>
-        <div class="card-fill brief-card" style="padding:2.4cqh 1.8cqw"><span class="nb-corner">03</span><div class="ttl">加密存储管控</div><div class="desc">图片文本加密存储<br/>严格权限管理</div></div>
-        <div class="card-fill brief-card" style="padding:2.4cqh 1.8cqw"><span class="nb-corner">04</span><div class="ttl">用户授权确认</div><div class="desc">首次弹窗告知<br/>授权后方可使用</div></div>
-        <div class="card-fill brief-card" style="padding:2.4cqh 1.8cqw"><span class="nb-corner">05</span><div class="ttl">内容安全过滤</div><div class="desc">拒绝识别涉黄涉赌<br/>涉政等违法内容</div></div>
-        <div class="card-accent brief-card is-accent" style="padding:2.4cqh 1.8cqw"><span class="nb-corner" style="color:rgba(255,255,255,.6)">06</span><div class="ttl" style="color:var(--accent-on)">隐私本地优先</div><div class="desc" style="color:rgba(255,255,255,.78)">历史记录仅本机<br/>+云端，对外不可见</div></div>
+      <div data-anim="up" class="brief-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 1.6vh 1.4vw; flex: 1 1 0%; opacity: 1; transform: none;">
+        <div class="card-fill brief-card" style="padding: 2.4vh 1.8vw; transform: none; opacity: 1;"><span class="nb-corner">01</span><div class="ttl">数据自动脱敏</div><div class="desc">身份证号、手机号<br>银行卡号隐式脱敏</div></div>
+        <div class="card-fill brief-card" style="padding: 2.4vh 1.8vw; transform: none; opacity: 1;"><span class="nb-corner">02</span><div class="ttl">HTTPS 加密传输</div><div class="desc">前后端通信<br>全程端到端加密</div></div>
+        <div class="card-fill brief-card" style="padding: 2.4vh 1.8vw; transform: none; opacity: 1;"><span class="nb-corner">03</span><div class="ttl">加密存储管控</div><div class="desc">图片文本加密存储<br>严格权限管理</div></div>
+        <div class="card-fill brief-card" style="padding: 2.4vh 1.8vw; transform: none; opacity: 1;"><span class="nb-corner">04</span><div class="ttl">用户授权确认</div><div class="desc">首次弹窗告知<br>授权后方可使用</div></div>
+        <div class="card-fill brief-card" style="padding: 2.4vh 1.8vw; transform: none; opacity: 1;"><span class="nb-corner">05</span><div class="ttl">内容安全过滤</div><div class="desc">拒绝识别涉黄涉赌<br>涉政等违法内容</div></div>
+        <div class="card-accent brief-card is-accent" style="padding: 2.4vh 1.8vw; transform: none; opacity: 1;"><span class="nb-corner" style="color:rgba(255,255,255,.6)">06</span><div class="ttl" style="color:var(--accent-on)">隐私本地优先</div><div class="desc" style="color:rgba(255,255,255,.78)">历史记录仅本机<br>+云端，对外不可见</div></div>
       </div>
     </div>
   </div>
@@ -1679,22 +1683,49 @@
       <div class="l">PLAN · 实施计划</div>
       <div class="r">13 / 20</div>
     </div>
-    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:2.2cqh">
-      <div data-anim="head" style="display:flex;flex-direction:column;gap:1cqh">
+    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:2.2vh">
+      <div data-anim="head" style="display: flex; flex-direction: column; gap: 1vh; opacity: 1; transform: none;">
         <div class="t-meta">FOUR PHASES · 4 MONTHS</div>
-        <h2 class="h-xl-zh" style="font-size:min(5cqw,9cqh)">四阶段迭代开发，独立完成全栈交付</h2>
+        <h2 class="h-xl-zh" style="font-size:min(5vw,9vh)">四阶段迭代开发，独立完成全栈交付</h2>
       </div>
-      <div class="timeline-v" data-anim="up">
-        <div class="tl-node"><div class="dot"></div><div class="yr">Month 1</div><div class="multi" style="font-size:clamp(20px,1.9cqw,35px)">基础框架</div><div class="desc">    UniApp 脚手架/拍照相册上传/OCR 对接/页面架构与路由</div></div>
-        <div class="tl-node accent"><div class="dot"></div><div class="yr">Month 2</div><div class="multi" style="font-size:clamp(20px,1.9cqw,35px)">AI引擎</div><div class="desc">    大模型 API 对接/三层判定逻辑/规则引擎/风险等级输出</div></div>
-        <div class="tl-node"><div class="dot"></div><div class="yr">Month 3</div><div class="multi" style="font-size:clamp(20px,1.9cqw,35px)">体验打磨 </div><div class="desc">    历史记录/帮助中心/适老化交互/隐私弹窗/12项适老化规范</div></div>
-        <div class="tl-node"><div class="dot"></div><div class="yr">Month 4</div><div class="multi" style="font-size:clamp(20px,1.9cqw,35px)">联调上线   </div><div class="desc">    后台管理/数据统计/全功能联调/BUG 修复/V3.2 正式上线</div></div>
-      </div>
-      <div data-anim="kpi" class="kpi-row-4" style="margin-top:0.8cqh">
-        <div class="kpi-cell"><div class="lbl">OCR 响应</div><div class="nb">≤3<span class="unit">秒</span></div><div class="note">图文识别耗时</div></div>
-        <div class="kpi-cell"><div class="lbl">AI 分析</div><div class="nb">≤5<span class="unit">秒</span></div><div class="note">风险研判耗时</div></div>
-        <div class="kpi-cell"><div class="lbl">并发容量</div><div class="nb">1000<span class="unit">+</span></div><div class="note">同时在线用户</div></div>
-        <div class="kpi-cell"><div class="lbl">可用性</div><div class="nb">99<span class="unit">%</span></div><div class="note">全年系统可用</div></div>
+<style>
+.timeline-v .multi {
+    font-size: clamp(20px, 1.9vw, 35px);
+    margin-right: 20px !important; /* 统一控制间距，改这里全部生效 */
+}
+</style>
+
+<div class="timeline-v" data-anim="up" style="opacity: 1; transform: none;">
+        <div class="tl-node" style="transform: none; opacity: 1;">
+            <div class="dot"></div>
+            <div class="yr">Month 1</div>
+            <div class="multi" style="transform: none; opacity: 1;">构筑项目基座</div>
+            <div class="desc">    UniApp 脚手架  · 拍照相册上传 · OCR 对接 · 页面架构与路由</div>
+        </div>
+        <div class="tl-node accent" style="transform: none; opacity: 1;">
+            <div class="dot"></div>
+            <div class="yr">Month 2</div>
+            <div class="multi" style="transform: none; opacity: 1;">搭建智能内核</div>
+            <div class="desc">    大模型 API 对接 · 三层判定逻辑 · 规则引擎 ·  风险等级输出</div>
+        </div>
+        <div class="tl-node" style="transform: none; opacity: 1;">
+            <div class="dot"></div>
+            <div class="yr">Month 3</div>
+            <div class="multi" style="transform: none; opacity: 1;">精研用户交互 </div>
+            <div class="desc">    历史记录 · 帮助中心 · 适老化交互 · 隐私弹窗 · 12项适老化规范</div>
+        </div>
+        <div class="tl-node" style="transform: none; opacity: 1;">
+            <div class="dot"></div>
+            <div class="yr">Month 4</div>
+            <div class="multi" style="transform: none; opacity: 1;">完成全量上线 </div>
+            <div class="desc">    后台管理 · 数据统计 · 全功能联调 · BUG 修复 · V3.2 正式上线</div>
+        </div>
+</div>
+      <div data-anim="kpi" class="kpi-row-4" style="margin-top: 0.8vh; opacity: 1; transform: none;">
+        <div class="kpi-cell" style="transform: none; opacity: 1;"><div class="lbl">OCR 响应</div><div class="nb">≤3<span class="unit">秒</span></div><div class="note">图文识别耗时</div></div>
+        <div class="kpi-cell" style="transform: none; opacity: 1;"><div class="lbl">AI 分析</div><div class="nb">≤5<span class="unit">秒</span></div><div class="note">风险研判耗时</div></div>
+        <div class="kpi-cell" style="transform: none; opacity: 1;"><div class="lbl">并发容量</div><div class="nb">1000<span class="unit">+</span></div><div class="note">同时在线用户</div></div>
+        <div class="kpi-cell" style="transform: none; opacity: 1;"><div class="lbl">可用性</div><div class="nb">99<span class="unit">%</span></div><div class="note">全年系统可用</div></div>
       </div>
     </div>
   </div>
@@ -1707,31 +1738,31 @@
       <div class="l">SYNERGY · 人机协同</div>
       <div class="r">14 / 20</div>
     </div>
-    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4.5cqh">
-      <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4cqh">
+    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4.5vh">
+      <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
         <div class="t-meta" style="color:rgba(255,255,255,.62)">AI+DEVELOPER · 开发关键问题攻克</div>
-        <h2 class="h-xl-zh" style="color:var(--paper);font-size:min(5.8cqw,10.2cqh)">人类决策 × AI 实现，协同解决三大难题</h2>
+        <h2 class="h-xl-zh" style="color:var(--paper);font-size:min(5.8vw,10.2vh)">人类决策 × AI 实现，协同解决三大难题</h2>
       </div>
-      <div data-anim="up" style="display:grid;grid-template-columns:5fr 7fr;gap:2.4cqw;flex:1">
-        <div class="card-ink" style="padding:3.5cqh 2.4cqw;display:flex;flex-direction:column;gap:2.4cqh">
+      <div data-anim="up" style="display: grid; grid-template-columns: 5fr 7fr; gap: 2.4vw; flex: 1 1 0%; opacity: 1; transform: none;">
+        <div class="card-ink" style="padding: 3.5vh 2.4vw; display: flex; flex-direction: column; gap: 2.4vh; transform: none; opacity: 1;">
           <div class="t-cat" style="color:rgba(255,255,255,.55)">COLLABORATION</div>
-          <div style="font-family:var(--sans);font-weight:200;font-size:min(7cqw,12cqh);line-height:.9;color:#fff">人<br/>+<br/>AI</div>
-          <div class="t-body" style="color:rgba(255,255,255,.78)">不是替代，而是放大<br/>每个技术决策的背后<br/>是经验判断 × AI 效率</div>
+          <div style="font-family:var(--sans);font-weight:200;font-size:min(7vw,12vh);line-height:.9;color:#fff">人<br>+<br>AI</div>
+          <div class="t-body" style="color:rgba(255,255,255,.78)">不是替代，而是放大<br>每个技术决策的背后<br>是经验判断 × AI 效率</div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:1.6cqh">
-          <div class="card-fill" style="background:rgba(255,255,255,.07);padding:2.6cqh 2cqw;display:flex;flex-direction:column;gap:1cqh">
-            <div class="t-cat" style="color:var(--accent)">ISSUE · 01</div>
-            <div class="t-body-emp" style="color:var(--paper);font-size:max(17px,1.1cqw)">JSON 解析多层容错</div>
+        <div style="display:flex;flex-direction:column;gap:1.6vh">
+          <div class="card-fill" style="background: rgba(255, 255, 255, 0.07); padding: 2.6vh 2vw; display: flex; flex-direction: column; gap: 1vh; transform: none; opacity: 1;">
+            <div class="t-cat" style="color: var(--accent); transform: none; opacity: 1;">ISSUE · 01</div>
+            <div class="t-body-emp" style="color:var(--paper);font-size:max(17px,1.1vw)">JSON 解析多层容错</div>
             <div class="body-sm" style="color:rgba(255,255,255,.62)">AI API 返回格式不稳定，5 种策略保障：直接解析 → 去 markdown → 贪婪正则 → 平衡括号匹配 → 错误修复。极端情况永不崩溃。</div>
           </div>
-          <div class="card-fill" style="background:rgba(255,255,255,.07);padding:2.6cqh 2cqw;display:flex;flex-direction:column;gap:1cqh">
-            <div class="t-cat" style="color:var(--accent)">ISSUE · 02</div>
-            <div class="t-body-emp" style="color:var(--paper);font-size:max(17px,1.1cqw)">低风险安全语言过滤</div>
+          <div class="card-fill" style="background: rgba(255, 255, 255, 0.07); padding: 2.6vh 2vw; display: flex; flex-direction: column; gap: 1vh; transform: none; opacity: 1;">
+            <div class="t-cat" style="color: var(--accent); transform: none; opacity: 1;">ISSUE · 02</div>
+            <div class="t-body-emp" style="color:var(--paper);font-size:max(17px,1.1vw)">低风险安全语言过滤</div>
             <div class="body-sm" style="color:rgba(255,255,255,.62)">防止 AI 输出"内容安全"等绝对描述误导老人。8 个禁止词 + 替代文案。低风险必须写"暂未发现明显风险特征"。</div>
           </div>
-          <div class="card-fill" style="background:rgba(255,255,255,.07);padding:2.6cqh 2cqw;display:flex;flex-direction:column;gap:1cqh">
-            <div class="t-cat" style="color:var(--accent)">ISSUE · 03</div>
-            <div class="t-body-emp" style="color:var(--paper);font-size:max(17px,1.1cqw)">组合升级规则设计</div>
+          <div class="card-fill" style="background: rgba(255, 255, 255, 0.07); padding: 2.6vh 2vw; display: flex; flex-direction: column; gap: 1vh; transform: none; opacity: 1;">
+            <div class="t-cat" style="color: var(--accent); transform: none; opacity: 1;">ISSUE · 03</div>
+            <div class="t-body-emp" style="color:var(--paper);font-size:max(17px,1.1vw)">组合升级规则设计</div>
             <div class="body-sm" style="color:rgba(255,255,255,.62)">中风险关键词 ≥ 3 条同时命中自动升级高风险。宁可误判为高也不能漏判，这是针对老年群体的安全底线。</div>
           </div>
         </div>
@@ -1747,41 +1778,41 @@
       <div class="l">WORKLOAD · 开发体量</div>
       <div class="r">15 / 20</div>
     </div>
-    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4.5cqh">
-      <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4cqh">
+    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4.5vh">
+      <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
         <div class="t-meta">STATS · 4个月持续迭代，独立完成从0到1</div>
-        <h2 class="h-xl-zh" style="font-size:min(5.2cqw,9cqh)">项目开发工作量一览</h2>
+        <h2 class="h-xl-zh" style="font-size:min(5.2vw,9vh)">项目开发工作量一览</h2>
       </div>
-      <div data-anim="ledger" style="display:flex;flex-direction:column;flex:1">
-        <div class="ledger-row" style="display:grid;grid-template-columns:2.5fr 2.2fr auto;gap:1.6cqw;align-items:center;padding:1.8cqh 0;border-bottom:1px solid var(--border-subtle)">
-          <div class="ledger-num" style="font-family:var(--sans);font-weight:200;font-size:min(5cqw,7.5cqh);line-height:.9">4<span class="unit" style="font-size:.35em;margin-left:.15em"> 个月</span></div>
-          <div class="ledger-label"><div class="t-body-emp">独立全栈开发</div><div class="body-sm">UniApp + SpringBoot + AI 服务</div></div>
-          <i data-lucide="calendar" style="width:1.8cqw;height:1.8cqw;stroke-width:1.2;color:var(--accent)" class="ledger-icon"></i>
+      <div data-anim="ledger" style="display: flex; flex-direction: column; flex: 1 1 0%; opacity: 1; transform: none;">
+        <div class="ledger-row" style="display:grid;grid-template-columns:2.5fr 2.2fr auto;gap:1.6vw;align-items:center;padding:1.8vh 0;border-bottom:1px solid var(--border-subtle)">
+          <div class="ledger-num" style="font-family: var(--sans); font-weight: 200; font-size: min(5vw, 7.5vh); line-height: 0.9; transform: none; opacity: 1;">4<span class="unit" style="font-size:.35em;margin-left:.15em"> 个月</span></div>
+          <div class="ledger-label" style="transform: none; opacity: 1;"><div class="t-body-emp">独立全栈开发</div><div class="body-sm">UniApp + SpringBoot + AI 服务</div></div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" aria-hidden="true" style="width: 1.8vw; height: 1.8vw; stroke-width: 1.2; color: var(--accent); opacity: 1; transform: none;" class="lucide lucide-calendar ledger-icon"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
         </div>
-        <div class="ledger-row" style="display:grid;grid-template-columns:2.5fr 2.2fr auto;gap:1.6cqw;align-items:center;padding:1.8cqh 0;border-bottom:1px solid var(--border-subtle)">
-          <div class="ledger-num" style="font-family:var(--sans);font-weight:200;font-size:min(5cqw,7.5cqh);line-height:.9">8,500+</div>
-          <div class="ledger-label"><div class="t-body-emp">代码行数</div><div class="body-sm">Vue3 + SCSS + JS + Java</div></div>
-          <i data-lucide="code-2" style="width:1.8cqw;height:1.8cqw;stroke-width:1.2;color:var(--accent)" class="ledger-icon"></i>
+        <div class="ledger-row" style="display:grid;grid-template-columns:2.5fr 2.2fr auto;gap:1.6vw;align-items:center;padding:1.8vh 0;border-bottom:1px solid var(--border-subtle)">
+          <div class="ledger-num" style="font-family: var(--sans); font-weight: 200; font-size: min(5vw, 7.5vh); line-height: 0.9; transform: none; opacity: 1;">8,500+</div>
+          <div class="ledger-label" style="transform: none; opacity: 1;"><div class="t-body-emp">代码行数</div><div class="body-sm">Vue3 + SCSS + JS + Java</div></div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="code-2" aria-hidden="true" style="width: 1.8vw; height: 1.8vw; stroke-width: 1.2; color: var(--accent); opacity: 1; transform: none;" class="lucide lucide-code-2 ledger-icon"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg>
         </div>
-        <div class="ledger-row" style="display:grid;grid-template-columns:2.5fr 2.2fr auto;gap:1.6cqw;align-items:center;padding:1.8cqh 0;border-bottom:1px solid var(--border-subtle)">
-          <div class="ledger-num" style="font-family:var(--sans);font-weight:200;font-size:min(5cqw,7.5cqh);line-height:.9">12</div>
-          <div class="ledger-label"><div class="t-body-emp">迭代版本</div><div class="body-sm">V0.1→V3.2 持续优化完善</div></div>
-          <i data-lucide="git-branch" style="width:1.8cqw;height:1.8cqw;stroke-width:1.2;color:var(--accent)" class="ledger-icon"></i>
+        <div class="ledger-row" style="display:grid;grid-template-columns:2.5fr 2.2fr auto;gap:1.6vw;align-items:center;padding:1.8vh 0;border-bottom:1px solid var(--border-subtle)">
+          <div class="ledger-num" style="font-family: var(--sans); font-weight: 200; font-size: min(5vw, 7.5vh); line-height: 0.9; transform: none; opacity: 1;">12</div>
+          <div class="ledger-label" style="transform: none; opacity: 1;"><div class="t-body-emp">迭代版本</div><div class="body-sm">V0.1→V3.2 持续优化完善</div></div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="git-branch" aria-hidden="true" style="width: 1.8vw; height: 1.8vw; stroke-width: 1.2; color: var(--accent); opacity: 1; transform: none;" class="lucide lucide-git-branch ledger-icon"><path d="M15 6a9 9 0 0 0-9 9V3"></path><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle></svg>
         </div>
-        <div class="ledger-row" style="display:grid;grid-template-columns:2.5fr 2.2fr auto;gap:1.6cqw;align-items:center;padding:1.8cqh 0;border-bottom:1px solid var(--border-subtle)">
-          <div class="ledger-num" style="font-family:var(--sans);font-weight:200;font-size:min(5cqw,7.5cqh);line-height:.9">8</div>
-          <div class="ledger-label"><div class="t-body-emp">核心页面</div><div class="body-sm">首页/分析/结果/历史/详情/帮助/管理/数据</div></div>
-          <i data-lucide="layout-panel-top" style="width:1.8cqw;height:1.8cqw;stroke-width:1.2;color:var(--accent)" class="ledger-icon"></i>
+        <div class="ledger-row" style="display:grid;grid-template-columns:2.5fr 2.2fr auto;gap:1.6vw;align-items:center;padding:1.8vh 0;border-bottom:1px solid var(--border-subtle)">
+          <div class="ledger-num" style="font-family: var(--sans); font-weight: 200; font-size: min(5vw, 7.5vh); line-height: 0.9; transform: none; opacity: 1;">8</div>
+          <div class="ledger-label" style="transform: none; opacity: 1;"><div class="t-body-emp">核心页面</div><div class="body-sm">首页/分析/结果/历史/详情/帮助/管理/数据</div></div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="layout-panel-top" aria-hidden="true" style="width: 1.8vw; height: 1.8vw; stroke-width: 1.2; color: var(--accent); opacity: 1; transform: none;" class="lucide lucide-layout-panel-top ledger-icon"><rect width="18" height="7" x="3" y="3" rx="1"></rect><rect width="7" height="7" x="3" y="14" rx="1"></rect><rect width="7" height="7" x="14" y="14" rx="1"></rect></svg>
         </div>
-        <div class="ledger-row" style="display:grid;grid-template-columns:2.5fr 2.2fr auto;gap:1.6cqw;align-items:center;padding:1.8cqh 0;border-bottom:1px solid var(--border-subtle)">
-          <div class="ledger-num" style="font-family:var(--sans);font-weight:200;font-size:min(5cqw,7.5cqh);line-height:.9">7</div>
-          <div class="ledger-label"><div class="t-body-emp">工具模块</div><div class="body-sm">API/Mock/常量/存储/图片/加密/解析</div></div>
-          <i data-lucide="package" style="width:1.8cqw;height:1.8cqw;stroke-width:1.2;color:var(--accent)" class="ledger-icon"></i>
+        <div class="ledger-row" style="display:grid;grid-template-columns:2.5fr 2.2fr auto;gap:1.6vw;align-items:center;padding:1.8vh 0;border-bottom:1px solid var(--border-subtle)">
+          <div class="ledger-num" style="font-family: var(--sans); font-weight: 200; font-size: min(5vw, 7.5vh); line-height: 0.9; transform: none; opacity: 1;">7</div>
+          <div class="ledger-label" style="transform: none; opacity: 1;"><div class="t-body-emp">工具模块</div><div class="body-sm">API/Mock/常量/存储/图片/加密/解析</div></div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="package" aria-hidden="true" style="width: 1.8vw; height: 1.8vw; stroke-width: 1.2; color: var(--accent); opacity: 1; transform: none;" class="lucide lucide-package ledger-icon"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path><path d="M12 22V12"></path><polyline points="3.29 7 12 12 20.71 7"></polyline><path d="m7.5 4.27 9 5.15"></path></svg>
         </div>
-        <div class="ledger-row" style="display:grid;grid-template-columns:2.5fr 2.2fr auto;gap:1.6cqw;align-items:center;padding:1.8cqh 0;border-bottom:1px solid var(--border-subtle)">
-          <div class="ledger-num" style="font-family:var(--sans);font-weight:200;font-size:min(5cqw,7.5cqh);line-height:.9;color:var(--accent)">180+</div>
-          <div class="ledger-label"><div class="t-body-emp">高危关键词库</div><div class="body-sm">8 大类 · 实时规则匹配引擎</div></div>
-          <i data-lucide="shield-alert" style="width:1.8cqw;height:1.8cqw;stroke-width:1.2;color:var(--accent)" class="ledger-icon"></i>
+        <div class="ledger-row" style="display:grid;grid-template-columns:2.5fr 2.2fr auto;gap:1.6vw;align-items:center;padding:1.8vh 0;border-bottom:1px solid var(--border-subtle)">
+          <div class="ledger-num" style="font-family: var(--sans); font-weight: 200; font-size: min(5vw, 7.5vh); line-height: 0.9; color: var(--accent); transform: none; opacity: 1;">180+</div>
+          <div class="ledger-label" style="transform: none; opacity: 1;"><div class="t-body-emp">高危关键词库</div><div class="body-sm">8 大类 · 实时规则匹配引擎</div></div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield-alert" aria-hidden="true" style="width: 1.8vw; height: 1.8vw; stroke-width: 1.2; color: var(--accent); opacity: 1; transform: none;" class="lucide lucide-shield-alert ledger-icon"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
         </div>
       </div>
     </div>
@@ -1795,35 +1826,35 @@
       <div class="l">INNOVATION · 产品创新</div>
       <div class="r">16 / 20</div>
     </div>
-    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4cqh">
-      <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4cqh">
+    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4vh">
+      <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
         <div class="t-meta" style="color:rgba(255,255,255,.62)">FOUR BREAKTHROUGHS · 四个行业首创</div>
-        <h2 class="h-xl-zh" style="color:var(--paper);font-size:min(5.8cqw,10.2cqh)">不是又一个反诈工具，而是范式变革</h2>
+        <h2 class="h-xl-zh" style="color:var(--paper);font-size:min(5.8vw,10.2vh)">不是又一个反诈工具，而是范式变革</h2>
       </div>
-      <div data-anim="up" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.6cqw;flex:1">
-        <div class="card-fill" style="background:rgba(255,255,255,.07);padding:2.6cqh 1.8cqw;display:flex;flex-direction:column;gap:1.4cqh">
+      <div data-anim="up" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6vw; flex: 1 1 0%; opacity: 1; transform: none;">
+        <div class="card-fill" style="background: rgba(255, 255, 255, 0.07); padding: 2.6vh 1.8vw; display: flex; flex-direction: column; gap: 1.4vh; transform: none; opacity: 1;">
           <div class="t-cat" style="color:var(--accent)">首创 01</div>
-          <i data-lucide="arrow-left-right" style="width:2cqw;height:2cqw;stroke-width:1.4;color:var(--accent)"></i>
-          <h3 style="font-weight:400;font-size:max(17px,1.4cqw);color:var(--paper)">专业→口语转译</h3>
-          <p class="body-sm" style="color:rgba(255,255,255,.65)">金融话术变老年口语<br/>彻底摒弃专业术语</p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-left-right" aria-hidden="true" style="width:2vw;height:2vw;stroke-width:1.4;color:var(--accent)" class="lucide lucide-arrow-left-right"><path d="M8 3 4 7l4 4"></path><path d="M4 7h16"></path><path d="m16 21 4-4-4-4"></path><path d="M20 17H4"></path></svg>
+          <h3 style="font-weight:400;font-size:max(17px,1.4vw);color:var(--paper)">专业→口语转译</h3>
+          <p class="body-sm" style="color:rgba(255,255,255,.65)">金融话术变老年口语<br>彻底摒弃专业术语</p>
         </div>
-        <div class="card-fill" style="background:rgba(255,255,255,.07);padding:2.6cqh 1.8cqw;display:flex;flex-direction:column;gap:1.4cqh">
+        <div class="card-fill" style="background: rgba(255, 255, 255, 0.07); padding: 2.6vh 1.8vw; display: flex; flex-direction: column; gap: 1.4vh; transform: none; opacity: 1;">
           <div class="t-cat" style="color:var(--accent)">首创 02</div>
-          <i data-lucide="monitor-smartphone" style="width:2cqw;height:2cqw;stroke-width:1.4;color:var(--accent)"></i>
-          <h3 style="font-weight:400;font-size:max(17px,1.4cqw);color:var(--paper)">全链路适老化</h3>
-          <p class="body-sm" style="color:rgba(255,255,255,.65)">字体/配色/按钮/交互/间距<br/>全套适配老年习惯</p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="monitor-smartphone" aria-hidden="true" style="width:2vw;height:2vw;stroke-width:1.4;color:var(--accent)" class="lucide lucide-monitor-smartphone"><path d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8"></path><path d="M10 19v-3.96 3.15"></path><path d="M7 19h5"></path><rect width="6" height="10" x="16" y="12" rx="2"></rect></svg>
+          <h3 style="font-weight:400;font-size:max(17px,1.4vw);color:var(--paper)">全链路适老化</h3>
+          <p class="body-sm" style="color:rgba(255,255,255,.65)">字体/配色/按钮/交互/间距<br>全套适配老年习惯</p>
         </div>
-        <div class="card-fill" style="background:rgba(255,255,255,.07);padding:2.6cqh 1.8cqw;display:flex;flex-direction:column;gap:1.4cqh">
+        <div class="card-fill" style="background: rgba(255, 255, 255, 0.07); padding: 2.6vh 1.8vw; display: flex; flex-direction: column; gap: 1.4vh; transform: none; opacity: 1;">
           <div class="t-cat" style="color:var(--accent)">首创 03</div>
-          <i data-lucide="crosshair" style="width:2cqw;height:2cqw;stroke-width:1.4;color:var(--accent)"></i>
-          <h3 style="font-weight:400;font-size:max(17px,1.4cqw);color:var(--paper)">场景垂直化</h3>
-          <p class="body-sm" style="color:rgba(255,255,255,.65)">聚焦养老金融+老年诈骗<br/>针对性更强</p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="crosshair" aria-hidden="true" style="width:2vw;height:2vw;stroke-width:1.4;color:var(--accent)" class="lucide lucide-crosshair"><circle cx="12" cy="12" r="10"></circle><line x1="22" x2="18" y1="12" y2="12"></line><line x1="6" x2="2" y1="12" y2="12"></line><line x1="12" x2="12" y1="6" y2="2"></line><line x1="12" x2="12" y1="22" y2="18"></line></svg>
+          <h3 style="font-weight:400;font-size:max(17px,1.4vw);color:var(--paper)">场景垂直化</h3>
+          <p class="body-sm" style="color:rgba(255,255,255,.65)">聚焦养老金融+老年诈骗<br>针对性更强</p>
         </div>
-        <div class="card-accent" style="padding:2.6cqh 1.8cqw;display:flex;flex-direction:column;gap:1.4cqh">
+        <div class="card-accent" style="padding: 2.6vh 1.8vw; display: flex; flex-direction: column; gap: 1.4vh; transform: none; opacity: 1;">
           <div class="t-cat" style="color:rgba(255,255,255,.7)">首创 04</div>
-          <i data-lucide="database" style="width:2cqw;height:2cqw;stroke-width:1.4;color:var(--accent-on)"></i>
-          <h3 style="font-weight:400;font-size:max(17px,1.4cqw);color:var(--accent-on)">数据价值复用</h3>
-          <p class="body-sm" style="color:rgba(255,255,255,.78)">沉淀诈骗语料库<br/>赋能行业研究</p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="database" aria-hidden="true" style="width:2vw;height:2vw;stroke-width:1.4;color:var(--accent-on)" class="lucide lucide-database"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>
+          <h3 style="font-weight:400;font-size:max(17px,1.4vw);color:var(--accent-on)">数据价值复用</h3>
+          <p class="body-sm" style="color:rgba(255,255,255,.78)">沉淀诈骗语料库<br>赋能行业研究</p>
         </div>
       </div>
     </div>
@@ -1837,41 +1868,41 @@
       <div class="l">RESEARCH · 研究价值</div>
       <div class="r">17 / 20</div>
     </div>
-    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4cqh">
-      <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4cqh">
+    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4vh">
+      <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
         <div class="t-meta">DATA ASSET · 数据资产化</div>
-        <h2 class="h-xl-zh" style="font-size:min(5cqw,9cqh)">构建养老金融风险语料库</h2>
+        <h2 class="h-xl-zh" style="font-size:min(5vw,9vh)">构建养老金融风险语料库</h2>
       </div>
-      <div data-anim="up" style="display:grid;grid-template-columns:5fr 7fr;gap:3cqw;flex:1">
-        <div style="display:flex;flex-direction:column;gap:2.4cqh">
+      <div data-anim="up" style="display: grid; grid-template-columns: 5fr 7fr; gap: 3vw; flex: 1 1 0%; opacity: 1; transform: none;">
+        <div style="display:flex;flex-direction:column;gap:2.4vh">
           <p class="t-body" style="font-weight:300;max-width:38ch">每一次风险识别，都在自动沉淀诈骗话术、案例文本与高危关键词样本，形成可研究、可复用的标准化数据库。</p>
-          <div class="card-fill" style="padding:2cqh 1.8cqw;display:flex;flex-direction:column;gap:1cqh">
-            <div class="t-cat accent">语料沉淀</div><div class="t-body-emp" style="font-size:max(16px,1.05cqw)">诈骗文本、宣传话术、高危关键词标准化</div>
+          <div class="card-fill" style="padding: 2vh 1.8vw; display: flex; flex-direction: column; gap: 1vh; transform: none; opacity: 1;">
+            <div class="t-cat accent">语料沉淀</div><div class="t-body-emp" style="font-size:max(16px,1.05vw)">诈骗文本、宣传话术、高危关键词标准化</div>
           </div>
-          <div class="card-fill" style="padding:2cqh 1.8cqw;display:flex;flex-direction:column;gap:1cqh">
-            <div class="t-cat accent">行为分析</div><div class="t-body-emp" style="font-size:max(16px,1.05cqw)">高频诈骗场景与高发诈骗类型统计</div>
+          <div class="card-fill" style="padding:2vh 1.8vw;display:flex;flex-direction:column;gap:1vh">
+            <div class="t-cat accent">行为分析</div><div class="t-body-emp" style="font-size:max(16px,1.05vw)">高频诈骗场景与高发诈骗类型统计</div>
           </div>
-          <div class="card-fill" style="padding:2cqh 1.8cqw;display:flex;flex-direction:column;gap:1cqh">
-            <div class="t-cat accent">学术价值</div><div class="t-body-emp" style="font-size:max(16px,1.05cqw)">数字鸿沟研究与适老化产品实证样本</div>
+          <div class="card-fill" style="padding:2vh 1.8vw;display:flex;flex-direction:column;gap:1vh">
+            <div class="t-cat accent">学术价值</div><div class="t-body-emp" style="font-size:max(16px,1.05vw)">数字鸿沟研究与适老化产品实证样本</div>
           </div>
         </div>
         <div>
-          <div class="h-bar-chart" style="margin-top:0">
-            <div class="row-lbl">诈骗诱导类</div><div class="row-track"><div class="row-fill accent" style="width:82%"></div></div><div class="row-val">82%</div>
+          <div class="h-bar-chart" style="margin-top: 0px; transform-origin: left center; transform: none; opacity: 1;">
+            <div class="row-lbl">诈骗诱导类</div><div class="row-track"><div class="row-fill accent" style="width: 82%;"></div></div><div class="row-val">82%</div>
           </div>
-          <div class="h-bar-chart" style="margin-top:.8cqh">
-            <div class="row-lbl">非法集资类</div><div class="row-track"><div class="row-fill accent" style="width:67%"></div></div><div class="row-val">67%</div>
+          <div class="h-bar-chart" style="margin-top: 0.8vh; opacity: 1;">
+            <div class="row-lbl">非法集资类</div><div class="row-track"><div class="row-fill accent" style="width: 67%;"></div></div><div class="row-val">67%</div>
           </div>
-          <div class="h-bar-chart" style="margin-top:.8cqh">
-            <div class="row-lbl">金融误导类</div><div class="row-track"><div class="row-fill accent" style="width:54%"></div></div><div class="row-val">54%</div>
+          <div class="h-bar-chart" style="margin-top: 0.8vh; opacity: 1;">
+            <div class="row-lbl">金融误导类</div><div class="row-track"><div class="row-fill accent" style="width: 54%;"></div></div><div class="row-val">54%</div>
           </div>
-          <div class="h-bar-chart" style="margin-top:.8cqh">
-            <div class="row-lbl">仿冒平台类</div><div class="row-track"><div class="row-fill accent" style="width:41%"></div></div><div class="row-val">41%</div>
+          <div class="h-bar-chart" style="margin-top: 0.8vh; opacity: 1;">
+            <div class="row-lbl">仿冒平台类</div><div class="row-track"><div class="row-fill accent" style="width: 41%;"></div></div><div class="row-val">41%</div>
           </div>
-          <div class="h-bar-chart" style="margin-top:.8cqh">
-            <div class="row-lbl">AI 新型诈骗</div><div class="row-track"><div class="row-fill accent" style="width:35%"></div></div><div class="row-val">35%</div>
+          <div class="h-bar-chart" style="margin-top: 0.8vh; opacity: 1;">
+            <div class="row-lbl">AI 新型诈骗</div><div class="row-track"><div class="row-fill accent" style="width: 35%;"></div></div><div class="row-val">35%</div>
           </div>
-          <div class="t-meta" style="margin-top:2cqh">高发诈骗类型分布（基于试点数据预估）</div>
+          <div class="t-meta" style="margin-top: 2vh; opacity: 1;">高发诈骗类型分布（基于试点数据预估）</div>
         </div>
       </div>
     </div>
@@ -1885,29 +1916,29 @@
       <div class="l">IMPACT · 社会价值</div>
       <div class="r">18 / 20</div>
     </div>
-    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:5cqh">
-      <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4cqh">
+    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:5vh">
+      <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
         <div class="t-meta" style="color:rgba(255,255,255,.62)">WHY THIS MATTERS · 不只是产品</div>
-        <h2 class="h-xl-zh" style="color:var(--paper);font-size:min(5.8cqw,10.2cqh)">一项关乎 2.9 亿人金融安全的工程</h2>
+        <h2 class="h-xl-zh" style="color:var(--paper);font-size:min(5.8vw,10.2vh)">一项关乎 2.9 亿人金融安全的工程</h2>
       </div>
-      <div data-anim="up" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw;flex:1">
-        <div style="display:flex;flex-direction:column;gap:2cqh">
-          <div class="t-cat" style="color:var(--accent)">ACTION 01</div>
-          <h3 class="t-body-emp" style="color:var(--paper);font-size:max(18px,1.35cqw)">赋能老年群体<br/>自主辨别金融风险</h3>
+      <div data-anim="up" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2vw; flex: 1 1 0%; opacity: 1; transform: none;">
+        <div style="display:flex;flex-direction:column;gap:2vh">
+          <div class="t-cat" style="color: var(--accent); transform: none; opacity: 1;">ACTION 01</div>
+          <h3 class="t-body-emp" style="color:var(--paper);font-size:max(18px,1.35vw)">赋能老年群体<br>自主辨别金融风险</h3>
           <p class="body-sm" style="color:rgba(255,255,255,.62)">让每位老人都拥有随身反诈助手，降低被骗风险</p>
-          <div style="font-family:var(--sans);font-weight:200;font-size:min(7cqw,12cqh);line-height:.9;color:var(--accent)">+2.9亿</div>
+          <div style="font-family: var(--sans); font-weight: 200; font-size: min(7vw, 12vh); line-height: 0.9; color: var(--accent); transform: none; opacity: 1;">+2.9亿</div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:2cqh">
-          <div class="t-cat" style="color:var(--accent)">ACTION 02</div>
-          <h3 class="t-body-emp" style="color:var(--paper);font-size:max(18px,1.35cqw)">针对性打击养老诈骗<br/>守护财产安全</h3>
+        <div style="display:flex;flex-direction:column;gap:2vh">
+          <div class="t-cat" style="color: var(--accent); transform: none; opacity: 1;">ACTION 02</div>
+          <h3 class="t-body-emp" style="color:var(--paper);font-size:max(18px,1.35vw)">针对性打击养老诈骗<br>守护财产安全</h3>
           <p class="body-sm" style="color:rgba(255,255,255,.62)">从被动宣传到主动识别，构建金融反诈第一道防线</p>
-          <div style="font-family:var(--sans);font-weight:200;font-size:min(7cqw,12cqh);line-height:.9;color:var(--paper)">-54%</div>
+          <div style="font-family: var(--sans); font-weight: 200; font-size: min(7vw, 12vh); line-height: 0.9; color: var(--paper); transform: none; opacity: 1;">-54%</div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:2cqh">
-          <div class="t-cat" style="color:var(--accent)">ACTION 03</div>
-          <h3 class="t-body-emp" style="color:var(--paper);font-size:max(18px,1.35cqw)">弥合数字鸿沟<br/>服务银发经济</h3>
+        <div style="display:flex;flex-direction:column;gap:2vh">
+          <div class="t-cat" style="color: var(--accent); transform: none; opacity: 1;">ACTION 03</div>
+          <h3 class="t-body-emp" style="color:var(--paper);font-size:max(18px,1.35vw)">弥合数字鸿沟<br>服务银发经济</h3>
           <p class="body-sm" style="color:rgba(255,255,255,.62)">优化数字产品适老化体验，助力养老金融规范化发展</p>
-          <div style="font-family:var(--sans);font-weight:200;font-size:min(7cqw,12cqh);line-height:.9;color:var(--accent)">∞</div>
+          <div style="font-family: var(--sans); font-weight: 200; font-size: min(7vw, 12vh); line-height: 0.9; color: var(--accent); transform: none; opacity: 1;">∞</div>
         </div>
       </div>
     </div>
@@ -1921,18 +1952,18 @@
       <div class="l">ROADMAP · 未来扩展</div>
       <div class="r">19 / 20</div>
     </div>
-    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4.5cqh">
-      <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4cqh">
+    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4.5vh">
+      <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4vh">
         <div class="t-meta">NEXT STEPS · 五个方向</div>
-        <h2 class="h-xl-zh" style="font-size:min(5.8cqw,10.2cqh)">V1.0 只是起点，平台化才是终局</h2>
+        <h2 class="h-xl-zh" style="font-size:min(5.8vw,10.2vh)">V1.0 只是起点，平台化才是终局</h2>
       </div>
-      <div data-anim="up" class="brief-grid" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:1.6cqh 1.4cqw;flex:1">
-        <div class="card-fill brief-card" style="padding:2.4cqh 2cqw"><span class="nb-corner" style="font-size:max(18px,1.2cqw)">01</span><i data-lucide="mic" style="width:2.2cqw;height:2.2cqw;color:var(--accent);margin-bottom:.8cqh" class="lucide"></i><div class="ttl" style="font-size:max(19px,1.25cqw)">AI 语音问答</div><div class="desc" style="font-size:max(15px,.95cqw)">支持语音提问咨询金融防骗问题</div></div>
-        <div class="card-fill brief-card" style="padding:2.4cqh 2cqw"><span class="nb-corner" style="font-size:max(18px,1.2cqw)">02</span><i data-lucide="users" style="width:2.2cqw;height:2.2cqw;color:var(--accent);margin-bottom:.8cqh" class="lucide"></i><div class="ttl" style="font-size:max(19px,1.25cqw)">家属协同监护</div><div class="desc" style="font-size:max(15px,.95cqw)">发现高风险时自动推送提醒家属</div></div>
-        <div class="card-fill brief-card" style="padding:2.4cqh 2cqw"><span class="nb-corner" style="font-size:max(18px,1.2cqw)">03</span><i data-lucide="building-2" style="width:2.2cqw;height:2.2cqw;color:var(--accent);margin-bottom:.8cqh" class="lucide"></i><div class="ttl" style="font-size:max(19px,1.25cqw)">社区联动模块</div><div class="desc" style="font-size:max(15px,.95cqw)">对接社区机构推送本地反诈通知</div></div>
-        <div class="card-fill brief-card" style="padding:2.4cqh 2cqw"><span class="nb-corner" style="font-size:max(18px,1.2cqw)">04</span><i data-lucide="map" style="width:2.2cqw;height:2.2cqw;color:var(--accent);margin-bottom:.8cqh" class="lucide"></i><div class="ttl" style="font-size:max(19px,1.25cqw)">风险热力图</div><div class="desc" style="font-size:max(15px,.95cqw)">可视化展示本地区高发诈骗类型</div></div>
-        <div class="card-fill brief-card" style="padding:2.4cqh 2cqw"><span class="nb-corner" style="font-size:max(18px,1.2cqw)">05</span><i data-lucide="bar-chart-4" style="width:2.2cqw;height:2.2cqw;color:var(--accent);margin-bottom:.8cqh" class="lucide"></i><div class="ttl" style="font-size:max(19px,1.25cqw)">养老金融驾驶舱</div><div class="desc" style="font-size:max(15px,.95cqw)">面向监管机构的风险数据后台</div></div>
-        <div class="card-accent brief-card is-accent" style="padding:2.4cqh 2cqw"><span class="nb-corner" style="color:rgba(255,255,255,.6);font-size:max(18px,1.2cqw)">∞</span><i data-lucide="orbit" style="width:2.2cqw;height:2.2cqw;color:var(--accent-on);margin-bottom:.8cqh" class="lucide"></i><div class="ttl" style="color:var(--accent-on);font-size:max(19px,1.25cqw)">持续进化</div><div class="desc" style="color:rgba(255,255,255,.78);font-size:max(15px,.95cqw)">基于数据迭代让AI更懂老人更懂诈骗</div></div>
+      <div data-anim="up" class="brief-grid" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:1.6vh 1.4vw;flex:1">
+        <div class="card-fill brief-card" style="padding:2.4vh 2vw"><span class="nb-corner" style="font-size:max(18px,1.2vw)">01</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="mic" aria-hidden="true" style="width:2.2vw;height:2.2vw;color:var(--accent);margin-bottom:.8vh" class="lucide lucide-mic"><path d="M12 19v3"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><rect x="9" y="2" width="6" height="13" rx="3"></rect></svg><div class="ttl" style="font-size:max(19px,1.25vw)">AI 语音问答</div><div class="desc" style="font-size:max(15px,.95vw)">支持语音提问咨询金融防骗问题</div></div>
+        <div class="card-fill brief-card" style="padding:2.4vh 2vw"><span class="nb-corner" style="font-size:max(18px,1.2vw)">02</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" aria-hidden="true" style="width:2.2vw;height:2.2vw;color:var(--accent);margin-bottom:.8vh" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg><div class="ttl" style="font-size:max(19px,1.25vw)">家属协同监护</div><div class="desc" style="font-size:max(15px,.95vw)">发现高风险时自动推送提醒家属</div></div>
+        <div class="card-fill brief-card" style="padding:2.4vh 2vw"><span class="nb-corner" style="font-size:max(18px,1.2vw)">03</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="building-2" aria-hidden="true" style="width:2.2vw;height:2.2vw;color:var(--accent);margin-bottom:.8vh" class="lucide lucide-building-2"><path d="M10 12h4"></path><path d="M10 8h4"></path><path d="M14 21v-3a2 2 0 0 0-4 0v3"></path><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"></path><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"></path></svg><div class="ttl" style="font-size:max(19px,1.25vw)">社区联动模块</div><div class="desc" style="font-size:max(15px,.95vw)">对接社区机构推送本地反诈通知</div></div>
+        <div class="card-fill brief-card" style="padding:2.4vh 2vw"><span class="nb-corner" style="font-size:max(18px,1.2vw)">04</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="map" aria-hidden="true" style="width:2.2vw;height:2.2vw;color:var(--accent);margin-bottom:.8vh" class="lucide lucide-map"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"></path><path d="M15 5.764v15"></path><path d="M9 3.236v15"></path></svg><div class="ttl" style="font-size:max(19px,1.25vw)">风险热力图</div><div class="desc" style="font-size:max(15px,.95vw)">可视化展示本地区高发诈骗类型</div></div>
+        <div class="card-fill brief-card" style="padding:2.4vh 2vw"><span class="nb-corner" style="font-size:max(18px,1.2vw)">05</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bar-chart-4" aria-hidden="true" style="width:2.2vw;height:2.2vw;color:var(--accent);margin-bottom:.8vh" class="lucide lucide-bar-chart-4"><path d="M13 17V9"></path><path d="M18 17V5"></path><path d="M3 3v16a2 2 0 0 0 2 2h16"></path><path d="M8 17v-3"></path></svg><div class="ttl" style="font-size:max(19px,1.25vw)">养老金融驾驶舱</div><div class="desc" style="font-size:max(15px,.95vw)">面向监管机构的风险数据后台</div></div>
+        <div class="card-accent brief-card is-accent" style="padding:2.4vh 2vw"><span class="nb-corner" style="color:rgba(255,255,255,.6);font-size:max(18px,1.2vw)">∞</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="orbit" aria-hidden="true" style="width:2.2vw;height:2.2vw;color:var(--accent-on);margin-bottom:.8vh" class="lucide lucide-orbit"><path d="M20.341 6.484A10 10 0 0 1 10.266 21.85"></path><path d="M3.659 17.516A10 10 0 0 1 13.74 2.152"></path><circle cx="12" cy="12" r="3"></circle><circle cx="19" cy="5" r="2"></circle><circle cx="5" cy="19" r="2"></circle></svg><div class="ttl" style="color:var(--accent-on);font-size:max(19px,1.25vw)">持续进化</div><div class="desc" style="color:rgba(255,255,255,.78);font-size:max(15px,.95vw)">基于数据迭代让AI更懂老人更懂诈骗</div></div>
       </div>
     </div>
   </div>
@@ -1942,44 +1973,44 @@
 <section class="slide split" data-animate="split-statement" data-layout="S10">
   <div class="canvas-card">
     <div class="split-half">
-      <div class="half b-accent" style="padding:5.6cqh 3.6cqw 4.4cqh;justify-content:space-between;position:relative;overflow:hidden">
-        <canvas class="ascii-bg" aria-hidden="true"></canvas>
+      <div class="half b-accent" style="padding:5.6vh 3.6vw 4.4vh;justify-content:space-between;position:relative;overflow:hidden">
+        <canvas class="ascii-bg" aria-hidden="true" width="675" height="1294"></canvas>
         <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1">
           <div class="l">20 / 20</div>
           <div class="r">END</div>
         </div>
-        <div data-anim="manifesto" style="display:flex;flex-direction:column;gap:2cqh;position:relative;z-index:1">
-          <div class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em;margin-bottom:1.6cqh">MANIFESTO</div>
-          <h2 style="font-family:var(--sans),var(--sans-zh);font-size:min(7.2cqw,12cqh);line-height:.94;letter-spacing:-.025em;font-weight:200;color:#fff">守护每份信任<br/>让 AI护航银发</h2>
-          <div style="font-family:var(--sans),var(--sans-zh);font-size:max(14px,1cqw);line-height:1.6;color:rgba(255,255,255,.82);font-weight:300;max-width:36ch;margin-top:1.4cqh">灵溪识险 · 源于对 2.9 亿老年群体的承诺</div>
+        <div data-anim="manifesto" style="display:flex;flex-direction:column;gap:2vh;position:relative;z-index:1">
+          <div class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em;margin-bottom:1.6vh">MANIFESTO</div>
+          <h2 style="font-family:var(--sans),var(--sans-zh);font-size:min(7.2vw,12vh);line-height:.94;letter-spacing:-.025em;font-weight:200;color:#fff">守护<span style="font-style:italic;font-weight:300">每一份信任<br>让 AI护航银龄</span></h2>
+          <div style="font-family:var(--sans),var(--sans-zh);font-size:max(14px,1vw);line-height:1.6;color:rgba(255,255,255,.82);font-weight:300;max-width:36ch;margin-top:1.4vh">灵溪识险 · 源于对 2.9 亿老年群体的承诺</div>
         </div>
-        <div data-anim="signature" style="display:flex;justify-content:space-between;align-items:end;border-top:1px solid rgba(255,255,255,.22);padding-top:2cqh;position:relative;z-index:1">
+        <div data-anim="signature" style="display:flex;justify-content:space-between;align-items:end;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh;position:relative;z-index:1">
           <div class="t-meta" style="color:rgba(255,255,255,.62)">中国人民银行本溪市分行 鲍一鸣</div>
           <div class="t-meta" style="color:rgba(255,255,255,.62)">2026年6月</div>
         </div>
       </div>
-      <div class="half" style="padding:5.6cqh 3.6cqw 4.4cqh;justify-content:space-between">
+      <div class="half" style="padding:5.6vh 3.6vw 4.4vh;justify-content:space-between">
         <div class="chrome-min"><div class="l">TAKEAWAYS</div><div class="r">03 KEYS</div></div>
         <div data-anim="rules" style="display:flex;flex-direction:column;gap:0">
-          <div style="display:grid;grid-template-columns:auto 1fr;gap:2cqw;align-items:start;padding:2.6cqh 0;border-top:1px solid var(--border-subtle)">
-            <div style="font-family:var(--sans);font-weight:200;font-size:min(4.4cqw,7.8cqh);line-height:.9;color:var(--text-primary)">01</div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:2vw;align-items:start;padding:2.6vh 0;border-top:1px solid var(--border-subtle)">
+            <div style="font-family:var(--sans);font-weight:200;font-size:min(4.4vw,7.8vh);line-height:.9;color:var(--text-primary)">01</div>
             <div>
-              <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:400;font-size:max(18px,1.8cqw);line-height:1.2;letter-spacing:-.015em;color:var(--text-primary);margin-bottom:1cqh">技术向善 · AI 反哺银发</h3>
-              <p style="font-family:var(--sans),var(--sans-zh);font-size:max(16px,.94cqw);line-height:1.6;color:var(--text-secondary);font-weight:400">大模型不是年轻人的玩具，而是守护老年财产安全的利剑</p>
+              <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:400;font-size:max(18px,1.8vw);line-height:1.2;letter-spacing:-.015em;color:var(--text-primary);margin-bottom:1vh">技术向善 · AI 反哺银龄</h3>
+              <p style="font-family:var(--sans),var(--sans-zh);font-size:max(16px,.94vw);line-height:1.6;color:var(--text-secondary);font-weight:400">大模型不是年轻人的玩具，而是守护老年财产安全的利剑</p>
             </div>
           </div>
-          <div style="display:grid;grid-template-columns:auto 1fr;gap:2cqw;align-items:start;padding:2.6cqh 0;border-top:1px solid var(--border-subtle)">
-            <div style="font-family:var(--sans);font-weight:200;font-size:min(4.4cqw,7.8cqh);line-height:.9;color:var(--text-primary)">02</div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:2vw;align-items:start;padding:2.6vh 0;border-top:1px solid var(--border-subtle)">
+            <div style="font-family:var(--sans);font-weight:200;font-size:min(4.4vw,7.8vh);line-height:.9;color:var(--text-primary)">02</div>
             <div>
-              <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:400;font-size:max(18px,1.8cqw);line-height:1.2;letter-spacing:-.015em;color:var(--text-primary);margin-bottom:1cqh">适老化不是加法 · 是减法</h3>
-              <p style="font-family:var(--sans),var(--sans-zh);font-size:max(16px,.94cqw);line-height:1.6;color:var(--text-secondary);font-weight:400">少即是多：少输入、少跳转、少按钮。让 70 岁老人也能独立使用</p>
+              <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:400;font-size:max(18px,1.8vw);line-height:1.2;letter-spacing:-.015em;color:var(--text-primary);margin-bottom:1vh">适老化不是加法 · 是减法</h3>
+              <p style="font-family:var(--sans),var(--sans-zh);font-size:max(16px,.94vw);line-height:1.6;color:var(--text-secondary);font-weight:400">少即是多：少输入、少跳转、少按钮。让 70 岁老人也能独立使用</p>
             </div>
           </div>
-          <div style="display:grid;grid-template-columns:auto 1fr;gap:2cqw;align-items:start;padding:2.6cqh 0;border-top:1px solid var(--border-subtle);border-bottom:2px solid var(--accent)">
-            <div style="font-family:var(--sans);font-weight:200;font-size:min(4.4cqw,7.8cqh);line-height:.9;color:var(--accent)">03</div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:2vw;align-items:start;padding:2.6vh 0;border-top:1px solid var(--border-subtle);border-bottom:2px solid var(--accent)">
+            <div style="font-family:var(--sans);font-weight:200;font-size:min(4.4vw,7.8vh);line-height:.9;color:var(--accent)">03</div>
             <div>
-              <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:400;font-size:max(18px,1.8cqw);line-height:1.2;letter-spacing:-.015em;color:var(--accent);margin-bottom:1cqh">人+AI 协同 · 守护信任</h3>
-              <p style="font-family:var(--sans),var(--sans-zh);font-size:max(16px,.94cqw);line-height:1.6;color:var(--text-secondary);font-weight:400">一场 4 个月从 0 到 1 的人机协作实验，证明 AI 可以加速社会价值产品的诞生</p>
+              <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:400;font-size:max(18px,1.8vw);line-height:1.2;letter-spacing:-.015em;color:var(--accent);margin-bottom:1vh">人+AI 协同 · 守护信任</h3>
+              <p style="font-family:var(--sans),var(--sans-zh);font-size:max(16px,.94vw);line-height:1.6;color:var(--text-secondary);font-weight:400">一场 4 个月从 0 到 1 的人机协作实验，证明 AI 可以加速社会价值产品的诞生</p>
             </div>
           </div>
         </div>
@@ -1991,9 +2022,8 @@
 
 
 </div>
-</div>
 
-<div id="nav"></div>
+<div id="nav"><button class="dot" data-i="0" aria-label="Page 1"></button><button class="dot active" data-i="1" aria-label="Page 2"></button><button class="dot" data-i="2" aria-label="Page 3"></button><button class="dot" data-i="3" aria-label="Page 4"></button><button class="dot" data-i="4" aria-label="Page 5"></button><button class="dot" data-i="5" aria-label="Page 6"></button><button class="dot" data-i="6" aria-label="Page 7"></button><button class="dot" data-i="7" aria-label="Page 8"></button><button class="dot" data-i="8" aria-label="Page 9"></button><button class="dot" data-i="9" aria-label="Page 10"></button><button class="dot" data-i="10" aria-label="Page 11"></button><button class="dot" data-i="11" aria-label="Page 12"></button><button class="dot" data-i="12" aria-label="Page 13"></button><button class="dot" data-i="13" aria-label="Page 14"></button><button class="dot" data-i="14" aria-label="Page 15"></button><button class="dot" data-i="15" aria-label="Page 16"></button><button class="dot" data-i="16" aria-label="Page 17"></button><button class="dot" data-i="17" aria-label="Page 18"></button><button class="dot" data-i="18" aria-label="Page 19"></button><button class="dot" data-i="19" aria-label="Page 20"></button></div>
 
 <script>
 /* =============== WebGL 网格背景 (瑞士风专用) ===============
@@ -2145,36 +2175,25 @@ addEventListener('swiss-low-power-change', e=>{e.detail.on ? stopGrid() : startG
 
 // =============== 导航 ===============
 const deck=document.getElementById('deck');
-const deckStage=document.getElementById('deck-stage');
 const slides=deck.querySelectorAll('.slide');
 const nav=document.getElementById('nav');
 let idx=0,total=slides.length,lock=false;
 
-deck.style.width=(total*1920)+'px';
+deck.style.width=(total*100)+'vw';
 
-/* 根据视口等比缩放 deck-stage, 保证 1920×1080 参考分辨率为基准 */
-const REF_W=1920, REF_H=1080;
-function rescale(){
-  const s=Math.min(innerWidth/REF_W, innerHeight/REF_H);
-  const ox=(innerWidth-REF_W*s)/2;
-  const oy=(innerHeight-REF_H*s)/2;
-  deckStage.style.transform=`translate(${ox}px,${oy}px) scale(${s})`;
-  if(overviewOn) buildOverview();
-}
-addEventListener('resize', rescale);
-
-slides.forEach((s,i)=>{
-  const b=document.createElement('button');
-  b.className='dot';b.dataset.i=i;b.setAttribute('aria-label','Page '+(i+1));
-  b.onclick=()=>go(i);
-  nav.appendChild(b);
+/* 给 HTML 中已有的 dot 绑定点击事件, 使用 data-i 属性确保映射正确 */
+nav.querySelectorAll('.dot').forEach(b=>{
+  const di=parseInt(b.dataset.i,10);
+  b.onclick=()=>go(di);
 });
+/* 初始激活第 0 个 dot */
+nav.querySelector('.dot[data-i="0"]')?.classList.add('active');
 
 function go(n){
   if(lock)return;
   idx=Math.max(0,Math.min(total-1,n));
   window.__currentSlideIndex = idx;
-  deck.style.transform=`translateX(${-idx*1920}px)`;
+  deck.style.transform=`translateX(${-idx*100}vw)`;
   nav.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
   const el=slides[idx];
   const isDark = el.classList.contains('dark') || el.classList.contains('accent');
@@ -2204,7 +2223,7 @@ function buildOverview(){
     const isDark = s.classList.contains('dark') || s.classList.contains('accent');
     wrap.style.cssText='width:100%;aspect-ratio:16/9;overflow:hidden;position:relative;pointer-events:none;background:'+(isDark?'var(--ink)':'var(--paper)');
     const clone=s.cloneNode(true);
-    clone.style.cssText='width:1920px;height:1080px;transform:scale('+(1/4.5)+');transform-origin:top left;position:absolute;top:0;left:0;pointer-events:none';
+    clone.style.cssText='width:100vw;height:100vh;transform:scale('+(1/4.5)+');transform-origin:top left;position:absolute;top:0;left:0;pointer-events:none';
     wrap.appendChild(clone);
     const label=document.createElement('div');
     /* ESC 索引卡 label */
@@ -2268,10 +2287,9 @@ addEventListener('touchend',e=>{
 
 const initialSlideParam = new URLSearchParams(location.search).get('slide');
 const initialSlide = initialSlideParam ? Number(initialSlideParam) - 1 : 0;
-rescale();
 go(Number.isFinite(initialSlide) ? initialSlide : 0);
-</script>
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</script><div id="overview" style="position: fixed; inset: 0px; z-index: 100; background: rgba(250, 250, 248, 0.96); backdrop-filter: blur(12px); display: none; overflow-y: auto; padding: 4vh 4vw;"></div>
+<script src="./CodeBuddy CN_files/lucide.min.js"></script>
 <script>lucide.createIcons();</script>
 
 <!-- Motion One 动效引擎 (与原模板一致) -->
@@ -2354,7 +2372,7 @@ if(motion){
       if(multi) animate(multi, {scale:[.92, 1], opacity:[0,1]},
         {duration:.5, delay:base + .12, easing:EASE_ENTRY_EXP});
     });
-
+    
     /* 底部 KPI 4 列最后落定,内部 60ms stagger */
     const kpis = [...slide.querySelectorAll('.kpi-cell')];
     kpis.forEach((cell, i)=>{
@@ -2412,7 +2430,7 @@ if(motion){
     /* 下推上: LAYER 03 application 从底部 push up */
     if(blocks[2]) animate(blocks[2], {opacity:[0,1], y:[22, 0]},
       {duration:.6, delay:.6, easing:EASE_ENTRY_EXP});
-
+    
     const foot = slide.querySelector('.t-meta');
     if(foot) animate(foot, {opacity:[0,1]}, {duration:.3, delay:1.3, easing:EASE_PROD});
   }
@@ -2457,7 +2475,7 @@ if(motion){
           {duration:.55, delay:.5, easing:EASE_ENTRY_EXP});
       }
     }
-
+    
     /* bar 行依次 width 增长 */
     const fills = [...slide.querySelectorAll('.row-fill')];
     const labels = [...slide.querySelectorAll('.row-lbl')];
@@ -2491,7 +2509,7 @@ if(motion){
     }
     if(cols[1]) animate(cols[1], {opacity:[0,1], x:[24, 0]},
       {duration:.65, delay:.7, easing:EASE_ENTRY_EXP});
-
+    
     const foot = slide.querySelector('.t-meta');
     if(foot) animate(foot, {opacity:[0,1]}, {duration:.3, delay:1.3, easing:EASE_PROD});
   }
@@ -2528,7 +2546,7 @@ if(motion){
 
     const tl = slide.querySelector('.timeline-h');
     if(tl) animate(tl, {opacity:[0,1]}, {duration:.4, delay:.35, easing:EASE_PROD});
-
+    
     const nodes = [...slide.querySelectorAll('.timeline-h .th-node')];
     nodes.forEach((node, i)=>{
       const base = .55 + i*.18;
@@ -2546,7 +2564,7 @@ if(motion){
           {duration:.5, delay:base + .12, easing:EASE_ENTRY_EXP});
       }
     });
-
+    
     const foot = slide.querySelector('.t-meta');
     if(foot) animate(foot, {opacity:[0,1]}, {duration:.3, delay:1.7, easing:EASE_PROD});
   }
@@ -2579,11 +2597,11 @@ if(motion){
 
     const grid = slide.querySelector('[data-anim="up"]');
     if(grid) animate(grid, {opacity:[0,1]}, {duration:.3, delay:.3, easing:EASE_PROD});
-
+    
     const heroBlock = grid?.querySelector(':scope > div:first-child');
     if(heroBlock) animate(heroBlock, {opacity:[0,1], x:[-26, 0]},
       {duration:.6, delay:.4, easing:EASE_ENTRY_EXP});
-
+    
     const cards = grid ? [...grid.querySelectorAll(':scope > div:nth-child(2) > .card-fill')] : [];
     cards.forEach((card, i)=>{
       const base = .6 + i*.18;
@@ -2603,33 +2621,33 @@ if(motion){
 
     const grid = slide.querySelector('[data-anim="up"]');
     if(grid) animate(grid, {opacity:[0,1]}, {duration:.3, delay:.35, easing:EASE_PROD});
-
+    
     /* 左侧 4 步台阶,每步从左滑入 */
     const steps = grid ? [...grid.querySelectorAll(':scope > div:first-child > div')] : [];
     steps.forEach((step, i)=>{
       animate(step, {opacity:[0,1], x:[-18, 0]},
         {duration:.5, delay:.5 + i*.14, easing:EASE_ENTRY_EXP});
     });
-
+    
     /* 右侧 SVG 节点 (4 个 circle + label) 按 01→04 顺序入 */
     const svg = grid?.querySelector('svg');
     if(svg){
       const ring = svg.querySelector('circle:first-of-type');
       if(ring) animate(ring, {opacity:[0,.25]}, {duration:.5, delay:.6, easing:EASE_PROD});
-
+    
       const nodeCircles = [...svg.querySelectorAll('circle')].slice(1);
       nodeCircles.forEach((c, i)=>{
         c.style.transformOrigin = `${c.getAttribute('cx')}px ${c.getAttribute('cy')}px`;
         animate(c, {opacity:[0,1], scale:[.4, 1]},
           {duration:.45, delay:.7 + i*.16, easing:EASE_ENTRY_EXP});
       });
-
+    
       const arrows = [...svg.querySelectorAll('path[marker-end]')];
       arrows.forEach((p, i)=>{
         animate(p, {opacity:[0,1]},
           {duration:.4, delay:.85 + i*.16, easing:EASE_PROD});
       });
-
+    
       const center = [...svg.querySelectorAll('text')].slice(-2);
       center.forEach((t, i)=>{
         animate(t, {opacity:[0,1], scale:[.7, 1]},
@@ -2647,7 +2665,7 @@ if(motion){
     const matrix = slide.querySelector('[data-anim="up"]');
     if(!matrix) return;
     animate(matrix, {opacity:[0,1]}, {duration:.3, delay:.35, easing:EASE_PROD});
-
+    
     const cards = [...matrix.children];
     const cols = 6;
     cards.forEach((card, i)=>{
@@ -2656,7 +2674,7 @@ if(motion){
       animate(card, {opacity:[0,1], y:[14, 0], scale:[.92, 1]},
         {duration:.42, delay:.5 + wave, easing:EASE_ENTRY_EXP});
     });
-
+    
     /* 底部 20,000 区块 */
     const foot = [...slide.querySelectorAll('[data-anim="up"]')][1];
     if(foot){
@@ -2677,7 +2695,7 @@ if(motion){
     const grid = slide.querySelector('[data-anim="up"]');
     if(!grid) return;
     animate(grid, {opacity:[0,1]}, {duration:.3, delay:.35, easing:EASE_PROD});
-
+    
     /* 散点顺序: 用一个稍微打乱的索引数组,营造"乱中有序"感 */
     const order = [0, 3, 1, 4, 2, 5];
     const cards = [...grid.children];
@@ -2698,7 +2716,7 @@ if(motion){
     const stage = slide.querySelector('[data-anim="up"]');
     if(!stage) return;
     animate(stage, {opacity:[0,1]}, {duration:.3, delay:.35, easing:EASE_PROD});
-
+    
     const svgs = [...stage.querySelectorAll('svg')];
     svgs.forEach((svg, i)=>{
       const base = .55 + i*.22;
@@ -2721,7 +2739,7 @@ if(motion){
           {duration:.4, delay:base + .25 + j*.06, easing:EASE_PROD});
       });
     });
-
+    
     /* 下方注释列 */
     const cols = [...stage.querySelectorAll(':scope > div:last-child > div')];
     cols.forEach((col, i)=>{
@@ -2739,7 +2757,7 @@ if(motion){
     const grid = slide.querySelector('[data-anim="up"]');
     if(!grid) return;
     animate(grid, {opacity:[0,1]}, {duration:.3, delay:.35, easing:EASE_PROD});
-
+    
     const cols = [...grid.children];
     cols.forEach((col, i)=>{
       const base = .5 + i*.16;
@@ -2769,11 +2787,11 @@ if(motion){
       if(title) animate(title, {opacity:[0,1], y:[14, 0]},
         {duration:.55, delay:.4, easing:EASE_ENTRY_EXP});
     }
-
+    
     const grid = slide.querySelector('[data-anim="up"]');
     if(!grid) return;
     animate(grid, {opacity:[0,1]}, {duration:.3, delay:.55, easing:EASE_PROD});
-
+    
     const cards = [...grid.children];
     cards.forEach((card, i)=>{
       animate(card, {opacity:[0,1], y:[18, 0]},
@@ -2807,7 +2825,7 @@ if(motion){
     const main = slide.querySelector('[data-anim="up"]');
     if(main){
       animate(main, {opacity:[0,1]}, {duration:.3, delay:.25, easing:EASE_PROD});
-
+    
       /* 左大标题分行 */
       const titleLines = main.querySelector(':scope > div:first-child > div:first-child');
       if(titleLines){
@@ -2817,7 +2835,7 @@ if(motion){
       if(titleNote){
         animate(titleNote, {opacity:[0,1], y:[10, 0]}, {duration:.5, delay:.95, easing:EASE_ENTRY_EXP});
       }
-
+    
       /* 三 KPI · 顶线 scaleX + 数字 fade-up + 副文字 */
       const kpis = [...main.querySelectorAll(':scope > div:not([data-anim]):not(:first-child)')];
       kpis.forEach((kpi, i)=>{
@@ -2834,9 +2852,9 @@ if(motion){
           animate(el, {opacity:[0,1]}, {duration:.4, delay:base + .25 + j*.05, easing:EASE_PROD});
         });
       });
-
+    
     }
-
+    
     /* 底部 hero 区: 巨数 + goal + tags + 右下竖线 */
     const hero = slide.querySelector('[data-anim="hero"]');
     if(hero){
@@ -2883,15 +2901,15 @@ if(motion){
       const titleText = titleBlock.querySelector('div');
       if(titleText) animate(titleText, {opacity:[0,1]}, {duration:.4, delay:.85, easing:EASE_PROD});
     }
-
+    
     const kpiWrap = slide.querySelector('[data-anim="kpi"]');
     if(kpiWrap){
       animate(kpiWrap, {opacity:[0,1]}, {duration:.3, delay:.7, easing:EASE_PROD});
-
+    
       /* 段落 */
       const para = kpiWrap.querySelector(':scope > div:first-child');
       if(para) animate(para, {opacity:[0,1], y:[14, 0]}, {duration:.6, delay:.85, easing:EASE_ENTRY_EXP});
-
+    
       /* 三列 KPI · 顶线 scaleX + 数字升起 */
       const cols = [...kpiWrap.querySelectorAll(':scope > div:nth-child(2) > div')];
       cols.forEach((col, i)=>{
@@ -2958,21 +2976,21 @@ if(motion){
       revealStatic(slide);
       return;
     }
-
+    
     resetAnims(slide);
-
+    
     /* 关键:[data-anim] 容器很多时候只是占位标记,真正的几何动画在子元素上.
        默认强制 reveal 所有 [data-anim] 容器, recipe 想做块入场时用 motion 的 {opacity:[0,1]} 会自动覆盖 */
     slide.querySelectorAll('[data-anim]').forEach(el=>{
       el.style.opacity = '1';
       el.style.transform = 'none';
     });
-
+    
     const all = [...slide.querySelectorAll('[data-anim]')];
     const recipe = slide.dataset.animate;
     const fn = RECIPES[recipe];
     if(fn){ fn(slide, all); return; }
-
+    
     /* fallback: 平凡 fade */
     if(all.length) animate(all, {opacity:[0,1], y:[12,0]},
       {duration:.6, delay:i=>i*.08, easing:EASE_ENTRY_EXP});
@@ -3089,5 +3107,6 @@ if(motion){
   start();
 })();
 </script>
-</body>
-</html>
+
+
+</body><div id="__caoliao-browser-ext" data-context="{}"></div></html>
