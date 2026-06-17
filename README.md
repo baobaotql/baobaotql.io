@@ -96,3 +96,38 @@ npm run build:mp-weixin
 
 - [ ] 对接 Spring Boot 后端 OCR / AI 接口
 - [ ] 云端历史记录同步
+
+
+
+## 完整识别流水线（`analyzeImage`）
+
+| 步骤 | 做什么 | 谁执行 |
+|------|--------|--------|
+| **Step 1** | 图片 → Base64 | 本地 |
+| **Step 2** | 查缓存 | 本地 |
+| **Step 3** | **OCR + 风险分析** | **智谱 GLM-4.6V 大模型** |
+| Step 4 | OCR 文本截断 | 本地 |
+| Step 5 | 低风险安全语言过滤 | 本地 |
+| **Step 6** | **案例库关键词匹配** | **本地（零 token）** |
+| Step 7 | 缓存结果 | 本地 |
+
+---
+
+## 关键结论
+
+**先走大模型判断风险等级，再走案例库匹配。**
+
+1. **Step 3 大模型优先** — GLM-4.6V 根据 System Prompt 中的风险判定标准（即你 `constants.js` 里的 `HIGH_RISK_KEYWORDS` / `CAUTION_KEYWORDS` 精神），直接输出 `riskLevel`（low/caution/high）
+
+2. **Step 6 案例库后置调权** — `matchCase()` 在本地做关键词匹配，然后：
+   - **强匹配（命中≥2个案例关键词）→ 强制升级为高风险**，即使大模型判的低风险也会被覆盖
+   - **弱匹配+大模型已判 high → 确认展示案例**
+   - **弱匹配+大模型未判 high → 仅提示，不升级**
+
+---
+
+## 补充说明
+
+`constants.js` 里的 `HIGH_RISK_KEYWORDS` / `CAUTION_KEYWORDS` 数组**不会在主流程被直接调用**（`scanRiskKeywords()` 只在轻量模式和大模型失败兜底时使用）。它们是作为**大模型 System Prompt 的知识来源**注入给 GLM 的，告诉它该识别什么。而案例库用的是**自己独立的案例关键词**（每个案例自带 `keywords` 数组），两套关键词体系互不干扰。
+
+简单说：**大模型做初判 → 案例库后置调权，案例库的强匹配可以覆盖大模型的判断。**
