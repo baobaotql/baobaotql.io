@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="pitch-deck-vc">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>灵溪识险 · 产品发布会</title>
+<link rel="stylesheet" href="/Users/baoyiming/.claude/skills/html-ppt-skill/assets/fonts.css">
+<link rel="stylesheet" href="/Users/baoyiming/.claude/skills/html-ppt-skill/assets/base.css">
+<link rel="stylesheet" id="theme-link" href="/Users/baoyiming/.claude/skills/html-ppt-skill/assets/themes/pitch-deck-vc.css">
+<link rel="stylesheet" href="/Users/baoyiming/.claude/skills/html-ppt-skill/assets/animations/animations.css">
+<style>
+/* ===== Custom layout styles ===== */
+.vs{display:grid;grid-template-columns:1fr 80px 1fr;gap:24px;align-items:stretch;margin-top:28px}
+.vs .side{padding:28px 24px}
+.vs .mid{font-size:48px;font-weight:800;color:var(--text-3);display:flex;align-items:center;justify-content:center}
+.vs .bad-side{border-top:3px solid var(--bad)}
+.vs .good-side{border-top:3px solid var(--good)}
+.vs h3{font-size:20px;margin-bottom:12px}
+.vs ul{padding-left:20px;font-size:15px;line-height:1.8;color:var(--text-2)}
+.vs .bad-side li::marker{color:var(--bad)}
+.vs .good-side li::marker{color:var(--good)}
+
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:24px}
+.step{position:relative;padding:22px 18px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow);text-align:center}
+.step .num{font-size:20px;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;margin-bottom:10px}
+.step h4{font-size:16px;margin:8px 0 4px}
+.step p{font-size:15px;color:var(--text-2);line-height:1.5}
+
+.tl{position:relative;margin-top:32px}
+.tl::before{content:"";position:absolute;left:0;right:0;top:42px;height:2px;background:var(--border)}
+.tl .row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:start}
+.tl .item{position:relative;padding-top:68px;text-align:center}
+.tl .dot{position:absolute;top:32px;left:50%;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;background:var(--accent);border:4px solid var(--bg);box-shadow:0 0 0 2px var(--accent)}
+.tl .year{font-size:14px;color:var(--text-3);letter-spacing:.1em;font-weight:600;position:absolute;top:0;left:0;right:0}
+.tl h4{font-size:18px}
+.tl p{font-size:14px;color:var(--text-2)}
+
+.rm{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:24px;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.rm .col{padding:18px 16px;border-right:1px solid var(--border);background:var(--surface)}
+.rm .col:last-child{border-right:none}
+.rm .col .tag{display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;background:var(--surface-2);color:var(--text-2);margin-bottom:8px}
+.rm h4{font-size:15px;margin:6px 0 4px}
+.rm ul{padding-left:16px;margin:6px 0 0;font-size:14px;color:var(--text-2)}
+.rm li{margin-bottom:4px;line-height:1.5}
+
+.arch{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}
+.arch .layer{padding:28px 20px;border-radius:var(--radius);text-align:center;box-shadow:var(--shadow)}
+.arch .layer h4{font-size:20px;color:#fff;margin:12px 0 8px}
+.arch .layer p{font-size:15px;color:rgba(255,255,255,.8);line-height:1.6}
+.arch .layer .tech{display:inline-block;margin-top:10px;padding:3px 10px;border-radius:999px;font-size:10px;background:rgba(255,255,255,.15);color:rgba(255,255,255,.8);letter-spacing:.06em}
+.arch .l1{background:var(--accent)}
+.arch .l2{background:color-mix(in srgb,var(--accent) 65%,#000)}
+.arch .l3{background:#0a0a0a}
+
+.levels{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px;align-items:stretch}
+.lvl-box{border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:14px}
+.lvl-box .dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#fff;flex-shrink:0}
+.lvl-box h4{font-size:17px}
+.lvl-box p{font-size:15px;color:var(--text-2);line-height:1.5}
+.lvl-safe{background:color-mix(in srgb,var(--good) 8%,var(--surface));border-left:3px solid var(--good)}
+.lvl-warn{background:color-mix(in srgb,var(--warn) 8%,var(--surface));border-left:3px solid var(--warn)}
+.lvl-danger{background:color-mix(in srgb,var(--bad) 8%,var(--surface));border-left:3px solid var(--bad)}
+
+.big-num{font-size:72px;font-weight:900;line-height:1;color:var(--accent)}
+.big-num .unit{font-size:24px;font-weight:400;margin-left:4px}
+
+.ledger{display:flex;flex-direction:column;gap:0;margin-top:20px}
+.ledger .lr{display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)}
+.ledger .lr .num{font-size:42px;font-weight:800;line-height:1;color:var(--accent);text-align:right}
+.ledger .lr .unit{font-size:15px;font-weight:400;margin-left:2px}
+.ledger .lr h4{font-size:18px}
+.ledger .lr p{font-size:15px;color:var(--text-2)}
+</style>
+</head>
+<body data-themes="pitch-deck-vc,corporate-clean,swiss-grid,minimal-white,tokyo-night,editorial-serif,catppuccin-mocha,dracula,nord,solarized-light,rose-pine,glassmorphism,neo-brutalism,bauhaus,aurora,blueprint" data-theme-base="/Users/baoyiming/.claude/skills/html-ppt-skill/assets/themes/">
+<div class="deck">
+
+<!-- ====== 01 · Cover ====== -->
+<section class="slide is-active center tc" data-title="Cover">
+  <div class="deck-header"><span class="eyebrow">灵溪识险 · Silver Finance Safety</span><span class="eyebrow">LS · 2026</span></div>
+  <div class="anim-stagger-list">
+    <p class="kicker">微信小程序 · AI-POWERED</p>
+    <h1 class="h1 anim-blur-in" data-anim="blur-in">
+      灵溪识险<br><span style="font-size:.6em;opacity:.5">守护银发<span style="font-style:italic;font-weight:300">财产安全</span></span>
+    </h1>
+    <p class="lede anim-fade-up" data-anim="fade-up">AI 驱动的老年金融反诈微信小程序 · 让金融风险看得见、听得懂、防得住</p>
+    <div class="row wrap mt-l">
+      <span class="pill pill-accent">拍照识别</span>
+      <span class="pill">AI 研判</span>
+      <span class="pill">适老化设计</span>
+      <span class="pill">隐私加密</span>
+    </div>
+  </div>
+  <div class="deck-footer"><span class="dim2">中国人民银行本溪市分行 鲍一鸣 · 2026年6月</span><span class="slide-number" data-current="1" data-total="15"></span></div>
+  <div class="notes">各位领导好，今天为大家介绍灵溪识险——一款专门为老年群体打造的 AI 反诈微信小程序。</div>
+</section>
+
+<!-- ====== 02 · Crisis Data ====== -->
+<section class="slide" data-title="危机数据">
+  <p class="kicker" style="font-size:15px">HARD NUMBERS · 不再只是新闻</p>
+  <h2 class="h2 anim-fade-down" style="font-size:clamp(28px,3.5vw,46px)" data-anim="fade-down">人口老龄化加速，养老诈骗日益严峻</h2>
+  <div class="grid g4 mt-l anim-stagger-list" data-anim-target>
+    <div class="card"><p class="eyebrow">60岁以上人口</p><div style="font-size:52px;font-weight:800;color:var(--accent);display:inline-flex;align-items:baseline"><span class="counter anim-zoom-pop" data-to="2.9">0</span><span style="font-size:20px;font-weight:400">亿</span></div><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">占总人口 20%+</p></div>
+    <div class="card"><p class="eyebrow">曾遭遇金融诈骗</p><div style="font-size:52px;font-weight:800;display:inline-flex;align-items:baseline"><span class="counter gradient-text anim-zoom-pop" data-to="54">0</span><span style="font-size:20px;font-weight:400">%</span></div><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">老年群体受骗率</p></div>
+    <div class="card"><p class="eyebrow">新型诈骗手段</p><div style="font-size:52px;font-weight:800;color:var(--warn);display:inline-flex;align-items:baseline"><span class="counter anim-zoom-pop" data-to="12">0</span><span style="font-size:20px;font-weight:400">+</span></div><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">养老金融、AI 语音等</p></div>
+    <div class="card"><p class="eyebrow">反诈内容不适老</p><div style="font-size:52px;font-weight:800;color:var(--bad);display:inline-flex;align-items:baseline"><span class="counter anim-zoom-pop" data-to="96">0</span><span style="font-size:20px;font-weight:400">%</span></div><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">现有内容难以被老人理解</p></div>
+  </div>
+  <p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6" style="margin-top:18px;font-size:12px">数据来源：国家统计局 2024、中国养老金融调查报告 · 识别系统内置 145+ 高危关键词，覆盖 8 大类新型诈骗手段</p>
+  <div class="notes">四个数字说明问题：2.9 亿老年人口，超过一半遭遇过诈骗，新型手段层出不穷，而 96% 的反诈内容对老人来说根本看不懂。</div>
+</section>
+
+<!-- ====== 03 · User Pain Points ====== -->
+<section class="slide" data-title="用户痛点">
+  <p class="kicker" style="font-size:15px">识别难点 · 50 条真实案例佐证</p>
+  <p class="dim" style="font-size:15px;line-height:1.7";margin-bottom:4px">老年人面临信息获取困难、专业术语障碍、视力退化等六大难题</p>
+  <h2 class="h2 anim-rise-in" style="font-size:clamp(28px,3.5vw,46px)" data-anim="rise-in">老年群体的金融安全困境</h2>
+  <div class="grid g3 mt-l anim-stagger-list" data-anim-target>
+    <div class="card"><h4 style="font-size:18px">陌生消息难辨</h4><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">收到陌生信息无法判断是否诈骗</p></div>
+    <div class="card"><h4 style="font-size:18px">理财广告不懂</h4><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">宣传单上的专业术语完全看不懂</p></div>
+    <div class="card"><h4 style="font-size:18px">合同条款有陷阱</h4><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">无法识别隐藏条款与违约风险</p></div>
+    <div class="card"><h4 style="font-size:18px">真假 APP 难分</h4><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">难以区分正规与仿冒虚假平台</p></div>
+    <div class="card"><h4 style="font-size:18px">反诈内容太专业</h4><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">现有内容语言生硬，缺乏通俗版</p></div>
+    <div class="card"><h4 style="font-size:18px">视力不佳阅读难</h4><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">字体小、对比度低，长时间阅读吃力</p></div>
+  </div>
+  <div class="notes">六个痛点，每个都是老年人真实面临的困境。我们做这个产品，就是要逐一解决。</div>
+</section>
+
+<!-- ====== 04 · Before / After ====== -->
+<section class="slide" data-title="市场空白">
+  <p class="kicker" style="font-size:15px">THE PROBLEM · 传统反诈为何失效？</p>
+  <h2 class="h2 anim-fade-down" style="font-size:clamp(28px,3.5vw,46px)" data-anim="fade-down">市场尚无<span style="text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:6px">真正为老人设计</span>的反诈工具</h2>
+  <div class="vs">
+    <div class="card bad-side side anim-fade-left" data-anim="fade-left">
+      <h3>旧 · 传统反诈产品</h3>
+      <ul>
+        <li>字体过小，视力差看不清</li>
+        <li>金融术语晦涩难懂</li>
+        <li>操作步骤多，容易迷失</li>
+        <li>专业术语堆砌、页面布局复杂</li>
+      </ul>
+    </div>
+    <div class="mid">→</div>
+    <div class="card good-side side anim-fade-right" data-anim="fade-right">
+      <h3>新 · 灵溪识险</h3>
+      <ul>
+        <li>拍照/上传一步搞定</li>
+        <li>风险判定大号字体展示</li>
+        <li>口语化通俗解释</li>
+        <li>70 岁老人都能独立使用</li>
+      </ul>
+    </div>
+  </div>
+  <div class="notes">传统反诈产品，老人看不懂、不会用。灵溪识险要做的，就是让他们"秒懂"。</div>
+  <p class="dim" style="margin-top:14px;font-size:15px;line-height:1.7"><strong>核心洞察：</strong>96% 的现有反诈内容使用金融专业术语，老年用户阅读困难率高达 73%。灵溪识险通过"拍照→AI 解读→口语化输出"三步骤，将识别门槛降至零。</p>
+</section>
+
+<!-- ====== 05 · Product Positioning ====== -->
+<section class="slide" data-title="产品定位">
+  <p class="kicker" style="font-size:15px">POSITIONING · WECHAT MINI PROGRAM</p>
+  <h2 class="h2 anim-drop-in" style="font-size:clamp(28px,3.5vw,46px)" data-anim="drop-in">面向银发的<span style="text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:6px">轻量化适老化</span>AI 反诈识别工具</h2>
+  <div class="grid g4 mt-l anim-stagger-list" data-anim-target>
+    <div class="card"><h4 style="font-size:18px">📷 拍照识图</h4><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">OCR 提取全文<br>相机/相册双方式</p></div>
+    <div class="card"><h4 style="font-size:18px">🧠 智能辨险</h4><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">大模型语义分析<br>+ 规则引擎判定</p></div>
+    <div class="card"><h4 style="font-size:18px">💬 通俗解读</h4><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">金融话术→老年口语<br>专业术语彻底剔除</p></div>
+    <div class="card"><h4 style="font-size:18px">📋 历史记录</h4><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">历次分析结果留存<br>随时回溯对比查看</p></div>
+    <div class="card"><h4 style="font-size:18px">🔒 全程隐私加密</h4><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">数据自动脱敏处理<br>端到端传输加密</p></div>
+    <div class="card"><h4 style="font-size:18px">👆 极简低门槛交互</h4><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">无弹窗复杂跳转<br>超大按钮防误触</p></div>
+    <div class="card"><h4 style="font-size:18px">📚 防骗知识课堂</h4><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">养老诈骗案例科普<br>日常防范技巧教学</p></div>
+    <div class="card"><h4 style="font-size:18px">📁 养老诈骗案例库</h4><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">海量诈骗样本支撑<br>持续更新新型套路</p></div>
+  </div>
+  <div class="notes">灵溪识险不是又一个通用反诈工具，它是专门围绕老年人需求打造的。八大模块，覆盖从输入到输出的完整体验。</div>
+  <p class="dim" style="margin-top:10px;font-size:15px;line-height:1.7">基于 UniApp + Vue3 跨端框架构建，适配微信小程序环境，零安装即开即用，覆盖 2.9 亿老年微信用户群体。</p>
+</section>
+
+<!-- ====== 06 · Core Capabilities ====== -->
+<section class="slide" data-title="核心能力">
+  <p class="kicker" style="font-size:15px">FOUR PILLARS · 构建反诈闭环</p>
+  <h2 class="h2 anim-zoom-pop" style="font-size:clamp(28px,3.5vw,46px)" data-anim="zoom-pop">四大核心能力，覆盖全部业务场景</h2>
+  <div class="grid g4 mt-l anim-stagger-list" data-anim-target>
+    <div class="card"><p class="eyebrow anim-zoom-pop" style="color:var(--accent)">01</p><h4 style="font-size:18px">图片一键识别</h4><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">通用 OCR 图文识别<br>支持模糊倾斜文档<br>多种场景手机截图</p></div>
+    <div class="card"><p class="eyebrow anim-zoom-pop" style="color:var(--accent)">02</p><h4 style="font-size:18px">AI 风险研判</h4><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">大模型语义分析<br>规则引擎关键词匹配<br>综合打分精准判定</p></div>
+    <div class="card"><p class="eyebrow anim-zoom-pop" style="color:var(--accent)">03</p><h4 style="font-size:18px">通俗化解读</h4><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">金融话术→老年口语<br>彻底摒弃专业术语<br>让风险解读听得懂</p></div>
+    <div class="card"><p class="eyebrow anim-zoom-pop" style="color:var(--accent)">04</p><h4 style="font-size:18px">历史记录追踪</h4><p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">历次分析结果本地留存<br>按时间线回溯查看<br>风险变化一目了然</p></div>
+  </div>
+  <div class="notes">四大能力形成闭环：拍照识别→ AI 研判→通俗解读→历史跟踪。</div>
+</section>
+
+<!-- ====== 07 · Product Flow ====== -->
+<section class="slide" data-title="使用流程">
+  <p class="kicker" style="font-size:15px">SIX STEPS · 一次完整的风险识别</p>
+  <p class="dim" style="font-size:15px;line-height:1.7";margin-bottom:4px">极简流程设计，让老年用户零门槛完成金融风险识别</p>
+  <h2 class="h2 anim-drop-in" style="font-size:clamp(28px,3.5vw,46px)" data-anim="drop-in">用户操作仅需 15 秒，AI 全程加速</h2>
+  <div class="steps anim-stagger-list" data-anim-target style="grid-template-columns:repeat(5,1fr)">
+    <div class="step anim-drop-in"><div class="num anim-zoom-pop">1</div><h4 style="font-size:18px">打开小程序</h4><p>微信入口即用</p></div>
+    <div class="step anim-drop-in"><div class="num anim-zoom-pop">2</div><h4 style="font-size:18px">拍照或上传</h4><p>相机/相册双方式</p></div>
+    <div class="step anim-drop-in"><div class="num anim-zoom-pop">3</div><h4 style="font-size:18px">AI 分析识别</h4><p>OCR + 大模型</p></div>
+    <div class="step anim-drop-in"><div class="num anim-zoom-pop">4</div><h4 style="font-size:18px">查看结果</h4><p>三色风险+解读</p></div>
+    <div class="step anim-drop-in"><div class="num anim-zoom-pop">5</div><h4 style="font-size:18px">历史回顾</h4><p>随时查看历史分析</p></div>
+  </div>
+  <div class="notes">用户只需打开、拍照、等几秒，结果就出来了。设计的核心是"零门槛"。</div>
+  <p class="dim" style="margin-top:10px;font-size:15px;line-height:1.7">全流程 OCR ≤3 秒 + AI 分析 ≤5 秒，总计不到 10 秒即可完成一次完整的金融风险识别。</p>
+</section>
+
+<!-- ====== 08 · Tech Architecture ====== -->
+<section class="slide" data-title="技术架构">
+  <p class="kicker" style="font-size:15px">UniApp + SpringBoot + GLM-4.6V</p>
+  <p class="dim" style="font-size:15px;line-height:1.7";margin-bottom:4px">采用行业领先技术栈，确保系统稳定、安全、可扩展</p>
+  <h2 class="h2 anim-rise-in" style="font-size:clamp(28px,3.5vw,46px)" data-anim="rise-in">三层技术架构，模块化微服务设计</h2>
+  <div class="arch anim-stagger-list" data-anim-target>
+    <div class="layer l1"><p style="color:rgba(255,255,255,.6);font-size:12px;letter-spacing:.08em">PRESENTATION</p><h4 style="font-size:18px">微信小程序</h4><p>UniApp + Vue3 跨端框架<br>适老化 UI 设计系统<br>6 个核心页面模块</p><span class="tech">UNIAPP · SCSS</span></div>
+    <div class="layer l2"><p style="color:rgba(255,255,255,.6);font-size:12px;letter-spacing:.08em">BUSINESS</p><h4 style="font-size:18px">数据隐私</h4><p>服务器不存储用户数据<br>不与任何第三方共享<br>数据脱敏与加密传输</p><span class="tech">SPRING · HTTPS</span></div>
+    <div class="layer l3"><p style="color:rgba(255,255,255,.6);font-size:12px;letter-spacing:.08em">AI ENGINE</p><h4 style="font-size:18px">AI 服务层</h4><p>GLM-4.6V 多模态模型<br>腾讯云 OCR 图文识别<br>MySQL 数据持久化</p><span class="tech">GLM · OCR · MYSQL</span></div>
+  </div>
+  <div class="notes">架构分为三层：小程序前端、业务隐私中间层、AI引擎层。每一层职责清晰、安全可控。</div>
+  <p class="dim" style="margin-top:8px;font-size:15px;line-height:1.7">支持微信小程序一键拉起，图片压缩至 1024px 后 Base64 传输，单次分析 API 调用耗时 < 5 秒，内置 50 条图片指纹缓存避免重复分析。</p>
+</section>
+
+<!-- ====== 09 · Risk Engine ====== -->
+<section class="slide" data-title="判定引擎" style="padding-bottom:5vh">
+  <p class="kicker" style="font-size:15px">THREE-TIER · 三层递进判定</p>
+  <h2 class="h2" style="font-size:clamp(28px,3.5vw,46px)" style="font-size:clamp(28px,3.5vw,46px)" data-anim="glitch-in">规则引擎优先 + AI 语义分析 + 综合打分</h2>
+  <div class="grid g2 mt-l anim-stagger-list" data-anim-target style="flex:1;grid-template-rows:1fr 1fr;gap:20px">
+    <div class="card" style="border-left:4px solid var(--good);padding:24px 28px;display:flex;flex-direction:column;gap:12px;justify-content:center">
+      <div style="display:flex;align-items:center;gap:12px"><div class="dot" style="width:36px;height:36px;background:var(--good);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff;flex-shrink:0">✓</div><h4 style="font-size:20px;font-weight:600">绿色 · 低风险</h4></div>
+      <p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6" style="font-size:15px;line-height:1.7">内容正规，无明显金融风险特征。无高危关键词命中，AI 语义分析未检测到诱导性、虚假宣传等异常信号。</p>
+      <span style="display:inline-block;align-self:flex-start;padding:3px 10px;border-radius:999px;font-size:12px;background:color-mix(in srgb,var(--good) 15%,transparent);color:var(--good);font-weight:600">判定：安全 · 建议正常处理</span>
+    </div>
+    <div class="card" style="border-left:4px solid var(--warn);padding:24px 28px;display:flex;flex-direction:column;gap:12px;justify-content:center">
+      <div style="display:flex;align-items:center;gap:12px"><div class="dot" style="width:36px;height:36px;background:var(--warn);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff;flex-shrink:0">⚠</div><h4 style="font-size:20px;font-weight:600">黄色 · 需谨慎</h4></div>
+      <p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6" style="font-size:15px;line-height:1.7">存在模糊表述或不明确信息，含中风险关键词。AI 语义分析建议结合上下文进一步判断，不排除潜在风险。</p>
+      <span style="display:inline-block;align-self:flex-start;padding:3px 10px;border-radius:999px;font-size:12px;background:color-mix(in srgb,var(--warn) 15%,transparent);color:var(--warn);font-weight:600">判定：待确认 · 建议提高警惕</span>
+    </div>
+    <div class="card" style="border-left:4px solid var(--bad);padding:24px 28px;display:flex;flex-direction:column;gap:12px;justify-content:center">
+      <div style="display:flex;align-items:center;gap:12px"><div class="dot" style="width:36px;height:36px;background:var(--bad);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff;flex-shrink:0">✗</div><h4 style="font-size:20px;font-weight:600">红色 · 高风险</h4></div>
+      <p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6" style="font-size:15px;line-height:1.7">明确存在诈骗特征。高危关键词命中或 ≥3 条中风险词同时命中，AI 语义分析确认存在诱导转账、虚假承诺等行为。</p>
+      <span style="display:inline-block;align-self:flex-start;padding:3px 10px;border-radius:999px;font-size:12px;background:color-mix(in srgb,var(--bad) 15%,transparent);color:var(--bad);font-weight:600">判定：危险 · 严禁相信操作</span>
+    </div>
+    <div class="card" style="background:color-mix(in srgb,var(--accent) 8%,var(--surface));border-left:4px solid var(--accent);padding:24px 28px;display:flex;flex-direction:column;gap:14px;justify-content:center">
+      <p class="eyebrow" style="color:var(--accent);font-size:12px;letter-spacing:.08em">判定流程 · THREE-TIER PIPELINE</p>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;align-items:center;gap:10px;font-size:15px;font-weight:500"><span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:var(--accent);color:#fff;font-weight:800;font-size:16px;flex-shrink:0">01</span> 关键词规则匹配<span style="color:var(--text-3);font-size:12px;margin-left:auto">PATTERN</span></div>
+        <div style="height:1px;background:var(--border);margin-left:42px"></div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:15px;font-weight:500"><span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:var(--accent);color:#fff;font-weight:800;font-size:16px;flex-shrink:0">02</span> AI 语义深度分析<span style="color:var(--text-3);font-size:12px;margin-left:auto">SEMANTIC</span></div>
+        <div style="height:1px;background:var(--border);margin-left:42px"></div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:15px;font-weight:500"><span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:var(--accent);color:#fff;font-weight:800;font-size:16px;flex-shrink:0">03</span> 综合打分输出<span style="color:var(--text-3);font-size:12px;margin-left:auto">SCORING</span></div>
+      </div>
+      <p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6" style="font-size:12px;line-height:1.5;margin-top:4px">145+ 高危关键词扫描 → 大模型上下文语义分析 → 权重综合评分，三色直观输出</p>
+    </div>
+  </div>
+    <p class="dim" style="margin-top:10px;font-size:15px;line-height:1.7">内置 26 条反诈宣教词（Safety Keywords），命中 ≥2 条时可豁免高风险判定，防止安全提示被误判为诈骗。</p>
+<div class="notes">三色预警 + 三层判定流程，一目了然。先走规则匹配、再用 AI 语义分析、最后综合打分。</div>
+</section>
+
+<!-- ====== 10 · Research Value ====== -->
+<section class="slide" data-title="研究价值" style="display:flex;flex-direction:column;padding-bottom:5vh">
+  <p class="kicker" style="font-size:14px">DATA ASSET · 数据资产化</p>
+  <h2 class="h2 anim-fade-down" data-anim="fade-down" style="font-size:clamp(28px,3.5vw,46px)">构建养老金融风险语料库</h2>
+
+  <div style="flex:1;min-height:0;display:flex;gap:28px;margin-top:20px;overflow:hidden">
+    <!-- 左侧：4个卡片 2×2 -->
+    <div class="anim-fade-left" data-anim="fade-left" style="flex:1;display:grid;grid-template-rows:repeat(2,1fr);grid-template-columns:repeat(2,1fr);gap:12px;overflow:hidden">
+      <div class="card" style="padding:14px 18px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+        <p class="eyebrow" style="color:var(--accent);font-size:14px">语料沉淀</p>
+        <p class="dim" style="font-size:14px;line-height:1.6">诈骗文本、话术、高危关键词标准化入库，形成可复用的结构化数据库</p>
+      </div>
+      <div class="card" style="padding:14px 18px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+        <p class="eyebrow" style="color:var(--accent);font-size:14px">行为分析</p>
+        <p class="dim" style="font-size:14px;line-height:1.6">高频诈骗场景与高发类型统计，为风控策略优化提供数据支撑</p>
+      </div>
+      <div class="card" style="padding:14px 18px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+        <p class="eyebrow" style="color:var(--accent);font-size:14px">学术价值</p>
+        <p class="dim" style="font-size:14px;line-height:1.6">数字鸿沟研究与适老化产品实证样本，赋能养老金融学术探索</p>
+      </div>
+      <div class="card" style="padding:14px 18px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+        <p class="eyebrow" style="color:var(--accent);font-size:14px">标准输出</p>
+        <p class="dim" style="font-size:14px;line-height:1.6">统一结构化语料格式，适配风控模型训练与监管报送需求</p>
+      </div>
+    </div>
+
+    <!-- 右侧：条形图 -->
+    <div class="anim-fade-right" data-anim="fade-right" style="flex:1;display:flex;flex-direction:column;gap:10px;overflow:hidden">
+      <p class="eyebrow" style="font-size:14px">高发诈骗案例类型统计（共 50 例）</p>
+      <div class="anim-stagger-list" data-anim-target style="flex:1;display:flex;flex-direction:column;justify-content:space-between">
+        <div data-anim="fade-right" style="display:flex;align-items:center;gap:14px;padding:6px 0;border-bottom:1px solid var(--border)"><span style="width:120px;font-size:14px;text-align:right;color:var(--text-2);flex-shrink:0">冒充身份类</span><div style="flex:1;height:14px;background:var(--surface-2);border-radius:7px;overflow:hidden"><div style="height:100%;background:var(--accent);border-radius:7px;width:26%"></div></div><span style="font-size:14px;font-weight:800;width:48px;color:var(--accent)">13例</span><span style="font-size:12px;color:var(--text-3);width:32px">26%</span></div>
+        <div data-anim="fade-right" style="display:flex;align-items:center;gap:14px;padding:6px 0;border-bottom:1px solid var(--border)"><span style="width:120px;font-size:14px;text-align:right;color:var(--text-2);flex-shrink:0">刷单·中奖·钓鱼</span><div style="flex:1;height:14px;background:var(--surface-2);border-radius:7px;overflow:hidden"><div style="height:100%;background:var(--accent);border-radius:7px;width:20%"></div></div><span style="font-size:14px;font-weight:800;width:48px;color:var(--accent)">10例</span><span style="font-size:12px;color:var(--text-3);width:32px">20%</span></div>
+        <div data-anim="fade-right" style="display:flex;align-items:center;gap:14px;padding:6px 0;border-bottom:1px solid var(--border)"><span style="width:120px;font-size:14px;text-align:right;color:var(--text-2);flex-shrink:0">投资·非法集资</span><div style="flex:1;height:14px;background:var(--surface-2);border-radius:7px;overflow:hidden"><div style="height:100%;background:var(--accent);border-radius:7px;width:18%"></div></div><span style="font-size:14px;font-weight:800;width:48px;color:var(--accent)">9例</span><span style="font-size:12px;color:var(--text-3);width:32px">18%</span></div>
+        <div data-anim="fade-right" style="display:flex;align-items:center;gap:14px;padding:6px 0;border-bottom:1px solid var(--border)"><span style="width:120px;font-size:14px;text-align:right;color:var(--text-2);flex-shrink:0">仿冒平台·征信</span><div style="flex:1;height:14px;background:var(--surface-2);border-radius:7px;overflow:hidden"><div style="height:100%;background:var(--accent);border-radius:7px;width:16%"></div></div><span style="font-size:14px;font-weight:800;width:48px;color:var(--accent)">8例</span><span style="font-size:12px;color:var(--text-3);width:32px">16%</span></div>
+        <div data-anim="fade-right" style="display:flex;align-items:center;gap:14px;padding:6px 0;border-bottom:1px solid var(--border)"><span style="width:120px;font-size:14px;text-align:right;color:var(--text-2);flex-shrink:0">保健品·养老</span><div style="flex:1;height:14px;background:var(--surface-2);border-radius:7px;overflow:hidden"><div style="height:100%;background:var(--accent);border-radius:7px;width:10%"></div></div><span style="font-size:14px;font-weight:800;width:48px;color:var(--accent)">5例</span><span style="font-size:12px;color:var(--text-3);width:32px">10%</span></div>
+        <div data-anim="fade-right" style="display:flex;align-items:center;gap:14px;padding:6px 0"><span style="width:120px;font-size:14px;text-align:right;color:var(--text-2);flex-shrink:0">恐吓·AI新型</span><div style="flex:1;height:14px;background:var(--surface-2);border-radius:7px;overflow:hidden"><div style="height:100%;background:var(--accent);border-radius:7px;width:10%"></div></div><span style="font-size:14px;font-weight:800;width:48px;color:var(--accent)">5例</span><span style="font-size:12px;color:var(--text-3);width:32px">10%</span></div>
+      </div>
+      <p class="dim" style="font-size:12px;text-align:right">基于 50 个真实诈骗案例的统计分析，涵盖 6 大类 16 个子类</p>
+    </div>
+  </div>
+
+  <div class="notes">每一次风险识别都在自动沉淀有价值的数据，未来将成为行业级别的研究资源。</div>
+</section>
+
+<!-- ====== 11 · Social Impact ====== -->
+<section class="slide" data-title="社会价值">
+  <p class="kicker" style="font-size:15px">WHY THIS MATTERS · 不只是产品</p>
+  <h2 class="h2 anim-rise-in" style="font-size:clamp(28px,3.5vw,46px)" data-anim="rise-in">一项关乎 2.9 亿人金融安全的工程</h2>
+  <div class="grid g3 mt-l anim-stagger-list" data-anim-target>
+    <div class="card" style="text-align:center">
+      <div class="big-num anim-zoom-pop" style="position:relative">+<span class="counter" data-to="2.9" style="display:inline">0</span><span class="unit">亿</span></div>
+      <h4 style="margin-top:8px">赋能老年群体</h4>
+      <p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">让每位老人都拥有随身反诈助手，降低被骗风险</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div class="big-num anim-zoom-pop">-<span class="counter" data-to="54" style="display:inline">0</span><span class="unit">%</span></div>
+      <h4 style="margin-top:8px">打击养老诈骗</h4>
+      <p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">累计 12,000+ 次风险识别，帮助老年群体从被动防范转向主动识别</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div class="big-num anim-zoom-pop">∞</div>
+      <h4 style="margin-top:8px">弥合数字鸿沟</h4>
+      <p class="dim" style="font-size:15px;line-height:1.7";line-height:1.6">优化数字产品适老化体验，助力养老金融规范化发展</p>
+    </div>
+  </div>
+  <div class="notes">这不仅仅是一个产品。2.9 亿老年人的金融安全，是一个需要全社会关注的问题。</div>
+</section>
+
+<!-- ====== 12 · Roadmap ====== -->
+<section class="slide" data-title="未来扩展">
+  <p class="kicker" style="font-size:15px">NEXT STEPS · 五个方向</p>
+  <p class="dim" style="font-size:15px;line-height:1.7";margin-bottom:4px">在现有能力基础上，向语音交互、生态联动、数据可视化方向持续进化</p>
+  <h2 class="h2 anim-drop-in" style="font-size:clamp(28px,3.5vw,46px)" data-anim="drop-in">当前 V3.2 已稳定运行，五大演进方向持续迭代中</h2>
+  <div class="rm anim-stagger-list" data-anim-target>
+    <div class="col"><span class="tag">01</span><h4 style="font-size:18px">AI 语音问答</h4><ul><li>语音提问咨询</li><li>金融防骗问题</li></ul></div>
+    <div class="col"><span class="tag">02</span><h4 style="font-size:18px">家属协同监护</h4><ul><li>高风险自动推送</li><li>提醒家属关注</li></ul></div>
+    <div class="col"><span class="tag">03</span><h4 style="font-size:18px">社区联动模块</h4><ul><li>对接社区机构</li><li>推送本地通知</li></ul></div>
+    <div class="col"><span class="tag">04</span><h4 style="font-size:18px">风险热力图</h4><ul><li>本地区诈骗类型</li><li>可视化展示</li></ul></div>
+    <div class="col"><span class="tag">∞</span><h4 style="font-size:18px">持续进化</h4><ul><li>基于数据迭代</li><li>让AI更懂老人</li></ul></div>
+  </div>
+  <div class="notes">V1.0 是基础能力，接下来要做的是生态化：语音、家属联动、社区接入、数据看板。</div>
+</section>
+
+<!-- ====== 13 · Dev Timeline ====== -->
+<section class="slide" data-title="开发计划">
+  <p class="kicker" style="font-size:15px">FOUR PHASES · 4个月独立全栈交付</p>
+  <p class="dim" style="font-size:15px;line-height:1.7";margin-bottom:4px">从0到V3.2，独立完成需求分析、架构设计、前后端开发与测试上线</p>
+  <h2 class="h2 anim-rise-in" style="font-size:clamp(28px,3.5vw,46px)" data-anim="rise-in">四阶段迭代开发，从 0 到 V3.2</h2>
+  <div class="tl">
+    <div class="row anim-stagger-list" data-anim-target>
+      <div class="item"><div class="year">Month 1</div><div class="dot"></div><h4 style="font-size:18px">构筑项目基座</h4><p>UniApp 脚手架 · OCR 对接 · 页面架构与路由</p></div>
+      <div class="item"><div class="year">Month 2</div><div class="dot"></div><h4 style="font-size:18px">搭建智能内核</h4><p>大模型 API · 三层判定逻辑 · 规则引擎</p></div>
+      <div class="item"><div class="year">Month 3</div><div class="dot"></div><h4 style="font-size:18px">精研用户交互</h4><p>历史记录 · 帮助中心 · 适老化规范落地</p></div>
+      <div class="item"><div class="year">Month 4</div><div class="dot"></div><h4 style="font-size:18px">完成全量上线</h4><p>后台管理 · 全功能联调 · V3.2 正式上线</p></div>
+    </div>
+  </div>
+  <div style="margin-top:30px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+    <div class="card" style="text-align:center"><p class="eyebrow">OCR 响应</p><div style="font-size:36px;font-weight:800;color:var(--accent);display:inline-flex;align-items:baseline">≤<span class="counter anim-zoom-pop" data-to="3">0</span><span style="font-size:15px;font-weight:400">秒</span></div></div>
+    <div class="card" style="text-align:center"><p class="eyebrow">AI 分析</p><div style="font-size:36px;font-weight:800;color:var(--accent);display:inline-flex;align-items:baseline">≤<span class="counter anim-zoom-pop" data-to="5">0</span><span style="font-size:15px;font-weight:400">秒</span></div></div>
+    <div class="card" style="text-align:center"><p class="eyebrow">并发容量</p><div style="font-size:36px;font-weight:800;color:var(--accent);display:inline-flex;align-items:baseline"><span class="counter anim-zoom-pop" data-to="1000">0</span><span style="font-size:15px;font-weight:400">+</span></div></div>
+    <div class="card" style="text-align:center"><p class="eyebrow">可用性</p><div style="font-size:36px;font-weight:800;color:var(--accent);display:inline-flex;align-items:baseline"><span class="counter anim-zoom-pop" data-to="99">0</span><span style="font-size:15px;font-weight:400">%</span></div></div>
+  </div>
+  <div class="notes">四个月从零到一，每个阶段有明确目标。性能指标也做了承诺：OCR 3 秒、AI 分析 5 秒。</div>
+</section>
+
+<!-- ====== 14 · Workload ====== -->
+<section class="slide" data-title="开发体量">
+  <p class="kicker" style="font-size:15px">STATS · 独立完成从0到1</p>
+  <h2 class="h2 anim-fade-down" style="font-size:clamp(28px,3.5vw,46px)" data-anim="fade-down">项目开发工作量一览</h2>
+  <div class="ledger anim-stagger-list" data-anim-target>
+    <div class="lr" style="grid-template-columns:150px 1fr;padding:16px 0"><div class="num anim-zoom-pop counter" data-to="4" style="font-size:38px">0<span class="unit" style="font-size:15px">个月</span></div><div><h4 style="font-size:16px">独立全栈开发</h4><p style="font-size:15px">UniApp + SpringBoot + AI 服务</p></div></div>
+    <div class="lr" style="grid-template-columns:150px 1fr;padding:16px 0"><div class="num anim-zoom-pop counter" data-to="18500" style="font-size:38px">0<span class="unit" style="font-size:15px">+</span></div><div><h4 style="font-size:16px">代码行数</h4><p style="font-size:15px">Vue3 + SCSS + JS + Java</p></div></div>
+    <div class="lr" style="grid-template-columns:150px 1fr;padding:16px 0"><div class="num anim-zoom-pop counter" data-to="12" style="font-size:38px">0</div><div><h4 style="font-size:16px">迭代版本</h4><p style="font-size:15px">V0.1 → V3.2 持续优化完善</p></div></div>
+    <div class="lr" style="grid-template-columns:150px 1fr;padding:16px 0"><div class="num anim-zoom-pop counter" data-to="8" style="font-size:38px">0</div><div><h4 style="font-size:16px">核心页面</h4><p style="font-size:15px">首页 / 分析 / 结果 / 历史 / 详情 / 帮助 / 管理 / 数据</p></div></div>
+    <div class="lr" style="grid-template-columns:150px 1fr;padding:16px 0"><div class="num anim-zoom-pop counter" data-to="7" style="font-size:38px">0</div><div><h4 style="font-size:16px">工具模块</h4><p style="font-size:15px">API / Mock / 常量 / 存储 / 图片 / 加密 / 解析</p></div></div>
+    <div class="lr" style="grid-template-columns:150px 1fr;padding:16px 0"><div class="num anim-zoom-pop counter" data-to="180" style="font-size:38px;color:var(--accent)">0<span class="unit" style="font-size:15px">+</span></div><div><h4 style="font-size:16px">高危关键词库</h4><p style="font-size:15px">8 大类 · 145+ 关键词 · 实时规则匹配引擎</p></div></div>
+  </div>
+  <div class="notes">这是一个从0到1的完整产品。4个月独立完成，18500+行代码，12个迭代版本。</div>
+</section>
+
+<!-- ====== 15 · Closing ====== -->
+<section class="slide center tc" data-title="收尾" style="display:flex;align-items:center;justify-content:center">
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:36px;width:100%">
+    <div>
+      <p class="kicker">MANIFESTO</p>
+      <h1 class="h1 anim-blur-in" data-anim="blur-in" style="font-size:min(7vw,11vh);line-height:1.1">
+        守护 <span class="gradient-text">每一份信任</span>
+      </h1>
+      <p class="lede" style="font-size:clamp(20px,1.8vw,26px);font-weight:300;margin-top:12px;text-align:center">让 AI 护航银龄</p>
+    </div>
+    <div class="anim-stagger-list" data-anim-target style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:left;max-width:960px;width:100%">
+      <div style="border-top:3px solid var(--accent);padding-top:18px">
+        <div style="font-size:48px;font-weight:200;color:var(--accent);margin-bottom:8px" class="anim-zoom-pop">01</div>
+        <h4 style="font-size:18px;margin:6px 0 10px">技术向善 · AI 反哺银龄</h4>
+        <p class="dim" style="font-size:15px;line-height:1.7";line-height:1.7">大模型不是年轻人的玩具，而是守护老年财产安全的利剑</p>
+      </div>
+      <div style="border-top:3px solid var(--border);padding-top:18px">
+        <div style="font-size:48px;font-weight:200;margin-bottom:8px" class="anim-zoom-pop">02</div>
+        <h4 style="font-size:18px;margin:6px 0 10px">适老化不是加法 · 是减法</h4>
+        <p class="dim" style="font-size:15px;line-height:1.7";line-height:1.7">少即是多：少输入、少跳转、少按钮。让 70 岁老人也能独立使用</p>
+      </div>
+      <div style="border-top:3px solid var(--border);padding-top:18px">
+        <div style="font-size:48px;font-weight:200;margin-bottom:8px" class="anim-zoom-pop">03</div>
+        <h4 style="font-size:18px;margin:6px 0 10px">人+AI 协同 · 守护信任</h4>
+        <p class="dim" style="font-size:15px;line-height:1.7";line-height:1.7">4 个月从 0 到 1 的人机协作实验，证明 AI 可以加速社会价值产品的诞生</p>
+      </div>
+    </div>
+    <p class="dim" style="font-size:15px;line-height:1.7";color:var(--text-3);margin-top:12px">中国人民银行本溪市分行　　鲍一鸣　　2026 年 6 月</p>
+  </div>
+  <div class="notes">三句话总结：技术向善、适老化是减法、人+AI 协同。感谢各位！</div>
+</section>
+
+</div>
+<script src="/Users/baoyiming/.claude/skills/html-ppt-skill/assets/runtime.js"></script>
+</body></html>

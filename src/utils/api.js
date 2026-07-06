@@ -751,8 +751,9 @@ export async function analyzeImage(imagePath, onProgress) {
     // Step 6: 案例语义匹配（LLM 已完成语义判断，此处仅做后处理）
     let matchedCase = processCaseMatch(rawResult)
 
-    // 🔧 兜底匹配：LLM 未返回 caseMatch 时，用关键词引擎自动匹配
-    if (!matchedCase) {
+    // 🔧 兜底匹配：仅当 LLM 未返回 caseMatch 字段时才启用关键词引擎
+    // 若 LLM 已明确返回 caseMatch（即使 match=false），说明 LLM 已完成判断，不再用关键词覆盖
+    if (!matchedCase && !rawResult._caseMatchRaw) {
       const fallbackMatch = keywordCaseMatch(rawResult.ocrText || '')
       if (fallbackMatch) {
         console.log('[案例匹配-关键词兜底] 自动匹配成功:', fallbackMatch.title)
@@ -771,10 +772,10 @@ export async function analyzeImage(imagePath, onProgress) {
 
     if (matchedCase) {
       sanitized.matchedCase = matchedCase
-      // LLM 确认的语义匹配 → 信任 LLM 判断，标记为高风险
-      if (sanitized.riskLevel === RISK_LEVEL.LOW || sanitized.riskLevel === RISK_LEVEL.CAUTION) {
+      // 仅在非低风险时升级（LLM 已判低风险的不应因关键词兜底而上升）
+      if (sanitized.riskLevel !== RISK_LEVEL.LOW && sanitized.riskLevel === RISK_LEVEL.CAUTION) {
         sanitized.riskLevel = RISK_LEVEL.HIGH
-        console.log('[案例匹配] 语义匹配触发风险升级: low/caution → high')
+        console.log('[案例匹配] 语义匹配触发风险升级: caution → high')
       }
     } else if (rawResult._caseMatchRaw && rawResult._caseMatchRaw.reason) {
       console.log('[案例匹配] LLM 判定无匹配:', rawResult._caseMatchRaw.reason)
