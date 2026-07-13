@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>灵溪识险 — 全页面预览</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif;
+  background: #1a202c;
+  padding: 40px 20px 60px;
+}
+h1 {
+  text-align: center;
+  color: #e2e8f0;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+.subtitle {
+  text-align: center;
+  color: #718096;
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+/* nav tabs */
+.nav-tabs {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.nav-tab {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 1px solid #4a5568;
+  color: #a0aec0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+}
+.nav-tab:hover { border-color: #4299e1; color: #bee3f8; }
+.nav-tab.active {
+  background: linear-gradient(135deg, #2b6cb0, #4299e1);
+  color: #fff;
+  border-color: transparent;
+}
+/* gallery */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 32px;
+  justify-content: center;
+}
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.panel.hidden { display: none; }
+.panel-label {
+  font-size: 14px;
+  color: #a0aec0;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.phone-frame {
+  width: 375px;
+  height: 720px;
+  background: #f0f4f8;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.phone-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.phone-scroll::-webkit-scrollbar { display: none; }
+/* navbar */
+.navbar {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  position: relative;
+  flex-shrink: 0;
+}
+.navbar.nav-white { background: #fff; }
+.navbar.nav-blue { background: #7A9BBD; }
+.navbar .nav-back {
+  position: absolute; left: 12px; top: 24px;
+  font-size: 16px; cursor: pointer;
+}
+.navbar.nav-white .nav-back { color: #4a5568; }
+.navbar.nav-blue .nav-back { color: #fff; }
+.navbar-title { font-size: 17px; font-weight: 600; margin-top: 4px; }
+.navbar.nav-white .navbar-title { color: #1a202c; }
+.navbar.nav-blue .navbar-title { color: #fff; }
+
+/* ==================== 首页 ==================== */
+.home-header { text-align: center; padding: 18px 20px 16px; background: #fff; }
+.home-title { font-size: 27px; font-weight: 700; color: #1e293b; letter-spacing: 2px; display: block; }
+.home-slogan { font-size: 17px; color: #4a6078; margin-top: 6px; display: block; }
+.home-main { padding: 5px 18px; }
+.btn-camera-wrap {
+  background: linear-gradient(160deg, #0047ab, #0066cc);
+  border-radius: 16px; padding: 18px; text-align: center;
+  box-shadow: 0 4px 12px rgba(0,71,171,0.25); cursor: pointer;
+  margin-bottom: 9px;
+}
+.btn-camera-wrap .cam-icon-i { font-size: 28px; opacity:0.9; }
+.btn-camera-main { color: #fff; font-size: 21px; font-weight: 700; display: block; margin-top: 4px; }
+.btn-camera-sub { color: rgba(255,255,255,0.7); font-size: 14px; display: block; margin-top: 2px; }
+.btn-camera-hint { color: rgba(255,255,255,0.45); font-size: 12px; display: block; margin-top: 2px; }
+.btn-album-wrap {
+  border: 2px dashed #0047ab; border-radius: 16px; padding: 16px;
+  text-align: center; margin-bottom: 10px; cursor: pointer;
+  background: #fff; color: #0047ab; font-size: 17px; font-weight: 600;
+}
+.sub-cards { display: flex; gap: 11px; margin-bottom: 10px; }
+.sub-card {
+  flex: 1; background: #f7f9fc; border-radius: 12px; padding: 20px 10px;
+  text-align: center; cursor: pointer; border: 1px solid #e8ecf1;
+}
+.sub-card-icon { font-size: 22px; margin-bottom: 4px; }
+.sub-card-title { font-size: 18px; font-weight: 700; color: #1e293b; }
+.sub-card:nth-child(2) .sub-card-title { color: #8b6914; }
+.sub-card-desc { font-size: 14px; color: #7c8ba0; margin-top: 2px; }
+.tips-box { background: #eef4fa; border-radius: 10px; padding: 14px 16px; margin-bottom: 11px; }
+.tips-box h4 { font-size: 16px; color: #1e3a5f; margin-bottom: 6px; }
+.tips-box p { font-size: 14px; color: #4a6078; line-height: 1.7; }
+.footer-lock { text-align: center; padding: 14px 0 20px; }
+.footer-lock-icon { font-size: 13px; color: #7c8ba0; display: block; margin-bottom: 4px; }
+.footer-lock-text { font-size: 13px; color: #7c8ba0; display: block; }
+
+/* ==================== 分析中 ==================== */
+.analyzing-body { display: flex; flex-direction: column; align-items: center; padding: 20px 24px 0; }
+.analyzing-top { text-align: center; padding: 16px 0; }
+.analyzing-top-title { font-size: 20px; font-weight: 700; color: #1a1a2e; }
+.preview-wrap {
+  width: 260px; height: 260px; border-radius: 14px; overflow: hidden;
+  background: #fff; box-shadow: 0 4px 16px rgba(0,0,0,0.08); position: relative;
+  margin-bottom: 0;
+}
+.preview-img { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #edf2f7; }
+.preview-img-bg { font-size: 48px; color: #cbd5e0; }
+.scan-overlay { position: absolute; inset: 0; pointer-events: none; overflow: hidden; border-radius: 14px; }
+.scan-line {
+  position: absolute; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, #3182ce, transparent);
+  animation: scanMove 2s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(49,130,206,0.5);
+}
+@keyframes scanMove {
+  0%, 100% { top: 8%; }
+  50% { top: 88%; }
+}
+.loading-area { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 32px; }
+.spinner-wrap { position: relative; width: 60px; height: 60px; margin-bottom: 6px; }
+.spinner-ring {
+  position: absolute; inset: 0; border: 5px solid #e2e8f0;
+  border-top-color: #3182ce; border-right-color: #63b3ed;
+  border-radius: 50%; animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner-core { position: absolute; inset: 13px; background: #ebf8ff; border-radius: 50%; }
+.stage-title { font-size: 22px; font-weight: 700; color: #1a1a2e; }
+.stage-hint { font-size: 16px; color: #718096; }
+.step-dots { display: flex; align-items: center; gap: 0; margin-top: 6px; }
+.step-dot {
+  width: 14px; height: 14px; border-radius: 7px; background: #e2e8f0;
+  transition: all 0.3s;
+}
+.step-dot.active { background: #3182ce; box-shadow: 0 0 6px rgba(49,130,206,0.5); }
+.step-line { width: 40px; height: 3px; background: #e2e8f0; transition: all 0.3s; }
+.step-line.active { background: #3182ce; }
+.step-labels { display: flex; justify-content: space-between; width: 210px; margin-top: 2px; }
+.step-lbl { font-size: 12px; color: #a0aec0; transition: color 0.3s; }
+.step-lbl.active { color: #3182ce; font-weight: 600; }
+
+/* ==================== 结果页 ==================== */
+.risk-header { position: relative; padding: 28px 20px; overflow: hidden; }
+.risk-header-bg { position: absolute; inset: 0; border-radius: 0 0 24px 24px; }
+.risk-high .risk-header-bg { background: linear-gradient(180deg, #e53e3e, #fc8181); }
+.risk-caution .risk-header-bg { background: linear-gradient(180deg, #d69e2e, #ecc94b); }
+.risk-low .risk-header-bg { background: linear-gradient(180deg, #38a169, #48bb78); }
+.risk-header-content { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.risk-icon-circle { width: 50px; height: 50px; border-radius: 25px; background: rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; }
+.risk-icon-text { font-size: 26px; font-weight: 800; color: #fff; line-height: 1; }
+.risk-level-label { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: 2px; }
+.risk-desc { font-size: 16px; color: rgba(255,255,255,0.9); text-align: center; line-height: 1.4; }
+.time-info {
+  display: flex; justify-content: center; gap: 8px; padding: 13px 16px;
+  margin: -18px 16px 0; background: #fff; border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04); position: relative; z-index: 2;
+  font-size: 14px;
+}
+.time-label { color: #a0aec0; }
+.time-value { color: #4a5568; font-weight: 600; }
+.content { padding: 12px 16px 0; }
+.card {
+  background: #fff; border-radius: 12px; padding: 16px 18px;
+  margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  border: 1px solid #e2e8f0;
+}
+.card-title {
+  position: relative; padding-left: 12px; font-size: 19px;
+  font-weight: 700; color: #1a1a2e; margin-bottom: 10px;
+}
+.card-title::before {
+  content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  width: 4px; height: 18px; background: linear-gradient(180deg, #3182ce, #4299e1);
+  border-radius: 2px;
+}
+.card-body { padding-left: 14px; font-size: 17px; color: #4a5568; line-height: 1.7; }
+.plain-body { font-size: 20px; color: #1a1a2e; line-height: 1.8; font-weight: 500; padding-left: 14px; }
+.sug-list { display: flex; flex-direction: column; gap: 10px; padding-left: 14px; }
+.sug-item { display: flex; gap: 10px; align-items: flex-start; }
+.sug-num {
+  width: 26px; height: 26px; border-radius: 13px;
+  background: linear-gradient(135deg, #3182ce, #4299e1);
+  color: #fff; font-size: 14px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.sug-text { flex: 1; font-size: 18px; color: #4a5568; line-height: 1.6; }
+.ocr-area { padding-left: 14px; font-size: 17px; color: #4a5568; line-height: 1.8; }
+.ocr-hl { color: #e53e3e; font-weight: 700; background: #fff5f5; padding: 1px 4px; border-radius: 3px; }
+/* case alert */
+.case-alert {
+  background: #fff5f5; border-radius: 12px; margin-bottom: 10px;
+  border: 2px solid #e53e3e; overflow: hidden;
+  box-shadow: 0 1px 10px rgba(229,62,62,0.12);
+}
+.case-alert-header { display: flex; align-items: center; gap: 8px; padding: 16px 16px 0; }
+.case-alert-icon { font-size: 18px; }
+.case-alert-title { font-size: 18px; font-weight: 800; color: #c53030; flex: 1; }
+.case-alert-badge { font-size: 12px; color: #e53e3e; background: #fff; padding: 2px 10px; border-radius: 12px; border: 1px solid #feb2b2; font-weight: 600; }
+.case-alert-body { padding: 10px 16px; }
+.case-title2 { display: block; font-size: 19px; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; }
+.case-brief { display: block; font-size: 17px; color: #4a5568; line-height: 1.7; margin-bottom: 8px; }
+.case-tags { display: flex; gap: 8px; }
+.case-tag { font-size: 13px; padding: 3px 10px; border-radius: 6px; background: #edf2f7; color: #4a5568; font-weight: 600; }
+.case-tag.risk-tag { background: #fed7d7; color: #c53030; }
+.case-alert-footer { padding: 12px 16px; background: rgba(229,62,62,0.06); border-top: 1px solid #feb2b2; }
+.case-alert-warn { font-size: 14px; color: #c53030; font-weight: 700; display: block; text-align: center; }
+/* 96110 */
+.emergency-call-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #fff5f5, #fff0f0);
+  border: 1.5px solid #fc8181;
+  border-radius: 14px; margin-bottom: 10px; margin-left: 16px; margin-right: 16px;
+  box-shadow: 0 2px 12px rgba(229,62,62,0.12);
+  cursor: pointer; text-decoration: none;
+  animation: pulse-border 2s ease-in-out infinite;
+}
+@keyframes pulse-border {
+  0%, 100% { border-color: #fc8181; }
+  50% { border-color: #e53e3e; box-shadow: 0 3px 16px rgba(229,62,62,0.2); }
+}
+.ec-left { display: flex; align-items: center; gap: 10px; flex: 1; }
+.ec-phone-icon {
+  width: 42px; height: 42px; border-radius: 21px;
+  background: linear-gradient(135deg, #e53e3e, #fc8181);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.ec-phone-icon svg { width: 20px; height: 20px; fill: #fff; }
+.ec-text { flex: 1; }
+.ec-title { font-size: 16px; font-weight: 700; color: #c53030; line-height: 1.3; }
+.ec-sub { font-size: 12px; color: #e53e3e; margin-top: 2px; }
+.ec-btn {
+  background: #e53e3e; color: #fff; font-size: 14px; font-weight: 700;
+  padding: 9px 16px; border-radius: 20px; white-space: nowrap;
+}
+.consult-call-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 18px; background: #f7fafc; border: 1px solid #cbd5e0;
+  border-radius: 12px; margin: 12px 16px 0; cursor: pointer; text-decoration: none;
+}
+.cc-left { display: flex; align-items: center; gap: 10px; }
+.cc-phone-icon {
+  width: 38px; height: 38px; border-radius: 19px;
+  background: linear-gradient(135deg, #3182ce, #4299e1);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.cc-phone-icon svg { width: 17px; height: 17px; fill: #fff; }
+.cc-title { font-size: 16px; font-weight: 700; color: #2d3748; }
+.cc-sub { font-size: 13px; color: #718096; margin-top: 2px; }
+.cc-btn {
+  background: #4299e1; color: #fff; font-size: 14px; font-weight: 600;
+  padding: 7px 14px; border-radius: 18px; white-space: nowrap;
+}
+.reminder {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin: 12px 16px 0; padding: 14px 16px;
+  background: #f7f8fa; border-radius: 10px; border: 1px solid #e8ecf1;
+}
+.reminder-icon { font-size: 16px; flex-shrink: 0; }
+.reminder-text { flex: 1; font-size: 13px; color: #7c8ba0; line-height: 1.7; }
+.result-footer { display: flex; gap: 12px; padding: 18px 16px 10px; }
+.btn-back, .btn-again {
+  flex: 1; height: 48px; border-radius: 24px; border: none;
+  font-size: 17px; font-weight: 600; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.btn-back { background: #edf2f7; color: #4a5568; }
+.btn-again { background: linear-gradient(135deg, #2b6cb0, #4299e1); color: #fff; box-shadow: 0 2px 10px rgba(43,108,176,0.3); }
+.disclaimer-bar { margin: 8px 16px 20px; padding: 12px 16px; background: #fafafa; border-radius: 8px; border: 1px solid #e8ecf1; }
+.disclaimer-text { font-size: 13px; color: #a0aec0; line-height: 1.6; text-align: center; display: block; }
+
+/* ==================== 历史记录 ==================== */
+.history-page { min-height: 500px; padding: 16px; }
+.empty-state { display: flex; flex-direction: column; align-items: center; padding-top: 80px; gap: 10px; }
+.empty-circle { width: 80px; height: 80px; border-radius: 40px; background: #edf2f7; display: flex; align-items: center; justify-content: center; margin-bottom: 6px; }
+.empty-ring { width: 40px; height: 40px; border: 4px solid #cbd5e0; border-radius: 50%; border-top-color: transparent; border-right-color: transparent; }
+.empty-title { font-size: 22px; font-weight: 700; color: #1a1a2e; }
+.empty-hint { font-size: 16px; color: #718096; text-align: center; padding: 0 24px; line-height: 1.6; }
+.btn-go {
+  margin-top: 12px; width: 160px; height: 48px; border-radius: 24px; border: none;
+  background: linear-gradient(135deg, #2b6cb0, #4299e1); color: #fff;
+  font-size: 18px; font-weight: 600; cursor: pointer;
+  box-shadow: 0 2px 10px rgba(43,108,176,0.3);
+}
+.toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; padding: 0 2px; }
+.count-badge { display: flex; align-items: baseline; gap: 4px; }
+.count-num { font-size: 20px; font-weight: 800; color: #2b6cb0; }
+.count-label { font-size: 16px; color: #718096; }
+.clear-btn {
+  padding: 6px 14px; background: #fff5f5; border-radius: 16px;
+  border: 1px solid #fed7d7; font-size: 14px; color: #e53e3e;
+  font-weight: 600; cursor: pointer;
+}
+.hlist { display: flex; flex-direction: column; gap: 8px; }
+.hitem {
+  background: #fff; border-radius: 12px; padding: 14px 16px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04); border: 1px solid #e2e8f0;
+  display: flex; align-items: center;
+}
+.hitem-left { flex: 1; display: flex; align-items: flex-start; gap: 10px; }
+.hdot { width: 8px; height: 8px; border-radius: 4px; margin-top: 7px; flex-shrink: 0; }
+.hdot-low { background: #38a169; }
+.hdot-caution { background: #d69e2e; }
+.hdot-high { background: #e53e3e; }
+.hinfo { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.hbadge { display: inline-flex; align-items: center; gap: 6px; padding: 3px 14px; border-radius: 24px; border: 1.5px solid; font-size: 16px; font-weight: 700; }
+.hbadge-low { background: #e8f7ed; border-color: #2e9e4f; color: #2e9e4f; }
+.hbadge-caution { background: #fff8e6; border-color: #e6a817; color: #e6a817; }
+.hbadge-high { background: #fdecea; border-color: #d93025; color: #d93025; }
+.htype { font-size: 18px; color: #1a1a2e; font-weight: 700; }
+.htime { font-size: 14px; color: #a0aec0; }
+.hdel {
+  width: 30px; height: 30px; border-radius: 15px; background: #fff5f5;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: #e53e3e; font-weight: 700; cursor: pointer;
+}
+
+/* ==================== 帮助中心 ==================== */
+.help-page { padding: 16px; min-height: 500px; }
+.htabs { display: flex; background: #fff; border-radius: 12px; padding: 4px; margin-bottom: 16px; box-shadow: 0 1px 6px rgba(0,0,0,0.04); }
+.htab {
+  flex: 1; text-align: center; padding: 14px 0; font-size: 17px;
+  color: #718096; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.htab.active { background: linear-gradient(135deg, #2b6cb0, #4299e1); color: #fff; font-weight: 700; box-shadow: 0 1px 4px rgba(43,108,176,0.3); }
+.hsection { display: flex; flex-direction: column; gap: 10px; }
+.step-card {
+  display: flex; gap: 14px; background: #fff; border-radius: 12px;
+  padding: 16px; box-shadow: 0 1px 6px rgba(0,0,0,0.04); border: 1px solid #e2e8f0;
+}
+.step-num {
+  width: 35px; height: 35px; border-radius: 50%;
+  background: linear-gradient(135deg, #3182ce, #4299e1);
+  color: #fff; font-size: 18px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.step-cont { flex: 1; }
+.step-cont-title { font-size: 19px; font-weight: 700; color: #1a1a2e; display: block; margin-bottom: 6px; }
+.step-cont-desc { font-size: 16px; color: #4a5568; line-height: 1.7; }
+.know-card { background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 1px 6px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; cursor: pointer; }
+.know-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.know-title { font-size: 19px; font-weight: 700; color: #1a1a2e; flex: 1; }
+.know-arrow { font-size: 12px; color: #a0aec0; }
+.know-body { display: block; margin-top: 10px; font-size: 16px; color: #4a5568; line-height: 1.7; padding-top: 10px; border-top: 1px solid #e2e8f0; }
+
+/* ==================== 详情页 ==================== */
+.detail-risk-header { position: relative; padding: 24px 20px; overflow: hidden; }
+.detail-risk-header-bg { position: absolute; inset: 0; border-radius: 0 0 24px 24px; }
+.detail-risk-header-content { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.detail-risk-icon-circle { width: 44px; height: 44px; border-radius: 22px; background: rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; }
+.detail-risk-icon-text { font-size: 22px; font-weight: 800; color: #fff; line-height: 1; }
+.detail-risk-label { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: 2px; }
+.detail-time { font-size: 14px; color: rgba(255,255,255,0.75); }
+.detail-content { padding: 12px 16px 20px; }
+
+/* risk badge inline */
+.badge-inline {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 12px; border-radius: 24px; border: 1.5px solid;
+  font-size: 16px; font-weight: 700;
+}
+
+/* extra utility */
+.section-label {
+  font-size: 12px; color: #718096; text-align: center; margin: 4px 0 2px;
+  font-weight: 500; letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+
+<h1>灵溪识险</h1>
+<div class="subtitle">全页面交互预览 · 6 个页面 7 种状态 &nbsp;|&nbsp; 红·黄·绿 三风险等级 | 手机框架 375px</div>
+
+<nav class="nav-tabs">
+  <button class="nav-tab active" data-page="all" onclick="showAll()">📱 全部</button>
+  <button class="nav-tab" data-page="p0" onclick="showPage('p0')">🏠 首页</button>
+  <button class="nav-tab" data-page="p1" onclick="showPage('p1')">🔄 分析中</button>
+  <button class="nav-tab" data-page="p2" onclick="showPage('p2')">🔴 结果-高风险</button>
+  <button class="nav-tab" data-page="p3" onclick="showPage('p3')">🟡 结果-需谨慎</button>
+  <button class="nav-tab" data-page="p4" onclick="showPage('p4')">🟢 结果-低风险</button>
+  <button class="nav-tab" data-page="p5" onclick="showPage('p5')">📋 历史有数据</button>
+  <button class="nav-tab" data-page="p6" onclick="showPage('p6')">📋 历史空态</button>
+  <button class="nav-tab" data-page="p7" onclick="showPage('p7')">📖 帮助中心</button>
+  <button class="nav-tab" data-page="p8" onclick="showPage('p8')">📄 详情-高风险</button>
+  <button class="nav-tab" data-page="p9" onclick="showPage('p9')">📄 详情-需谨慎</button>
+  <button class="nav-tab" data-page="p10" onclick="showPage('p10')">📄 详情-低风险</button>
+</nav>
+
+<div class="gallery" id="gallery">
+
+  <!-- ===== 0. 首页 ===== -->
+  <div class="panel" id="panel-p0">
+    <div class="panel-label">🏠 首页 · 灵溪识险</div>
+    <div class="phone-frame">
+      <div class="navbar nav-white"><span class="navbar-title">灵溪识险</span></div>
+      <div class="phone-scroll">
+      <div class="home-header">
+        <span class="home-title">灵溪识险</span>
+        <span class="home-slogan">拍一拍，让诈骗信息无处可藏</span>
+      </div>
+      <div class="home-main">
+        <div class="btn-camera-wrap">
+          <div class="cam-icon-i">📷</div>
+          <span class="btn-camera-main">拍照识别</span>
+          <span class="btn-camera-sub">拍摄可疑信息进行风险分析</span>
+          <span class="btn-camera-hint">点击立即识别</span>
+        </div>
+        <div class="btn-album-wrap">📁 从相册选择</div>
+        <div class="sub-cards">
+          <div class="sub-card">
+            <div class="sub-card-icon">📋</div>
+            <div class="sub-card-title">我的识别</div>
+            <div class="sub-card-desc">查看过往识别结果</div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-icon">📖</div>
+            <div class="sub-card-title">防骗课堂</div>
+            <div class="sub-card-desc">学习防骗知识与技巧</div>
+          </div>
+        </div>
+        <div class="tips-box">
+          <h4>温馨提示</h4>
+          <p>您可以拍摄聊天记录、短信、宣传单、合同、APP页面等照片，帮您快速识别金融风险。</p>
+        </div>
+        <div class="footer-lock">
+          <span class="footer-lock-icon">🔒</span>
+          <span class="footer-lock-text">您的隐私数据全程加密保护</span>
+        </div>
+      </div>
+      </div> <!-- /phone-scroll -->
+    </div>
+  </div>
+
+  <!-- ===== 1. 分析中 ===== -->
+  <div class="panel" id="panel-p1">
+    <div class="panel-label">🔄 分析中 · 正在识别</div>
+    <div class="phone-frame">
+      <div class="navbar nav-blue"><span class="nav-back">←</span><span class="navbar-title">正在识别</span></div>
+      <div class="phone-scroll">
+      <div class="analyzing-body">
+        <div class="analyzing-top"><span class="analyzing-top-title">正在识别</span></div>
+        <div class="preview-wrap">
+          <div class="preview-img"><span class="preview-img-bg">🖼️</span></div>
+          <div class="scan-overlay"><div class="scan-line"></div></div>
+        </div>
+        <div class="loading-area">
+          <div class="spinner-wrap"><div class="spinner-ring"></div><div class="spinner-core"></div></div>
+          <div class="stage-title">正在分析金融风险…</div>
+          <div class="stage-hint">请稍候，正在为您智能分析风险</div>
+          <div class="step-dots">
+            <div class="step-dot active"></div><div class="step-line active"></div>
+            <div class="step-dot active"></div><div class="step-line active"></div>
+            <div class="step-dot active"></div>
+          </div>
+          <div class="step-labels">
+            <span class="step-lbl active">图片识别</span>
+            <span class="step-lbl active">文字提取</span>
+            <span class="step-lbl active">风险分析</span>
+          </div>
+        </div>
+      </div>
+      </div> <!-- /phone-scroll -->
+    </div>
+  </div>
+
+  <!-- ===== 2. 结果-高风险 ===== -->
+  <div class="panel" id="panel-p2">
+    <div class="panel-label">🔴 识别结果 · 高风险（含 96110 一键拨打）</div>
+    <div class="phone-frame">
+      <div class="navbar nav-blue"><span class="nav-back">←</span><span class="navbar-title">识别结果</span></div>
+      <div class="phone-scroll">
+      <div class="risk-header risk-high">
+        <div class="risk-header-bg"></div>
+        <div class="risk-header-content">
+          <div class="risk-icon-circle"><span class="risk-icon-text">!</span></div>
+          <div class="risk-level-label">高风险</div>
+          <div class="risk-desc">存在诈骗或违规诱导，请勿相信</div>
+        </div>
+      </div>
+      <div class="time-info"><span class="time-label">分析时间</span><span class="time-value">2026-07-08 15:30</span></div>
+      <div class="content">
+        <div class="card"><div class="card-title">风险类型</div><div class="card-body">冒充公检法诈骗</div></div>
+        <!-- 案例匹配 -->
+        <div class="case-alert">
+          <div class="case-alert-header">
+            <span class="case-alert-icon">🔍</span><span class="case-alert-title">真实案例警示</span>
+            <span class="case-alert-badge">案例库匹配</span>
+          </div>
+          <div class="case-alert-body">
+            <span class="case-title2">冒充公检法电信诈骗</span>
+            <span class="case-brief">受害人接到自称"公安局"电话，称其涉嫌洗钱要求转账到"安全账户"，被骗 68 万元。</span>
+            <div class="case-tags">
+              <span class="case-tag">冒充公检法</span><span class="case-tag risk-tag">高风险</span>
+            </div>
+          </div>
+          <div class="case-alert-footer">
+            <span class="case-alert-warn">⚠ 您的识别内容与上述真实诈骗案例高度相似，请务必提高警惕！</span>
+          </div>
+        </div>
+      </div>
+      <!-- 96110 紧急拨打 -->
+      <a class="emergency-call-bar" href="tel:96110">
+        <div class="ec-left">
+          <div class="ec-phone-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+          <div class="ec-text"><div class="ec-title">96110 反诈专线</div><div class="ec-sub">疑似诈骗请立即拨打核实</div></div>
+        </div>
+        <span class="ec-btn">一键拨打</span>
+      </a>
+      <div class="content">
+        <div class="card"><div class="card-title">风险原因</div><div class="card-body">图片内容包含"安全账户""涉嫌犯罪"等典型冒充公检法诈骗话术</div></div>
+        <div class="card"><div class="card-title">通俗解读</div><div class="plain-body">这是典型的冒充公检法诈骗，骗子虚构案情恐吓受害人转账</div></div>
+        <div class="card">
+          <div class="card-title">防骗建议</div>
+          <div class="sug-list">
+            <div class="sug-item"><div class="sug-num">1</div><span class="sug-text">公检法机关不会通过电话办案，更不存在"安全账户"</span></div>
+            <div class="sug-item"><div class="sug-num">2</div><span class="sug-text">不要向陌生账户转账汇款</span></div>
+            <div class="sug-item"><div class="sug-num">3</div><span class="sug-text">遇到类似情况可直接拨打 96110 核实</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">识别原文</div>
+          <div class="ocr-area">您的银行卡涉嫌<span class="ocr-hl">洗钱犯罪</span>，请立即将资金转入<span class="ocr-hl">安全账户</span>配合调查，否则将冻结所有资产。</div>
+        </div>
+      </div>
+      <div class="reminder">
+        <span class="reminder-icon">⚠</span>
+        <span class="reminder-text">系统仅对图片内容进行辅助分析，请注意核实图片及信息真实性，谨防AI生成、伪造页面或仿冒官方机构信息。</span>
+      </div>
+      <div class="result-footer"><button class="btn-back">返回首页</button><button class="btn-again">再识别一张</button></div>
+      <div class="disclaimer-bar"><span class="disclaimer-text">本系统仅提供金融风险辅助识别，不构成安全承诺、金融建议或真实性认证。</span></div>
+      </div> <!-- /phone-scroll -->
+    </div>
+  </div>
+
+  <!-- ===== 3. 结果-需谨慎 ===== -->
+  <div class="panel" id="panel-p3">
+    <div class="panel-label">🟡 识别结果 · 需谨慎（中风险提醒）</div>
+    <div class="phone-frame">
+      <div class="navbar nav-blue"><span class="nav-back">←</span><span class="navbar-title">识别结果</span></div>
+      <div class="phone-scroll">
+      <div class="risk-header risk-caution">
+        <div class="risk-header-bg"></div>
+        <div class="risk-header-content">
+          <div class="risk-icon-circle"><span class="risk-icon-text">!</span></div>
+          <div class="risk-level-label">需谨慎</div>
+          <div class="risk-desc">存在模糊表述，请提高警惕，切勿轻信</div>
+        </div>
+      </div>
+      <div class="time-info"><span class="time-label">分析时间</span><span class="time-value">2026-07-08 14:20</span></div>
+      <div class="content">
+        <div class="card"><div class="card-title">风险类型</div><div class="card-body">虚假投资理财</div></div>
+        <div class="card"><div class="card-title">风险原因</div><div class="card-body">图片内容包含"高收益""保本保息"等诱导性金融话术，建议谨慎对待。</div></div>
+        <div class="card"><div class="card-title">通俗解读</div><div class="plain-body">您看到的这个宣传说得很好听，但"保本高收益"本身就是矛盾的。正规理财产品从来不会承诺稳赚不赔，越是拍胸脯保证的，越要多掂量。</div></div>
+        <div class="card">
+          <div class="card-title">防骗建议</div>
+          <div class="sug-list">
+            <div class="sug-item"><div class="sug-num">1</div><span class="sug-text">核实对方机构资质，查询是否在正规金融机构注册</span></div>
+            <div class="sug-item"><div class="sug-num">2</div><span class="sug-text">不要通过不明链接或二维码下载投资 APP</span></div>
+            <div class="sug-item"><div class="sug-num">3</div><span class="sug-text">投资前务必和家人商量，不要独自做决定</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">识别原文</div>
+          <div class="ocr-area">本理财产品<span class="ocr-hl">保本保息</span>，<span class="ocr-hl">年化收益15%</span>以上，限量发售，<span class="ocr-hl">仅限今日</span>认购，名额有限先到先得。</div>
+        </div>
+      </div>
+      <div class="reminder">
+        <span class="reminder-icon">⚠</span>
+        <span class="reminder-text">系统仅对图片内容进行辅助分析，请注意核实图片及信息真实性，谨防AI生成、伪造页面或仿冒官方机构信息。</span>
+      </div>
+      <!-- 96110 咨询 -->
+      <a class="consult-call-bar" href="tel:96110">
+        <div class="cc-left">
+          <div class="cc-phone-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+          <div><div class="cc-title">96110 反诈咨询热线</div><div class="cc-sub">如有疑虑，可拨打咨询</div></div>
+        </div>
+        <span class="cc-btn">拨打</span>
+      </a>
+      <div class="result-footer"><button class="btn-back">返回首页</button><button class="btn-again">再识别一张</button></div>
+      <div class="disclaimer-bar"><span class="disclaimer-text">本系统仅提供金融风险辅助识别，不构成安全承诺、金融建议或真实性认证。</span></div>
+      </div> <!-- /phone-scroll -->
+    </div>
+  </div>
+
+  <!-- ===== 4. 结果-低风险 ===== -->
+  <div class="panel" id="panel-p4">
+    <div class="panel-label">🟢 识别结果 · 低风险（含 96110 咨询入口）</div>
+    <div class="phone-frame">
+      <div class="navbar nav-blue"><span class="nav-back">←</span><span class="navbar-title">识别结果</span></div>
+      <div class="phone-scroll">
+      <div class="risk-header risk-low">
+        <div class="risk-header-bg"></div>
+        <div class="risk-header-content">
+          <div class="risk-icon-circle"><span class="risk-icon-text">✓</span></div>
+          <div class="risk-level-label">低风险</div>
+          <div class="risk-desc">未发现明显金融风险特征，建议进一步核实信息来源</div>
+        </div>
+      </div>
+      <div class="time-info"><span class="time-label">分析时间</span><span class="time-value">2026-07-08 15:32</span></div>
+      <div class="content">
+        <div class="card"><div class="card-title">风险类型</div><div class="card-body">暂未发现明显风险特征</div></div>
+        <div class="card"><div class="card-title">风险原因</div><div class="card-body">灵溪已对该图片进行智能分析，目前未识别到任何金融诈骗相关的敏感信息或诱导行为。</div></div>
+        <div class="card"><div class="card-title">通俗解读</div><div class="plain-body">灵溪仔细辨认过了，这张图片里没有发现常见的金融骗局套路。不过涉及资金往来的事情，还是建议多留个心眼。</div></div>
+        <div class="card">
+          <div class="card-title">防骗建议</div>
+          <div class="sug-list">
+            <div class="sug-item"><div class="sug-num">1</div><span class="sug-text">继续保持警惕，不点击陌生链接</span></div>
+            <div class="sug-item"><div class="sug-num">2</div><span class="sug-text">遇到可疑情况可拨打 96110 咨询</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="reminder">
+        <span class="reminder-icon">⚠</span>
+        <span class="reminder-text">系统仅对图片内容进行辅助分析，请注意核实图片及信息真实性，谨防AI生成、伪造页面或仿冒官方机构信息。</span>
+      </div>
+      <!-- 96110 咨询 -->
+      <a class="consult-call-bar" href="tel:96110">
+        <div class="cc-left">
+          <div class="cc-phone-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+          <div><div class="cc-title">96110 反诈咨询热线</div><div class="cc-sub">如有疑虑，可拨打咨询</div></div>
+        </div>
+        <span class="cc-btn">拨打</span>
+      </a>
+      <div class="result-footer"><button class="btn-back">返回首页</button><button class="btn-again">再识别一张</button></div>
+      <div class="disclaimer-bar"><span class="disclaimer-text">本系统仅提供金融风险辅助识别，不构成安全承诺、金融建议或真实性认证。</span></div>
+      </div> <!-- /phone-scroll -->
+    </div>
+  </div>
+
+  <!-- ===== 5. 历史记录-有数据 ===== -->
+  <div class="panel" id="panel-p5">
+    <div class="panel-label">📋 历史记录 · 有数据状态</div>
+    <div class="phone-frame">
+      <div class="navbar nav-blue"><span class="nav-back">←</span><span class="navbar-title">历史记录</span></div>
+      <div class="phone-scroll">
+      <div class="history-page">
+        <div class="toolbar">
+          <div class="count-badge"><span class="count-num">3</span><span class="count-label">条记录</span></div>
+          <div class="clear-btn">清空全部</div>
+        </div>
+        <div class="hlist">
+          <div class="hitem">
+            <div class="hitem-left">
+              <div class="hdot hdot-high"></div>
+              <div class="hinfo">
+                <div><span class="badge-inline hbadge-high">✕ 高风险</span></div>
+                <div class="htype">冒充公检法诈骗</div>
+                <div class="htime">2026-07-08 15:30</div>
+              </div>
+            </div>
+            <div class="hdel">✕</div>
+          </div>
+          <div class="hitem">
+            <div class="hitem-left">
+              <div class="hdot hdot-caution"></div>
+              <div class="hinfo">
+                <div><span class="badge-inline hbadge-caution">! 需谨慎</span></div>
+                <div class="htype">虚假投资理财</div>
+                <div class="htime">2026-07-08 12:15</div>
+              </div>
+            </div>
+            <div class="hdel">✕</div>
+          </div>
+          <div class="hitem">
+            <div class="hitem-left">
+              <div class="hdot hdot-low"></div>
+              <div class="hinfo">
+                <div><span class="badge-inline hbadge-low">✓ 低风险</span></div>
+                <div class="htype">正常银行通知</div>
+                <div class="htime">2026-07-07 09:45</div>
+              </div>
+            </div>
+            <div class="hdel">✕</div>
+          </div>
+        </div>
+      </div>
+      </div> <!-- /phone-scroll -->
+    </div>
+  </div>
+
+  <!-- ===== 6. 历史记录-空态 ===== -->
+  <div class="panel" id="panel-p6">
+    <div class="panel-label">📋 历史记录 · 空状态</div>
+    <div class="phone-frame">
+      <div class="navbar nav-blue"><span class="nav-back">←</span><span class="navbar-title">历史记录</span></div>
+      <div class="phone-scroll">
+      <div class="history-page">
+        <div class="empty-state">
+          <div class="empty-circle"><div class="empty-ring"></div></div>
+          <div class="empty-title">暂无识别记录</div>
+          <div class="empty-hint">拍照或上传图片后，分析结果会保存在这里</div>
+          <button class="btn-go">去识别</button>
+        </div>
+      </div>
+      </div> <!-- /phone-scroll -->
+    </div>
+  </div>
+
+  <!-- ===== 7. 帮助中心 ===== -->
+  <div class="panel" id="panel-p7">
+    <div class="panel-label">📖 帮助中心 · 使用教程 & 防骗知识</div>
+    <div class="phone-frame">
+      <div class="navbar nav-blue"><span class="nav-back">←</span><span class="navbar-title">帮助中心</span></div>
+      <div class="phone-scroll">
+      <div class="help-page">
+        <div class="htabs">
+          <div class="htab active" onclick="switchHelpTab(event,'tutorial')">使用教程</div>
+          <div class="htab" onclick="switchHelpTab(event,'knowledge')">防骗知识</div>
+        </div>
+        <div class="hsection" id="tutorial-section">
+          <div class="step-card"><div class="step-num">1</div><div class="step-cont"><span class="step-cont-title">打开小程序</span><span class="step-cont-desc">在微信中搜索或扫码进入「灵溪识险」。</span></div></div>
+          <div class="step-card"><div class="step-num">2</div><div class="step-cont"><span class="step-cont-title">拍照或选图</span><span class="step-cont-desc">点击首页「拍照识别」拍摄可疑信息，或点「相册上传」选择已有截图。</span></div></div>
+          <div class="step-card"><div class="step-num">3</div><div class="step-cont"><span class="step-cont-title">等待识别</span><span class="step-cont-desc">系统会自动识别图片中的文字，并分析是否存在诈骗风险，请稍等片刻。</span></div></div>
+          <div class="step-card"><div class="step-num">4</div><div class="step-cont"><span class="step-cont-title">查看结果</span><span class="step-cont-desc">结果页会显示风险等级、通俗解读和防骗建议，清晰明了方便查看。</span></div></div>
+          <div class="step-card"><div class="step-num">5</div><div class="step-cont"><span class="step-cont-title">查看历史</span><span class="step-cont-desc">在「历史记录」中可回看以往的识别结果，方便和家人一起核对。</span></div></div>
+        </div>
+        <div class="hsection" id="knowledge-section" style="display:none">
+          <div class="know-card" onclick="this.querySelector('.know-body').style.display=this.querySelector('.know-body').style.display==='none'?'block':'none'">
+            <div class="know-header"><span class="know-title">陌生链接不要点</span><span class="know-arrow">▼</span></div>
+            <span class="know-body">收到不明链接的短信或微信消息，千万不要随便点击。骗子常用假链接盗取您的账号和密码，甚至转走您的钱。</span>
+          </div>
+          <div class="know-card" onclick="this.querySelector('.know-body').style.display=this.querySelector('.know-body').style.display==='none'?'block':'none'">
+            <div class="know-header"><span class="know-title">验证码不能告诉别人</span><span class="know-arrow">▼</span></div>
+            <span class="know-body">短信验证码是保护您账户安全的钥匙。任何人以任何理由索要验证码，都是骗子，绝对不能给。</span>
+          </div>
+          <div class="know-card" onclick="this.querySelector('.know-body').style.display=this.querySelector('.know-body').style.display==='none'?'block':'none'">
+            <div class="know-header"><span class="know-title">高收益往往有陷阱</span><span class="know-arrow">▼</span></div>
+            <span class="know-body">宣称「保本保息」「年化收益十几二十个点」的理财宣传，很多是非法集资。天上不会掉馅饼，投资前一定让子女帮忙把关。</span>
+          </div>
+          <div class="know-card" onclick="this.querySelector('.know-body').style.display=this.querySelector('.know-body').style.display==='none'?'block':'none'">
+            <div class="know-header"><span class="know-title">公检法不会电话办案</span><span class="know-arrow">▼</span></div>
+            <span class="know-body">真正的公安、检察院、法院不会通过电话要求您转账到「安全账户」。接到这类电话，直接挂断，让家人帮忙报警核实。</span>
+          </div>
+          <div class="know-card" onclick="this.querySelector('.know-body').style.display=this.querySelector('.know-body').style.display==='none'?'block':'none'">
+            <div class="know-header"><span class="know-title">养老返利项目要警惕</span><span class="know-arrow">▼</span></div>
+            <span class="know-body">以「国家养老项目」「养老返利分红」为名的宣传，很多是骗局。正规养老政策不会要求您先交钱再返利。</span>
+          </div>
+          <div class="know-card" onclick="this.querySelector('.know-body').style.display=this.querySelector('.know-body').style.display==='none'?'block':'none'">
+            <div class="know-header"><span class="know-title">转账前多核实</span><span class="know-arrow">▼</span></div>
+            <span class="know-body">凡是要求您向陌生个人账户转账的，务必先和家人、社区工作人员核实。宁可多问一句，也不要急着转钱。</span>
+          </div>
+        </div>
+      </div>
+      </div> <!-- /phone-scroll -->
+    </div>
+  </div>
+
+  <!-- ===== 8. 详情-高风险 ===== -->
+  <div class="panel" id="panel-p8">
+    <div class="panel-label">📄 记录详情 · 高风险</div>
+    <div class="phone-frame">
+      <div class="navbar nav-blue"><span class="nav-back">←</span><span class="navbar-title">记录详情</span></div>
+      <div class="phone-scroll">
+      <div class="risk-header risk-high">
+        <div class="risk-header-bg"></div>
+        <div class="risk-header-content">
+          <div class="risk-icon-circle"><span class="risk-icon-text">!</span></div>
+          <div class="risk-level-label">高风险</div>
+          <div class="risk-desc" style="margin-top:4px;font-size:14px;">2026-07-08 15:30</div>
+        </div>
+      </div>
+      <div class="detail-content">
+        <div class="card"><div class="card-title">风险类型</div><div class="card-body">冒充公检法诈骗</div></div>
+        <div class="card"><div class="card-title">风险原因</div><div class="card-body">图片内容包含"安全账户""涉嫌犯罪"等典型冒充公检法诈骗话术</div></div>
+        <div class="card"><div class="card-title">通俗解读</div><div class="plain-body">这是典型的冒充公检法诈骗，骗子虚构案情恐吓受害人转账</div></div>
+        <div class="card">
+          <div class="card-title">防骗建议</div>
+          <div class="sug-list">
+            <div class="sug-item"><div class="sug-num">1</div><span class="sug-text">公检法机关不会通过电话办案，更不存在"安全账户"</span></div>
+            <div class="sug-item"><div class="sug-num">2</div><span class="sug-text">不要向陌生账户转账汇款</span></div>
+            <div class="sug-item"><div class="sug-num">3</div><span class="sug-text">遇到类似情况可直接拨打 96110 核实</span></div>
+          </div>
+        </div>
+      </div>
+      </div> <!-- /phone-scroll -->
+    </div>
+  </div>
+
+  <!-- ===== 9. 详情-需谨慎 ===== -->
+  <div class="panel" id="panel-p9">
+    <div class="panel-label">📄 记录详情 · 需谨慎</div>
+    <div class="phone-frame">
+      <div class="navbar nav-blue"><span class="nav-back">←</span><span class="navbar-title">记录详情</span></div>
+      <div class="phone-scroll">
+      <div class="risk-header risk-caution">
+        <div class="risk-header-bg"></div>
+        <div class="risk-header-content">
+          <div class="risk-icon-circle"><span class="risk-icon-text">!</span></div>
+          <div class="risk-level-label">需谨慎</div>
+          <div class="risk-desc" style="margin-top:4px;font-size:14px;">2026-07-08 14:20</div>
+        </div>
+      </div>
+      <div class="detail-content">
+        <div class="card"><div class="card-title">风险类型</div><div class="card-body">虚假投资理财</div></div>
+        <div class="card"><div class="card-title">风险原因</div><div class="card-body">图片内容包含"高收益""保本保息"等诱导性金融话术，建议谨慎对待。</div></div>
+        <div class="card"><div class="card-title">通俗解读</div><div class="plain-body">您看到的这个宣传说得很好听，但"保本高收益"本身就是矛盾的。正规理财产品从来不会承诺稳赚不赔。</div></div>
+        <div class="card">
+          <div class="card-title">防骗建议</div>
+          <div class="sug-list">
+            <div class="sug-item"><div class="sug-num">1</div><span class="sug-text">核实对方机构资质，查询是否在正规金融机构注册</span></div>
+            <div class="sug-item"><div class="sug-num">2</div><span class="sug-text">不要通过不明链接或二维码下载投资 APP</span></div>
+            <div class="sug-item"><div class="sug-num">3</div><span class="sug-text">投资前务必和家人商量，不要独自做决定</span></div>
+          </div>
+        </div>
+      </div>
+      </div> <!-- /phone-scroll -->
+    </div>
+  </div>
+
+  <!-- ===== 10. 详情-低风险 ===== -->
+  <div class="panel" id="panel-p10">
+    <div class="panel-label">📄 记录详情 · 低风险</div>
+    <div class="phone-frame">
+      <div class="navbar nav-blue"><span class="nav-back">←</span><span class="navbar-title">记录详情</span></div>
+      <div class="phone-scroll">
+      <div class="risk-header risk-low">
+        <div class="risk-header-bg"></div>
+        <div class="risk-header-content">
+          <div class="risk-icon-circle"><span class="risk-icon-text">✓</span></div>
+          <div class="risk-level-label">低风险</div>
+          <div class="risk-desc" style="margin-top:4px;font-size:14px;">2026-07-08 15:32</div>
+        </div>
+      </div>
+      <div class="detail-content">
+        <div class="card"><div class="card-title">风险类型</div><div class="card-body">暂未发现明显风险特征</div></div>
+        <div class="card"><div class="card-title">风险原因</div><div class="card-body">灵溪已对该图片进行智能分析，目前未识别到任何金融诈骗相关的敏感信息或诱导行为。</div></div>
+        <div class="card"><div class="card-title">通俗解读</div><div class="plain-body">灵溪仔细辨认过了，这张图片里没有发现常见的金融骗局套路。不过涉及资金往来的事情，还是建议多留个心眼。</div></div>
+        <div class="card">
+          <div class="card-title">防骗建议</div>
+          <div class="sug-list">
+            <div class="sug-item"><div class="sug-num">1</div><span class="sug-text">继续保持警惕，不点击陌生链接</span></div>
+            <div class="sug-item"><div class="sug-num">2</div><span class="sug-text">遇到可疑情况可拨打 96110 咨询</span></div>
+          </div>
+        </div>
+      </div>
+      </div> <!-- /phone-scroll -->
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showAll() {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('hidden'));
+  document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+  document.querySelector('.nav-tab[data-page="all"]').classList.add('active');
+}
+function showPage(id) {
+  document.querySelectorAll('.panel').forEach(p => {
+    p.classList.toggle('hidden', p.id !== 'panel-' + id);
+  });
+  document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+  document.querySelector('.nav-tab[data-page="' + id + '"]').classList.add('active');
+}
+function switchHelpTab(e, tab) {
+  const parent = e.target.closest('.help-page');
+  parent.querySelectorAll('.htab').forEach(h => h.classList.remove('active'));
+  e.target.classList.add('active');
+  parent.querySelector('#tutorial-section').style.display = tab === 'tutorial' ? 'flex' : 'none';
+  parent.querySelector('#knowledge-section').style.display = tab === 'knowledge' ? 'flex' : 'none';
+}
+</script>
+
+</body>
+</html>

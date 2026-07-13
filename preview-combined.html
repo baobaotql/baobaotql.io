@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>灵溪识险 · 流程 + 界面融合预览</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+  background:#0a1628;color:#e2e8f0;min-height:100vh;overflow-x:hidden;
+}
+
+/* ===== Top bar ===== */
+.top-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 32px;position:relative;z-index:100;
+}
+.logo-area h1{
+  font-size:24px;font-weight:800;
+  background:linear-gradient(135deg,#60a5fa,#a78bfa);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.logo-area span{font-size:12px;color:#64748b;margin-left:8px}
+.page-indicator{
+  display:flex;align-items:center;gap:8px;font-size:14px;color:#94a3b8;
+}
+.page-indicator b{color:#60a5fa;font-size:18px}
+
+/* ===== Slide Container ===== */
+.slides-container{
+  position:relative;max-width:1400px;margin:0 auto;
+}
+
+/* ===== Main layout ===== */
+.main-wrapper{
+  display:flex;gap:0;max-width:1400px;margin:0 auto;padding:0 32px 20px;
+  align-items:flex-start;justify-content:center;
+}
+
+/* ===== Left: Pipeline Panel ===== */
+.pipeline-panel{
+  flex:1;max-width:620px;min-width:400px;
+  padding:24px 32px 24px 24px;overflow-y:auto;max-height:calc(100vh - 160px);
+}
+.stage-badge{
+  display:inline-block;padding:4px 14px;border-radius:20px;
+  font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:16px;
+  text-transform:uppercase;
+}
+.badge-local{background:rgba(52,211,153,.15);color:#34d399;border:1px solid rgba(52,211,153,.3)}
+.badge-llm{background:rgba(96,165,250,.15);color:#60a5fa;border:1px solid rgba(96,165,250,.3)}
+.badge-post{background:rgba(244,114,182,.15);color:#f472b6;border:1px solid rgba(244,114,182,.3)}
+.badge-result{background:rgba(251,191,36,.15);color:#fbbf24;border:1px solid rgba(251,191,36,.3)}
+.badge-fallback{background:rgba(248,113,113,.15);color:#f87171;border:1px solid rgba(248,113,113,.3)}
+.badge-arch{background:rgba(167,139,250,.15);color:#a78bfa;border:1px solid rgba(167,139,250,.3)}
+
+.pipeline-title{
+  font-size:26px;font-weight:800;margin-bottom:8px;line-height:1.3;
+}
+.pipeline-title.t-blue{color:#60a5fa}
+.pipeline-title.t-green{color:#34d399}
+.pipeline-title.t-pink{color:#f472b6}
+.pipeline-title.t-amber{color:#fbbf24}
+.pipeline-title.t-red{color:#f87171}
+.pipeline-title.t-purple{color:#a78bfa}
+
+.pipeline-subtitle{font-size:14px;color:#94a3b8;margin-bottom:24px;line-height:1.6}
+
+/* Steps in pipeline */
+.pl-steps{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+.pl-step{
+  background:#112240;border:1px solid #1e3a5f;border-radius:12px;
+  padding:16px 20px;display:flex;gap:14px;align-items:flex-start;
+  transition:border-color .3s,box-shadow .3s;
+}
+.pl-step:hover{border-color:#3b82f6;box-shadow:0 0 24px rgba(59,130,246,.1)}
+.pl-step-num{
+  width:38px;height:38px;border-radius:10px;display:flex;align-items:center;
+  justify-content:center;font-size:16px;font-weight:800;flex-shrink:0;
+}
+.pl-step-num.sn-blue{background:linear-gradient(135deg,#2563eb,#3b82f6)}
+.pl-step-num.sn-green{background:linear-gradient(135deg,#059669,#10b981)}
+.pl-step-num.sn-purple{background:linear-gradient(135deg,#7c3aed,#8b5cf6)}
+.pl-step-num.sn-amber{background:linear-gradient(135deg,#d97706,#f59e0b)}
+.pl-step-num.sn-pink{background:linear-gradient(135deg,#db2777,#ec4899)}
+.pl-step-info{flex:1}
+.pl-step-name{font-size:15px;font-weight:700;margin-bottom:4px}
+.pl-step-desc{font-size:13px;color:#94a3b8;line-height:1.6}
+.pl-step-tags{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap}
+.pl-tag{
+  font-size:10px;padding:2px 8px;border-radius:5px;font-weight:600;
+}
+.pl-tag.t-blue{background:rgba(59,130,246,.15);color:#60a5fa}
+.pl-tag.t-green{background:rgba(52,211,153,.15);color:#34d399}
+.pl-tag.t-purple{background:rgba(139,92,246,.15);color:#a78bfa}
+
+/* Code block */
+.code-mini{
+  background:#0d1b2a;border:1px solid #1e3a5f;border-radius:8px;
+  padding:12px;margin-top:16px;font-family:"SF Mono","Consolas",monospace;
+  font-size:11px;color:#94a3b8;white-space:pre-wrap;word-break:break-all;
+  line-height:1.5;max-height:140px;overflow-y:auto;
+}
+
+/* ===== Connector arrow between panels ===== */
+.connector{
+  display:flex;align-items:center;justify-content:center;
+  padding:0 8px;align-self:stretch;
+}
+.connector-line{
+  width:2px;height:80%;background:linear-gradient(180deg,transparent,#3b82f6,transparent);
+  border-radius:1px;
+}
+
+/* ===== Right: Phone Panel ===== */
+.phone-panel{
+  flex-shrink:0;display:flex;flex-direction:column;align-items:center;
+  padding:8px 24px 24px 0;
+}
+.phone-label{
+  font-size:13px;color:#64748b;font-weight:600;
+  margin-bottom:14px;text-align:center;letter-spacing:1px;
+}
+.phone-frame{
+  width:330px;height:610px;background:#f0f4f8;border-radius:28px;
+  overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.06);
+  display:flex;flex-direction:column;
+}
+.phone-scroll{
+  flex:1;overflow-y:auto;overflow-x:hidden;
+  scrollbar-width:none;-ms-overflow-style:none;
+}
+.phone-scroll::-webkit-scrollbar{display:none}
+
+/* ===== Nav (phone) ===== */
+.nb{
+  height:40px;display:flex;align-items:center;justify-content:center;
+  padding-top:16px;position:relative;flex-shrink:0;
+}
+.nb-white{background:#fff}
+.nb-blue{background:#7A9BBD}
+.nb-back{position:absolute;left:10px;top:20px;font-size:14px;cursor:pointer}
+.nb-white .nb-back{color:#4a5568}
+.nb-blue .nb-back{color:#fff}
+.nb-title{font-size:15px;font-weight:600;margin-top:3px}
+.nb-white .nb-title{color:#1a202c}
+.nb-blue .nb-title{color:#fff}
+
+/* ---- Home ---- */
+.home-hdr{text-align:center;padding:14px 16px 12px;background:#fff}
+.home-tt{font-size:24px;font-weight:700;color:#1e293b;letter-spacing:2px;display:block}
+.home-sl{font-size:15px;color:#4a6078;margin-top:4px;display:block}
+.home-main{padding:3px 16px}
+.btn-cam{
+  background:linear-gradient(160deg,#0047ab,#0066cc);border-radius:14px;padding:14px;
+  text-align:center;box-shadow:0 3px 10px rgba(0,71,171,.2);cursor:pointer;
+  margin-bottom:7px;
+}
+.btn-cam .cam-ic{font-size:24px;opacity:.85}
+.btn-cam .cam-big{color:#fff;font-size:19px;font-weight:700;display:block;margin-top:3px}
+.btn-cam .cam-sub{color:rgba(255,255,255,.68);font-size:13px;display:block;margin-top:1px}
+.btn-cam .cam-hint{color:rgba(255,255,255,.4);font-size:11px;display:block;margin-top:1px}
+.btn-alb{
+  border:2px dashed #0047ab;border-radius:14px;padding:14px;text-align:center;
+  margin-bottom:8px;cursor:pointer;background:#fff;color:#0047ab;
+  font-size:16px;font-weight:600;
+}
+.sub-cards{display:flex;gap:9px;margin-bottom:8px}
+.sub-card{
+  flex:1;background:#f7f9fc;border-radius:10px;padding:16px 8px;
+  text-align:center;cursor:pointer;border:1px solid #e8ecf1;
+}
+.sub-card-ic{font-size:18px;margin-bottom:3px}
+.sub-card-tt{font-size:15px;font-weight:700;color:#1e293b}
+.sub-card-ds{font-size:12px;color:#7c8ba0;margin-top:1px}
+.tips-bx{background:#eef4fa;border-radius:9px;padding:11px 14px;margin-bottom:9px}
+.tips-bx h4{font-size:14px;color:#1e3a5f;margin-bottom:5px}
+.tips-bx p{font-size:12px;color:#4a6078;line-height:1.6}
+.ft-lock{text-align:center;padding:10px 0 16px}
+.ft-lock span{font-size:11px;color:#7c8ba0;display:block}
+
+/* ---- Analyzing ---- */
+.az-body{display:flex;flex-direction:column;align-items:center;padding:16px 20px 0}
+.az-top{text-align:center;padding:12px 0}
+.az-top-tt{font-size:18px;font-weight:700;color:#1a1a2e}
+.pv-wrap{
+  width:220px;height:220px;border-radius:12px;overflow:hidden;background:#fff;
+  box-shadow:0 3px 12px rgba(0,0,0,.06);position:relative;margin-bottom:0;
+}
+.pv-img{
+  width:100%;height:100%;display:flex;align-items:center;
+  justify-content:center;background:#edf2f7;
+}
+.pv-img-bg{font-size:40px;color:#cbd5e0}
+.scan-ov{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:12px}
+.scan-ln{
+  position:absolute;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,#3182ce,transparent);
+  animation:scanMv 2s ease-in-out infinite;
+  box-shadow:0 0 8px rgba(49,130,206,.4);
+}
+@keyframes scanMv{0%,100%{top:8%}50%{top:88%}}
+.ld-area{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:24px}
+.sp-wrap{position:relative;width:52px;height:52px;margin-bottom:4px}
+.sp-ring{
+  position:absolute;inset:0;border:4px solid #e2e8f0;
+  border-top-color:#3182ce;border-right-color:#63b3ed;
+  border-radius:50%;animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sp-core{position:absolute;inset:12px;background:#ebf8ff;border-radius:50%}
+.stg-tt{font-size:20px;font-weight:700;color:#1a1a2e}
+.stg-hint{font-size:14px;color:#718096}
+.stp-dots{display:flex;align-items:center;gap:0;margin-top:4px}
+.stp-dot{width:12px;height:12px;border-radius:6px;background:#e2e8f0;transition:all .3s}
+.stp-dot.ac{background:#3182ce;box-shadow:0 0 5px rgba(49,130,206,.4)}
+.stp-line{width:36px;height:2px;background:#e2e8f0;transition:all .3s}
+.stp-line.ac{background:#3182ce}
+.stp-lbls{display:flex;justify-content:space-between;width:180px;margin-top:1px}
+.stp-lbl{font-size:11px;color:#a0aec0;transition:color .3s}
+.stp-lbl.ac{color:#3182ce;font-weight:600}
+
+/* ---- Result ---- */
+.risk-hd{position:relative;padding:22px 16px;overflow:hidden}
+.risk-hd-bg{position:absolute;inset:0;border-radius:0 0 20px 20px}
+.rh-high .risk-hd-bg{background:linear-gradient(180deg,#e53e3e,#fc8181)}
+.rh-caution .risk-hd-bg{background:linear-gradient(180deg,#d69e2e,#ecc94b)}
+.rh-low .risk-hd-bg{background:linear-gradient(180deg,#38a169,#48bb78)}
+.risk-hd-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:6px}
+.rh-ic-wrap{width:44px;height:44px;border-radius:22px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center}
+.rh-ic-txt{font-size:22px;font-weight:800;color:#fff;line-height:1}
+.rh-lvl{font-size:22px;font-weight:800;color:#fff;letter-spacing:2px}
+.rh-desc{font-size:14px;color:rgba(255,255,255,.88);text-align:center;line-height:1.3}
+.time-inf{
+  display:flex;justify-content:center;gap:6px;padding:10px 14px;margin:-14px 12px 0;
+  background:#fff;border-radius:9px;box-shadow:0 1px 4px rgba(0,0,0,.03);
+  position:relative;z-index:2;font-size:12px;
+}
+.time-lb{color:#a0aec0}.time-vl{color:#4a5568;font-weight:600}
+.ct{padding:10px 14px 0}
+.card{
+  background:#fff;border-radius:10px;padding:13px 15px;margin-bottom:8px;
+  box-shadow:0 1px 3px rgba(0,0,0,.02);border:1px solid #e2e8f0;
+}
+.card-tt{
+  position:relative;padding-left:10px;font-size:16px;
+  font-weight:700;color:#1a1a2e;margin-bottom:8px;
+}
+.card-tt::before{
+  content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:3px;height:15px;background:linear-gradient(180deg,#3182ce,#4299e1);
+  border-radius:2px;
+}
+.card-bd{padding-left:10px;font-size:14px;color:#4a5568;line-height:1.6}
+.plain-bd{font-size:17px;color:#1a1a2e;line-height:1.7;font-weight:500;padding-left:10px}
+.sg-list{display:flex;flex-direction:column;gap:8px;padding-left:10px}
+.sg-it{display:flex;gap:8px;align-items:flex-start}
+.sg-num{
+  width:22px;height:22px;border-radius:11px;
+  background:linear-gradient(135deg,#3182ce,#4299e1);
+  color:#fff;font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.sg-tx{flex:1;font-size:15px;color:#4a5568;line-height:1.5}
+.ocr-area{padding-left:10px;font-size:14px;color:#4a5568;line-height:1.7}
+.ocr-hl{color:#e53e3e;font-weight:700;background:#fff5f5;padding:0 3px;border-radius:2px}
+
+/* case alert */
+.cs-alert{
+  background:#fff5f5;border-radius:10px;margin-bottom:8px;border:2px solid #e53e3e;
+  overflow:hidden;box-shadow:0 1px 8px rgba(229,62,62,.1);
+}
+.cs-alert-hd{display:flex;align-items:center;gap:6px;padding:13px 14px 0}
+.cs-alert-ic{font-size:15px}
+.cs-alert-tt{font-size:16px;font-weight:800;color:#c53030;flex:1}
+.cs-alert-bdg{font-size:11px;color:#e53e3e;background:#fff;padding:1px 8px;border-radius:10px;border:1px solid #feb2b2;font-weight:600}
+.cs-alert-bd{padding:8px 14px}
+.cs-tt2{display:block;font-size:17px;font-weight:700;color:#1a1a2e;margin-bottom:4px}
+.cs-brief{display:block;font-size:14px;color:#4a5568;line-height:1.6;margin-bottom:6px}
+.cs-tags{display:flex;gap:6px}
+.cs-tag{font-size:11px;padding:2px 8px;border-radius:5px;background:#edf2f7;color:#4a5568;font-weight:600}
+.cs-tag.rk{background:#fed7d7;color:#c53030}
+.cs-alert-ft{padding:10px 14px;background:rgba(229,62,62,.05);border-top:1px solid #feb2b2}
+.cs-alert-wrn{font-size:12px;color:#c53030;font-weight:700;display:block;text-align:center}
+
+/* 96110 */
+.ec-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 14px;background:linear-gradient(135deg,#fff5f5,#fff0f0);
+  border:1.5px solid #fc8181;border-radius:12px;margin:0 14px 8px;
+  box-shadow:0 2px 10px rgba(229,62,62,.1);
+  cursor:pointer;text-decoration:none;
+  animation:pulse-bd 2s ease-in-out infinite;
+}
+@keyframes pulse-bd{
+  0%,100%{border-color:#fc8181}
+  50%{border-color:#e53e3e;box-shadow:0 2px 14px rgba(229,62,62,.18)}
+}
+.ec-l{display:flex;align-items:center;gap:8px;flex:1}
+.ec-ph-ic{
+  width:36px;height:36px;border-radius:18px;
+  background:linear-gradient(135deg,#e53e3e,#fc8181);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.ec-ph-ic svg{width:17px;height:17px;fill:#fff}
+.ec-tx{flex:1}
+.ec-tt{font-size:14px;font-weight:700;color:#c53030;line-height:1.2}
+.ec-sub{font-size:11px;color:#e53e3e;margin-top:1px}
+.ec-btn{
+  background:#e53e3e;color:#fff;font-size:12px;font-weight:700;
+  padding:7px 13px;border-radius:18px;white-space:nowrap;
+}
+.cc-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 15px;background:#f7fafc;border:1px solid #cbd5e0;
+  border-radius:10px;margin:10px 14px 0;cursor:pointer;text-decoration:none;
+}
+.cc-l{display:flex;align-items:center;gap:8px}
+.cc-ph-ic{
+  width:32px;height:32px;border-radius:16px;
+  background:linear-gradient(135deg,#3182ce,#4299e1);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.cc-ph-ic svg{width:14px;height:14px;fill:#fff}
+.cc-tt{font-size:14px;font-weight:700;color:#2d3748}
+.cc-sub{font-size:11px;color:#718096;margin-top:1px}
+.cc-btn{
+  background:#4299e1;color:#fff;font-size:12px;font-weight:600;
+  padding:6px 12px;border-radius:16px;white-space:nowrap;
+}
+.reminder{
+  display:flex;align-items:flex-start;gap:8px;
+  margin:10px 14px 0;padding:12px 14px;background:#f7f8fa;
+  border-radius:9px;border:1px solid #e8ecf1;
+}
+.reminder-ic{font-size:14px;flex-shrink:0}
+.reminder-tx{flex:1;font-size:11px;color:#7c8ba0;line-height:1.6}
+.rs-footer{display:flex;gap:10px;padding:14px 14px 8px}
+.btn-back,.btn-again{
+  flex:1;height:42px;border-radius:21px;border:none;
+  font-size:15px;font-weight:600;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.btn-back{background:#edf2f7;color:#4a5568}
+.btn-again{background:linear-gradient(135deg,#2b6cb0,#4299e1);color:#fff;box-shadow:0 2px 8px rgba(43,108,176,.25)}
+.ds-bar{margin:6px 14px 16px;padding:10px 14px;background:#fafafa;border-radius:7px;border:1px solid #e8ecf1}
+.ds-tx{font-size:11px;color:#a0aec0;line-height:1.5;text-align:center;display:block}
+
+/* ---- History ---- */
+.hist-pg{min-height:500px;padding:14px}
+.emp-st{display:flex;flex-direction:column;align-items:center;padding-top:60px;gap:8px}
+.emp-crcl{width:64px;height:64px;border-radius:32px;background:#edf2f7;display:flex;align-items:center;justify-content:center;margin-bottom:4px}
+.emp-ring{width:32px;height:32px;border:3px solid #cbd5e0;border-radius:50%;border-top-color:transparent;border-right-color:transparent}
+.emp-tt{font-size:20px;font-weight:700;color:#1a1a2e}
+.emp-hint{font-size:14px;color:#718096;text-align:center;padding:0 20px;line-height:1.5}
+.btn-go{
+  margin-top:10px;width:140px;height:42px;border-radius:21px;border:none;
+  background:linear-gradient(135deg,#2b6cb0,#4299e1);color:#fff;
+  font-size:16px;font-weight:600;cursor:pointer;box-shadow:0 2px 8px rgba(43,108,176,.25);
+}
+.toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;padding:0 2px}
+.cnt-bdg{display:flex;align-items:baseline;gap:3px}
+.cnt-num{font-size:18px;font-weight:800;color:#2b6cb0}
+.cnt-lb{font-size:14px;color:#718096}
+.clr-btn{padding:5px 12px;background:#fff5f5;border-radius:14px;border:1px solid #fed7d7;font-size:12px;color:#e53e3e;font-weight:600;cursor:pointer}
+.hlist{display:flex;flex-direction:column;gap:7px}
+.hitem{
+  background:#fff;border-radius:10px;padding:12px 14px;box-shadow:0 1px 4px rgba(0,0,0,.03);
+  border:1px solid #e2e8f0;display:flex;align-items:center;
+}
+.hitem-l{flex:1;display:flex;align-items:flex-start;gap:8px}
+.hdot{width:7px;height:7px;border-radius:4px;margin-top:6px;flex-shrink:0}
+.hdot-l{background:#38a169}.hdot-c{background:#d69e2e}.hdot-h{background:#e53e3e}
+.hinfo{flex:1;display:flex;flex-direction:column;gap:3px}
+.hb-inline{
+  display:inline-flex;align-items:center;gap:4px;padding:2px 12px;border-radius:20px;
+  border:1.5px solid;font-size:14px;font-weight:700;
+}
+.hb-l{background:#e8f7ed;border-color:#2e9e4f;color:#2e9e4f}
+.hb-c{background:#fff8e6;border-color:#e6a817;color:#e6a817}
+.hb-h{background:#fdecea;border-color:#d93025;color:#d93025}
+.htype{font-size:16px;color:#1a1a2e;font-weight:700}
+.htime{font-size:12px;color:#a0aec0}
+.hdel{
+  width:26px;height:26px;border-radius:13px;background:#fff5f5;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;color:#e53e3e;font-weight:700;cursor:pointer;
+}
+
+/* ---- Help ---- */
+.help-pg{padding:14px;min-height:500px}
+.htabs{display:flex;background:#fff;border-radius:10px;padding:3px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.03)}
+.htab-b{
+  flex:1;text-align:center;padding:12px 0;font-size:15px;
+  color:#718096;border-radius:8px;font-weight:600;cursor:pointer;transition:all .2s;
+}
+.htab-b.ac{background:linear-gradient(135deg,#2b6cb0,#4299e1);color:#fff;font-weight:700;box-shadow:0 1px 3px rgba(43,108,176,.25)}
+.hsection{display:flex;flex-direction:column;gap:8px}
+.step-cd{
+  display:flex;gap:12px;background:#fff;border-radius:10px;
+  padding:14px;box-shadow:0 1px 4px rgba(0,0,0,.03);border:1px solid #e2e8f0;
+}
+.step-nm{
+  width:30px;height:30px;border-radius:50%;
+  background:linear-gradient(135deg,#3182ce,#4299e1);
+  color:#fff;font-size:15px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.step-ct{flex:1}
+.step-ct-tt{font-size:17px;font-weight:700;color:#1a1a2e;display:block;margin-bottom:4px}
+.step-ct-ds{font-size:14px;color:#4a5568;line-height:1.6}
+.know-cd{
+  background:#fff;border-radius:10px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,.03);
+  border:1px solid #e2e8f0;cursor:pointer;
+}
+.know-hd{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.know-tt{font-size:17px;font-weight:700;color:#1a1a2e;flex:1}
+.know-ar{font-size:10px;color:#a0aec0}
+.know-bd{display:block;margin-top:8px;font-size:14px;color:#4a5568;line-height:1.6;padding-top:8px;border-top:1px solid #e2e8f0}
+
+/* ---- Detail ---- */
+.dt-risk-hd{position:relative;padding:20px 16px;overflow:hidden}
+.dt-risk-hd-bg{position:absolute;inset:0;border-radius:0 0 20px 20px}
+.dt-risk-hd-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:5px}
+.dt-ic-wrap{width:38px;height:38px;border-radius:19px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center}
+.dt-ic-txt{font-size:19px;font-weight:800;color:#fff;line-height:1}
+.dt-lvl{font-size:20px;font-weight:800;color:#fff;letter-spacing:2px}
+.dt-tm{font-size:12px;color:rgba(255,255,255,.72);margin-top:3px}
+.dt-content{padding:10px 14px 16px}
+
+/* === Architecture page === */
+.arch-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px}
+.arch-card{
+  background:#112240;border:2px solid;border-radius:14px;padding:18px;text-align:center;
+}
+.arch-card.ac-blue{border-color:#3b82f6}
+.arch-card.ac-amber{border-color:#f59e0b}
+.arch-card.ac-green{border-color:#22c55e}
+.arch-card .ac-ic{font-size:28px;margin-bottom:6px}
+.arch-card .ac-tt{font-size:14px;font-weight:700;margin-bottom:4px}
+.arch-card .ac-desc{font-size:11px;color:#94a3b8;line-height:1.5}
+.arch-card.ac-blue .ac-tt{color:#60a5fa}
+.arch-card.ac-amber .ac-tt{color:#fbbf24}
+.arch-card.ac-green .ac-tt{color:#34d399}
+
+.fallback-table{width:100%;font-size:12px;border-collapse:collapse;margin-top:12px}
+.fallback-table th{text-align:left;padding:8px 10px;color:#64748b;font-weight:600;border-bottom:1px solid #1e3a5f;background:rgba(30,58,95,.3)}
+.fallback-table td{padding:8px 10px;border-bottom:1px solid #0f2440;color:#cbd5e1;vertical-align:top}
+.fallback-table tr:last-child td{border-bottom:none}
+.ft-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.ft-red{background:#ef4444}.ft-yellow{background:#f59e0b}.ft-green{background:#22c55e}
+
+/* ===== Pagination ===== */
+.pagination{
+  display:flex;align-items:center;justify-content:center;
+  gap:12px;padding:16px 0 30px;
+}
+.page-dots{display:flex;gap:10px;align-items:center}
+.page-dot{
+  width:10px;height:10px;border-radius:5px;background:#334155;
+  cursor:pointer;transition:all .3s;
+}
+.page-dot.active{background:#3b82f6;width:28px;box-shadow:0 0 8px rgba(59,130,246,.4)}
+.page-dot.done{background:#22c55e}
+.nav-btn{
+  width:40px;height:40px;border-radius:20px;border:1px solid #334155;
+  background:#112240;color:#94a3b8;font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+.nav-btn:hover{background:#1e3a5f;color:#e2e8f0;border-color:#3b82f6}
+.nav-btn:disabled{opacity:.3;cursor:default}
+
+/* slide container */
+.slide{
+  display:none;opacity:0;
+  transition:opacity .45s ease,transform .45s ease;
+  transform:translateX(24px);
+}
+.slide.active{
+  display:flex;opacity:1;
+  transform:translateX(0);
+}
+@media(max-width:960px){
+  .main-wrapper{flex-direction:column;padding:0 16px}
+  .pipeline-panel{max-width:100%;min-width:0;padding:16px;max-height:none}
+  .phone-panel{padding:0 16px 20px;width:100%}
+  .phone-frame{width:280px;height:520px}
+  .connector{display:none}
+}
+
+</style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+  <div class="logo-area">
+    <h1>🛡️ 灵溪识险</h1>
+    <span>完整识别流程 × 手机界面</span>
+  </div>
+  <div class="page-indicator">
+    <span id="pageLabel">Stage 1</span>
+    <b id="pageNum">1</b><span>/8</span>
+  </div>
+</div>
+
+<!-- ===== Slide Container ===== -->
+<div class="slides-container">
+
+<!-- ========== PAGE 0: 标题总览 ========== -->
+<div class="slide active" id="slide0">
+<div class="main-wrapper">
+<div class="pipeline-panel">
+  <div class="stage-badge badge-arch">总览</div>
+  <div class="pipeline-title t-purple">灵溪识险 — 完整识别流水线</div>
+  <div class="pipeline-subtitle">
+    从拍照到结果展示，七步流水线 + 三层判定架构。<br>
+    一条原则贯穿始终：<b style="color:#f87171">宁可误判为高，不可漏判为低</b>。
+  </div>
+  <div class="arch-grid">
+    <div class="arch-card ac-blue">
+      <div class="ac-ic">🥇</div>
+      <div class="ac-tt">LLM 主裁判</div>
+      <div class="ac-desc">GLM-4.6V 视觉模型<br>一次调用完成 OCR + 风险定级 + 案例匹配<br><b>80%+ 场景直接命中</b></div>
+    </div>
+    <div class="arch-card ac-amber">
+      <div class="ac-ic">🥈</div>
+      <div class="ac-tt">关键词替补裁判</div>
+      <div class="ac-desc">本地关键词扫描引擎<br>仅在 LLM 完全崩溃时启用<br>三层关键词库：高危/警惕/安全</div>
+    </div>
+    <div class="arch-card ac-green">
+      <div class="ac-ic">🥉</div>
+      <div class="ac-tt">VAR 复核组</div>
+      <div class="ac-desc">后处理修正链<br>安全措辞过滤 + 案例升级 + 文本截断<br>宁可误判为高，不可漏判为低</div>
+    </div>
+  </div>
+  <div class="code-mini">
+Stage 1 · 本地预处理        → 拍照选图 + Hash查缓存
+Stage 2 · LLM 核心调用      → GLM-4.6V 一次调用 (OCR+定级+案例)
+Stage 3 · 后处理修正链      → 安全过滤 + 案例升级 + 截断
+Stage 4 · 缓存&兜底         → 结果缓存 + 异常兜底路径
+
+最终输出 → 高风险🔴 / 需谨慎🟡 / 低风险🟢  三档结果页
+  </div>
+</div>
+<div class="connector"><div class="connector-line"></div></div>
+<div class="phone-panel">
+  <div class="phone-label">📱 首页 · 灵溪识险</div>
+  <div class="phone-frame">
+    <div class="nb nb-white"><span class="nb-title">灵溪识险</span></div>
+    <div class="phone-scroll">
+    <div class="home-hdr"><span class="home-tt">灵溪识险</span><span class="home-sl">拍一拍，让诈骗信息无处可藏</span></div>
+    <div class="home-main">
+      <div class="btn-cam"><div class="cam-ic">📷</div><span class="cam-big">拍照识别</span><span class="cam-sub">拍摄可疑信息进行风险分析</span><span class="cam-hint">点击立即识别</span></div>
+      <div class="btn-alb">📁 从相册选择</div>
+      <div class="sub-cards">
+        <div class="sub-card"><div class="sub-card-ic">📋</div><div class="sub-card-tt">我的识别</div><div class="sub-card-ds">查看过往识别结果</div></div>
+        <div class="sub-card"><div class="sub-card-ic">📖</div><div class="sub-card-tt">防骗课堂</div><div class="sub-card-ds">学习防骗知识与技巧</div></div>
+      </div>
+      <div class="tips-bx"><h4>温馨提示</h4><p>您可以拍摄聊天记录、短信、宣传单、合同、APP页面等照片，帮您快速识别金融风险。</p></div>
+      <div class="ft-lock"><span>🔒</span><span>您的隐私数据全程加密保护</span></div>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- /slide0 -->
+
+<!-- ========== PAGE 1: Stage 1 - 本地预处理 ========== -->
+<div class="slide" id="slide1">
+<div class="main-wrapper">
+<div class="pipeline-panel">
+  <div class="stage-badge badge-local">第一阶段 · 本地预处理</div>
+  <div class="pipeline-title t-green">📸 拍照选图 → Hash 查缓存</div>
+  <div class="pipeline-subtitle">全在本地完成，不经过任何服务器</div>
+
+  <div class="pl-steps">
+    <div class="pl-step">
+      <div class="pl-step-num sn-blue">1</div>
+      <div class="pl-step-info">
+        <div class="pl-step-name">📸 拍照 / 选图 → Base64 编码</div>
+        <div class="pl-step-desc">wx.chooseImage 获取临时路径 → readFile 转 Base64。纯本地处理，无后端存储。</div>
+        <div class="pl-step-tags"><span class="pl-tag t-green">纯本地</span><span class="pl-tag t-blue">零上传</span></div>
+      </div>
+    </div>
+    <div class="pl-step">
+      <div class="pl-step-num sn-green">2</div>
+      <div class="pl-step-info">
+        <div class="pl-step-name">🔍 图片指纹 Hash → 查缓存</div>
+        <div class="pl-step-desc">Base64 前 500 字符 SHA-256 → localStorage。命中直接返回，<b>零 API 调用</b>。缓存策略：最多 50 条 / 7 天过期。</div>
+        <div class="pl-step-tags"><span class="pl-tag t-green">零 Token</span><span class="pl-tag t-green">最多省 100% 成本</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="code-mini">输入: imagePath (小程序临时路径)
+输出: data:image/jpeg;base64,/9j/4AAQSkZJRg...
+
+缓存命中 → 直接返回历史结果 ✅
+缓存未命中 → 继续向下，进入 AI 分析 🔽</div>
+</div>
+<div class="connector"><div class="connector-line"></div></div>
+<div class="phone-panel">
+  <div class="phone-label">📱 首页 · 入口页面</div>
+  <div class="phone-frame">
+    <div class="nb nb-white"><span class="nb-title">灵溪识险</span></div>
+    <div class="phone-scroll">
+    <div class="home-hdr"><span class="home-tt">灵溪识险</span><span class="home-sl">拍一拍，让诈骗信息无处可藏</span></div>
+    <div class="home-main">
+      <div class="btn-cam"><div class="cam-ic">📷</div><span class="cam-big">拍照识别</span><span class="cam-sub">拍摄可疑信息进行风险分析</span><span class="cam-hint">点击立即识别</span></div>
+      <div class="btn-alb">📁 从相册选择</div>
+      <div class="sub-cards">
+        <div class="sub-card"><div class="sub-card-ic">📋</div><div class="sub-card-tt">我的识别</div><div class="sub-card-ds">查看过往识别结果</div></div>
+        <div class="sub-card"><div class="sub-card-ic">📖</div><div class="sub-card-tt">防骗课堂</div><div class="sub-card-ds">学习防骗知识与技巧</div></div>
+      </div>
+      <div class="tips-bx"><h4>温馨提示</h4><p>您可以拍摄聊天记录、短信、宣传单、合同、APP页面等照片，帮您快速识别金融风险。</p></div>
+      <div class="ft-lock"><span>🔒</span><span>您的隐私数据全程加密保护</span></div>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div></div><!-- /slide1 -->
+
+<!-- ========== PAGE 2: Stage 2 - LLM 核心调用 ========== -->
+<div class="slide" id="slide2">
+<div class="main-wrapper">
+<div class="pipeline-panel">
+  <div class="stage-badge badge-llm">第二阶段 · 大模型一次调用</div>
+  <div class="pipeline-title t-blue">🧠 GLM-4.6V 模型一次调用</div>
+  <div class="pipeline-subtitle">
+    整个系统的<b>核心环节</b>。一次 API 调用同时完成三项任务，无需分步调用。
+  </div>
+
+  <div class="pl-steps">
+    <div class="pl-step">
+      <div class="pl-step-num sn-purple">3</div>
+      <div class="pl-step-info">
+        <div class="pl-step-name">🧠 GLM-4.6V — 视觉多模态推理</div>
+        <div class="pl-step-desc">
+          ① OCR 文字提取 + 风险关键词标注<br>
+          ② 风险等级判定 (low / caution / high)<br>
+          ③ 案例语义匹配 (与 50 条真实案例比对)
+        </div>
+        <div class="pl-step-tags">
+          <span class="pl-tag t-purple">温度 0.1</span>
+          <span class="pl-tag t-purple">最多重试 3 次</span>
+          <span class="pl-tag t-purple">超时 90s</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#0d1b2a;border:1px solid #1e3a5f;border-radius:10px;padding:14px;margin-top:12px">
+    <div style="font-size:13px;color:#64748b;margin-bottom:8px">📋 System Prompt 注入内容</div>
+    <table style="width:100%;font-size:12px;color:#cbd5e1">
+      <tr><td style="padding:4px 0;color:#64748b;width:100px">角色设定</td><td>金融反诈分析助手</td></tr>
+      <tr><td style="padding:4px 0;color:#64748b">8 项任务</td><td>OCR → 关键词 → 风险定级 → 风险类型 → 风险原因 → 老人版解释 → 案例匹配 → 防骗建议</td></tr>
+      <tr><td style="padding:4px 0;color:#64748b">判定规则</td><td>10 类 high 触发条件 + 5 类 caution 触发条件 + 安全措辞规则</td></tr>
+      <tr><td style="padding:4px 0;color:#64748b">案例库</td><td>50 条真实诈骗案例全文注入</td></tr>
+    </table>
+  </div>
+  <div class="code-mini">POST https://open.bigmodel.cn/api/paas/v4/chat/completions
+{
+  "model": "glm-4.6v", "temperature": 0.1,
+  "messages": [
+    {"role":"system","content":"你是金融反诈分析助手..."},
+    {"role":"user","content":[
+      {"type":"image_url","image_url":{"url":"data:..."}},
+      {"type":"text","text":"请分析图片中的金融诈骗风险"}
+    ]}
+  ]
+}
+→ 返回: {riskLevel, riskType, caseMatch, ocrText, ...}</div>
+</div>
+<div class="connector"><div class="connector-line"></div></div>
+<div class="phone-panel">
+  <div class="phone-label">📱 分析中 · 正在识别</div>
+  <div class="phone-frame">
+    <div class="nb nb-blue"><span class="nb-back">←</span><span class="nb-title">正在识别</span></div>
+    <div class="phone-scroll">
+    <div class="az-body">
+      <div class="az-top"><span class="az-top-tt">正在识别</span></div>
+      <div class="pv-wrap">
+        <div class="pv-img"><span class="pv-img-bg">🖼️</span></div>
+        <div class="scan-ov"><div class="scan-ln"></div></div>
+      </div>
+      <div class="ld-area">
+        <div class="sp-wrap"><div class="sp-ring"></div><div class="sp-core"></div></div>
+        <div class="stg-tt">正在分析金融风险…</div>
+        <div class="stg-hint">请稍候，正在为您智能分析风险</div>
+        <div class="stp-dots">
+          <div class="stp-dot ac"></div><div class="stp-line ac"></div>
+          <div class="stp-dot ac"></div><div class="stp-line ac"></div>
+          <div class="stp-dot ac"></div>
+        </div>
+        <div class="stp-lbls">
+          <span class="stp-lbl ac">图片识别</span><span class="stp-lbl ac">文字提取</span><span class="stp-lbl ac">风险分析</span>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div></div><!-- /slide2 -->
+
+<!-- ========== PAGE 3: Stage 3 - 后处理修正链 ========== -->
+<div class="slide" id="slide3">
+<div class="main-wrapper">
+<div class="pipeline-panel">
+  <div class="stage-badge badge-post">第三阶段 · 后处理修正链</div>
+  <div class="pipeline-title t-pink">🛡️ 三道防线把守输出质量</div>
+  <div class="pipeline-subtitle">LLM 输出不可全信，三道后处理防线确保结果安全可靠</div>
+
+  <div class="pl-steps">
+    <div class="pl-step">
+      <div class="pl-step-num sn-green">4</div>
+      <div class="pl-step-info">
+        <div class="pl-step-name">✂️ OCR 文本智能截断</div>
+        <div class="pl-step-desc">超 2500 字时，不简单截头去尾，而是<b>保留高风险关键词附近</b>的内容。</div>
+      </div>
+    </div>
+    <div class="pl-step">
+      <div class="pl-step-num sn-amber">5</div>
+      <div class="pl-step-info">
+        <div class="pl-step-name">🛡️ 低风险安全措辞过滤</div>
+        <div class="pl-step-desc">
+          禁止 LLM 使用绝对安全表述：<br>
+          <span style="color:#f87171">「内容安全」→</span> <span style="color:#34d399">「未发现明显风险」</span><br>
+          <span style="color:#f87171">「可以放心」→</span> <span style="color:#34d399">「建议进一步核实」</span><br>
+          <span style="color:#f87171">「无风险」→</span> <span style="color:#34d399">「请勿完全依赖系统判断」</span>
+        </div>
+      </div>
+    </div>
+    <div class="pl-step">
+      <div class="pl-step-num sn-pink">6</div>
+      <div class="pl-step-info">
+        <div class="pl-step-name">🔗 案例语义匹配后处理</div>
+        <div class="pl-step-desc">
+          LLM match=true → 绑定案例详情 + <b style="color:#f87171">触发风险升级 (caution→high)</b><br>
+          LLM 未返回 caseMatch → 本地关键词兜底引擎接管
+        </div>
+      </div>
+    </div>
+    <div class="pl-step">
+      <div class="pl-step-num sn-green">7</div>
+      <div class="pl-step-info">
+        <div class="pl-step-name">💾 缓存结果 + 数据标准化</div>
+        <div class="pl-step-desc">结果写入 localStorage（key=图片Hash），normalizeResult() 做字段兼容与类型安全转换。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="code-mini">// 核心安全逻辑
+if (matchedCase && riskLevel === 'caution') {
+    riskLevel = 'high'  // 🔥 案例匹配触发升级
+}
+// 宁可误判为高，不可漏判为低</div>
+</div>
+<div class="connector"><div class="connector-line"></div></div>
+<div class="phone-panel">
+  <div class="phone-label">📱 分析中 → 结果待输出</div>
+  <div class="phone-frame">
+    <div class="nb nb-blue"><span class="nb-back">←</span><span class="nb-title">正在识别</span></div>
+    <div class="phone-scroll">
+    <div class="az-body">
+      <div class="az-top"><span class="az-top-tt">正在识别</span></div>
+      <div class="pv-wrap">
+        <div class="pv-img"><span class="pv-img-bg">🖼️</span></div>
+        <div class="scan-ov"><div class="scan-ln"></div></div>
+      </div>
+      <div class="ld-area">
+        <div class="sp-wrap"><div class="sp-ring"></div><div class="sp-core"></div></div>
+        <div class="stg-tt" style="font-size:17px">正在复核分析结果…</div>
+        <div class="stg-hint" style="font-size:13px">三道防线校验中</div>
+        <div class="stp-dots">
+          <div class="stp-dot ac"></div><div class="stp-line ac"></div>
+          <div class="stp-dot ac"></div><div class="stp-line ac"></div>
+          <div class="stp-dot"></div>
+        </div>
+        <div class="stp-lbls">
+          <span class="stp-lbl ac">安全过滤</span><span class="stp-lbl ac">案例升级</span><span class="stp-lbl">结果生成</span>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div></div><!-- /slide3 -->
+
+<!-- ========== PAGE 4: 高风险结果 ========== -->
+<div class="slide" id="slide4">
+<div class="main-wrapper">
+<div class="pipeline-panel">
+  <div class="stage-badge badge-result">输出页面 · 高风险</div>
+  <div class="pipeline-title t-red">🔴 高风险 — 红色警示 + 案例匹配 + 96110</div>
+  <div class="pipeline-subtitle">
+    最完整的风险信息输出，包含案例警示与一键拨打入口。
+  </div>
+
+  <div class="pl-steps">
+    <div class="pl-step" style="border-color:rgba(239,68,68,.3)">
+      <div class="pl-step-num sn-pink" style="background:linear-gradient(135deg,#dc2626,#ef4444)">H</div>
+      <div class="pl-step-info">
+        <div class="pl-step-name">高风险页面组成模块</div>
+        <div class="pl-step-desc">
+          ① 红色渐变头部（风险等级 + 图标）<br>
+          ② 分析时间卡片<br>
+          ③ <b>风险类型</b>标签<br>
+          ④ 真实案例警示（带案例标题、案情、标签、警告）<br>
+          ⑤ <b>96110 一键拨打</b>（脉冲动画，红色醒目）<br>
+          ⑥ 风险原因 + 通俗解读 + 防骗建议<br>
+          ⑦ 识别原文（高亮风险关键词）<br>
+          ⑧ 真实性提醒 + 免责声明
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:14px;margin-top:12px;font-size:13px;color:#fca5a5;line-height:1.7">
+    <b>触发条件（10 类）</b>：冒充公检法、安全账户、涉嫌犯罪、冻结资产、验证码索要、刷单返利、虚假投资、非法集资、虚拟币诈骗、杀猪盘
+  </div>
+</div>
+<div class="connector"><div class="connector-line" style="background:linear-gradient(180deg,transparent,#ef4444,transparent)"></div></div>
+<div class="phone-panel">
+  <div class="phone-label">📱 识别结果 · 高风险</div>
+  <div class="phone-frame">
+    <div class="nb nb-blue"><span class="nb-back">←</span><span class="nb-title">识别结果</span></div>
+    <div class="phone-scroll">
+    <div class="risk-hd rh-high">
+      <div class="risk-hd-bg"></div>
+      <div class="risk-hd-content">
+        <div class="rh-ic-wrap"><span class="rh-ic-txt">!</span></div>
+        <div class="rh-lvl">高风险</div>
+        <div class="rh-desc">存在诈骗或违规诱导，请勿相信</div>
+      </div>
+    </div>
+    <div class="time-inf"><span class="time-lb">分析时间</span><span class="time-vl">2026-07-08 15:30</span></div>
+    <div class="ct">
+      <div class="card"><div class="card-tt">风险类型</div><div class="card-bd">冒充公检法诈骗</div></div>
+      <div class="cs-alert">
+        <div class="cs-alert-hd">
+          <span class="cs-alert-ic">🔍</span><span class="cs-alert-tt">真实案例警示</span>
+          <span class="cs-alert-bdg">案例库匹配</span>
+        </div>
+        <div class="cs-alert-bd">
+          <span class="cs-tt2">冒充公检法电信诈骗</span>
+          <span class="cs-brief">受害人接到自称"公安局"电话，称其涉嫌洗钱要求转账到"安全账户"，被骗 68 万元。</span>
+          <div class="cs-tags"><span class="cs-tag">冒充公检法</span><span class="cs-tag rk">高风险</span></div>
+        </div>
+        <div class="cs-alert-ft"><span class="cs-alert-wrn">⚠ 您的识别内容与上述真实诈骗案例高度相似，请务必提高警惕！</span></div>
+      </div>
+    </div>
+    <a class="ec-bar" href="tel:96110">
+      <div class="ec-l">
+        <div class="ec-ph-ic"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+        <div class="ec-tx"><div class="ec-tt">96110 反诈专线</div><div class="ec-sub">疑似诈骗请立即拨打核实</div></div>
+      </div>
+      <span class="ec-btn">一键拨打</span>
+    </a>
+    <div class="ct">
+      <div class="card"><div class="card-tt">风险原因</div><div class="card-bd">图片内容包含"安全账户""涉嫌犯罪"等典型冒充公检法诈骗话术</div></div>
+      <div class="card"><div class="card-tt">通俗解读</div><div class="plain-bd">这是典型的冒充公检法诈骗，骗子虚构案情恐吓受害人转账</div></div>
+      <div class="card">
+        <div class="card-tt">防骗建议</div>
+        <div class="sg-list">
+          <div class="sg-it"><div class="sg-num">1</div><span class="sg-tx">公检法机关不会通过电话办案，更不存在"安全账户"</span></div>
+          <div class="sg-it"><div class="sg-num">2</div><span class="sg-tx">不要向陌生账户转账汇款</span></div>
+          <div class="sg-it"><div class="sg-num">3</div><span class="sg-tx">遇到类似情况可直接拨打 96110 核实</span></div>
+        </div>
+      </div>
+      <div class="card"><div class="card-tt">识别原文</div><div class="ocr-area">您的银行卡涉嫌<span class="ocr-hl">洗钱犯罪</span>，请立即将资金转入<span class="ocr-hl">安全账户</span>配合调查</div></div>
+    </div>
+    <div class="reminder"><span class="reminder-ic">⚠</span><span class="reminder-tx">系统仅对图片内容进行辅助分析，请注意核实图片及信息真实性，谨防AI生成、伪造页面或仿冒官方机构信息。</span></div>
+    <div class="rs-footer"><button class="btn-back">返回首页</button><button class="btn-again">再识别一张</button></div>
+    <div class="ds-bar"><span class="ds-tx">本系统仅提供金融风险辅助识别，不构成安全承诺、金融建议或真实性认证。</span></div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div></div><!-- /slide4 -->
+
+<!-- ========== PAGE 5: 需谨慎结果 ========== -->
+<div class="slide" id="slide5">
+<div class="main-wrapper">
+<div class="pipeline-panel">
+  <div class="stage-badge badge-result">输出页面 · 需谨慎</div>
+  <div class="pipeline-title t-amber">🟡 需谨慎 — 黄色提醒 + 96110 咨询</div>
+  <div class="pipeline-subtitle">
+    中等风险：有模糊诱导话术，但不一定构成明确诈骗。提供咨询入口而非紧急拨打。
+  </div>
+
+  <div class="pl-steps">
+    <div class="pl-step" style="border-color:rgba(245,158,11,.3)">
+      <div class="pl-step-num sn-amber" style="background:linear-gradient(135deg,#d97706,#f59e0b)">!</div>
+      <div class="pl-step-info">
+        <div class="pl-step-name">需谨慎页面组成模块</div>
+        <div class="pl-step-desc">
+          ① 黄色渐变头部<br>
+          ② 风险类型（如：虚假投资理财）<br>
+          ③ 风险原因 + 通俗解读 + 防骗建议<br>
+          ④ <b>96110 咨询入口</b>（蓝灰色调，无脉冲动画）<br>
+          ⑤ 识别原文（高亮关键词）<br>
+          ⑥ 真实性提醒 + 免责声明
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:10px;padding:14px;margin-top:12px;font-size:13px;color:#fcd34d;line-height:1.7">
+    <b>触发条件（5 类）</b>：高收益承诺、保本保息、限时抢购诱导、不明链接、模糊机构信息<br><br>
+    <b>设计意图</b>：不制造恐慌感，但提供「有疑虑可以打 96110」的选项
+  </div>
+</div>
+<div class="connector"><div class="connector-line" style="background:linear-gradient(180deg,transparent,#f59e0b,transparent)"></div></div>
+<div class="phone-panel">
+  <div class="phone-label">📱 识别结果 · 需谨慎</div>
+  <div class="phone-frame">
+    <div class="nb nb-blue"><span class="nb-back">←</span><span class="nb-title">识别结果</span></div>
+    <div class="phone-scroll">
+    <div class="risk-hd rh-caution">
+      <div class="risk-hd-bg"></div>
+      <div class="risk-hd-content">
+        <div class="rh-ic-wrap"><span class="rh-ic-txt">!</span></div>
+        <div class="rh-lvl">需谨慎</div>
+        <div class="rh-desc">存在模糊表述，请提高警惕，切勿轻信</div>
+      </div>
+    </div>
+    <div class="time-inf"><span class="time-lb">分析时间</span><span class="time-vl">2026-07-08 14:20</span></div>
+    <div class="ct">
+      <div class="card"><div class="card-tt">风险类型</div><div class="card-bd">虚假投资理财</div></div>
+      <div class="card"><div class="card-tt">风险原因</div><div class="card-bd">图片内容包含"高收益""保本保息"等诱导性金融话术，建议谨慎对待。</div></div>
+      <div class="card"><div class="card-tt">通俗解读</div><div class="plain-bd">您看到的这个宣传说得很好听，但"保本高收益"本身就是矛盾的。正规理财产品从来不会承诺稳赚不赔，越是拍胸脯保证的，越要多掂量。</div></div>
+      <div class="card">
+        <div class="card-tt">防骗建议</div>
+        <div class="sg-list">
+          <div class="sg-it"><div class="sg-num">1</div><span class="sg-tx">核实对方机构资质，查询是否在正规金融机构注册</span></div>
+          <div class="sg-it"><div class="sg-num">2</div><span class="sg-tx">不要通过不明链接或二维码下载投资 APP</span></div>
+          <div class="sg-it"><div class="sg-num">3</div><span class="sg-tx">投资前务必和家人商量，不要独自做决定</span></div>
+        </div>
+      </div>
+      <div class="card"><div class="card-tt">识别原文</div><div class="ocr-area">本理财产品<span class="ocr-hl">保本保息</span>，<span class="ocr-hl">年化收益15%</span>以上，限量发售，<span class="ocr-hl">仅限今日</span>认购</div></div>
+    </div>
+    <div class="reminder"><span class="reminder-ic">⚠</span><span class="reminder-tx">系统仅对图片内容进行辅助分析，请注意核实图片及信息真实性。</span></div>
+    <a class="cc-bar" href="tel:96110">
+      <div class="cc-l">
+        <div class="cc-ph-ic"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+        <div><div class="cc-tt">96110 反诈咨询热线</div><div class="cc-sub">如有疑虑，可拨打咨询</div></div>
+      </div>
+      <span class="cc-btn">拨打</span>
+    </a>
+    <div class="rs-footer"><button class="btn-back">返回首页</button><button class="btn-again">再识别一张</button></div>
+    <div class="ds-bar"><span class="ds-tx">本系统仅提供金融风险辅助识别，不构成安全承诺、金融建议或真实性认证。</span></div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div></div><!-- /slide5 -->
+
+<!-- ========== PAGE 6: 低风险结果 ========== -->
+<div class="slide" id="slide6">
+<div class="main-wrapper">
+<div class="pipeline-panel">
+  <div class="stage-badge badge-result">输出页面 · 低风险</div>
+  <div class="pipeline-title t-green" style="color:#22c55e">🟢 低风险 — 绿色安全 + 措辞克制</div>
+  <div class="pipeline-subtitle">
+    未发现明显风险，但<b>禁止使用绝对安全表述</b>，避免给老人错误的绝对安全感。
+  </div>
+
+  <div class="pl-steps">
+    <div class="pl-step" style="border-color:rgba(34,197,94,.3)">
+      <div class="pl-step-num" style="background:linear-gradient(135deg,#16a34a,#22c55e)">✓</div>
+      <div class="pl-step-info">
+        <div class="pl-step-name">低风险页面组成模块</div>
+        <div class="pl-step-desc">
+          ① 绿色渐变头部<br>
+          ② 风险类型：暂未发现明显风险特征<br>
+          ③ 风险原因 + 通俗解读<br>
+          ④ 防骗建议<br>
+          ⑤ <b>96110 咨询入口</b>（蓝灰色调，克制）<br>
+          ⑥ 真实性提醒 + 免责声明
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:10px;padding:14px;margin-top:12px;font-size:13px;color:#86efac;line-height:1.7">
+    <b>安全措辞过滤规则</b><br>
+    ❌「内容安全」→ ✅「未发现明显风险」<br>
+    ❌「可以放心」→ ✅「建议进一步核实信息来源」<br>
+    ❌「无风险」→ ✅「请勿完全依赖系统判断」<br>
+    ❌「完全可信 / 绝对安全」→ ✅「低风险 ≠ 无风险」
+  </div>
+</div>
+<div class="connector"><div class="connector-line" style="background:linear-gradient(180deg,transparent,#22c55e,transparent)"></div></div>
+<div class="phone-panel">
+  <div class="phone-label">📱 识别结果 · 低风险</div>
+  <div class="phone-frame">
+    <div class="nb nb-blue"><span class="nb-back">←</span><span class="nb-title">识别结果</span></div>
+    <div class="phone-scroll">
+    <div class="risk-hd rh-low">
+      <div class="risk-hd-bg"></div>
+      <div class="risk-hd-content">
+        <div class="rh-ic-wrap"><span class="rh-ic-txt">✓</span></div>
+        <div class="rh-lvl">低风险</div>
+        <div class="rh-desc">未发现明显金融风险特征，建议进一步核实信息来源</div>
+      </div>
+    </div>
+    <div class="time-inf"><span class="time-lb">分析时间</span><span class="time-vl">2026-07-08 15:32</span></div>
+    <div class="ct">
+      <div class="card"><div class="card-tt">风险类型</div><div class="card-bd">暂未发现明显风险特征</div></div>
+      <div class="card"><div class="card-tt">风险原因</div><div class="card-bd">灵溪已对该图片进行智能分析，目前未识别到任何金融诈骗相关的敏感信息或诱导行为。</div></div>
+      <div class="card"><div class="card-tt">通俗解读</div><div class="plain-bd">灵溪仔细辨认过了，这张图片里没有发现常见的金融骗局套路。不过涉及资金往来的事情，还是建议多留个心眼。</div></div>
+      <div class="card">
+        <div class="card-tt">防骗建议</div>
+        <div class="sg-list">
+          <div class="sg-it"><div class="sg-num">1</div><span class="sg-tx">继续保持警惕，不点击陌生链接</span></div>
+          <div class="sg-it"><div class="sg-num">2</div><span class="sg-tx">遇到可疑情况可拨打 96110 咨询</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="reminder"><span class="reminder-ic">⚠</span><span class="reminder-tx">系统仅对图片内容进行辅助分析，请注意核实图片及信息真实性。</span></div>
+    <a class="cc-bar" href="tel:96110">
+      <div class="cc-l">
+        <div class="cc-ph-ic"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+        <div><div class="cc-tt">96110 反诈咨询热线</div><div class="cc-sub">如有疑虑，可拨打咨询</div></div>
+      </div>
+      <span class="cc-btn">拨打</span>
+    </a>
+    <div class="rs-footer"><button class="btn-back">返回首页</button><button class="btn-again">再识别一张</button></div>
+    <div class="ds-bar"><span class="ds-tx">本系统仅提供金融风险辅助识别，不构成安全承诺、金融建议或真实性认证。</span></div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div></div><!-- /slide6 -->
+
+<!-- ========== PAGE 7: 异常兜底 + 架构总览 ========== -->
+<div class="slide" id="slide7">
+<div class="main-wrapper">
+<div class="pipeline-panel">
+  <div class="stage-badge badge-fallback">第四阶段 · 异常兜底</div>
+  <div class="pipeline-title t-red">⚡ 即使 API 崩溃，用户也能拿到结果</div>
+  <div class="pipeline-subtitle">多层兜底策略确保极端情况下系统仍可降级运行</div>
+
+  <table class="fallback-table">
+    <tr><th>异常场景</th><th>兜底策略</th></tr>
+    <tr><td><span class="ft-dot ft-red"></span> 网络断开</td><td>显示网络错误提示 + 引导重试按钮</td></tr>
+    <tr><td><span class="ft-dot ft-yellow"></span> API 超时 (>90s)</td><td>最多重试 3 次（2s/4s/6s 递增延迟）→ 仍失败走完全兜底</td></tr>
+    <tr><td><span class="ft-dot ft-red"></span> JSON 解析全部失败</td><td>fallbackFromRawText() — 从原始响应中用正则提取关键词，走本地关键词引擎判断</td></tr>
+    <tr><td><span class="ft-dot ft-red"></span> 所有重试均失败</td><td>makeEmptyFallbackResult() — 返回 low + 「系统繁忙」提示 + 防骗建议</td></tr>
+    <tr><td><span class="ft-dot ft-yellow"></span> 图片过大 (>10MB)</td><td>自动压缩后再发送；超时时在兜底文案中提示</td></tr>
+  </table>
+
+  <div style="margin-top:20px">
+    <div class="stage-badge badge-arch">架构总览</div>
+    <div class="arch-grid">
+      <div class="arch-card ac-blue">
+        <div class="ac-ic">🥇</div>
+        <div class="ac-tt">LLM 主裁判</div>
+        <div class="ac-desc">GLM-4.6V 视觉模型<br>80%+ 场景直接命中</div>
+      </div>
+      <div class="arch-card ac-amber">
+        <div class="ac-ic">🥈</div>
+        <div class="ac-tt">关键词替补裁判</div>
+        <div class="ac-desc">仅在 LLM 崩溃时启用<br>三层关键词库</div>
+      </div>
+      <div class="arch-card ac-green">
+        <div class="ac-ic">🥉</div>
+        <div class="ac-tt">VAR 复核组</div>
+        <div class="ac-desc">安全过滤+案例升级+文本截断<br>宁可误判，不可漏判</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="code-mini">设计原则：
+LLM 是主裁判 · 关键词是替补裁判 · 后处理是 VAR 复核 · 缓存是最佳防守
+
+一条铁律：宁可误判为高，不可漏判为低</div>
+</div>
+<div class="connector"><div class="connector-line"></div></div>
+<div class="phone-panel">
+  <div class="phone-label">📱 历史记录 · 三档风险结果留存</div>
+  <div class="phone-frame">
+    <div class="nb nb-blue"><span class="nb-back">←</span><span class="nb-title">历史记录</span></div>
+    <div class="phone-scroll">
+    <div class="hist-pg">
+      <div class="toolbar"><div class="cnt-bdg"><span class="cnt-num">3</span><span class="cnt-lb">条记录</span></div><div class="clr-btn">清空全部</div></div>
+      <div class="hlist">
+        <div class="hitem">
+          <div class="hitem-l">
+            <div class="hdot hdot-h"></div>
+            <div class="hinfo">
+              <div><span class="hb-inline hb-h">✕ 高风险</span></div>
+              <div class="htype">冒充公检法诈骗</div>
+              <div class="htime">2026-07-08 15:30</div>
+            </div>
+          </div>
+          <div class="hdel">✕</div>
+        </div>
+        <div class="hitem">
+          <div class="hitem-l">
+            <div class="hdot hdot-c"></div>
+            <div class="hinfo">
+              <div><span class="hb-inline hb-c">! 需谨慎</span></div>
+              <div class="htype">虚假投资理财</div>
+              <div class="htime">2026-07-08 12:15</div>
+            </div>
+          </div>
+          <div class="hdel">✕</div>
+        </div>
+        <div class="hitem">
+          <div class="hitem-l">
+            <div class="hdot hdot-l"></div>
+            <div class="hinfo">
+              <div><span class="hb-inline hb-l">✓ 低风险</span></div>
+              <div class="htype">正常银行通知</div>
+              <div class="htime">2026-07-07 09:45</div>
+            </div>
+          </div>
+          <div class="hdel">✕</div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- /slide7 -->
+</div><!-- /slides-container -->
+
+<!-- Pagination -->
+<div class="pagination">
+  <button class="nav-btn" id="btnPrev" onclick="goTo(current-1)">←</button>
+  <div class="page-dots" id="pageDots"></div>
+  <button class="nav-btn" id="btnNext" onclick="goTo(current+1)">→</button>
+</div>
+
+<script>
+const TOTAL = 8;
+const pages = [
+  { label: '总览' },
+  { label: 'Stage 1 · 本地预处理' },
+  { label: 'Stage 2 · LLM 核心调用' },
+  { label: 'Stage 3 · 后处理修正链' },
+  { label: '结果 · 高风险' },
+  { label: '结果 · 需谨慎' },
+  { label: '结果 · 低风险' },
+  { label: '兜底 & 架构' }
+];
+
+let current = 0;
+let isTransitioning = false;
+
+function initDots() {
+  const dots = document.getElementById('pageDots');
+  dots.innerHTML = '';
+  for (let i = 0; i < TOTAL; i++) {
+    const d = document.createElement('div');
+    d.className = 'page-dot';
+    d.onclick = () => goTo(i);
+    dots.appendChild(d);
+  }
+}
+
+function updateUI() {
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('#pageDots .page-dot');
+  
+  slides.forEach((s, i) => s.classList.toggle('active', i === current));
+  
+  dots.forEach((d, i) => {
+    d.className = 'page-dot';
+    if (i === current) d.classList.add('active');
+    if (i < current) d.classList.add('done');
+  });
+  
+  document.getElementById('pageLabel').textContent = pages[current].label;
+  document.getElementById('pageNum').textContent = current + 1;
+  document.getElementById('btnPrev').disabled = current === 0;
+  document.getElementById('btnNext').disabled = current === TOTAL - 1;
+}
+
+function goTo(target) {
+  if (isTransitioning || target === current || target < 0 || target >= TOTAL) return;
+  isTransitioning = true;
+  current = target;
+  updateUI();
+  setTimeout(() => { isTransitioning = false; }, 500);
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') goTo(current + 1);
+  if (e.key === 'ArrowLeft') goTo(current - 1);
+});
+
+initDots();
+updateUI();
+</script>
+
+</body>
+</html>

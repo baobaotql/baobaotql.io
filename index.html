@@ -1241,7 +1241,7 @@
     <canvas class="ascii-bg" aria-hidden="true" width="1349" height="1294"></canvas>
     <div class="chrome-min" style="opacity: 1;">
       <div class="l">灵溪识险 · Silver Finance Safety</div>
-      <div class="r">LS · 2026.06 · 01 / 15</div>
+      <div class="r">LS · 2026.06 · 01 / 17</div>
     </div>
     <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2.6vh">
       <div data-anim="kicker" class="t-meta" style="color: rgba(255, 255, 255, 0.78); letter-spacing: 0.22em; opacity: 1; transform: none;">WECHAT MINI PROGRAM · 产品发布会</div>
@@ -1262,7 +1262,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">CRISIS · 危机现状</div>
-      <div class="r">02 / 15</div>    </div>
+      <div class="r">02 / 17</div>    </div>
     <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:5vh">
       <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
         <div class="t-meta" style="color:rgba(255,255,255,.62)">HARD NUMBERS · 不再只是新闻</div>
@@ -1296,7 +1296,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">USER PAIN · 用户痛点</div>
-      <div class="r">03 / 15</div>
+      <div class="r">03 / 17</div>
     </div>
     <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4.5vh">
       <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
@@ -1320,7 +1320,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">GAP · 市场空白</div>
-      <div class="r">04 / 15</div>    </div>
+      <div class="r">04 / 17</div>    </div>
     <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:5vh">
       <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
         <div class="t-meta" style="opacity: 1;">THE PROBLEM · 传统反诈为何失效？</div>
@@ -1358,7 +1358,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">POSITIONING · 产品定位</div>
-      <div class="r">05 / 15</div>
+      <div class="r">05 / 17</div>
     </div>
     <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4vh">
       <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
@@ -1425,7 +1425,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">CAPABILITIES · 核心能力</div>
-      <div class="r">06 / 15</div>
+      <div class="r">06 / 17</div>
     </div>
     <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4vh">
       <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
@@ -1467,7 +1467,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">FLOW · 使用流程</div>
-      <div class="r">07 / 15</div>
+      <div class="r">07 / 17</div>
     </div>
     <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:6vh">
       <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
@@ -1487,12 +1487,347 @@
   </div>
 </section>
 
-<!-- ====== 08 · TECH ARCHITECTURE · System Diagram / Three Layers ====== -->
+<!-- ====== 08 · PRODUCT UI · Core Screens ====== -->
+<style>
+.phone-wrap{display:flex;flex-direction:column;align-items:center;gap:.8vh}
+.phone-shell{width:330px;height:610px;border-radius:18px;overflow:hidden;background:#f0f4f8;box-shadow:0 6px 28px rgba(0,0,0,.12);position:relative;border:2.5px solid #dde2e8;flex-shrink:0}
+.phone-shell .ph-top{height:38px;display:flex;align-items:center;justify-content:center;padding-top:16px;position:relative;flex-shrink:0}
+.phone-shell .ph-top-w{background:#fff}
+.phone-shell .ph-top-b{background:#7A9BBD}
+.phone-shell .ph-title{font-size:14px;font-weight:700;margin-top:3px}
+.phone-shell .ph-top-w .ph-title{color:#1a202c}
+.phone-shell .ph-top-b .ph-title{color:#fff}
+.phone-shell .ph-body{flex:1;overflow-y:auto;overflow-x:hidden;position:relative}
+/* 首页 */
+.ph-home{text-align:center;padding:14px 16px 9px;background:#fff}
+.ph-home-ttl{font-size:21px;font-weight:700;color:#1e293b;letter-spacing:1px}
+.ph-home-sub{font-size:13px;color:#4a6078;margin-top:3px}
+.ph-cam{background:linear-gradient(160deg,#0047ab,#0066cc);border-radius:11px;padding:13px;text-align:center;margin:9px 9px;color:#fff;font-size:14px;font-weight:700}
+.ph-cam-sub{font-size:10px;color:rgba(255,255,255,.65);margin-top:2px}
+.ph-album{border:2px dashed #0047ab;border-radius:11px;padding:11px;text-align:center;margin:0 9px 9px;font-size:13px;color:#0047ab;font-weight:600}
+.ph-subcards{display:flex;gap:7px;margin:0 9px 9px}
+.ph-sc{flex:1;background:#f7f9fc;border-radius:9px;padding:15px 5px;text-align:center;font-size:13px;font-weight:700;color:#1e293b;border:1px solid #e8ecf1}
+/* 分析中 */
+.ph-analyze{display:flex;flex-direction:column;align-items:center;padding:15px}
+.ph-previewbox{width:185px;height:185px;border-radius:11px;background:#edf2f7;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;margin-bottom:11px;font-size:39px}
+.ph-scanline{position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#3182ce,transparent);animation:phScan 2s ease-in-out infinite}
+@keyframes phScan{0%,100%{top:8%}50%{top:88%}}
+.ph-spinner{width:45px;height:45px;border:4px solid #e2e8f0;border-top-color:#3182ce;border-radius:50%;animation:phSpin 1s linear infinite;margin-bottom:7px}
+@keyframes phSpin{to{transform:rotate(360deg)}}
+.ph-stage{font-size:18px;font-weight:700;color:#1a1a2e}
+.ph-hint{font-size:12px;color:#718096;margin-top:3px}
+/* 结果页 */
+.ph-risk-h{position:relative;padding:24px 15px;text-align:center;color:#fff;overflow:hidden}
+.ph-risk-h-rh{background:linear-gradient(180deg,#e53e3e,#fc8181)}
+.ph-risk-h-rc{background:linear-gradient(180deg,#d69e2e,#ecc94b)}
+.ph-risk-h-rl{background:linear-gradient(180deg,#38a169,#48bb78)}
+.ph-risk-ico{width:41px;height:41px;border-radius:21px;background:rgba(255,255,255,.25);display:inline-flex;align-items:center;justify-content:center;font-size:21px;font-weight:800}
+.ph-risk-lvl{font-size:21px;font-weight:800;letter-spacing:1px;margin-top:4px}
+.ph-risk-desc{font-size:11px;opacity:.9;margin-top:2px}
+.ph-card{background:#fff;border-radius:9px;padding:9px 11px;margin:4px 9px;border:1px solid #e2e8f0}
+.ph-card-ttl{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:3px;padding-left:9px;border-left:3px solid #3182ce}
+.ph-card-body{font-size:12px;color:#4a5568;line-height:1.5}
+/* 96110 */
+.ph-ecall{display:flex;align-items:center;gap:7px;padding:9px 11px;margin:4px 9px;background:#fff5f5;border:1.5px solid #fc8181;border-radius:9px}
+.ph-ecall-ico{width:31px;height:31px;border-radius:16px;background:#e53e3e;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:700}
+.ph-ecall-txt{flex:1;font-size:11px;font-weight:700;color:#c53030}
+.ph-ecall-btn{font-size:10px;font-weight:700;color:#fff;background:#e53e3e;padding:4px 10px;border-radius:13px}
+/* 案例警示 */
+.ph-case{background:#fff5f5;border-radius:9px;margin:4px 9px;border:2px solid #e53e3e;overflow:hidden}
+.ph-case-hd{display:flex;align-items:center;gap:4px;padding:7px 9px 0;font-size:11px;font-weight:800;color:#c53030}
+.ph-case-bd{padding:6px 9px;font-size:11px;color:#4a5568;line-height:1.4}
+.ph-case-tags{display:flex;gap:4px;margin-top:3px}
+.ph-case-tag{font-size:9px;padding:2px 7px;border-radius:4px;background:#fed7d7;color:#c53030;font-weight:600}
+.ph-reminder{display:flex;align-items:flex-start;gap:7px;padding:7px 9px;margin:4px 9px;background:#f7f8fa;border-radius:7px;font-size:10px;color:#7c8ba0;line-height:1.4}
+.ph-btns{display:flex;gap:7px;padding:9px}
+.ph-btn-back{flex:1;height:34px;border-radius:18px;border:none;font-size:13px;font-weight:600;background:#edf2f7;color:#4a5568;cursor:pointer}
+.ph-btn-again{flex:1;height:34px;border-radius:18px;border:none;font-size:13px;font-weight:600;background:linear-gradient(135deg,#2b6cb0,#4299e1);color:#fff}
+/* 历史 */
+.ph-hitem{display:flex;align-items:center;padding:11px 11px;background:#fff;border-radius:8px;margin:3px 9px;border:1px solid #e2e8f0;gap:9px}
+.ph-hdot{width:7px;height:7px;border-radius:4px;flex-shrink:0}
+.ph-hdot-r{background:#e53e3e}
+.ph-hdot-y{background:#d69e2e}
+.ph-hdot-g{background:#38a169}
+.ph-hinfo{flex:1;display:flex;flex-direction:column;gap:2px}
+.ph-hlvl{font-size:11px;font-weight:700}
+.ph-hlvl-r{color:#d93025}
+.ph-hlvl-y{color:#e6a817}
+.ph-hlvl-g{color:#2e9e4f}
+.ph-htype{font-size:12px;color:#1a1a2e;font-weight:700}
+.ph-htime{font-size:10px;color:#a0aec0}
+.ph-empty{display:flex;flex-direction:column;align-items:center;padding-top:57px;gap:9px}
+.ph-empty-ring{width:57px;height:57px;border:4px solid #cbd5e0;border-radius:50%;border-top-color:transparent}
+.ph-empty-ttl{font-size:19px;font-weight:700;color:#1a1a2e}
+.ph-empty-hint{font-size:13px;color:#718096;text-align:center;padding:0 22px;line-height:1.4}
+/* 帮助 */
+.ph-step{display:flex;gap:9px;background:#fff;border-radius:8px;padding:7px 10px;margin:3px 9px;border:1px solid #e2e8f0}
+.ph-step-num{width:26px;height:26px;border-radius:13px;background:linear-gradient(135deg,#3182ce,#4299e1);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ph-step-cont{flex:1}
+.ph-step-ttl{font-size:14px;font-weight:700;color:#1a1a2e}
+.ph-step-desc{font-size:11px;color:#4a5568;line-height:1.4;margin-top:2px}
+.ph-label{font-size:18px;font-weight:400;color:var(--text-secondary);text-align:center;letter-spacing:.08em;margin-top:5px}
+</style>
+<section class="slide grey" data-animate="four-cards" data-layout="S19">
+  <div class="canvas-card">
+    <div class="chrome-min">
+      <div class="l">PRODUCT UI · 核心功能界面</div>
+      <div class="r">08 / 17</div>
+    </div>
+    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:2.4vh">
+      <div data-anim="head" style="display:flex;flex-direction:column;gap:1vh">
+        <div class="t-meta">UI SHOWCASE · 从打开小程序到获取结果</div>
+        <h2 class="h-xl-zh" style="font-size:min(4.8vw,8.6vh)">核心功能 · 五大页面</h2>
+      </div>
+
+      <div data-anim="up" style="display:flex;flex-wrap:wrap;justify-content:center;gap:1.6vw 2vw;margin-top:2vh">
+        <!-- 首页 -->
+        <div class="phone-wrap">
+          <div class="phone-shell">
+            <div class="ph-top ph-top-w"><span class="ph-title">灵溪识险</span></div>
+            <div class="ph-body">
+              <div class="ph-home"><span class="ph-home-ttl">灵溪识险</span><span class="ph-home-sub">拍一拍，让诈骗信息无处可藏</span></div>
+              <div class="ph-cam">📷 拍照识别<div class="ph-cam-sub">拍摄可疑信息进行风险分析</div></div>
+              <div class="ph-album">📁 从相册选择</div>
+              <div class="ph-subcards">
+                <div class="ph-sc">📋<br>我的识别</div>
+                <div class="ph-sc">📖<br>防骗课堂</div>
+              </div>
+              <div style="background:#eef4fa;border-radius:6px;padding:8px 9px;margin:0 8px;font-size:9px;color:#4a6078;line-height:1.5">温馨提示：您可以拍摄聊天记录、短信等照片，快速识别金融风险。</div>
+            </div>
+          </div>
+          <div class="ph-label">首页 · 拍照入口</div>
+        </div>
+
+        <!-- 分析中 -->
+        <div class="phone-wrap">
+          <div class="phone-shell">
+            <div class="ph-top ph-top-b"><span style="position:absolute;left:9px;top:21px;font-size:12px;color:#fff">←</span><span class="ph-title">正在识别</span></div>
+            <div class="ph-body">
+              <div class="ph-analyze">
+                <div class="ph-previewbox">🖼️<div class="ph-scanline"></div></div>
+                <div class="ph-spinner"></div>
+                <div class="ph-stage">正在分析金融风险…</div>
+                <div class="ph-hint">请稍候，正在为您智能分析风险</div>
+                <div style="display:flex;gap:0;margin-top:3px">
+                  <div style="width:8px;height:8px;border-radius:4px;background:#3182ce;margin:0 8px"></div>
+                  <div style="width:8px;height:8px;border-radius:4px;background:#3182ce;margin:0 8px"></div>
+                  <div style="width:8px;height:8px;border-radius:4px;background:#e2e8f0;margin:0 8px"></div>
+                </div>
+                <div style="display:flex;justify-content:space-between;width:195px;font-size:10px;color:#a0aec0;margin-top:1px">
+                  <span style="color:#3182ce">图片识别</span><span style="color:#3182ce">文字提取</span><span>风险分析</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ph-label">分析中 · 智能识别</div>
+        </div>
+
+        <!-- 高风险 -->
+        <div class="phone-wrap">
+          <div class="phone-shell">
+            <div class="ph-top ph-top-b"><span style="position:absolute;left:9px;top:21px;font-size:12px;color:#fff">←</span><span class="ph-title">识别结果</span></div>
+            <div class="ph-body">
+              <div class="ph-risk-h ph-risk-h-rh"><span class="ph-risk-ico">!</span><div class="ph-risk-lvl">高风险</div><div class="ph-risk-desc">存在诈骗或违规诱导，请勿相信</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">风险类型</div><div class="ph-card-body">冒充公检法诈骗</div></div>
+              <div class="ph-case">
+                <div class="ph-case-hd">🔍 真实案例警示 <span style="margin-left:auto;font-size:9px;background:#fff;border:1px solid #feb2b2;border-radius:8px;padding:2px 5px">案例库匹配</span></div>
+                <div class="ph-case-bd"><b>冒充公检法电信诈骗</b><br>受害人接到自称"公安局"电话，被骗 68 万元。<div class="ph-case-tags"><span class="ph-case-tag">冒充公检法</span><span class="ph-case-tag">高风险</span></div></div>
+              </div>
+              <div class="ph-ecall"><div class="ph-ecall-ico">📞</div><div class="ph-ecall-txt">96110 反诈专线 · 疑似诈骗请立即拨打核实</div><div class="ph-ecall-btn">一键拨打</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">风险关键词</div><div class="ph-card-body">安全账户、涉嫌犯罪、配合调查、保密要求</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">通俗解读</div><div class="ph-card-body">这是典型的冒充公检法诈骗，骗子虚构案情恐吓受害人转账</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">防骗建议</div><div class="ph-card-body" style="font-size:11px">① 公检法不会电话办案<br>② 没有"安全账户"<br>③ 不向陌生账户转账<br>④ 拨打 96110 核实</div></div>
+              <div class="ph-reminder">⚠ 系统仅对图片内容进行辅助分析，请注意核实图片及信息真实性。</div>
+              <div class="ph-btns"><button class="ph-btn-back">返回首页</button><button class="ph-btn-again">再识别一张</button></div>
+            </div>
+          </div>
+          <div class="ph-label">高风险 · 含 96110 & 案例</div>
+        </div>
+
+        <!-- 需谨慎 -->
+        <div class="phone-wrap">
+          <div class="phone-shell">
+            <div class="ph-top ph-top-b"><span style="position:absolute;left:9px;top:21px;font-size:12px;color:#fff">←</span><span class="ph-title">识别结果</span></div>
+            <div class="ph-body">
+              <div class="ph-risk-h ph-risk-h-rc"><span class="ph-risk-ico">!</span><div class="ph-risk-lvl">需谨慎</div><div class="ph-risk-desc">存在模糊表述，请提高警惕</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">风险类型</div><div class="ph-card-body">虚假投资理财</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">风险关键词</div><div class="ph-card-body">保本保息、高收益、稳赚不赔、限量名额</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">通俗解读</div><div class="ph-card-body" style="font-size:11px">您看到的宣传说"保本高收益"，但正规理财从不承诺稳赚不赔，越是拍胸脯保证的越要多掂量。</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">防骗建议</div><div class="ph-card-body" style="font-size:11px">① 核实机构金融资质<br>② 不通过不明链接下载APP<br>③ 投资前和家人商量<br>④ 警惕"内部消息"话术</div></div>
+              <div style="display:flex;align-items:center;gap:6px;padding:6px 9px;margin:3px 9px;background:#f7fafc;border:1px solid #cbd5e0;border-radius:8px;font-size:11px;color:#2d3748">
+                <div style="width:24px;height:24px;border-radius:12px;background:#4299e1;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px">📞</div>
+                <span>96110 反诈咨询热线 · 如有疑虑可拨打咨询</span>
+                <span style="color:#4299e1;font-weight:700;margin-left:auto">拨打</span>
+              </div>
+              <div class="ph-reminder">⚠ 系统仅对图片内容进行辅助分析，请注意核实。</div>
+              <div class="ph-btns"><button class="ph-btn-back">返回首页</button><button class="ph-btn-again">再识别一张</button></div>
+            </div>
+          </div>
+          <div class="ph-label">需谨慎 · 中风险提醒</div>
+        </div>
+
+        <!-- 低风险 -->
+        <div class="phone-wrap">
+          <div class="phone-shell">
+            <div class="ph-top ph-top-b"><span style="position:absolute;left:9px;top:21px;font-size:12px;color:#fff">←</span><span class="ph-title">识别结果</span></div>
+            <div class="ph-body">
+              <div class="ph-risk-h ph-risk-h-rl"><span class="ph-risk-ico">✓</span><div class="ph-risk-lvl">低风险</div><div class="ph-risk-desc">未发现明显金融风险特征</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">风险类型</div><div class="ph-card-body">暂未发现明显风险特征</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">识别内容</div><div class="ph-card-body">银行到账通知、账单提醒等正常金融信息</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">通俗解读</div><div class="ph-card-body" style="font-size:11px">灵溪仔细辨认过了，这张图片里没有发现常见的金融骗局套路。不过涉及资金往来的事情，还是建议多留个心眼。</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">温馨提示</div><div class="ph-card-body" style="font-size:11px">① 继续保持警惕，不点击陌生链接<br>② 遇可疑情况拨打 96110 咨询<br>③ 定期关注反诈知识更新</div></div>
+              <div style="display:flex;align-items:center;gap:6px;padding:6px 9px;margin:3px 9px;background:#f7fafc;border:1px solid #cbd5e0;border-radius:8px;font-size:11px;color:#2d3748">
+                <div style="width:24px;height:24px;border-radius:12px;background:#4299e1;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px">📞</div>
+                <span>96110 反诈咨询热线</span>
+                <span style="color:#4299e1;font-weight:700;margin-left:auto">拨打</span>
+              </div>
+              <div class="ph-reminder">⚠ 系统仅对图片内容进行辅助分析，请注意核实。</div>
+              <div class="ph-btns"><button class="ph-btn-back">返回首页</button><button class="ph-btn-again">再识别一张</button></div>
+            </div>
+          </div>
+          <div class="ph-label">低风险 · 安全通过</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 09 · PRODUCT UI · Auxiliary & Detail Screens ====== -->
+<section class="slide grey" data-animate="four-cards" data-layout="S19">
+  <div class="canvas-card">
+    <div class="chrome-min">
+      <div class="l">PRODUCT UI · 辅助 & 详情界面</div>
+      <div class="r">09 / 17</div>
+    </div>
+    <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:2.4vh">
+      <div data-anim="head" style="display:flex;flex-direction:column;gap:1vh">
+        <div class="t-meta">UI SHOWCASE · 历史、帮助与详情查看</div>
+        <h2 class="h-xl-zh" style="font-size:min(4.8vw,8.6vh)">辅助功能 & 详情展示</h2>
+      </div>
+
+      <div data-anim="up" style="display:flex;flex-wrap:wrap;justify-content:center;gap:1.6vw 2vw;margin-top:2vh">
+        <!-- 历史-有数据 -->
+        <div class="phone-wrap">
+          <div class="phone-shell">
+            <div class="ph-top ph-top-b"><span style="position:absolute;left:9px;top:21px;font-size:12px;color:#fff">←</span><span class="ph-title">历史记录</span></div>
+            <div class="ph-body">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 9px 4px">
+                <div><span style="font-size:12px;font-weight:800;color:#2b6cb0">10</span><span style="font-size:9px;color:#718096"> 条记录</span></div>
+                <div style="font-size:11px;color:#e53e3e;font-weight:600;padding:3px 10px;background:#fff5f5;border-radius:10px;border:1px solid #fed7d7">清空全部</div>
+              </div>
+              <div class="ph-hitem"><div class="ph-hdot ph-hdot-r"></div><div class="ph-hinfo"><div class="ph-hlvl ph-hlvl-r">✕ 高风险</div><div class="ph-htype">冒充公检法诈骗</div><div class="ph-htime">2026-07-08 15:30</div></div><div style="font-size:15px;color:#e53e3e">✕</div></div>
+              <div class="ph-hitem"><div class="ph-hdot ph-hdot-y"></div><div class="ph-hinfo"><div class="ph-hlvl ph-hlvl-y">! 需谨慎</div><div class="ph-htype">虚假投资理财</div><div class="ph-htime">2026-07-08 12:15</div></div><div style="font-size:15px;color:#e53e3e">✕</div></div>
+              <div class="ph-hitem"><div class="ph-hdot ph-hdot-y"></div><div class="ph-hinfo"><div class="ph-hlvl ph-hlvl-y">! 需谨慎</div><div class="ph-htype">刷单返利诱导</div><div class="ph-htime">2026-07-08 10:42</div></div><div style="font-size:15px;color:#e53e3e">✕</div></div>
+              <div class="ph-hitem"><div class="ph-hdot ph-hdot-r"></div><div class="ph-hinfo"><div class="ph-hlvl ph-hlvl-r">✕ 高风险</div><div class="ph-htype">虚假贷款诈骗</div><div class="ph-htime">2026-07-07 18:50</div></div><div style="font-size:15px;color:#e53e3e">✕</div></div>
+              <div class="ph-hitem"><div class="ph-hdot ph-hdot-g"></div><div class="ph-hinfo"><div class="ph-hlvl ph-hlvl-g">✓ 低风险</div><div class="ph-htype">正常银行通知</div><div class="ph-htime">2026-07-07 09:45</div></div><div style="font-size:15px;color:#e53e3e">✕</div></div>
+              <div class="ph-hitem"><div class="ph-hdot ph-hdot-y"></div><div class="ph-hinfo"><div class="ph-hlvl ph-hlvl-y">! 需谨慎</div><div class="ph-htype">仿冒App下载</div><div class="ph-htime">2026-07-06 14:20</div></div><div style="font-size:15px;color:#e53e3e">✕</div></div>
+              <div class="ph-hitem"><div class="ph-hdot ph-hdot-g"></div><div class="ph-hinfo"><div class="ph-hlvl ph-hlvl-g">✓ 低风险</div><div class="ph-htype">养老金到账通知</div><div class="ph-htime">2026-07-05 08:30</div></div><div style="font-size:15px;color:#e53e3e">✕</div></div>
+              <div class="ph-hitem"><div class="ph-hdot ph-hdot-r"></div><div class="ph-hinfo"><div class="ph-hlvl ph-hlvl-r">✕ 高风险</div><div class="ph-htype">冒充客服退款</div><div class="ph-htime">2026-07-04 16:55</div></div><div style="font-size:15px;color:#e53e3e">✕</div></div>
+              <div class="ph-hitem"><div class="ph-hdot ph-hdot-y"></div><div class="ph-hinfo"><div class="ph-hlvl ph-hlvl-y">! 需谨慎</div><div class="ph-htype">不明链接诱导</div><div class="ph-htime">2026-07-04 11:10</div></div><div style="font-size:15px;color:#e53e3e">✕</div></div>
+              <div class="ph-hitem"><div class="ph-hdot ph-hdot-g"></div><div class="ph-hinfo"><div class="ph-hlvl ph-hlvl-g">✓ 低风险</div><div class="ph-htype">电费缴费提醒</div><div class="ph-htime">2026-07-03 20:05</div></div><div style="font-size:15px;color:#e53e3e">✕</div></div>
+            </div>
+          </div>
+          <div class="ph-label">历史记录 · 有数据</div>
+        </div>
+
+        <!-- 历史-空态 -->
+        <div class="phone-wrap">
+          <div class="phone-shell">
+            <div class="ph-top ph-top-b"><span style="position:absolute;left:9px;top:21px;font-size:12px;color:#fff">←</span><span class="ph-title">历史记录</span></div>
+            <div class="ph-body">
+              <div class="ph-empty">
+                <div class="ph-empty-ring"></div>
+                <div class="ph-empty-ttl">暂无识别记录</div>
+                <div class="ph-empty-hint">拍照或上传图片后，分析结果会保存在这里</div>
+                <div style="padding:11px 40px;background:linear-gradient(135deg,#2b6cb0,#4299e1);border-radius:17px;color:#fff;font-size:13px;font-weight:600">去识别</div>
+              </div>
+            </div>
+          </div>
+          <div class="ph-label">历史记录 · 空状态</div>
+        </div>
+
+        <!-- 帮助中心 -->
+        <div class="phone-wrap">
+          <div class="phone-shell">
+            <div class="ph-top ph-top-b"><span style="position:absolute;left:9px;top:21px;font-size:12px;color:#fff">←</span><span class="ph-title">帮助中心</span></div>
+            <div class="ph-body">
+              <div style="display:flex;gap:0;padding:7px 7px 3px">
+                <div style="flex:1;text-align:center;padding:6px;font-size:10px;font-weight:700;color:#fff;background:linear-gradient(135deg,#2b6cb0,#4299e1);border-radius:6px">使用教程</div>
+                <div style="flex:1;text-align:center;padding:6px;font-size:10px;font-weight:600;color:#718096">防骗知识</div>
+              </div>
+              <div class="ph-step"><div class="ph-step-num">1</div><div class="ph-step-cont"><div class="ph-step-ttl">打开小程序</div><div class="ph-step-desc">在微信中搜索或扫码进入「灵溪识险」。</div></div></div>
+              <div class="ph-step"><div class="ph-step-num">2</div><div class="ph-step-cont"><div class="ph-step-ttl">拍照或选图</div><div class="ph-step-desc">点击「拍照识别」拍摄或从相册选择截图。</div></div></div>
+              <div class="ph-step"><div class="ph-step-num">3</div><div class="ph-step-cont"><div class="ph-step-ttl">等待识别</div><div class="ph-step-desc">系统自动识别文字并分析是否存在诈骗风险。</div></div></div>
+              <div class="ph-step"><div class="ph-step-num">4</div><div class="ph-step-cont"><div class="ph-step-ttl">查看结果</div><div class="ph-step-desc">结果页展示风险等级、通俗解读和防骗建议。</div></div></div>
+              <div class="ph-step"><div class="ph-step-num">5</div><div class="ph-step-cont"><div class="ph-step-ttl">查看历史</div><div class="ph-step-desc">在「历史记录」可回看过往结果，方便核对。</div></div></div>
+              <div class="ph-step"><div class="ph-step-num">6</div><div class="ph-step-cont"><div class="ph-step-ttl">拨打反诈热线</div><div class="ph-step-desc">高风险结果可直接拨打 96110 反诈专线核实。</div></div></div>
+              <div class="ph-step"><div class="ph-step-num">7</div><div class="ph-step-cont"><div class="ph-step-ttl">分享给家人</div><div class="ph-step-desc">将小程序分享给家人，共同提高防骗意识。</div></div></div>
+              <div class="ph-step"><div class="ph-step-num">8</div><div class="ph-step-cont"><div class="ph-step-ttl">阅读防骗知识</div><div class="ph-step-desc">在「防骗知识」标签页了解常见诈骗手法与案例。</div></div></div>
+              <div class="ph-step"><div class="ph-step-num">9</div><div class="ph-step-cont"><div class="ph-step-ttl">意见反馈</div><div class="ph-step-desc">有任何建议或问题，可通过帮助中心底部提交反馈。</div></div></div>
+              <div class="ph-step"><div class="ph-step-num">10</div><div class="ph-step-cont"><div class="ph-step-ttl">更新至最新版</div><div class="ph-step-desc">定期更新小程序，获取最新反诈模型与案例库。</div></div></div>
+              <div class="ph-step"><div class="ph-step-num">11</div><div class="ph-step-cont"><div class="ph-step-ttl">联系客服支持</div><div class="ph-step-desc">如遇使用问题，可通过在线客服获取帮助。</div></div></div>
+            </div>
+          </div>
+          <div class="ph-label">帮助中心 · 教程 & 知识</div>
+        </div>
+
+        <!-- 详情-高风险 -->
+        <div class="phone-wrap">
+          <div class="phone-shell">
+            <div class="ph-top ph-top-b"><span style="position:absolute;left:9px;top:21px;font-size:12px;color:#fff">←</span><span class="ph-title">记录详情</span></div>
+            <div class="ph-body">
+              <div class="ph-risk-h ph-risk-h-rh"><span class="ph-risk-ico">!</span><div class="ph-risk-lvl">高风险</div><div class="ph-risk-desc">2026-07-08 15:30</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">风险类型</div><div class="ph-card-body">冒充公检法诈骗</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">风险原因</div><div class="ph-card-body">图片包含"安全账户""涉嫌犯罪"等典型冒充公检法诈骗话术</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">通俗解读</div><div class="ph-card-body">典型的冒充公检法诈骗，骗子虚构案情恐吓受害人转账</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">防骗建议</div><div class="ph-card-body" style="font-size:10px">① 公检法不会电话办案，无"安全账户"<br>② 不向陌生账户转账<br>③ 拨打 96110 核实</div></div>
+            </div>
+          </div>
+          <div class="ph-label">详情 · 高风险</div>
+        </div>
+
+        <!-- 详情-需谨慎 -->
+        <div class="phone-wrap">
+          <div class="phone-shell">
+            <div class="ph-top ph-top-b"><span style="position:absolute;left:9px;top:21px;font-size:12px;color:#fff">←</span><span class="ph-title">记录详情</span></div>
+            <div class="ph-body">
+              <div class="ph-risk-h ph-risk-h-rc"><span class="ph-risk-ico">!</span><div class="ph-risk-lvl">需谨慎</div><div class="ph-risk-desc">2026-07-08 14:20</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">风险类型</div><div class="ph-card-body">虚假投资理财</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">风险原因</div><div class="ph-card-body" style="font-size:10px">图片包含"高收益""保本保息"等诱导性金融话术，建议谨慎对待。</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">通俗解读</div><div class="ph-card-body" style="font-size:10px">"保本高收益"本身就是矛盾的。正规理财产品不承诺稳赚不赔。</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">防骗建议</div><div class="ph-card-body" style="font-size:10px">① 核实机构资质<br>② 不通过不明链接下载投资APP<br>③ 投资前和家人商量</div></div>
+            </div>
+          </div>
+          <div class="ph-label">详情 · 需谨慎</div>
+        </div>
+
+        <!-- 详情-低风险 -->
+        <div class="phone-wrap">
+          <div class="phone-shell">
+            <div class="ph-top ph-top-b"><span style="position:absolute;left:9px;top:21px;font-size:12px;color:#fff">←</span><span class="ph-title">记录详情</span></div>
+            <div class="ph-body">
+              <div class="ph-risk-h ph-risk-h-rl"><span class="ph-risk-ico">✓</span><div class="ph-risk-lvl">低风险</div><div class="ph-risk-desc">2026-07-08 15:32</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">风险类型</div><div class="ph-card-body">暂未发现明显风险特征</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">风险原因</div><div class="ph-card-body" style="font-size:10px">灵溪已对该图片进行智能分析，未识别到金融诈骗相关信息。</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">通俗解读</div><div class="ph-card-body" style="font-size:10px">没有发现常见的金融骗局套路，不过涉及资金往来建议多留个心眼。</div></div>
+              <div class="ph-card"><div class="ph-card-ttl">防骗建议</div><div class="ph-card-body" style="font-size:10px">① 继续保持警惕，不点击陌生链接<br>② 遇可疑情况拨打 96110 咨询</div></div>
+            </div>
+          </div>
+          <div class="ph-label">详情 · 低风险</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 10 · TECH ARCHITECTURE · System Diagram / Three Layers ====== -->
 <section class="slide" data-animate="stack-build" data-layout="S05">
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">ARCHITECTURE · 技术架构</div>
-      <div class="r">08 / 15</div>
+      <div class="r">10 / 17</div>
     </div>
     <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4vh">
       <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
@@ -1531,7 +1866,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">ENGINE · 判定引擎</div>
-      <div class="r">09 / 15</div>
+      <div class="r">11 / 17</div>
     </div>
     <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4vh">
       <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
@@ -1572,7 +1907,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">RESEARCH · 研究价值</div>
-      <div class="r">10 / 15</div>
+      <div class="r">12 / 17</div>
     </div>
     <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4vh">
       <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh;">
@@ -1660,7 +1995,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">IMPACT · 社会价值</div>
-      <div class="r">11 / 15</div>
+      <div class="r">13 / 17</div>
     </div>
     <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:5vh">
       <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
@@ -1696,7 +2031,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">ROADMAP · 未来扩展</div>
-      <div class="r">12 / 15</div>
+      <div class="r">14 / 17</div>
     </div>
     <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4.5vh">
       <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4vh">
@@ -1727,7 +2062,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">PLAN · 实施计划</div>
-      <div class="r">13 / 15</div>
+      <div class="r">15 / 17</div>
     </div>
     <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:2.2vh">
       <div data-anim="head" style="display: flex; flex-direction: column; gap: 1vh; opacity: 1; transform: none;">
@@ -1786,7 +2121,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">WORKLOAD · 开发体量</div>
-      <div class="r">14 / 15</div>
+      <div class="r">16 / 17</div>
     </div>
     <div style="flex:1;padding:0;display:flex;flex-direction:column;gap:4.5vh">
       <div data-anim="head" style="display: flex; flex-direction: column; gap: 1.4vh; opacity: 1; transform: none;">
@@ -1836,8 +2171,8 @@
       <div class="half b-accent" style="padding:5.6vh 3.6vw 4.4vh;justify-content:space-between;position:relative;overflow:hidden">
         <canvas class="ascii-bg" aria-hidden="true" width="675" height="1294"></canvas>
         <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1">
-          <div class="l">15 / 15</div>
-          <div class="r">END</div>
+<div class="l">17 / 17</div>
+      <div class="r">END</div>
         </div>
         <div data-anim="manifesto" style="display:flex;flex-direction:column;gap:2vh;position:relative;z-index:1">
           <div class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em;margin-bottom:1.6vh">MANIFESTO</div>
@@ -1883,7 +2218,7 @@
 
 </div>
 
-<div id="nav"><button class="dot" data-i="0" aria-label="Page 1"></button><button class="dot active" data-i="1" aria-label="Page 2"></button><button class="dot" data-i="2" aria-label="Page 3"></button><button class="dot" data-i="3" aria-label="Page 4"></button><button class="dot" data-i="4" aria-label="Page 5"></button><button class="dot" data-i="5" aria-label="Page 6"></button><button class="dot" data-i="6" aria-label="Page 7"></button><button class="dot" data-i="7" aria-label="Page 8"></button><button class="dot" data-i="8" aria-label="Page 9"></button><button class="dot" data-i="9" aria-label="Page 10"></button><button class="dot" data-i="10" aria-label="Page 11"></button><button class="dot" data-i="11" aria-label="Page 12"></button><button class="dot" data-i="12" aria-label="Page 13"></button><button class="dot" data-i="13" aria-label="Page 14"></button><button class="dot" data-i="14" aria-label="Page 15"></button></div>
+<div id="nav"><button class="dot" data-i="0" aria-label="Page 1"></button><button class="dot active" data-i="1" aria-label="Page 2"></button><button class="dot" data-i="2" aria-label="Page 3"></button><button class="dot" data-i="3" aria-label="Page 4"></button><button class="dot" data-i="4" aria-label="Page 5"></button><button class="dot" data-i="5" aria-label="Page 6"></button><button class="dot" data-i="6" aria-label="Page 7"></button><button class="dot" data-i="7" aria-label="Page 8"></button><button class="dot" data-i="8" aria-label="Page 9"></button><button class="dot" data-i="9" aria-label="Page 10"></button><button class="dot" data-i="10" aria-label="Page 11"></button><button class="dot" data-i="11" aria-label="Page 12"></button><button class="dot" data-i="12" aria-label="Page 13"></button><button class="dot" data-i="13" aria-label="Page 14"></button><button class="dot" data-i="14" aria-label="Page 15"></button><button class="dot" data-i="15" aria-label="Page 16"></button><button class="dot" data-i="16" aria-label="Page 17"></button></div>
 
 <script>
 /* =============== WebGL 网格背景 (瑞士风专用) ===============
@@ -2948,4 +3283,60 @@ if(motion){
 </script>
 
 
+<script>
+/* ============== 手机页面内部循环滚动 ============== */
+(()=>{
+  const PAUSE_TOP=2000, SCROLL_DOWN=3000, PAUSE_BOTTOM=2000, SCROLL_UP=2000, GAP=800;
+  function easeInOutQuad(t){return t<.5?2*t*t:-1+(4-2*t)*t;}
+  function animateScroll(el,from,to,dur,cb){
+    const start=performance.now();
+    function tick(now){
+      const elapsed=now-start, p=Math.min(elapsed/dur,1);
+      el.scrollTop=from+(to-from)*easeInOutQuad(p);
+      if(p<1) requestAnimationFrame(tick); else if(cb) cb();
+    }
+    requestAnimationFrame(tick);
+  }
+  function startPingPong(el){
+    let running=true, timer=null, rafId=null;
+    function clear(){if(timer){clearTimeout(timer);timer=null;}if(rafId){cancelAnimationFrame(rafId);rafId=null;}}
+    function stop(){running=false;clear();el._pingPongActive=false;}
+    function cycle(){
+      if(!running) return;
+      el.scrollTop=0;
+      const max=el.scrollHeight-el.clientHeight;
+      if(max<=0){timer=setTimeout(cycle,1500);return;}
+      timer=setTimeout(()=>{
+        if(!running) return;
+        animateScroll(el,0,max,SCROLL_DOWN,()=>{
+          if(!running) return;
+          timer=setTimeout(()=>{
+            if(!running) return;
+            animateScroll(el,max,0,SCROLL_UP,()=>{
+              if(!running) return;
+              timer=setTimeout(cycle,GAP);
+            });
+          },PAUSE_BOTTOM);
+        });
+      },PAUSE_TOP);
+    }
+    el._pingPongStop=stop;
+    el._pingPongActive=true;
+    cycle();
+    return stop;
+  }
+  function startOrResetPingPong(el){
+    if(el._pingPongStop){el._pingPongStop();delete el._pingPongStop;}
+    el._pingPongActive=false;
+    startPingPong(el);
+  }
+  function scanPhones(){
+    document.querySelectorAll('.ph-body').forEach(el=>{startOrResetPingPong(el);});
+  }
+  // 监听幻灯片切换,每次切换后重新扫描
+  const observer=new MutationObserver(()=>{setTimeout(scanPhones,400);});
+  observer.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['style','class']});
+  scanPhones();
+})();
+</script>
 </body><div id="__caoliao-browser-ext" data-context="{}"></div></html>

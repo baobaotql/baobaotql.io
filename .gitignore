@@ -8,3 +8,5 @@ unpackage/
 .idea/
 .vscode/
 venv/
+.notion-token
+.notion-sync-page-id

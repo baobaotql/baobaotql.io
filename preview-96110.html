@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>96110 效果预览 — 灵溪识险</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif;
+  background: #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px;
+  gap: 32px;
+}
+h2 {
+  font-size: 20px;
+  color: #1a202c;
+  text-align: center;
+  margin-bottom: 4px;
+}
+h3 {
+  font-size: 15px;
+  color: #718096;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.phone-frame {
+  width: 375px;
+  background: #f0f4f8;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+.navbar {
+  height: 44px;
+  background: #7A9BBD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  position: relative;
+}
+.navbar .back { position: absolute; left: 12px; top: 24px; color: #fff; font-size: 16px; cursor: pointer; }
+.navbar-title { color: #fff; font-size: 17px; font-weight: 600; margin-top: 4px; }
+
+/* risk header */
+.risk-header { position: relative; padding: 36px 24px 36px; overflow: hidden; }
+.risk-header-bg { position: absolute; inset: 0; border-radius: 0 0 28px 28px; }
+.risk-high .risk-header-bg { background: linear-gradient(180deg, #e53e3e 0%, #fc8181 100%); }
+.risk-caution .risk-header-bg { background: linear-gradient(180deg, #d69e2e 0%, #ecc94b 100%); }
+.risk-low .risk-header-bg { background: linear-gradient(180deg, #38a169 0%, #48bb78 100%); }
+.risk-header-content { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.risk-icon-circle { width: 52px; height: 52px; border-radius: 26px; background: rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; }
+.risk-icon-text { font-size: 28px; font-weight: 800; color: #fff; line-height: 1; }
+.risk-level-label { font-size: 26px; font-weight: 800; color: #fff; letter-spacing: 2px; }
+.risk-desc { font-size: 16px; color: rgba(255,255,255,0.9); text-align: center; line-height: 1.5; }
+
+.time-info { display: flex; justify-content: center; gap: 8px; padding: 14px 16px; margin: -14px 16px 0; background: #fff; border-radius: 10px; box-shadow: 0 1px 6px rgba(0,0,0,0.04); position: relative; z-index: 2; font-size: 14px; }
+.time-label { color: #a0aec0; }
+.time-value { color: #4a5568; font-weight: 600; }
+
+.content { padding: 14px 16px 0; }
+
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+.card-title { font-size: 17px; font-weight: 700; color: #1a202c; margin-bottom: 10px; }
+.card-body { font-size: 15px; color: #4a5568; line-height: 1.8; }
+
+/* case alert */
+.case-alert { background: #fff5f5; border-radius: 14px; margin-bottom: 12px; border: 1.5px solid #e53e3e; overflow: hidden; box-shadow: 0 2px 12px rgba(229,62,62,0.10); }
+.case-alert-header { display: flex; align-items: center; gap: 8px; padding: 16px 18px 0; }
+.case-alert-icon { font-size: 20px; }
+.case-alert-title { font-size: 19px; font-weight: 800; color: #c53030; flex: 1; }
+.case-alert-badge { font-size: 12px; color: #e53e3e; background: #fff; padding: 2px 10px; border-radius: 12px; border: 1px solid #feb2b2; font-weight: 600; }
+.case-alert-body { padding: 12px 18px 10px; }
+.case-title2 { display: block; font-size: 19px; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; }
+.case-brief { display: block; font-size: 15px; color: #4a5568; line-height: 1.7; margin-bottom: 10px; }
+.case-tags { display: flex; gap: 8px; }
+.case-tag { font-size: 12px; padding: 3px 10px; border-radius: 6px; background: #edf2f7; color: #4a5568; font-weight: 600; }
+.case-tag.risk-tag { background: #fed7d7; color: #c53030; }
+.case-alert-footer { padding: 12px 18px; background: rgba(229,62,62,0.06); border-top: 1px solid #feb2b2; }
+.case-alert-warn { font-size: 14px; color: #c53030; font-weight: 700; line-height: 1.6; display: block; text-align: center; }
+
+/* ===== 96110 一键拨打 — 高风险样式 ===== */
+.emergency-call-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #fff5f5, #fff0f0);
+  border: 1.5px solid #fc8181;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 12px rgba(229,62,62,0.12);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  text-decoration: none;
+}
+.emergency-call-bar:active { transform: scale(0.98); box-shadow: 0 1px 6px rgba(229,62,62,0.15); }
+.emergency-call-left { display: flex; align-items: center; gap: 12px; flex: 1; }
+.emergency-phone-icon {
+  width: 46px; height: 46px;
+  border-radius: 23px;
+  background: linear-gradient(135deg, #e53e3e, #fc8181);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.emergency-phone-icon svg { width: 22px; height: 22px; fill: #fff; }
+.emergency-call-text { flex: 1; }
+.emergency-call-title { font-size: 17px; font-weight: 700; color: #c53030; line-height: 1.3; }
+.emergency-call-sub { font-size: 13px; color: #e53e3e; margin-top: 2px; line-height: 1.4; }
+.emergency-call-btn {
+  background: #e53e3e;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 22px;
+  white-space: nowrap;
+  letter-spacing: 1px;
+}
+
+/* ===== 96110 一键拨打 — 中低风险样式 ===== */
+.consult-call-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: #f7fafc;
+  border: 1px solid #cbd5e0;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: background 0.15s;
+  text-decoration: none;
+}
+.consult-call-bar:active { background: #edf2f7; }
+.consult-phone-icon {
+  width: 40px; height: 40px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #3182ce, #4299e1);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.consult-phone-icon svg { width: 18px; height: 18px; fill: #fff; }
+.consult-call-text { flex: 1; margin-left: 12px; }
+.consult-call-title { font-size: 16px; font-weight: 700; color: #2d3748; }
+.consult-call-sub { font-size: 13px; color: #718096; margin-top: 2px; }
+.consult-call-btn {
+  background: #4299e1;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* authenticity reminder */
+.authenticity-reminder {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin: 6px 16px 0; padding: 14px 16px;
+  background: #f7f8fa; border-radius: 10px; border: 1px solid #e8ecf1;
+}
+.reminder-icon { font-size: 16px; flex-shrink: 0; }
+.reminder-text { flex: 1; font-size: 13px; color: #7c8ba0; line-height: 1.7; }
+
+/* footer */
+.footer-actions { display: flex; gap: 14px; padding: 22px 16px 12px; }
+.btn-back, .btn-again {
+  flex: 1; height: 50px; border-radius: 26px; border: none;
+  font-size: 17px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center;
+}
+.btn-back { background: #edf2f7; color: #4a5568; }
+.btn-again { background: linear-gradient(135deg, #2b6cb0, #4299e1); color: #fff; box-shadow: 0 2px 10px rgba(43,108,176,0.3); }
+
+.disclaimer-bar { margin: 6px 16px 20px; padding: 12px 16px; background: #fafafa; border-radius: 8px; border: 1px solid #e8ecf1; }
+.disclaimer-text { font-size: 13px; color: #a0aec0; line-height: 1.6; text-align: center; display: block; }
+
+/* 位置标注 red dot */
+.location-badge {
+  background: #e53e3e; color: #fff; font-size: 11px; font-weight: 700;
+  padding: 4px 10px; border-radius: 10px; position: absolute; top: -8px; right: -6px;
+  white-space: nowrap;
+}
+
+/* ===== 首页 96110 卡片方案 ===== */
+.home-header { height: 56px; background: #7A9BBD; border-radius: 0 0 24px 24px; display: flex; align-items: center; justify-content: center; padding-top: 20px; }
+.home-header-title { color: #fff; font-size: 18px; font-weight: 700; margin-top: 4px; }
+.home-content { padding: 20px 16px 0; }
+.big-camera-btn {
+  background: linear-gradient(160deg, #0047AB, #0066CC);
+  border-radius: 16px; padding: 28px; text-align: center;
+  box-shadow: 0 6px 20px rgba(0,71,171,0.25);
+  cursor: pointer; margin-bottom: 14px;
+  transition: transform 0.1s;
+}
+.big-camera-btn:active { transform: scale(0.98); }
+.big-camera-btn .cam-icon { width: 32px; height: 32px; margin: 0 auto 8px; }
+.big-camera-btn .cam-text { color: #fff; font-size: 22px; font-weight: 700; }
+.big-camera-btn .cam-sub { color: rgba(255,255,255,0.75); font-size: 15px; margin-top: 4px; }
+
+.album-btn {
+  border: 2px dashed #0047AB; border-radius: 16px; padding: 16px;
+  text-align: center; margin-bottom: 20px; cursor: pointer;
+  color: #0047AB; font-size: 17px; font-weight: 600;
+}
+
+.aux-cards { display: flex; gap: 12px; margin-bottom: 16px; }
+.aux-card {
+  flex: 1; background: #f7f9fc; border-radius: 14px;
+  padding: 20px 16px; text-align: center; cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  text-decoration: none; color: inherit;
+}
+.aux-card:nth-child(3) { border: 1.5px solid #D4AF37; background: linear-gradient(135deg, #fefcf5, #faf6ed); }
+.aux-card-icon { font-size: 26px; margin-bottom: 6px; }
+.aux-card-title { font-size: 15px; font-weight: 700; color: #1a202c; }
+.aux-card .gold-title { color: #8b6914; }
+
+.notice-box {
+  background: #eef4fa; border-radius: 12px; padding: 16px 18px; margin-bottom: 16px;
+}
+.notice-title { font-size: 18px; font-weight: 700; color: #2d3748; margin-bottom: 6px; }
+.notice-body { font-size: 15px; color: #4a6078; line-height: 1.7; }
+
+.bottom-lock { text-align: center; padding: 12px 0 20px; }
+.bottom-lock .lock-icon { font-size: 14px; color: #7c8ba0; display: block; margin-bottom: 4px; }
+.bottom-lock .lock-text { font-size: 13px; color: #7c8ba0; display: block; }
+
+/* section label */
+.section-label {
+  font-size: 13px; color: #a0aec0; text-align: center; margin: 20px 0 8px;
+  font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+}
+
+/* highlight animation for 96110 card */
+@keyframes pulse-border {
+  0%, 100% { border-color: #fc8181; }
+  50% { border-color: #e53e3e; box-shadow: 0 3px 16px rgba(229,62,62,0.2); }
+}
+.emergency-call-bar { animation: pulse-border 2s ease-in-out infinite; }
+
+/* ===== 两个对比面板 ===== */
+.panels { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; align-items: flex-start; }
+.panel-box { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+</style>
+</head>
+<body>
+
+<div class="panels">
+
+<!-- ===== 面板 1：高风险结果 + 96110 ===== -->
+<div class="panel-box">
+  <h2>🔴 高风险结果页</h2>
+  <h3>96110 放在案例警示卡下方（醒目红色，自动脉冲动画）</h3>
+  <div class="phone-frame">
+    <div class="navbar"><span class="back">←</span><span class="navbar-title">识别结果</span></div>
+
+    <!-- risk header -->
+    <div class="risk-header risk-high">
+      <div class="risk-header-bg"></div>
+      <div class="risk-header-content">
+        <div class="risk-icon-circle"><span class="risk-icon-text">!</span></div>
+        <div class="risk-level-label">高风险</div>
+        <div class="risk-desc">请提高警惕，这可能是诈骗信息</div>
+      </div>
+    </div>
+
+    <div class="time-info">
+      <span class="time-label">分析时间</span>
+      <span class="time-value">2026-07-08 15:30</span>
+    </div>
+
+    <div class="content">
+      <div class="card">
+        <div class="card-title">风险类型</div>
+        <div class="card-body">冒充公检法诈骗</div>
+      </div>
+
+      <!-- 案例警示 -->
+      <div class="case-alert">
+        <div class="case-alert-header">
+          <span class="case-alert-icon">🔍</span>
+          <span class="case-alert-title">真实案例警示</span>
+          <span class="case-alert-badge">案例库匹配</span>
+        </div>
+        <div class="case-alert-body">
+          <span class="case-title2">冒充公检法电信诈骗</span>
+          <span class="case-brief">受害人接到自称"公安局"电话，称其涉嫌洗钱要求转账到"安全账户"，被骗 68 万元。</span>
+          <div class="case-tags">
+            <span class="case-tag">冒充公检法</span>
+            <span class="case-tag risk-tag">高风险</span>
+          </div>
+        </div>
+        <div class="case-alert-footer">
+          <span class="case-alert-warn">⚠️ 您的识别内容与上述真实诈骗案例高度相似，请务必提高警惕！</span>
+        </div>
+      </div>
+
+      <!-- ⭐ 96110 一键拨打 — 高风险版（醒目的红色脉冲卡片） -->
+      <a class="emergency-call-bar" href="tel:96110">
+        <div class="emergency-call-left">
+          <div class="emergency-phone-icon">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          </div>
+          <div class="emergency-call-text">
+            <div class="emergency-call-title">911610 反诈专线</div>
+            <div class="emergency-call-sub">疑似诈骗请立即拨打核实</div>
+          </div>
+        </div>
+        <span class="emergency-call-btn">一键拨打</span>
+      </a>
+
+      <div class="card">
+        <div class="card-title">风险原因</div>
+        <div class="card-body">图片内容包含"安全账户""涉嫌犯罪"等典型冒充公检法诈骗话术</div>
+      </div>
+      <div class="card">
+        <div class="card-title">防骗建议</div>
+        <div class="card-body">公检法机关不会通过电话办案，更不存在"安全账户"</div>
+      </div>
+    </div>
+
+    <div class="authenticity-reminder">
+      <span class="reminder-icon">⚠</span>
+      <span class="reminder-text">系统仅对图片内容进行辅助分析，请注意核实图片及信息真实性</span>
+    </div>
+
+    <div class="footer-actions">
+      <button class="btn-back">返回首页</button>
+      <button class="btn-again">再识别一张</button>
+    </div>
+    <div class="disclaimer-bar">
+      <span class="disclaimer-text">本系统仅提供金融风险辅助识别，不构成安全承诺</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 面板 2：低风险结果 + 96110 ===== -->
+<div class="panel-box">
+  <h2>🟢 低风险结果页</h2>
+  <h3>96110 放在底部操作区上方（克制灰蓝色，不制造恐慌）</h3>
+  <div class="phone-frame">
+    <div class="navbar"><span class="back">←</span><span class="navbar-title">识别结果</span></div>
+
+    <div class="risk-header risk-low">
+      <div class="risk-header-bg"></div>
+      <div class="risk-header-content">
+        <div class="risk-icon-circle"><span class="risk-icon-text">✓</span></div>
+        <div class="risk-level-label">低风险</div>
+        <div class="risk-desc">未发现明显风险，建议进一步核实信息来源</div>
+      </div>
+    </div>
+
+    <div class="time-info">
+      <span class="time-label">分析时间</span>
+      <span class="time-value">2026-07-08 15:32</span>
+    </div>
+
+    <div class="content">
+      <div class="card">
+        <div class="card-title">风险类型</div>
+        <div class="card-body">正常银行通知</div>
+      </div>
+      <div class="card">
+        <div class="card-title">风险原因</div>
+        <div class="card-body">图片内容为常规银行余额变动提醒，未发现可疑链接、诱导转账等风险特征</div>
+      </div>
+      <div class="card">
+        <div class="card-title">通俗解读</div>
+        <div class="card-body">这是一条正常的银行短信通知</div>
+      </div>
+      <div class="card">
+        <div class="card-title">防骗建议</div>
+        <div class="card-body">继续保持警惕，不点击陌生链接</div>
+      </div>
+    </div>
+
+    <div class="authenticity-reminder">
+      <span class="reminder-icon">⚠</span>
+      <span class="reminder-text">系统仅对图片内容进行辅助分析，请注意核实图片及信息真实性</span>
+    </div>
+
+    <!-- ⭐ 96110 一键拨打 — 中低风险版（克制的蓝灰卡片） -->
+    <a class="consult-call-bar" href="tel:96110" style="margin: 12px 16px 0;">
+      <div class="consult-phone-icon">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      </div>
+      <div class="consult-call-text">
+        <div class="consult-call-title">96110 反诈咨询热线</div>
+        <div class="consult-call-sub">如有疑虑，可拨打咨询</div>
+      </div>
+      <span class="consult-call-btn">拨打</span>
+    </a>
+
+    <div class="footer-actions">
+      <button class="btn-back">返回首页</button>
+      <button class="btn-again">再识别一张</button>
+    </div>
+    <div class="disclaimer-bar">
+      <span class="disclaimer-text">本系统仅提供金融风险辅助识别，不构成安全承诺</span>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- ===== 面板 3：首页快捷入口 ===== -->
+<div class="panel-box">
+  <h2>🏠 首页辅助卡（备选方案）</h2>
+  <h3>与「我的识别」「防骗课堂」并列第三张卡片</h3>
+  <div class="phone-frame">
+    <div class="home-header"><span class="home-header-title">灵溪识险</span></div>
+    <div class="home-content">
+      <div class="big-camera-btn">
+        <div class="cam-icon" style="font-size:32px">📷</div>
+        <div class="cam-text">拍照识别</div>
+        <div class="cam-sub">点击立即识别</div>
+      </div>
+      <div class="album-btn">📁 从相册选择</div>
+      <div class="aux-cards">
+        <a class="aux-card" href="#">
+          <div class="aux-card-icon">📋</div>
+          <div class="aux-card-title">我的识别</div>
+        </a>
+        <a class="aux-card" href="#">
+          <div class="aux-card-icon">📖</div>
+          <div class="aux-card-title">防骗课堂</div>
+        </a>
+        <!-- ⭐ 第三张：96110 热线 -->
+        <a class="aux-card" href="tel:96110" style="position:relative;">
+          <div style="position:absolute;top:6px;right:6px;background:#e53e3e;color:#fff;font-size:9px;padding:1px 6px;border-radius:8px;">HOT</div>
+          <div class="aux-card-icon">📞</div>
+          <div class="aux-card-title gold-title">96110 热线</div>
+        </a>
+      </div>
+      <div class="notice-box">
+        <div class="notice-title">温馨提示</div>
+        <div class="notice-body">如遇可疑金融信息，请先使用本工具识别，必要时拨打 96110 反诈专线核实。</div>
+      </div>
+      <div class="bottom-lock">
+        <span class="lock-icon">🔒</span>
+        <span class="lock-text">隐私加密保护 · 数据不上传服务器</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

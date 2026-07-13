@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>灵溪识险 · 完整识别流程图</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:#0a1628;color:#e2e8f0;line-height:1.6;min-height:100vh}
+.container{max-width:1160px;margin:0 auto;padding:40px 24px}
+
+h1{text-align:center;font-size:32px;font-weight:800;margin-bottom:8px;background:linear-gradient(135deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{text-align:center;color:#94a3b8;font-size:14px;margin-bottom:48px}
+
+/* === Section === */
+.section{margin-bottom:48px}
+.section-title{font-size:22px;font-weight:700;margin-bottom:24px;padding-left:16px;border-left:4px solid;display:flex;align-items:center;gap:10px}
+.section-title.st-llm{border-color:#60a5fa;color:#60a5fa}
+.section-title.st-local{border-color:#34d399;color:#34d399}
+.section-title.st-fallback{border-color:#fbbf24;color:#fbbf24}
+.section-title.st-result{border-color:#f472b6;color:#f472b6}
+
+/* === Pipeline Step === */
+.step{background:#112240;border-radius:16px;padding:28px 32px;margin-bottom:16px;border:1px solid #1e3a5f;position:relative;display:flex;gap:24px;align-items:flex-start;transition:border-color .3s,box-shadow .3s}
+.step:hover{border-color:#3b82f6;box-shadow:0 0 40px rgba(59,130,246,.12)}
+.step-num{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;flex-shrink:0}
+.step-num.sn-blue{background:linear-gradient(135deg,#2563eb,#3b82f6)}
+.step-num.sn-green{background:linear-gradient(135deg,#059669,#10b981)}
+.step-num.sn-purple{background:linear-gradient(135deg,#7c3aed,#8b5cf6)}
+.step-num.sn-amber{background:linear-gradient(135deg,#d97706,#f59e0b)}
+.step-num.sn-pink{background:linear-gradient(135deg,#db2777,#ec4899)}
+.step-body{flex:1}
+.step-label{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:6px}
+.step-name{font-size:18px;font-weight:700;margin-bottom:8px}
+.step-desc{font-size:14px;color:#94a3b8;line-height:1.7}
+.step-tag{display:inline-block;padding:2px 10px;border-radius:6px;font-size:11px;font-weight:600;margin-right:6px;margin-top:8px}
+.tag-blue{background:rgba(59,130,246,.15);color:#60a5fa}
+.tag-green{background:rgba(52,211,153,.15);color:#34d399}
+.tag-amber{background:rgba(251,191,36,.15);color:#fbbf24}
+.tag-red{background:rgba(248,113,113,.15);color:#f87171}
+.tag-pink{background:rgba(244,114,182,.15);color:#f472b6}
+
+/* === Arrow down === */
+.arrow-down{display:flex;justify-content:center;padding:4px 0}
+.arrow-down svg{width:28px;height:28px;color:#4b5563}
+
+/* === Code block === */
+.code-block{background:#0d1b2a;border:1px solid #1e3a5f;border-radius:10px;padding:16px;margin-top:12px;font-family:"SF Mono","Fira Code","Consolas",monospace;font-size:12px;color:#94a3b8;overflow-x:auto;white-space:pre-wrap;word-break:break-all;line-height:1.6}
+
+/* === Rule Box === */
+.rule-box{background:#0d1b2a;border:1px solid #1e3a5f;border-radius:12px;padding:20px;margin-top:16px}
+.rule-box h4{font-size:14px;color:#60a5fa;margin-bottom:12px}
+.rule-table{width:100%;border-collapse:collapse;font-size:13px}
+.rule-table th{text-align:left;padding:8px 12px;color:#64748b;font-weight:600;border-bottom:1px solid #1e3a5f}
+.rule-table td{padding:8px 12px;border-bottom:1px solid #0f2440;color:#cbd5e1;vertical-align:top}
+.rule-table tr:last-child td{border-bottom:none}
+.level-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+.dot-red{background:#ef4444}
+.dot-yellow{background:#f59e0b}
+.dot-green{background:#22c55e}
+
+/* === Split branch === */
+.branch{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.branch-item{background:#0d1b2a;border:1px solid #1e3a5f;border-radius:12px;padding:18px;text-align:center}
+.branch-item .bi-title{font-size:15px;font-weight:700;margin-bottom:6px}
+.branch-item .bi-desc{font-size:12px;color:#94a3b8}
+
+/* === Result cards row === */
+.result-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px}
+.result-card{border-radius:14px;padding:20px;border:2px solid;text-align:center}
+.result-card.rc-high{border-color:rgba(239,68,68,.4);background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(239,68,68,.02))}
+.result-card.rc-caution{border-color:rgba(245,158,11,.4);background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(245,158,11,.02))}
+.result-card.rc-low{border-color:rgba(34,197,94,.4);background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(34,197,94,.02))}
+.result-card .rc-icon{font-size:36px;margin-bottom:8px}
+.result-card .rc-level{font-size:18px;font-weight:800;margin-bottom:4px}
+.result-card .rc-desc{font-size:12px;color:#94a3b8;line-height:1.5}
+
+/* === Flow connector === */
+.flow-connector{display:flex;align-items:center;gap:8px;margin:12px 0;padding:0 24px}
+.connector-dot{width:8px;height:8px;border-radius:50%;background:#4b5563;flex-shrink:0}
+.connector-line{flex:1;height:1px;background:#1e3a5f}
+.connector-arrow{color:#4b5563;font-size:16px;flex-shrink:0}
+
+/* === Legend === */
+.legend{display:flex;gap:24px;justify-content:center;margin-top:16px;font-size:12px;color:#64748b}
+.legend-item{display:flex;align-items:center;gap:6px}
+.legend-dot{width:8px;height:8px;border-radius:2px}
+
+/* Responsive */
+@media(max-width:768px){
+  .branch,.result-row{grid-template-columns:1fr}
+  .step{flex-direction:column;gap:12px;padding:20px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🛡️ 灵溪识险 — 完整识别流程</h1>
+<p class="subtitle">从拍照到结果展示 · 七步流水线 · 三层判定架构</p>
+
+<!-- ==================== Section 1: 用户入口 ==================== -->
+<div class="section">
+  <div class="section-title st-local">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    第一阶段 · 本地预处理
+  </div>
+
+  <!-- Step 1 -->
+  <div class="step">
+    <div class="step-num sn-blue">1</div>
+    <div class="step-body">
+      <div class="step-label">Step 1 · 本地</div>
+      <div class="step-name">📸 拍照 / 选图 → Base64 编码</div>
+      <div class="step-desc">
+        用户通过「拍照识别」按钮或「相册上传」选择图片。小程序调用 <code>wx.chooseImage</code> 获取临时路径，再通过 <code>uni.getFileSystemManager().readFile</code> 将图片转换为 Base64 编码字符串。
+      </div>
+      <div class="step-tag tag-blue">无后端存储</div>
+      <div class="step-tag tag-blue">纯本地处理</div>
+      <div class="code-block">输入: imagePath (小程序临时路径)
+输出: data:image/jpeg;base64,/9j/4AAQSkZJRg...</div>
+    </div>
+  </div>
+
+  <div class="arrow-down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+
+  <!-- Step 2 -->
+  <div class="step">
+    <div class="step-num sn-green">2</div>
+    <div class="step-body">
+      <div class="step-label">Step 2 · 本地</div>
+      <div class="step-name">🔍 图片指纹 Hash → 查缓存</div>
+      <div class="step-desc">
+        对 Base64 前 500 字符做 SHA-256 哈希指纹。查询 <code>localStorage</code>：已分析过的图片直接返回缓存结果，<b>零 API 调用</b>。<br>
+        缓存策略：最多 50 条 / 过期 7 天 / 可手动清除。
+      </div>
+      <div class="step-tag tag-green">零 Token 消耗</div>
+      <div class="step-tag tag-green">最多省 100% 成本</div>
+      <div class="branch">
+        <div class="branch-item">
+          <div class="bi-title" style="color:#34d399">✅ 缓存命中</div>
+          <div class="bi-desc">直接返回历史结果，跳过后续全部步骤<br>展示带有「来自缓存」标记的结果页</div>
+        </div>
+        <div class="branch-item">
+          <div class="bi-title" style="color:#f87171">❌ 未命中</div>
+          <div class="bi-desc">继续向下，进入 AI 分析流程</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="arrow-down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+
+<!-- ==================== Section 2: LLM 核心调用 ==================== -->
+<div class="section">
+  <div class="section-title st-llm">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    第二阶段 · 大模型一次调用（核心）
+  </div>
+
+  <!-- Step 3 -->
+  <div class="step" style="border-color:rgba(96,165,250,.3)">
+    <div class="step-num sn-purple">3</div>
+    <div class="step-body">
+      <div class="step-label">Step 3 · 云端</div>
+      <div class="step-name">🧠 GLM-4.6V 模型一次调用</div>
+      <div class="step-desc">
+        这是整个系统的<b>核心环节</b>。一次 API 调用同时完成三项任务，无需分步调用：
+      </div>
+      <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+        <div style="flex:1;min-width:200px;background:#0d1b2a;border:1px solid #1e3a5f;border-radius:10px;padding:16px">
+          <div style="font-size:14px;font-weight:700;color:#60a5fa;margin-bottom:6px">① OCR 文字提取</div>
+          <div style="font-size:12px;color:#94a3b8">直接"看"图片，提取图中所有文字，标注风险关键词</div>
+        </div>
+        <div style="flex:1;min-width:200px;background:#0d1b2a;border:1px solid #1e3a5f;border-radius:10px;padding:16px">
+          <div style="font-size:14px;font-weight:700;color:#34d399;margin-bottom:6px">② 风险等级分析</div>
+          <div style="font-size:12px;color:#94a3b8">基于 System Prompt 中的判定规则，输出 low / caution / high</div>
+        </div>
+        <div style="flex:1;min-width:200px;background:#0d1b2a;border:1px solid #1e3a5f;border-radius:10px;padding:16px">
+          <div style="font-size:14px;font-weight:700;color:#fbbf24;margin-bottom:6px">③ 案例语义匹配</div>
+          <div style="font-size:12px;color:#94a3b8">将图片内容与 50 条案例库做语义比对，判断是否同一诈骗套路</div>
+        </div>
+      </div>
+      <div class="rule-box" style="margin-top:16px">
+        <h4>📋 System Prompt 结构（注入给 LLM 的完整上下文）</h4>
+        <table style="width:100%;font-size:13px;color:#cbd5e1">
+          <tr><td style="padding:6px 0;color:#64748b;width:160px">角色设定</td><td>金融反诈分析助手</td></tr>
+          <tr><td style="padding:6px 0;color:#64748b">8 项任务</td><td>OCR 提取 → 关键词标注 → 风险定级 → 风险类型 → 风险原因 → 老人版解释 → 案例匹配 → 防骗建议</td></tr>
+          <tr><td style="padding:6px 0;color:#64748b">判定规则</td><td>10 类 high 触发条件 + 5 类 caution 触发条件 + 3 条 low 安全措辞规则</td></tr>
+          <tr><td style="padding:6px 0;color:#64748b">案例库</td><td>50 条真实诈骗案例全文（≤50 条时全量注入，>50 条时 N-gram 候选）</td></tr>
+          <tr><td style="padding:6px 0;color:#64748b">输出约束</td><td>严格 JSON，不含 markdown 标记，各字段字数上限，caseMatch 放在 suggestions 之前</td></tr>
+        </table>
+      </div>
+      <div class="code-block" style="margin-top:12px">POST https://open.bigmodel.cn/api/paas/v4/chat/completions
+{
+  "model": "glm-4.6v",
+  "temperature": 0.1,
+  "max_tokens": 2048,
+  "stream": false,
+  "response_format": { "type": "json_object" },
+  "messages": [
+    { "role": "system", "content": "你是金融反诈分析助手。用户发送图片...【含50条案例库 + 判定规则】" },
+    { "role": "user", "content": [
+        { "type": "image_url", "image_url": { "url": "data:image/jpeg;base64,..." } },
+        { "type": "text", "text": "请分析图片中的金融诈骗风险" }
+    ]}
+  ]
+}
+
+→ 返回 JSON: { "ocrText": "...", "riskLevel": "high", "riskType": "冒充公检法诈骗",
+              "caseMatch": { "caseId": "case_001", "match": true, "reason": "假冒公安索要保证金" },
+              "plainExplanation": "老人家，这是骗人的...", "suggestions": ["立即拨打96110", ...] }</div>
+      <div class="step-tag tag-purple">温度 0.1 (低随机性)</div>
+      <div class="step-tag tag-purple">最多重试 3 次</div>
+      <div class="step-tag tag-purple">超时 90s</div>
+    </div>
+  </div>
+</div>
+
+<div class="arrow-down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+
+<!-- ==================== Section 3: 后处理修正链 ==================== -->
+<div class="section">
+  <div class="section-title st-local">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="4"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5 5-3-3"/></svg>
+    第三阶段 · 后处理修正链（三道防线）
+  </div>
+
+  <!-- Step 4 -->
+  <div class="step">
+    <div class="step-num sn-green">4</div>
+    <div class="step-body">
+      <div class="step-label">Step 4 · 本地</div>
+      <div class="step-name">✂️ OCR 文本智能截断</div>
+      <div class="step-desc">
+        若 LLM 返回的 OCR 文本超过 <b>2500 字</b>，不简单截头去尾，而是<b>保留高风险关键词附近的内容</b>。
+      </div>
+      <div class="step-tag tag-green">节省输出 Token</div>
+      <div class="step-tag tag-green">保留关键上下文</div>
+    </div>
+  </div>
+
+  <div class="arrow-down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+
+  <!-- Step 5 -->
+  <div class="step">
+    <div class="step-num sn-amber">5</div>
+    <div class="step-body">
+      <div class="step-label">Step 5 · 本地</div>
+      <div class="step-name">🛡️ 低风险安全措辞过滤</div>
+      <div class="step-desc">
+        <b>禁止</b> LLM 在 low 结果中使用绝对安全表述，避免给老人错误的绝对安全感。
+      </div>
+      <div class="rule-box">
+        <h4>关键词替换表</h4>
+        <table class="rule-table">
+          <tr><th>❌ 禁止出现</th><th>✅ 强制替换为</th></tr>
+          <tr><td>内容安全</td><td>未发现明显风险</td></tr>
+          <tr><td>可以放心</td><td>建议进一步核实信息来源</td></tr>
+          <tr><td>无风险</td><td>请勿完全依赖系统判断</td></tr>
+          <tr><td>完全可信 / 绝对安全</td><td>低风险 ≠ 无风险</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow-down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+
+  <!-- Step 6 -->
+  <div class="step">
+    <div class="step-num sn-pink">6</div>
+    <div class="step-body">
+      <div class="step-label">Step 6 · 本地</div>
+      <div class="step-name">🔗 案例语义匹配后处理</div>
+      <div class="step-desc">
+        LLM 的 caseMatch 结果经过多重校验和兜底处理：
+      </div>
+      <div class="branch">
+        <div class="branch-item">
+          <div class="bi-title" style="color:#34d399">✅ LLM match=true + 有效 caseId</div>
+          <div class="bi-desc">绑定案例详情：标题 + 分类 + 简要描述<br>触发<b>风险升级逻辑</b></div>
+        </div>
+        <div class="branch-item">
+          <div class="bi-title" style="color:#fbbf24">⚠️ LLM 未返回 caseMatch 字段</div>
+          <div class="bi-desc">启用<b>本地关键词兜底引擎</b><br>OCR 文本 → 命中 30%+ 关键词 → 匹配</div>
+        </div>
+      </div>
+      <div class="code-block" style="margin-top:12px">// 风险升级逻辑
+if (matchedCase && riskLevel === 'caution') {
+    riskLevel = 'high'  // 🔥 案例匹配触发升级
+    console.log('案例匹配触发风险升级: caution → high')
+}</div>
+    </div>
+  </div>
+
+  <div class="arrow-down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+
+  <!-- Step 7 -->
+  <div class="step">
+    <div class="step-num sn-green">7</div>
+    <div class="step-body">
+      <div class="step-label">Step 7 · 本地</div>
+      <div class="step-name">💾 缓存结果 + 数据统一标准化</div>
+      <div class="step-desc">
+        分析结果写入 <code>localStorage</code>（key = 图片 Hash 指纹），下次相同图片直接命中缓存。<br>
+        <code>normalizeResult()</code> 做最后的字段兼容：snake_case ↔ camelCase、类型安全转换、字数截断。
+      </div>
+      <div class="step-tag tag-green">最多 50 条缓存</div>
+      <div class="step-tag tag-green">7 天过期</div>
+    </div>
+  </div>
+</div>
+
+<div class="arrow-down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+
+<!-- ==================== Section 4: 兜底路径 ==================== -->
+<div class="section">
+  <div class="section-title st-fallback">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 2 19 12 5 22 5 2"/></svg>
+    第四阶段 · 异常兜底路径
+  </div>
+
+  <div class="step" style="border-color:rgba(251,191,36,.3)">
+    <div class="step-num sn-amber">🛡</div>
+    <div class="step-body">
+      <div class="step-label">API 异常 · 多层兜底</div>
+      <div class="step-name">⚡ 即使 API 崩溃，用户也能拿到结果</div>
+      <div class="rule-box">
+        <table class="rule-table">
+          <tr><th style="width:160px">异常场景</th><th>兜底策略</th></tr>
+          <tr>
+            <td><span class="level-dot dot-red"></span> 网络断开</td>
+            <td>显示网络错误提示 + 引导重试按钮</td>
+          </tr>
+          <tr>
+            <td><span class="level-dot dot-yellow"></span> API 超时 (>90s)</td>
+            <td>最多重试 3 次（2s/4s/6s 递增延迟）→ 仍失败走完全兜底</td>
+          </tr>
+          <tr>
+            <td><span class="level-dot dot-red"></span> JSON 解析全部失败</td>
+            <td><code>fallbackFromRawText()</code> — 从原始响应中用正则提取关键词，走本地关键词引擎判断</td>
+          </tr>
+          <tr>
+            <td><span class="level-dot dot-red"></span> 所有重试均失败</td>
+            <td><code>makeEmptyFallbackResult()</code> — 返回 low + 「系统繁忙」提示 + 防骗建议</td>
+          </tr>
+          <tr>
+            <td><span class="level-dot dot-yellow"></span> 图片过大 (>10MB)</td>
+            <td>自动压缩后再发送；超时时在兜底文案中提示</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="arrow-down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+
+<!-- ==================== Section 5: 结果展示 ==================== -->
+<div class="section">
+  <div class="section-title st-result">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    最终输出 · 结果页三档分层展示
+  </div>
+
+  <div class="result-row">
+    <div class="result-card rc-high">
+      <div class="rc-icon">🔴</div>
+      <div class="rc-level" style="color:#ef4444">高风险</div>
+      <div class="rc-desc">
+        红色警示区<br>
+        风险类型标签<br>
+        <b>真实案例警示</b>（匹配到的案例）<br>
+        96110 紧急拨打入口<br>
+        风险关键词卡片<br>
+        通俗解读<br>
+        防骗建议<br>
+        真实性提醒
+      </div>
+    </div>
+    <div class="result-card rc-caution">
+      <div class="rc-icon">🟡</div>
+      <div class="rc-level" style="color:#f59e0b">需谨慎</div>
+      <div class="rc-desc">
+        黄色警示区<br>
+        风险类型标签<br>
+        风险关键词卡片<br>
+        通俗解读<br>
+        防骗建议<br>
+        96110 咨询入口<br>
+        真实性提醒
+      </div>
+    </div>
+    <div class="result-card rc-low">
+      <div class="rc-icon">🟢</div>
+      <div class="rc-level" style="color:#22c55e">低风险</div>
+      <div class="rc-desc">
+        绿色安全提示<br>
+        禁止使用绝对安全描述<br>
+        识别内容说明<br>
+        通俗解读<br>
+        温馨提示<br>
+        96110 咨询入口<br>
+        真实性提醒
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== Summary ==================== -->
+<div class="section" style="margin-top:60px">
+  <div style="background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(139,92,246,.08));border:1px solid #1e3a5f;border-radius:20px;padding:36px 40px;text-align:center">
+    <h3 style="font-size:20px;margin-bottom:20px">🏗️ 三层架构总览</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;max-width:900px;margin:0 auto">
+      <div style="background:#112240;border:2px solid #3b82f6;border-radius:14px;padding:20px">
+        <div style="font-size:28px;margin-bottom:8px">🥇</div>
+        <div style="font-size:15px;font-weight:700;color:#60a5fa;margin-bottom:6px">LLM 主裁判</div>
+        <div style="font-size:12px;color:#94a3b8">
+          GLM-4.6V 视觉模型<br>
+          一次调用完成 OCR + 风险定级 + 案例匹配<br>
+          嵌入 50 条案例库全文<br>
+          <b>80%+ 场景直接命中</b>
+        </div>
+      </div>
+      <div style="background:#112240;border:2px solid #f59e0b;border-radius:14px;padding:20px">
+        <div style="font-size:28px;margin-bottom:8px">🥈</div>
+        <div style="font-size:15px;font-weight:700;color:#fbbf24;margin-bottom:6px">关键词替补裁判</div>
+        <div style="font-size:12px;color:#94a3b8">
+          本地关键词扫描引擎<br>
+          仅在 <b>LLM 完全崩溃</b> 时启用<br>
+          三层关键词库：高危/警惕/安全<br>
+          含反诈宣教反方向校验
+        </div>
+      </div>
+      <div style="background:#112240;border:2px solid #22c55e;border-radius:14px;padding:20px">
+        <div style="font-size:28px;margin-bottom:8px">🥉</div>
+        <div style="font-size:15px;font-weight:700;color:#34d399;margin-bottom:6px">VAR 复核组</div>
+        <div style="font-size:12px;color:#94a3b8">
+          后处理修正链<br>
+          安全措辞过滤 + 案例升级 + 文本截断<br>
+          <b>宁可误判为高，不可漏判为低</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div> LLM 云端</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#10b981"></div> 本地处理</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div> 兜底路径</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ec4899"></div> 后处理修正</div>
+</div>
+<p style="text-align:center;margin-top:16px;font-size:12px;color:#475569">设计原则：LLM 是主裁判 · 关键词是替补裁判 · 后处理是 VAR 复核 · 缓存是最佳防守</p>
+
+</div>
+</body>
+</html>
