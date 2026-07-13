@@ -1490,7 +1490,7 @@
 <<!-- ====== 08 · PRODUCT UI · Core Screens ====== -->
 <style>
 .phone-wrap{display:flex;flex-direction:column;align-items:center;gap:.8vh}
-.phone-shell{width:330px;height:610px;border-radius:18px;overflow:hidden;background:#f0f4f8;box-shadow:0 6px 28px rgba(0,0,0,.12);position:relative;border:2.5px solid #dde2e8;flex-shrink:0}
+.phone-shell{width:clamp(140px,14vw,330px);height:clamp(259px,25.9vw,610px);border-radius:18px;overflow:hidden;background:#f0f4f8;box-shadow:0 6px 28px rgba(0,0,0,.12);position:relative;border:2.5px solid #dde2e8;flex-shrink:0}
 .phone-shell .ph-top{height:38px;display:flex;align-items:center;justify-content:center;padding-top:16px;position:relative;flex-shrink:0}
 .phone-shell .ph-top-w{background:#fff}
 .phone-shell .ph-top-b{background:#7A9BBD}
@@ -1579,7 +1579,7 @@
         <h2 class="h-xl-zh" style="font-size:min(4.8vw,8.6vh)">核心功能 · 五大页面</h2>
       </div>
 
-      <div data-anim="up" style="display:flex;flex-wrap:wrap;justify-content:center;gap:1.6vw 2vw;margin-top:2vh">
+      <div data-anim="up" style="display:flex;flex-wrap:nowrap;justify-content:center;align-items:flex-start;gap:1vw;margin-top:2vh">
         <!-- 首页 -->
         <div class="phone-wrap">
           <div class="phone-shell">
@@ -1706,7 +1706,7 @@
         <h2 class="h-xl-zh" style="font-size:min(4.8vw,8.6vh)">辅助功能 & 详情展示</h2>
       </div>
 
-      <div data-anim="up" style="display:flex;flex-wrap:wrap;justify-content:center;gap:1.6vw 2vw;margin-top:2vh">
+      <div data-anim="up" style="display:flex;flex-wrap:nowrap;justify-content:center;align-items:flex-start;gap:1vw;margin-top:2vh">
         <!-- 历史-有数据 -->
         <div class="phone-wrap">
           <div class="phone-shell">
